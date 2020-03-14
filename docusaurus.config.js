@@ -57,15 +57,23 @@ module.exports = {
           ],
         },
         {
-          title: 'Social',
+          title: 'Attribution',
           items: [
             // {
             //   label: 'Blog',
             //   to: 'blog',
             // },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Logo - chris 論',
+              href: 'https://commons.wikimedia.org/wiki/User:Chrkl',
+            },
+            {
+              label: 'HACS - ludeeus',
+              href: 'https://github.com/ludeeus',
+            },
+            {
+              label: 'Home Assistant devs',
+              href: 'https://www.home-assistant.io/developers/credits/#contributors',
             },
             // {
             //   label: 'Twitter',

@@ -8,7 +8,7 @@ title: Basics
 
 All automation files is in the `netdaemon` folder directly under your configuration folder. Typically you access these files within vscode or any other editor. This should be your root directory on you hassio share in vscode:
 
-![](img/rootdir.png)
+![](/img/docs/started/rootdir.png)
 
 ## Get intellisense
 

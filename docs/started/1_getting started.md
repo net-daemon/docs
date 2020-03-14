@@ -8,11 +8,11 @@ title: Installation
 
 1. Add the `https://github.com/helto4real/hassio-add-ons` in `Add new repository URL` to the add-on store.
 
-    ![](img/newrepo.png)
+    ![](/img/docs/started/newrepo.png)
 
 2. Add the NetDaemon add-on.
 
-    ![](img/daemon.png)
+    ![](/img/docs/started/daemon.png)
 
 3. After you install it, do not start it just yet. We need to configure some stuff manually (will be improved as we come closer to release)
 
@@ -20,7 +20,7 @@ title: Installation
 
 Development of apps is currently recommended doing locally. A vscode development devcontainer has been prepared for you at [https://github.com/net-daemon/netdaemon-app-template](https://github.com/net-daemon/netdaemon-app-template). Use the GitHub template for your own project. The folder should be containing the following files:
 
-![](img/netdaemonfolder.png)
+![](/img/docs/started/netdaemonfolder.png)
 
 ## Open the content in vscode
 
