@@ -1,9 +1,7 @@
 ---
 id: getstate
-title: Fluent API
+title: State
 ---
-
-# The fluent API
 
 ## Get State of an entity
 
