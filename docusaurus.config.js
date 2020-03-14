@@ -74,7 +74,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Built with Docusaurus.`,
+      copyright: `<a href='https://www.netlify.com/'>This site is powered by Netlify</a>`,
 
       // image: 'https://www.netlify.com/img/global/badges/netlify-color-accent.svg',
       image: 'img/favicon.png',
