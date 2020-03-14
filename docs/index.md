@@ -9,8 +9,11 @@ Why a new application daemon for Home Assistant? There already exists one!? The 
 
 ## Pre-Alpha - Expect things to change
 
-!!! warning
-    This is in pre-alpha experimental phase and expect API:s to change over time. Please use and contribute ideas for improvement or better yet PR:s.
+:::caution Warning
+
+This is in pre-alpha experimental phase and expect API:s to change over time. Please use and contribute ideas for improvement or better yet PR:s.
+
+:::
 
 Only tested on amd64 based architectures like PC or NUC and Raspberry PI 3. Probably works on other architectures too. Will update the docs when I get confirmations from other platforms.
 
@@ -18,8 +21,9 @@ The daemon is currently only distributed through Hassio add-on but a docker cont
 
 Please see [the getting started](/docs/started/installation) documentation for setup.
 
-!!! info
-    You need to restart the add-on every time you change a file. C# needs to compile the changes.
+:::info
+You need to restart the add-on every time you change a file. C# needs to compile the changes.
+:::
 
 ## Issues
 
