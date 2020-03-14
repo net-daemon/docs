@@ -57,6 +57,19 @@ module.exports = {
           ],
         },
         {
+          title: 'Github',
+          items: [
+            {
+              label: 'Issues',
+              href: 'https://github.com/net-daemon/netdaemon/issues',
+            },
+            {
+              label: 'NetDaemon',
+              href: 'https://github.com/net-daemon/netdaemon',
+            },
+          ],
+        },
+        {
           title: 'Attribution',
           items: [
             // {
