@@ -1,6 +1,6 @@
 ---
 id: index
-title: Start
+title: NetDaemon
 ---
 
 This is the application daemon project for Home Assistant. This project makes it possible to make automatons using the .NET Core (3.1) framework. The API uses the new nullable types and C# 8.0. Please make your self familiar with these concepts.

@@ -22,11 +22,32 @@
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%; */
+
+  --ifm-color-secondary: #1bd4d4;
+  --ifm-color-info: #70bdd7;
+  --ifm-color-warning: #c18802;
+  --ifm-color-danger: #d78a70;
+  --ifm-color-gray-900: #353535;
+  --ifm-color-success: #70d7a7;
+  --ifm-alert-border-radius: 4px;
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+
+/* .admonition-caution h5 {
+  color: #f6ffb6;
+} */
+
+/* .admonition-caution {
+  background-color: rgb(102, 212, 189);
+  border-left: 8px solid #267e22;
 }
+
+.admonition-caution h5 {
+  color: #167e22;
+}
+
+.admonition-caution .admonition-icon svg {
+  stroke: #0202e2;
+  fill: #36e622;
+} */
+

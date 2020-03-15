@@ -2,8 +2,6 @@
 id: installation
 title: Installation
 ---
-# Installation
-
 ## Install the Hass.io add-on
 
 1. Add the `https://github.com/helto4real/hassio-add-ons` in `Add new repository URL` to the add-on store.
@@ -38,11 +36,11 @@ After you have developed and tested you app you want to copy the whole app to th
 
 Now you can start the plugin, check the logs for any errors.
 
-:::info
-IMPORTANT - YOU NEED TO RESTART THE ADD-ON EVERYTIME YOU MAKE CHANGES TO A FILE SINCE C# COMPILES
+:::info IMPORTANT
+YOU NEED TO RESTART THE ADD-ON EVERYTIME YOU MAKE CHANGES TO A FILE SINCE C# COMPILES
 :::
 
-## Check out the examples in docs
+## Other examples
 
 Todo: make link to examples here..
 

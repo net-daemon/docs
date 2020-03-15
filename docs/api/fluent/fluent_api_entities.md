@@ -2,9 +2,6 @@
 id: entities
 title: Entities
 ---
-
-# The fluent API
-
 ## Entity and Entities selection
 
 To select what entity you want to perform actions on use the `Entity()` or `Entities()` starting point.

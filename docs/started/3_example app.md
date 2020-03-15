@@ -2,8 +2,6 @@
 id: example
 title: Example app
 ---
-# Example app
-
 This application shows basic capabilities of the fluent API of NetDaemon. It has two files, `ExampleApp.yaml` that contains basic configuration of the instance and `ExampleApp.cs` that contains the app logic.
 
 ## ExampleApp.yaml

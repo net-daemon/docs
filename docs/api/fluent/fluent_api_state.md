@@ -1,11 +1,9 @@
 ---
 id: state
-title: State
+title: State management
 ---
 
-# The fluent API
-
-## Basic state management
+## State changes
 
 The fluent API lets you easily subscribe to state changes.
 
