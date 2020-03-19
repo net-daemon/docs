@@ -86,3 +86,4 @@ Please check out the apps being developed for netdaemon. Since documentation is 
 | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | [@helto4real](https://github.com/helto4real/hassio/tree/master/netdaemon/apps)                         | My own netdaemon apps running in production           |
 | [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's netdaemon apps, check them out, nice stuff |
+| [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's netdaemon apps, good example extending netdaemon  functionality |
