@@ -8,11 +8,11 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <>For the c# developer</>,
+    title: <>For the C# developer</>,
     imageUrl: 'img/C_Sharp_logo.svg',
     description: (
       <>
-        NetDaemon is mainly targeting the C# developer that wants to utlilize the .Net echosystem to write automations for Home Assistant.
+        NetDaemon is mainly targeting the C# developer that wants to utlilize the .Net ecosystem to write automations for Home Assistant.
       </>
     ),
   },
@@ -30,7 +30,7 @@ const features = [
     imageUrl: 'img/hacs.png',
     description: (
       <>
-        NetDaemon apps will be provided to end-users through the HACS echosystem.
+        NetDaemon apps will be provided to end-users through the HACS ecosystem.
       </>
     ),
   },
