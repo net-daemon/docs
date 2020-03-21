@@ -30,7 +30,7 @@ const features = [
     imageUrl: 'img/hacs.png',
     description: (
       <>
-        NetDaemon apps will be provided to end-users through the HACS ecosystem.
+        NetDaemon apps can be provided to end-users through the HACS ecosystem.
       </>
     ),
   },

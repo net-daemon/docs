@@ -1,33 +1,14 @@
-# Website
+# NetDaemon documentation
 
-This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
+This documentation site for NetDaemon is build using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
-### Installations
+The documentation site for NetDaemon is hosted on [netlify](https://www.netlify.com/)
 
-```
-$ yarn
-```
+## Development
 
-### Local Development
+_It is recomended that you use the provided devcontainer when doing changes to the documentation._
 
-```
-$ yarn start
-```
-
-This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-```
-$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+1. Start the devcontainer.
+2. Run `npm start`
+3. Open a browser window on http://127.0.0.1:3000
+4. See a live preview of your changes.
