@@ -8,7 +8,7 @@ There are two ways of running NetDaemon, as an add-on running under Home Assista
 
 ## Install as a Home Assistant add-on
 
-1. Add the `https://github.com/helto4real/hassio-add-ons` in `Add new repository URL` to the add-on store.
+1. Add the `https://github.com/net-daemon/homeassistant-addon` in `Add new repository URL` to the add-on store.
 
     ![](/img/docs/started/newrepo.png)
 
