@@ -71,7 +71,7 @@ Every scheduled task return a `ISchedulerResult` object. You can use that to can
 ```csharp
 
 // set class variable you want to save
-_savedSchedulerResult = Scheduler.RunIn(TimeSpan.FromHours(2), async () => DoStuffInTwoHours())
+_savedSchedulerResult = Scheduler.RunIn(TimeSpan.FromHours(2), async () => DoStuffInTwoHours().ConfigureAwait(false));
 
 ...
 // Some other function needs to cancel it

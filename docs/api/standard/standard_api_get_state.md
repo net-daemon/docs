@@ -11,7 +11,7 @@ Basic example getting state:
 
 Using the new nullable features in c# 8 you can easily get state or null (no state found)
 
-```cs
+```csharp
 string? state = GetState("light.light1")?.State;
 if (state is object)
 {
@@ -25,7 +25,7 @@ Or get all information from the entity state:
 
 This is not async since state is kept in memory and synced in background.
 
-```cs
+```csharp
 
 string? entityState = GetState("light.light1");
 if (entityState != null)
