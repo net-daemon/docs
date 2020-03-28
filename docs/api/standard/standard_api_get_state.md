@@ -13,8 +13,9 @@ Using the new nullable features in c# 8 you can easily get state or null (no sta
 
 ```cs
 string? state = GetState("light.light1")?.State;
-if (state != null)
+if (state is object)
 {
+    // Not null
     ...
 }
 
@@ -22,7 +23,10 @@ if (state != null)
 
 Or get all information from the entity state:
 
+This is not async since state is kept in memory and synced in background.
+
 ```cs
+
 string? entityState = GetState("light.light1");
 if (entityState != null)
 {

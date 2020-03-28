@@ -5,6 +5,7 @@ title: Entities
 ## Entity and Entities selection
 
 To select what entity you want to perform actions on use the `Entity()` or `Entities()` starting point.
+The examples does not use `ConfigureAwait(false)` but can be used for even more efficency in the async context switching.
 
 ### Simple selection
 
