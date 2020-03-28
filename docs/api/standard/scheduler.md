@@ -16,7 +16,7 @@ There are several RunEvery implementations.
 ** You have to use the hh:mm:ss format setting time of day**
 ```csharp
 
-Scheduler.RunDaily("23:00:00", async () => await CallFunctionWithParameter("Time to sleep"));
+Scheduler.RunDaily("23:00:00", async () => await CallFunctionWithParameter("Time to sleep").ConfigureAwait(false);
 
 private async Task CallFunctionWithParameter(string message)
 {
@@ -32,7 +32,7 @@ Scheduler.RunDaily("23:00:00", new DayOfWeek[]
     DayOfWeek.Friday,
     DayOfWeek.Saturday,
 }
-, async () => await CallFunctionWithParameter("Time to sleep weekend"));
+, async () => await CallFunctionWithParameter("Time to sleep weekend").ConfigureAwait(false);
 
 private async Task CallFunctionWithParameter(string message)
 {
@@ -46,7 +46,7 @@ There are specific implementations of RunEvery... like the RunEveryMinute.
 
 ```csharp
 
-Scheduler.RunEveryMinute(0, () => DoStuffEveryMinute());
+Scheduler.RunEveryMinute(0, async () => DoStuffEveryMinute().ConfigureAwait(false);
 
 private async Task DoStuffEveryMinute()
 {
@@ -60,7 +60,7 @@ If you need to delay excecution a specific time this is the prefered way to do i
 
 ```csharp
 
-Scheduler.RunIn(TimeSpan.FromSeconds(10), async () => DoStuffInTenSeconds())
+Scheduler.RunIn(TimeSpan.FromSeconds(10), async () => DoStuffInTenSeconds().ConfigureAwait(false));
 
 ```
 
@@ -71,7 +71,7 @@ Every scheduled task return a `ISchedulerResult` object. You can use that to can
 ```csharp
 
 // set class variable you want to save
-_savedSchedulerResult = Scheduler.RunIn(TimeSpan.FromHours(2), async () => DoStuffInTwoHours())
+_savedSchedulerResult = Scheduler.RunIn(TimeSpan.FromHours(2), async () => DoStuffInTwoHours().ConfigureAwait(false));
 
 ...
 // Some other function needs to cancel it

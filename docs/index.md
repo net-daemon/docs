@@ -11,7 +11,7 @@ Why a new application daemon for Home Assistant? There already exists one!? The 
 
 :::caution Warning
 
-This is in pre-alpha experimental phase and expect API:s to change over time. Please use and contribute ideas for improvement or better yet PR:s.
+This is project is in alpha and API:s can change until release. Please use and contribute ideas for improvement or better yet PR:s.
 
 :::
 
