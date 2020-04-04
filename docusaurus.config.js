@@ -108,7 +108,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/net-daemon/docs',
+            'https://github.com/net-daemon/docs/tree/master',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
