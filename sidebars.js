@@ -20,6 +20,11 @@ module.exports = {
         label: 'Standard',
         items: ['api/standard/getstate', 'api/standard/scheduler']
       },
+      {
+        type: 'category',
+        label: 'Auto generated',
+        items: ['api/generated/generated']
+      },
     ]
 
   },
