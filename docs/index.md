@@ -7,11 +7,11 @@ This is the application daemon project for Home Assistant. This project makes it
 
 Why a new application daemon for Home Assistant? There already exists one!? The existing appdaemon is a great software and are using python as language and ecosystem. This is for people who loves to code in the .NET core ecosystem and c#. The daemon will be supported by all supported platforms of .NET core.
 
-## Pre-Alpha - Expect things to change
+## Expect things to change
 
 :::caution Warning
 
-This is project is in alpha and API:s can change until release. Please use and contribute ideas for improvement or better yet PR:s.
+This is project is in pre-release stage and API:s can change until release. The project is moving towards first beta where the API:s will be more stable. Please use and contribute ideas for improvement or better yet pull requests.
 
 :::
 
