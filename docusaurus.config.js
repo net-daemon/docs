@@ -10,6 +10,12 @@ module.exports = {
     prism: {
       additionalLanguages: ['csharp'],
     },
+    algolia: {
+      appId: 'BH4D9OD16A',
+      apiKey: '079e2f0e898ac47ad3f73fe68ac2f32b',
+      indexName: 'netdaemon',
+      algoliaOptions: {}, // Optional, if provided by Algolia
+    },
     navbar: {
       title: 'NetDaemon',
       logo: {
