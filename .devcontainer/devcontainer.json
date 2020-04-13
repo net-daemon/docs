@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or the definition README at
 {
   "name": "NetDaemon Documentation",
-  "image": "ludeeus/devcontainer:frontend",
+  "image": "ludeeus/container:frontend",
   "context": "..",
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
