@@ -47,6 +47,10 @@ The easiest way to get started with app development for NetDaemon is to use a cu
 
 After you have developed and tested you app you want to copy the whole app to the config folder. The new folder structure should be /config/netdaemon/apps where /config is the path to your Home Assistant config.
 
+In your config there should be a folder structure similar to the example below. If you are running docker you should set the volume to the red arrow. If you are running the Add-on that folder should be in the config folder.
+
+![](/img/docs/installation/folder_structure_netdaemon.png)
+
 ## Start NetDaemon
 
 Now you can start the daemon, check the logs for any errors.
