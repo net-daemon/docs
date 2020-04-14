@@ -16,7 +16,7 @@ The easiest way to get started with app development for NetDaemon is to use a cu
 ```json
 {
     "name": "Sample App development",
-    "image": "ludeeus/devcontainer:netdaemon",
+    "image": "ludeeus/container:netdaemon",
     "settings": {
       "terminal.integrated.shell.linux": "/bin/bash"
     },
