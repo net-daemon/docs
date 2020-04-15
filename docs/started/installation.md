@@ -1,9 +1,7 @@
 ---
 id: installation
-title: Installation
+title: Install NetDaemon
 ---
-# Install NetDaemon
-
 There are two ways of running NetDaemon, as an add-on running under Home Assistant (previously known as hass.io) or as a docker container.
 
 ## Install as a Home Assistant add-on

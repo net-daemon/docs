@@ -5,7 +5,7 @@ module.exports = {
       {
         type: 'category',
         label: 'Getting started',
-        items: ['started/installation', 'started/development', 'started/basic', 'started/example', 'started/hacs']
+        items: ['started/installation', 'started/development', 'started/tips_and_tricks', 'started/example', 'started/hacs']
       },
     ],
     API: [
