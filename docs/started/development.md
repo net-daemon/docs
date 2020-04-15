@@ -1,6 +1,6 @@
 ---
 id: development
-title: App Development
+title: App development
 ---
 # Get started with NetDaemon app development
 
