@@ -23,3 +23,13 @@ public override async Task InitializeAsync()
 }
 
 ```
+
+## Turn on and off code generation
+
+Code generation can be turned on and off in different run-time environments:
+
+Env | How to configure
+-- | --
+|Add-on| There is a setting in the Add-on called  `generate_entities: 'false'` or `true`|
+|Docker| Use the env. var. `HASS_GEN_ENTITIES=False` or `True` |
+|Development| In the `daemon_config.json` set the `"generate_entities": false` or `true`
