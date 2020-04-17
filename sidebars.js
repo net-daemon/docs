@@ -18,7 +18,7 @@ module.exports = {
       {
         type: 'category',
         label: 'Standard',
-        items: ['api/standard/getstate', 'api/standard/scheduler', 'api/standard/storage']
+        items: ['api/standard/configuration', 'api/standard/getstate', 'api/standard/scheduler', 'api/standard/storage']
       },
       {
         type: 'category',
