@@ -11,7 +11,6 @@
     "${env:HOME}${env:USERPROFILE}/.ssh:/tmp/.ssh" // This is added so you can push from inside the container
   ],
   "appPort": ["3000:3000"],
-  "postCreateCommand": "npm install",
   "extensions": ["dbaeumer.vscode-eslint"]
   // "workspaceFolder": "/workspaces/docs",
   // "mounts": [
