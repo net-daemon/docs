@@ -11,8 +11,8 @@ module.exports = {
       additionalLanguages: ['csharp'],
     },
     algolia: {
-      appId: 'BH4D9OD16A',
-      apiKey: 'abfc1ce625a08c4a64ac40aaf7173a5b',
+      // appId: 'X6PBQG6HBX',
+      apiKey: '079e2f0e898ac47ad3f73fe68ac2f32b',
       indexName: 'netdaemon',
       algoliaOptions: {}, // Optional, if provided by Algolia
     },
