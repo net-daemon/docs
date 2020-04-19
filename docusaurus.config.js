@@ -11,7 +11,7 @@ module.exports = {
       additionalLanguages: ['csharp'],
     },
     algolia: {
-      // appId: 'X6PBQG6HBX',
+      appId: 'BH4D9OD16A',
       apiKey: '079e2f0e898ac47ad3f73fe68ac2f32b',
       indexName: 'netdaemon',
       algoliaOptions: {}, // Optional, if provided by Algolia
@@ -119,6 +119,7 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        sitemap: {},
       },
     ],
   ],
