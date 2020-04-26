@@ -18,13 +18,21 @@ module.exports = {
       {
         type: 'category',
         label: 'Standard',
-        items: ['api/standard/configuration', 'api/standard/getstate', 'api/standard/scheduler', 'api/standard/events', 'api/standard/storage']
+        items: ['api/standard/configuration', 'api/standard/getstate', 'api/standard/scheduler', 'api/standard/events', 'api/standard/storage', 'api/standard/get_app']
       },
       {
         type: 'category',
         label: 'Auto generated',
         items: ['api/generated/generated']
       },
+    ],
+    Advanced: [
+      'advanced/thread_safety'
+      // {
+      //   type: 'category',
+      //   label: 'Advanced topics',
+      //   items: ['advanced/thread_safety']
+      // }
     ]
 
   },
