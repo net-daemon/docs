@@ -13,3 +13,7 @@ _It is recomended that you use the provided devcontainer when doing changes to t
 3. Run `npm start`
 4. Open a browser window on http://127.0.0.1:3000
 5. See a live preview of your changes.
+
+if you have problem and need a fresh copy of the node modules do:
+
+`rm -rf node_modules`

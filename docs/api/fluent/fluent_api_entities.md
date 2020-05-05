@@ -42,9 +42,15 @@ or select on attributes
 ```csharp
 await Entities(n => n.EntityId.StartsWith("light.kitchen_")).TurnOn().ExecuteAsync();
 ```
+## Using Areas
+
+Turn on all lights in the kitchen area:
+
+```csharp
+Entities(n => n.Area == "kitchen" && n.EntityId.StartsWith("light.")).TurnOn().ExecuteAsync();
+```
 
 ## Special entities
-
 
 There are some entities that has native support in the API.
 

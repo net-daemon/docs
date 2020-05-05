@@ -58,3 +58,31 @@ private async Task MyMotionSensorStateChange(string entityId, EntityState? newSt
     await Entity("light.light1").TurnOn().ExecuteAsync();
 }
 ```
+
+## Using Areas
+
+NetDaemon does match the area where the entity´s device is configured. This means it is very easy to do selections on what area that matches.
+
+All binary sensors (PIRS) in the kitchen turn on the light:
+
+```csharp
+Entities(n => n.Area == "kitchen" && n.EntityId.StartsWith("binary_sensor."))
+     .WhenStateChange("on").UseEntity("light.light1").TurnOn().Execute();
+```
+
+Or use it directly to turn on all lights in the kitchen area:
+
+```csharp
+Entities(n => n.Area == "kitchen" && n.EntityId.StartsWith("light.")).TurnOn().ExecuteAsync();
+```
+
+You can also use it for selecting the entities to do action on. When pir is on, turn on all lights in the kitchen area:
+
+```csharp
+ Entity("binary_sensor.livingroom_pir")
+     .WhenStateChange("on")
+          .UseEntities(n => n.Area == "livingroom" && n.EntityId.StartsWith("light."))
+                .TurnOn()
+                .Execute();
+```
+
