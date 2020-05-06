@@ -28,8 +28,8 @@ The easiest way to get started with app development for NetDaemon is to use a cu
   }
 ```
 6. Open the devcontainer from the command pallet in vscode ("Remote-Containers: Reopen Folder in Container").
-7. When the devcontainer has started execute the folowing command to set it up: `dc init`.
-8. To start the app, execute this command: `dc run` in the console inside the container.
+7. When the devcontainer has started execute the folowing command to set it up: `container init`.
+8. To start the app, execute this command: `container run` in the console inside the container.
 8. Hack away! Run and debug your stuff!
 
 
