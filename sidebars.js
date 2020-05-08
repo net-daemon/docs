@@ -33,7 +33,14 @@ module.exports = {
       //   label: 'Advanced topics',
       //   items: ['advanced/thread_safety']
       // }
-    ]
+    ],
 
+  },
+  "developer documentation": {
+    "NetDaemon development": [
+      "developer/developer",
+      "developer/vscode",
+      "developer/vs"
+    ]
   },
 };

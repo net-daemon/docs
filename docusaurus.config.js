@@ -29,6 +29,12 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
+        {
+          to: 'docs/developer/developer',
+          activeBasePath: 'docs',
+          label: 'Developer',
+          position: 'left',
+        },
         // { to: 'blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/net-daemon/docs',
