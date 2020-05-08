@@ -38,7 +38,9 @@ module.exports = {
   },
   "developer documentation": {
     "NetDaemon development": [
-      "developer/developer"
+      "developer/developer",
+      "developer/vscode",
+      "developer/vs"
     ]
   },
 };
