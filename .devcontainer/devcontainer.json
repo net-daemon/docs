@@ -10,8 +10,13 @@
     "-v",
     "${env:HOME}${env:USERPROFILE}/.ssh:/tmp/.ssh" // This is added so you can push from inside the container
   ],
-  "appPort": ["3000:3000"],
-  "extensions": ["dbaeumer.vscode-eslint"]
+  "forwardPorts": [
+    3000
+  ],
+  // "appPort": ["3000:3000"],
+  "extensions": [
+    "dbaeumer.vscode-eslint"
+  ]
   // "workspaceFolder": "/workspaces/docs",
   // "mounts": [
   //   "source=ndaemon-node_modules,target=/workspaces/docs/node_modules,type=volume"
