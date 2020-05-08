@@ -3,11 +3,11 @@ id: vscode
 title: VS Code
 ---
 
-For Visual Studio Code the recommenced way is to use the devcontainer to code and debug NetDaemon.
+For Visual Studio Code the recommenced way is to use the devcontainer to edit and debug NetDaemon.
 
 ## VSCode devcontainer
 
-Fork and clone your netdaemon/netdaemon. Make you have remote development extensions installed. Open the NetDaemon folder. Run the `Reopen in container` task. When VSCode is finished you are now ready to code.
+Fork and clone your net-daemon/netdaemon. Make you have remote development extensions installed. Open the NetDaemon folder. Run the `Reopen in container` task. When VSCode is finished you are now ready to code.
 
 ### Debug
 

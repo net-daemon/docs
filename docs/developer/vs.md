@@ -7,9 +7,9 @@ title: Visual Studio
 
 ## Visual studio on Windows host os
 
-Visual Studio 2019 community or better is recommended. You need to have dotnet core 3.1 or better installed.
+Visual Studio 2019 community or newer is recommended. You need to have dotnet core 3.1 installed.
 
-Fork and clone your netdaemon/netdaemon. Make you have remote development extensions installed. Open the NetDaemon folder. Run the `Reopen in container` task. When VSCode is finished you are now ready to code.
+Fork and clone your net-daemon/netdaemon.
 
 ### Debug
 
