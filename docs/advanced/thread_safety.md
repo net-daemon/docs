@@ -3,11 +3,11 @@ id: thread_safety
 title: Async & thread safety
 ---
 
-The NetDaemon is built entirenly on the async modell. This means that you never could guarantee thread safety since you never know what operating system thread the app is running on. The good news is that all of NetDaemon API:s are thread safe. As long as you act on events and set states within an app you do not have to worry about being thread safe. There are situations when you **do need to take care of thread safety**.
+The NetDaemon is built entirenly on the async model. This means that you never could guarantee thread safety since you never know what operating system thread the app is running on. The good news is that all of NetDaemon APIs are thread safe. As long as you act on events and set states within an app you do not have to worry about being thread safe. There are situations when you **do need to take care of thread safety**.
 
 ## Events that trigger actions
 
-One of the most normnal cases is to listen to events and do actions on those events like:
+One of the most normal cases is to listen to events and do actions on those events like:
 
 ```cs
 Entity("binary_sensor.kitchen_pir", "binary_sensor.kitchen_pir2")
@@ -67,4 +67,4 @@ It is in the works of exposing a "Global" property that will expose a thread saf
 
 ## Final words
 
-NetDaemon is built on async programming paradigm. Only guaranteed being thread safe out of the box is the NetDaemon API:s. In most cases you do not have to worry about it but you should always make up your own mind when sharing some kind of state inside or outside the app.
+NetDaemon is built on async programming paradigm. Only guaranteed being thread safe out of the box is the NetDaemon APIs. In most cases you do not have to worry about it but you should always make up your own mind when sharing some kind of state inside or outside the app.
