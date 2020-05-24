@@ -10,8 +10,8 @@
     "cleanup": "npm prune; rm -R node_modules || echo ''; rm -R .docusaurus || echo ''; rm -R build || echo ''"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.54",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.54",
+    "@docusaurus/core": "^2.0.0-alpha.55",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.55",
     "classnames": "^2.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"

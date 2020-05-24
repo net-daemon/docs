@@ -5,35 +5,40 @@ title: The NetDaemon API
 
 # NetDaemon API
 
-The netdaemon API is used to access Home Assistant features. There are a classic API and a fluent API. **The project is in pre-alpha stage so the API is bound to change!**
+The netdaemon API is used to access Home Assistant features. The version 2 (current) is based on System.Reactive API. V1 of the API will be eventually deprecated and async features will be moved into V2. New users should always use V2. The internals of the V2 API is using async/await but for the user the async implementation is event based to fit the System.Reactive modell better. For users of the V1, remove all async code when migrating!
 
-It is up to the writer to decide what API suits bests their needs.
+## Schedulers
 
-## Fluent API
+System.Reactive contains scheduling. We strongly suggesst using the built-in to make sure errors are logged and your automations works as expected.
 
-Example turn on light using the fluent API.
+### Migrating to V2 from V1
 
-### Select entities
+#### Add new reference to your dev project file
 
-Select one or more entities to perform any kind of actions on.
+Do a `dotnet add package System.Reactive` on the `daemonapp.csproj` (if you are not using the dev template your project is named differently).
+Refresh the `JoySoftware.NetDaemon.App` and `JoySoftware.NetDaemon.DaemonRunner` to the latest versions.
 
-Examples:
+#### New base class and imports
 
-```cs
-await Entity("light.tomas_rum_fonster")
-    .TurnOn()
-        .WithAttribute("brightness", 50)
-            .ExecuteAsync();
+Make sure you are using `System` and `System.Reactive.Linq`. Also chage to the `JoySoftware.HomeAssistant.NetDaemon.Common.Reactive`. Now you will not need async initializer anymore so use `public override void Initialize()`. Forgetting to use new Initialize can introduce old async code bugs.
+
+Change the baseclass to `NetDaemonRxApp`.
+
+```csharp
+using System;
+using System.Reactive.Linq;
+using JoySoftware.HomeAssistant.NetDaemon.Common.Reactive;
+
+public class HouseStateManager : NetDaemonRxApp
+{
+    public override void Initialize()
+    {
+
+    }
+}
 
 ```
 
-## The standard API
 
-Examples turn on light using the standard API using CallService or the more direct TurnOnAsync method.
 
-```cs
-await await CallService("light", "turn_on",
-    new { entity_id = "light.tomas_rum_fonster", brightness = 50});
 
-await TurnOnAsync("light.tomas_rum_fonster", ("brightness", 50));
-```
