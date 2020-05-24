@@ -16,6 +16,9 @@ if (state is object)
     ...
 }
 
+// Get state attributes, returns null if not exist
+var brightness = State("light.light1").Attribute?.brightness;
+
 ```
 
 ## State changes
