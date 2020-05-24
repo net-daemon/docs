@@ -39,7 +39,7 @@ Please [join the Discord server](https://discord.gg/K3xwfcX) to get support or i
 
 ## Async model
 
-The application daemon are built entirely on the async model of .NET. This requires some knowledge of async/await/Tasks to use it properly. The docs will give you tips with do and don´ts around this but I strongly suggest you read the official docs.  [Here is a good start to read about async model.](https://docs.microsoft.com/en-us/dotnet/csharp/async)
+The application daemon are built entirely on the async model of .NET. Version one of the API required some knowledge of async/await/Tasks to use it properly. The current version use async with events internally and does not consern the user with async details.
 
 
 
