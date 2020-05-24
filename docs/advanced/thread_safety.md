@@ -11,10 +11,9 @@ One of the most normal cases is to listen to events and do actions on those even
 
 ```cs
 Entity("binary_sensor.kitchen_pir", "binary_sensor.kitchen_pir2")
-        .WhenStateChange(to: "on")
-            .UseEntity("light.kitchen_light")
-                .TurnOn()
-        .Execute();
+    .StateChanges
+        .Where(e.New?.State == "on" && e.Old?.State=="off")
+        .Subscribe(s => Entity("light.light1").TurnOn());
 ```
 
 In this case the events could theoretically trigger a "TurnOn" on the same time but NetDaemon takes care of the safety to calling Home Assistant backend. Situations like this you will not have to worry about thread safety.
@@ -29,27 +28,17 @@ public class HouseStateManager : NetDaemonApp
 {
     private int _counter = 0;
 
-    public override Task InitializeAsync()
+    public override void Initialize()
     {
         Entity("binary_sensor.kitchen_pir", "binary_sensor.kitchen_pir2")
-            .WhenStateChange(to: "on")
-                .Call(async (entityId, newState, oldState) =>
-                {
-                    _counter++;
-                    // Do smth with counter
-                }
-                ).Execute();
+            .StateChanges
+                .Where(e.New?.State == "on")
+                .Subscribe(s => _counter++);
 
         Entity("binary_sensor.kitchen_pir", "binary_sensor.kitchen_pir2")
-            .WhenStateChange(to: "off")
-                .Call(async (entityId, newState, oldState) =>
-                {
-                    _counter--;
-                    // Do smth with counter
-                }
-                ).Execute();
-
-        return Task.CompletedTask;
+            .StateChanges
+                .Where(e.New?.State == "off")
+                .Subscribe(s => _counter--);
     }
 }
 

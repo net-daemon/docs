@@ -16,29 +16,7 @@ Before coding, run the `dotnet restore` to get intellisense.
 
 We provide some code snippets to create a new app. Check it out.. In vscode, in the cs code file press `ctrl+space` and select.. More will come later.
 
-## Your automations are not triggered
+## Read up on System.Reactive
 
-There is a good chance you forgot the `..Execute()` or `await ..ExecuteAsync()`. The API is fluent and needs the end function to work. Please check you are using them as expected.
+The observable model is really powerful. Learn the model and you can do great things with the V2 of the API. Please study the [System.Reactive](http://introtorx.com/) API:s and what you can do with it!
 
-## Async model
-
-NetDaemon is built on .NET and cs async model. It is important that you read up on async programming model. But here is some basics!
-
-### Use the await keyword
-
-Whenever you see a function return a `Task` and mostly these functions has the postfix `Async`. Use the keyword `await` before calling. If you miss the await keyword you will not able to catch any errors generated in the async method. Example using the fluent API below:
-
-```csharp
-private async Task MyAsyncFunctionDoingStuff()
-{
-    await MediaPlayer("media_player.cool_player")
-                .Pause().ExecuteAsync();
-}
-```
-
-Remember that the function needs to be async containing this call as the example shows.
-
-### Do not use Thread.Sleep()
-
-!!! danger
-    Never use `Thread.Sleep();`! It is very important that you never block async operations. Use the `await Task.Delay();` instead if you need to pause execution.

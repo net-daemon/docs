@@ -11,35 +11,34 @@ You can subscribe to any events and call a function. Example below is from decon
 
 public override Task InitializeAsync()
 {
-    Events(n => n.EventId == "deconz_event" && n.Data?.id == "tvroom_cube")
-        .Call(async (ev, data) =>
+    EventChanges
+            .Where(
+                e => e.Event == "deconz_event" &&
+                     e.Data?.id == "tvrum_cube")
+            .Subscribe(s =>
             {
-                if (data?.gesture == null)
-                    return; // Should have some logging here dooh
+                if (s.Data?.gesture == null)
+                    return;
 
-                double gesture = data?.gesture;
+                double gesture = s.Data?.command;
 
                 switch (gesture)
                 {
                     case 1:         // Shake
-                        await Entity(RemoteTVRummet).Toggle().ExecuteAsync();
+                        Entity(RemoteTVRummet!).Toggle();
                         break;
                     case 3:         // Flip
-                        await PlayPauseMedia();
+                        PlayPauseMedia();
                         break;
                     case 7:         // Turn clockwise
-                        await VolumeUp();
+                        VolumeUp();
                         break;
                     case 8:         // Turn counter clockwise
-                        await VolumeDown();
+                        VolumeDown();
                         break;
                 }
-
-            })
-        .Execute();
-
-    // No async calls so just return completed task
-    return Task.CompletedTask;
+            }
+            );
 }
 
 ```

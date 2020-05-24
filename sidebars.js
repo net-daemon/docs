@@ -8,23 +8,37 @@ module.exports = {
         items: ['started/installation', 'started/development', 'started/tips_and_tricks', 'started/example', 'started/hacs']
       },
     ],
-    API: [
+    'API': [
       'api/api',
+      'api/api_entities',
+      'api/api_state',
+      'api/api_call_service',
+      'api/api_events',
+      'api/api_scheduler',
+      'api/api_storage',
+      'api/api_configuration',
+      'api/api_app',
+
       {
         type: 'category',
-        label: 'Fluent',
-        items: ['api/fluent/entities', 'api/fluent/state']
+        label: 'V1 (deprecated)',
+        items: [{
+          type: 'category',
+          label: 'Fluent',
+          items: ['api/v1/fluent/entities', 'api/v1/fluent/state']
+        },
+        {
+          type: 'category',
+          label: 'Standard',
+          items: ['api/v1/standard/configuration', 'api/v1/standard/getstate', 'api/v1/standard/scheduler', 'api/v1/standard/events', 'api/v1/standard/storage', 'api/v1/standard/get_app']
+        },
+        {
+          type: 'category',
+          label: 'Auto generated',
+          items: ['api/v1/generated/generated']
+        }]
       },
-      {
-        type: 'category',
-        label: 'Standard',
-        items: ['api/standard/configuration', 'api/standard/getstate', 'api/standard/scheduler', 'api/standard/events', 'api/standard/storage', 'api/standard/get_app']
-      },
-      {
-        type: 'category',
-        label: 'Auto generated',
-        items: ['api/generated/generated']
-      },
+
     ],
     Advanced: [
       'advanced/thread_safety'
