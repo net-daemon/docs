@@ -12,6 +12,7 @@ module.exports = {
       'api/api',
       'api/api_entities',
       'api/api_state',
+      'api/api_gen_entities',
       'api/api_call_service',
       'api/api_events',
       'api/api_scheduler',
