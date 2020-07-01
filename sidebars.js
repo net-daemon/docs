@@ -18,6 +18,7 @@ module.exports = {
       'api/api_scheduler',
       'api/api_storage',
       'api/api_configuration',
+      'api/api_callback',
       'api/api_app',
 
       {
