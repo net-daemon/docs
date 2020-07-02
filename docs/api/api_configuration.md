@@ -3,7 +3,9 @@ id: api_configuration
 title: Configuration
 ---
 
-All configuration is done with the in yaml files. For clarity we recommend to have one yaml file for each app, named the same as the csharp file but you can configure as many apps and types in one to many yaml files if that is prefered.
+All configuration is done with the in yaml files. For clarity we recommend to have one yaml file for each app, named the same as the csharp file but you can configure as many apps and types in one to many yaml files if that is prefered. 
+
+Allways use nullable types!
 
 ## Application instance configuration
 
@@ -43,6 +45,68 @@ public class LightManager : NetDaemonRxApp
 
 ```
 
+
+### Advanced configurations options
+
+| Yaml type                                             | .NET type                                                                |
+|-------------------------------------------------------|--------------------------------------------------------------------------|
+| *Scalar* <br/>a_string: hello world <br/>an_int: 10 <br/>a_bool: true |<br/>string? AString {get;set;} <br/>int? AnInt {get;set;} <br/>bool? ABool {get;set;} |
+| *Sequences* <br/>simple_list:<br/>  - Hello<br/>  - World           |  IEnumerable&ltstring&gt? SimpleList {get;set;} <br/>*sequences are always IEnumerable&lttype&gt, lists are not supported!*                             |
+| Sequence complex                                      | Se code example                                                          |
+
+
+### Example of complex data types support
+
+This example shows an example of how to use complex configuration options. 
+
+```yaml
+
+complex_app:
+    class: AppComplexContif
+    a_string: hello world
+    an_int: 10
+    a_bool: true
+    a_string_list:
+    - this
+    - is
+    - cool!
+    devices:
+    - name: tv
+        commands:
+        - name: command1
+            data: some code
+        - name: command2
+            data: some code2";
+```
+```csharp
+
+public class AppComplexConfig : NetDaemonApp
+{
+    public string? AString { get; set; }
+    public int? AnInt { get; set; }
+    public bool? ABool { get; set; }
+    public IEnumerable<string>? AStringList { get; set; }
+    public IEnumerable<Device>? Devices { get; set; }
+    public override Task InitializeAsync()
+    {
+        // Do nothing
+
+        return Task.CompletedTask;
+    }
+}
+
+public class Device
+{
+    public string? name { get; set; }
+    public IEnumerable<Command>? commands { get; set; }
+}
+public class Command
+{
+    public string? name { get; set; }
+    public string? data { get; set; }
+}
+
+```
 ## Secrets
 
 Secrets lets you store special variables that are global in the tree scope of the app. `secrets.yaml` can be excluded in `.gitignore` to makse sure sensitive data is not pushed to the git repo.
