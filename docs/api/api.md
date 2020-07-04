@@ -20,14 +20,14 @@ Refresh the `JoySoftware.NetDaemon.App` and `JoySoftware.NetDaemon.DaemonRunner`
 
 #### New base class and imports
 
-Make sure you are using `System` and `System.Reactive.Linq`. Also chage to the `JoySoftware.HomeAssistant.NetDaemon.Common.Reactive`. Now you will not need async initializer anymore so use `public override void Initialize()`. Forgetting to use new Initialize can introduce old async code bugs.
+Make sure you are using `System` and `System.Reactive.Linq`. Also change to the `NetDaemon.Common.Reactive`. Now you will not need async initializer anymore so use `public override void Initialize()`. Forgetting to use new Initialize can introduce old async code bugs.
 
 Change the baseclass to `NetDaemonRxApp`.
 
 ```csharp
 using System;
 using System.Reactive.Linq;
-using JoySoftware.HomeAssistant.NetDaemon.Common.Reactive;
+using NetDaemon.Common.Reactive;
 
 public class HouseStateManager : NetDaemonRxApp
 {

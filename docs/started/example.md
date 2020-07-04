@@ -16,7 +16,7 @@ example_app:
 ```cs
 using System;
 using System.Reactive.Linq;
-using JoySoftware.HomeAssistant.NetDaemon.Common.Reactive;
+using NetDaemon.Common.Reactive;
 
 /// <summary>
 ///     Example app
