@@ -38,22 +38,29 @@ The easiest way to get started with app development for NetDaemon is to use a cu
 1. Go to the [netdaemon-app-template](https://github.com/net-daemon/netdaemon-app-template). and make a project from template functionality at github.
 2. Clone your newly created project
 3. Open the `netdaemon` folder.
-4. Configure the `daemon_config.json` properly. **If you run it on windows (no devcontainer) specify the full path to the projectfolder in `source_folder`.** otherwise keep `source_folder` at default.
+4. Configure the `appsettings.json` properly. **If you run it on windows (no devcontainer) specify the full path to the projectfolder in `source_folder`.** otherwise keep `source_folder` at default.
 5. If using vscode, open the vscode terminal and run `dotnet restore`, this needs to be done to get intellisense to work properly. Sometimes you need to restart vscode once for it to work.
 6. Hack away! Run and debug your stuff!
 
-### Debugging and netdaemon_config.json
+### Debugging and appsettings.json
 
-Review the file called `netdaemon_config.json`. Check for explaination in comments below.
+Review the file called `appsettings.json`. Check for explaination in comments below.
 
 ```json
 {
-  "token": "Your token", //Home Assistant security token
-  "host": "your ip",     //Ip to your home assistant instance
-  "port": 8123,          //Port
-  "ssl": false,          //Use SSL to connect to Home Assistant
-  "source_folder": "./", //Path to netdaemon dir, on windows it is [drive]\\pathtoyourapproot
-  "generate_entities": false //Generates entity helpers on start
+    "Logging": {
+        "MinimumLevel": "info"
+    },
+    "HomeAssistant": {
+        "Host": "your ip",        // Ip to your home assistant instance
+        "Port": 8123,             // Port
+        "Ssl": false,             // Use SSL to connect to Home Assistant
+        "Token": "Your token"     // Home Assistant security token
+    },
+    "NetDaemon": {
+        "SourceFolder": "",       // Path to netdaemon dir, on windows it is [drive]\\pathtoyourapproot
+        "GenerateEntities": false // Generates entity helpers on start
+    }
 }
 ```
 
