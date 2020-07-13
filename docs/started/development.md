@@ -38,7 +38,7 @@ The easiest way to get started with app development for NetDaemon is to use a cu
 1. Go to the [netdaemon-app-template](https://github.com/net-daemon/netdaemon-app-template). and make a project from template functionality at github.
 2. Clone your newly created project
 3. Open the `netdaemon` folder.
-4. Configure the `appsettings.json` properly. **If you run it on windows (no devcontainer) specify the full path to the projectfolder in `source_folder`.** otherwise keep `source_folder` at default.
+4. Rename `_appsettings.json` to `appsettings.json` and configure  properly. **If you run it on windows (no devcontainer) specify the full path to the projectfolder in `source_folder`.** otherwise keep `source_folder` at default.
 5. If using vscode, open the vscode terminal and run `dotnet restore`, this needs to be done to get intellisense to work properly. Sometimes you need to restart vscode once for it to work.
 6. Hack away! Run and debug your stuff!
 
