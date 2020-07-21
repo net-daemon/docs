@@ -50,9 +50,12 @@ docker run -dt \
   -e NETDAEMON__GENERATEENTITIES=False \
   -e LOGGING__MINIMUMLEVEL=info \
   -e TZ=Europe/Stockholm \
+  -p 1337:1337 \
   -v ~/netdaemon_config:/data \
   netdaemon/netdaemon
 ```
+_`-p 1337:1337` is only needed if you want the [admin panel](https://github.com/net-daemon/admin)_
+
 ### Folder structure and where to map the docker volume
 The `~/netdaemon_config` need to point to the `netdaemon` folder. See image below. The **red arrow** in the example configuration below points to the folder that should be mapped to the `/data`!
 
