@@ -32,7 +32,7 @@ ENV | Description
 `LOGGING__MINIMUMLEVEL` | efaults to info, values are (trace, debug, info, warning, error)
 `TZ` | You will need to set container time zone to make the scheduler work properly
 `NETDAEMON__PROJECTFOLDER` | NETDAEMON__PROJECTFOLDER=/data use the csproject file you provides in the netdaemon folder instead of the built-in. This is for advanced scenarios where you want to run custom NUGET packages and compile with your own csproj file. Normally you would not use this.
-`NETDAEMON_ADMIN` | Set this to `false` to disabled the Admin UI.
+`NETDAEMON__ADMIN` | Set this to `false` to disabled the Admin UI.
 
 ### Volumes
 
