@@ -27,10 +27,12 @@ public class ExampleApp : NetDaemonRxApp
     {
         Entity("binary_sensor.my_motion_sensor")
             .StateChanges
-            .Where(e.New?.State == "off")
+            .Where(e => e.New?.State == "off")
             .NDSameStateFor(TimeSpan.FromMinutes(10))
             .Subscribe(s => Entity("light.light1").TurnOff());
+    }
 }
+
 ```
 
 ## The NetDaemonApp base class
