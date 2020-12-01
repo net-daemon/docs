@@ -22,7 +22,7 @@ module.exports = {
         alt: 'NetDaemon Logo',
         src: 'img/favicon.png',
       },
-      links: [
+      items: [
         {
           to: 'docs/index',
           activeBasePath: 'docs',
@@ -110,7 +110,7 @@ module.exports = {
       copyright: `<a href='https://www.netlify.com/'>This site is powered by Netlify</a>`,
 
       // image: 'https://www.netlify.com/img/global/badges/netlify-color-accent.svg',
-      image: 'img/favicon.png',
+      //image: 'img/favicon.png',
     },
   },
   presets: [
