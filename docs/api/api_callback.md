@@ -73,5 +73,10 @@ public void CallMeFromHass(dynamic data)
 {
     Log("int: {int}, bool: {bool}, string: {string}",
         data.an_int, data.a_bool, data.a_string);
+
+    //ints come through as a double so to assign it to an int requires a double cast.
+    int anInt = (int)(double)data.an_int;
+    bool aBool = data.a_bool;
+    string aString = data.a_string;
 }
 ```
