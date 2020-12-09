@@ -3,7 +3,7 @@ id: index
 title: NetDaemon
 ---
 
-This is the application daemon project for Home Assistant. This project makes it possible to make automatons using the .NET Core (3.1) framework. The API uses the new nullable types and C# 8.0. Please make your self familiar with these concepts.
+This is the application daemon project for Home Assistant. This project makes it possible to make automatons using the .NET 5. The API uses the new nullable types and C# 9.0. Please make your self familiar with these concepts.
 
 Why a new application daemon for Home Assistant? There already exists one!? The existing appdaemon is a great software and are using python as language and ecosystem. This is for people who loves to code in the .NET core ecosystem and c#. The daemon will be supported by all supported platforms of .NET core.
 
@@ -15,7 +15,7 @@ There are currently two versions of the API. Please use the V2 for new projects 
 
 :::caution Warning
 
-This is project is in pre-release stage and API:s can change until release. The project is moving towards first beta where the API:s will be more stable. Please use and contribute ideas for improvement or better yet pull requests.
+This is project is in beta stage and API:s can change until release. The project is moving towards first beta where the API:s will be more stable. Please use and contribute ideas for improvement or better yet pull requests.
 
 :::
 

@@ -72,6 +72,12 @@ The `Entity/Entities` notation is just a shortcut for the observable stream of s
 
 ```
 
+## Set state of custom entities
+It is possible to set state of entities that are not in Home Assistant. If the entity does not exist, Home Assistant will create it. Note that these are not real entities and they will not persist during restarts of HA.
+```csharp
+   SetState("sensor.custom", "on", new { attr = "myattr" });
+```
+
 ## Using Areas
 
 NetDaemon does match the area where the entity´s device is configured. This means it is very easy to do selections on what area that matches.

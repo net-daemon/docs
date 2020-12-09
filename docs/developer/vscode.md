@@ -3,7 +3,7 @@ id: vscode
 title: VS Code
 ---
 
-For Visual Studio Code the recommenced way is to use the devcontainer to edit and debug NetDaemon.
+For Visual Studio Code the recommenced way is to use the devcontainer to edit and debug NetDaemon core projects. 
 
 ## VSCode devcontainer
 
@@ -15,7 +15,7 @@ The debugging can be pointed to the `exampleapps`folder.
 
 ### Setup the configuration
 
-Make a file called `netdaemon_config.json` and copy to `src/Service/bin/Debug/netcoreapp3.1`.
+Make a file called `netdaemon_config.json` and copy to `src/Service/bin/Debug/net5.0`.
 
 ```json
 {
