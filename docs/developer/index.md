@@ -3,7 +3,9 @@ id: developer
 title: Development
 ---
 
-This is the developer docs for NetDaemon project. Here you find useful information if you want to start contributing to NetDaemon project. For information using NetDaemon and develop your own automations, please see [the docs](https://netdaemon.xyz/docs/index).
+This is the developer docs for NetDaemon project. If you are looking for documentation how to make apps to control your home, please see [the docs here](https://netdaemon.xyz).
+
+In the developer pages you find useful information if you want to start contributing to NetDaemon project. 
 
 Thank you for considering contributing to this projects. This is most welcome!
 

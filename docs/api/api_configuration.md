@@ -121,6 +121,10 @@ mysecret_token: this is a secret!
 
 ```
 
+
+
+
+
 **app.yaml**
 
 ```yaml
@@ -128,5 +132,15 @@ mysecret_token: this is a secret!
 the_api_manager:
     class: APIManager
     token: !secret mysecret_token
+
+```
+
+depedning on what kind of secret you may have to quote the secret like this:
+
+```yaml
+
+the_api_manager:
+    class: APIManager
+    secret_number: "!secret mysecret_number_token"
 
 ```
