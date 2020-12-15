@@ -56,7 +56,8 @@ module.exports = {
     "NetDaemon development": [
       "developer/developer",
       "developer/vscode",
-      "developer/vs"
+      "developer/vs",
+      "developer/unit_test"
     ]
   },
 };
