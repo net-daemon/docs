@@ -27,7 +27,7 @@ public class ExampleApp : NetDaemonRxApp
     {
         Entity("binary_sensor.my_motion_sensor")
             .StateChanges
-            .Where(e => e.New?.State == "off")
+            .Where(e => e.Old?.State != "off" && e => e.New?.State == "off")
             .NDSameStateFor(TimeSpan.FromMinutes(10))
             .Subscribe(s => Entity("light.light1").TurnOff());
     }
@@ -56,7 +56,7 @@ This function is called by the daemon and it´s purpose is to do all the initial
 ```cs
 Entity("binary_sensor.my_motion_sensor")
     .StateChanges
-    .Where(e.New?.State == "off")
+    .Where(e => e.Old?.State != "off" && e.New?.State == "off")
     .NDSameStateFor(TimeSpan.FromMinutes(10))
     .Subscribe(s => Entity("light.light1").TurnOff());
 ```
