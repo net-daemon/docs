@@ -17,10 +17,10 @@ If you are using Visual Studio Code, devcontainers are the preferred way to deve
 
 1. Install [remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in VSCode if you have not allready.
 2. Open folder, the newly cloned template
-3. Run task: `Remote-Containers: Reopen Folder in Container`. Wait until it fully opened 
+3. Run task: `Remote-Containers: Open Folder in Container`. Wait until it fully opened 
 
 ## 3. Make configurations
-NetDaemon development environment needs to know the access information to Home Assistant like hostname/ip, port and access Token. 
+NetDaemon development environment needs to be configured to connect to Home Assistant.  Minimal config is: hostname/ip, port and access token. 
 
 1. Rename `_appsettings.json` to `appsettings.json`. 
 2. Edit the values in the appsetting `appsettings.json`. Following settings are mandatory:
