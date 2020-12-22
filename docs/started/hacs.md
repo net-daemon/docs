@@ -12,6 +12,8 @@ There are still not many apps available yet but please if you can contribute app
 
 [Instructions for developing apps for HACS here](https://hacs.xyz/docs/publish/netdaemon)
 
+To deploy HAC apps the default runtime is supported. Custom projects or published binaries is currently not supported.
+
 ## Attribution
 
 Thanks [@ludeeus](https://github.com/ludeeus) for your awesome work with HACS and getting NetDaemon support in it.

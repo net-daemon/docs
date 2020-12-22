@@ -1,56 +1,58 @@
 ---
 id: development
-title: App development
+title: Get started with NetDaemon app development
 ---
-# Get started with NetDaemon app development
 
-The easiest way to get started with app development for NetDaemon is to use a custom devcontainer, you can also run it localy, but it will not have the same features as the devcontainer provides.
+## 1. Clone the app-template
+The easiest way to get started with app development for NetDaemon is to use or clone the [app template repo](https://github.com/net-daemon/netdaemon-app-template). That will give you everything you need to get started developing your first automation.
 
-## NetDaemon app development with devcontainer
+Example, cloning the template project directly and rename it
+```bash
+git clone https://github.com/net-daemon/netdaemon-app-template.git
+mv netdaemon-app-template netdaemon_apps
+cd netdaemon_apps
+```
+## 2. Enable remote development in devcontainers
+If you are using Visual Studio Code, devcontainers are the preferred way to develop your apps. If you are running Visual Studio, skip this step. This also requres docker to be installed.
 
-1. Create a new directory for your app.
-2. Open [VSCode](https://code.visualstudio.com/) in that directory.
-3. Make sure you installed [Remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in vscode.
-4. Clone or make new repo from the [netdaemon-app-template](https://github.com/net-daemon/netdaemon-app-template) and open the folder in VSCode.
-5. Rename `_appsettings.json` to `appsettings.json` and configure  properly.
-6. Open the devcontainer from the command pallet in vscode ("Remote-Containers: Reopen Folder in Container").
-7. Hack away! Run and debug your stuff!
+1. Install [remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in VSCode if you have not allready.
+2. Open folder, the newly cloned template
+3. Run task: `Remote-Containers: Open Folder in Container`. Wait until it fully opened 
 
-### Debugging and appsettings.json
+## 3. Make configurations
+NetDaemon development environment needs to be configured to connect to Home Assistant.  Minimal config is: hostname/ip, port and access token. 
 
-Review the file called `appsettings.json`. Check for explaination in comments below.
+1. Rename `_appsettings.json` to `appsettings.json`. 
+2. Edit the values in the appsetting `appsettings.json`. Following settings are mandatory:
+    - `Host`, the ip or hostname, (port defaults to 8123)
+    - `Token`, the long lived access token
 
+Example appsettings file
 ```json
 {
     "Logging": {
         "MinimumLevel": "info"    // debug, trace etc. can be set
     },
     "HomeAssistant": {
-        "Host": "your ip",        // ip or hostname to your home assistant instance
+        "Host": "your ip",        // ip or hostname to home assistant 
         "Port": 8123,             // port of home assistant (default 8123)
         "Ssl": false,             // true if use SSL to connect to Home Assistant
         "Token": "Your token"     // Home Assistant security token
     },
     "NetDaemon": {
-        "SourceFolder": "./",     // path to apps directory, normally not change
+        "AppSource": "./apps",     // path to apps directory
         "GenerateEntities": false // generates entity helpers on start
     }
 }
 ```
 
+## Develop and debug your apps
+Now properly configured you can develop your application. The template shows example of both develop and test your apps. A sample app has been provided for you: `src/apps/HelloWorld/HelloWorld.cs`.
+
+Debug and run your apps and view log output for errors.
+
 ## Deploy your apps
 
-After you have developed and tested your apps, copy the whole `apps` directorys to the Home Assistant config folder. The new folder structure should be `/config/netdaemon/apps` where `/config` is the path to your Home Assistant config.
+After you have developed and tested your apps it is time to deploy and run the apps in the production environment. That's what we will look at next...
 
-In your config there should be a folder structure similar to the example below. If you are running docker you should set the volume to the red arrow. If you are running the Add-on that folder should be in the config folder.
-
-![](/img/docs/installation/folder_structure_netdaemon.png)
-
-## Start NetDaemon
-
-Now you can start the daemon, check the logs for any errors.
-
-:::info IMPORTANT
-YOU NEED TO RESTART THE ADD-ON EVERYTIME YOU MAKE CHANGES TO A FILE SINCE C# COMPILES
-:::
 
