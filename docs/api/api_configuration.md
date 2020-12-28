@@ -79,7 +79,7 @@ complex_app:
             data: some code2";
 ```
 ```csharp
-
+// The app using the config
 public class AppComplexConfig : NetDaemonApp
 {
     public string? AString { get; set; }
@@ -87,11 +87,13 @@ public class AppComplexConfig : NetDaemonApp
     public bool? ABool { get; set; }
     public IEnumerable<string>? AStringList { get; set; }
     public IEnumerable<Device>? Devices { get; set; }
-    public override Task InitializeAsync()
+    public override void Initialize()
     {
-        // Do nothing
-
-        return Task.CompletedTask;
+        // Use config
+        foreach(var device in Devices)
+        {
+            // Do something useful or fun
+        }
     }
 }
 
