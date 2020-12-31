@@ -34,3 +34,16 @@ RunScript("script.myscript);
 RunScript("myscript", "otherscript");
 
 ```
+
+### Delay
+Somtimes you just wanna delay a period of time between two different actions. Do **not** use `Thread.Sleep()`. Use the built-in `Delay(TimeSpan timeout)` function. It uses async in the background to do proper exit when app exit.
+```csharp
+// Do delay 100ms in a safe way
+Delay(TimeSpan.FromMiliseconds(100));
+```
+
+### ServiceProvider Access
+Sometimes you want to use the IServiceProvider to instance your dependencies. Application expose the `ServiceProvider` property to use for this purpose. This is very useful testing the application.
+```csharp
+var myDependecy = ServiceProvider?.GetService(typeof(IMyDependency);
+```

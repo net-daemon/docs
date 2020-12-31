@@ -72,6 +72,22 @@ The `Entity/Entities` notation is just a shortcut for the observable stream of s
 
 ```
 
+### Wait for state in blocking mode
+Sometimes you want to control the flow in a blocking way to manage a sequence of events. Then we have the `NDFirstOrTimeout` extension method on Observalbe.
+
+The snippet below waits for the first occurence of `binary_sensor.pir` to change any state but times out if it does not change state within 300ms. **Remember that you cannot use blocking functions in Initialize function directly.** In most cases that would not make sense anyway.
+```csharp
+var res = Entity("binary_sensor.pir").StateChanges.NDFirstOrTimeout(TimeSpan.FromMilliseconds(300));
+if (res is null)
+{
+    // timed out
+}
+else
+{
+    // use res.New?State... or what ever
+}
+```
+
 ## Set state of custom entities
 It is possible to set state of entities that are not in Home Assistant. If the entity does not exist, Home Assistant will create it. Note that these are not real entities and they will not persist during restarts of HA.
 ```csharp
