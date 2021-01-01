@@ -11,19 +11,18 @@ Unit test samples are provided as a part of the official app development templat
 All the funktionality is provided by the `JoySoftware.NetDaemon.Fakes` component.
 
 ## Baseclass for tests
-The test class should inherit the `DaemonHostTestBase` class.
+The test class should inherit the `RxAppMock` class.
 ```csharp
-using System.Threading.Tasks;
-using HelloWorld;
 using NetDaemon.Daemon.Fakes;
 using Xunit;
+using HelloWorld;
 
-public class AppTests : DaemonHostTestBase
+/// <summary>
+///     Tests the apps
+/// </summary>
+public class AppTests : RxAppMock
 {
-    public AppTests() 
-    {
-    }
-}
+    ...
 ```
 
 ## Basics of writing tests
@@ -47,25 +46,15 @@ The daemon fake needs to be initialized and ran in specific order for the unit t
 [Fact]
 public async Task WhenMyPirIsActivatedThenMyLightShouldTurnOn()
 {
-    // 1. Add the instance of app that we run tests on
-    //    This need always need to be first operation
-    await AddAppInstance(new HelloWorldApp());
+    // 1. Instance the app, preferable you make new class for implementation
+    //    and initialize it
+    HelloWorldImplementation app = new(Object);
+    app.Initialize();
 
-    // 2. Init the fake NetDaemon
-    await InitializeFakeDaemon().ConfigureAwait(false);
+    // 3. Trigger a change event to simulate update in state
+    TriggerStateChange("binary_sensor.mypir", "off", "on");
 
-    // 3. Add change event to simulate update in state
-    AddChangedEvent("binary_sensor.mypir", "off", "on");
-
-    // 4. Process events and messages in 
-    //    fake Daemon until default timeout 
-    //    This ensures all events are handled and 
-    //    you app logic is called
-    await RunFakeDaemonUntilTimeout().ConfigureAwait(false);
-
-    // 5. Verify that correct service been called. 
-    //    for now only underlying service calls can 
-    //    be checked. 
-    VerifyCallService("light", "turn_on", "light.mylight");
+    // 3. Use the built-in verify functions to verify actions
+    VerifyEntityTurnOn("light.mylight");
 }
 ```
