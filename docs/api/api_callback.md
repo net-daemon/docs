@@ -3,14 +3,8 @@ id: api_callback
 title: Callback functions
 ---
 
-In NetDaemon it is possible to get callbacks from service calls. This feature requires the companion custom component installed in Home Assistant. You can find the companion app in [netdaemon repo](https://github.com/net-daemon/netdaemon/tree/main/custom_components/netdaemon).
+In NetDaemon it is possible to get callbacks from service calls. This feature requires the companion custom component installed in Home Assistant. You can find the companion app in the [net-daemon/integration](https://github.com/net-daemon/integration) repo.
 
-Copy the contents of the netdaeomn folder to your Home Assistant configuration folder: `/config/custom_components/netdaemon`
-
-Add the component in your Home Assistant config file:
-```yaml
-netdaemon:
-```
 If you use the `[HomeAssistantServiceCall]` attribute on a callback function, se example below, NetDaemon automatically registers a service call that you can use from Home Assistant to call code in your apps. The name of the call will be `netdaemon.name_of_function`. It will convert all upper case to `_` to use snake casing. So function called `CallMeFromHass` will be named `netdaemon.call_me_from_hass`
 
 
