@@ -9,6 +9,7 @@ module.exports = {
           'started/get_started',
           'started/development',
           'started/installation',
+          'started/integration',
           'started/tips_and_tricks',
           'started/example',
           'started/hacs']
