@@ -58,3 +58,30 @@ public async Task WhenMyPirIsActivatedThenMyLightShouldTurnOn()
     VerifyEntityTurnOn("light.mylight");
 }
 ```
+## Using Scheduler in unit Tests
+You can use Time Travel funtionality to test configured Schedulers
+As an example we want to test the automation below:
+```csharp
+    _app.RunIn(TimeSpan.FromMilliseconds(100), () => _app.Entity("light.mylight").TurnOn());
+```
+Then we make the following test method
+This is how you time travel `TestScheduler.AdvanceBy(TimeSpan.FromMilliseconds(100).Ticks);`
+```csharp
+[Fact]
+public async Task WhenMyPirIsActivatedThenMyLightShouldTurnOn()
+{
+    [Fact]
+    public void TestFakeRunIn()
+    {
+        // ARRANGE
+        FakeMockableAppImplementation app = new(Object);
+        app.Initialize();
+
+        // ACT
+        TestScheduler.AdvanceBy(TimeSpan.FromMilliseconds(100).Ticks);
+
+        // ASSERT
+        VerifyEntityTurnOn("binary_sensor.fake_run_in_happened", times: Times.Once());
+    }
+}
+```
