@@ -60,11 +60,13 @@ public async Task WhenMyPirIsActivatedThenMyLightShouldTurnOn()
 ```
 ## Using Scheduler in unit Tests
 You can use Time Travel funtionality to test configured Schedulers
+
 As an example we want to test the automation below:
 ```csharp
     _app.RunIn(TimeSpan.FromMilliseconds(100), () => _app.Entity("light.mylight").TurnOn());
 ```
 Then we make the following test method
+
 This is how you time travel `TestScheduler.AdvanceBy(TimeSpan.FromMilliseconds(100).Ticks);`
 ```csharp
 [Fact]
