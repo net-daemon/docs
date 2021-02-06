@@ -7,9 +7,12 @@ This is the application daemon project for Home Assistant. This project makes it
 
 NetDaemon is a great alternative to appdaemon for people who wants to build their automation logic using .NET 5 ecosystem and C#. The daemon will be supported by all supported platforms of .NET 5.
 
-## Deprecated API V1
+## Deprecated API V1 will be removed from next release (21 february 2021)
+:::warning Deprecation and removal of V1 API
 
-There are currently two versions of the API. Please use the V2 for new projects. Version 1 will be deprecated eventually and it´s async features will be migrated into V2. All old V1 is under the V1 docs.
+Version async API using NetDaemonApp will be deleted the upcoming release. If your applications inherit from `NetDaemonApp`they should be rewritten using `NetDaemonRxApp` instead.
+ 
+:::
 
 ## Stage of project
 
