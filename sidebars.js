@@ -28,25 +28,7 @@ module.exports = {
       'api/api_callback',
       'api/api_app',
 
-      {
-        type: 'category',
-        label: 'V1 (deprecated)',
-        items: [{
-          type: 'category',
-          label: 'Fluent',
-          items: ['api/v1/fluent/entities', 'api/v1/fluent/state']
-        },
-        {
-          type: 'category',
-          label: 'Standard',
-          items: ['api/v1/standard/configuration', 'api/v1/standard/getstate', 'api/v1/standard/scheduler', 'api/v1/standard/events', 'api/v1/standard/storage', 'api/v1/standard/get_app']
-        },
-        {
-          type: 'category',
-          label: 'Auto generated',
-          items: ['api/v1/generated/generated']
-        }]
-      },
+
 
     ],
     Advanced: [
