@@ -9,7 +9,7 @@ Allways use nullable types!
 
 ## Application instance configuration
 
-Example below instance an application with id `light_manager_kitchen` and sets a configuration named `the_light` to a string used by the `LightManager` class.
+Example below instanciates an application with id `light_manager_kitchen` and sets a configuration named `the_light` to a string used by the `LightManager` class.
 
 **lightmanager.yaml**
 
@@ -21,7 +21,7 @@ light_manager_kitchen:
 
 ```
 
-Inside the app the `the_light` setting is automatically provitioned to the `TheLight`property if provided in the class. NetDaemon converts python style (used in Home Assistant) to c# style property names. You could use the name `the_light` for the property too.
+Inside the app the `the_light` setting is automatically provisioned to the `TheLight` property if provided in the class. NetDaemon converts python style (used in Home Assistant) to c# style property names. You could use the name `the_light` for the property too.
 
 ```csharp
 
@@ -45,6 +45,70 @@ public class LightManager : NetDaemonRxApp
 
 ```
 
+### Instantiating Strongly Typed Entities
+
+Many of the basic entity types can be created from a string in the YAML. This avoids having to create them later and you have the simple methods like TurnOn/TurnOff ready to go.
+
+**humiditycontrol.yaml**
+
+```yaml
+
+Humidity_control_kitchen:
+    class: HumidityManager
+    humidity_sensor: sensor.kitchen_humidity
+    humidifier: switch.humidifier
+
+```
+
+```csharp
+
+public class HumidityManager : NetDaemonRxApp
+{
+    #region -- Config properties --
+
+    // This property will be automapped with ´the_light´ config
+    public SensorEntity? HumiditySensor { get; set; }
+    public SwitchEntity? Humidifier { get; set; }
+
+    #endregion
+
+    /// <summary>
+    ///     Initialize, is automatically run by the daemon
+    /// </summary>
+    public override void Initialize()
+    {
+        this.RunEvery(TimeSpan.FromMinutes(5), () =>
+            {
+         if (humiditySensor?.State?.GetType() == typeof(System.Int64))
+                {
+                    Int64 humidity = humiditySensor.State;
+                    if (humidity > 80)
+                    {
+                        if (humidifier.State ?? "Unknown" == "off")
+                        {
+                            humidifier.TurnOn();
+                        }
+                    }
+                    else
+                    {
+                        if (humidifier?.State ?? "Unknown" == "on")
+                        {
+                            humidifier.TurnOff();
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    this.LogInformation($"Humidity is not in a valid state. Its current value is {(humiditySensor?.State ?? "Unknown")}");
+                }
+            }
+    }
+}
+
+```
+Note - Currently this cannot be used with a lists or IEnumerable of entities. But this functionality should be included in a release soon.
 
 ### Advanced configurations options
 
@@ -79,7 +143,7 @@ complex_app:
             data: some code2";
 ```
 ```csharp
-
+// The app using the config
 public class AppComplexConfig : NetDaemonApp
 {
     public string? AString { get; set; }
@@ -87,11 +151,13 @@ public class AppComplexConfig : NetDaemonApp
     public bool? ABool { get; set; }
     public IEnumerable<string>? AStringList { get; set; }
     public IEnumerable<Device>? Devices { get; set; }
-    public override Task InitializeAsync()
+    public override void Initialize()
     {
-        // Do nothing
-
-        return Task.CompletedTask;
+        // Use config
+        foreach(var device in Devices)
+        {
+            // Do something useful or fun
+        }
     }
 }
 
@@ -121,6 +187,10 @@ mysecret_token: this is a secret!
 
 ```
 
+
+
+
+
 **app.yaml**
 
 ```yaml
@@ -128,5 +198,15 @@ mysecret_token: this is a secret!
 the_api_manager:
     class: APIManager
     token: !secret mysecret_token
+
+```
+
+depedning on what kind of secret you may have to quote the secret like this:
+
+```yaml
+
+the_api_manager:
+    class: APIManager
+    secret_number: "!secret mysecret_number_token"
 
 ```
