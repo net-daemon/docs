@@ -66,8 +66,9 @@ public class HumidityManager : NetDaemonRxApp
 {
     #region -- Config properties --
 
-    // This property will be automapped with ´the_light´ config
+    // This Sensor will be generated using the string from ´humidity_sensor´ in the config as the Home Assistant name
     public SensorEntity? HumiditySensor { get; set; }
+    // This Sensor will be generated using the string from ´humidifier´ in the config as the Home Assistant name
     public SwitchEntity? Humidifier { get; set; }
 
     #endregion
@@ -84,7 +85,7 @@ public class HumidityManager : NetDaemonRxApp
                     Int64 humidity = humiditySensor.State;
                     if (humidity > 80)
                     {
-                        if (humidifier.State ?? "Unknown" == "off")
+                        if (humidifier?.State ?? "Unknown" == "off")
                         {
                             humidifier.TurnOn();
                         }
