@@ -26,4 +26,4 @@ We recommend to install it through HACS to allways have an updated version of th
 4. Go to Configuration -> Integrations -> + -> Search for "NetDaemon" and install it.
 
 ## Integration repo
-See [integration repo](https://github.com/net-daemon/integration) for details or reporting issues with the integration.s
+See [integration repo](https://github.com/net-daemon/integration) for details or reporting issues with the integrations

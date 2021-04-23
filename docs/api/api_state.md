@@ -34,14 +34,14 @@ Entity("binary_sensor.my_motion_sensor")
     .Subscribe(s => Entity("light.light1").TurnOn());
 ```
 
-So what is going on here? First statement, `Entity("binary_sensor.my_motion_sensor")` selects the entity you want track changes from. The `Where(e.New?.State == "on")` tracks state changes for new events that are getting the state `on`. And finally, `Subscribe(e => Entity("light.light1").TurnOn()` subscribe to the changes and call the code if the where clause is met. In this case it calls turn on service on the ligt entity. `StateChanges`checks if the `New.State != Old.State`. To get all changes inkluding the attribut changes, please use `StateAllChanges` instead of `StateChanges`.
+So what is going on here? First statement, `Entity("binary_sensor.my_motion_sensor")` selects the entity you want track changes from. The `Where(e.New?.State == "on")` tracks state changes for new events that are getting the state `on`. And finally, `Subscribe(e => Entity("light.light1").TurnOn()` subscribes to the changes and calls the code if the where clause is met. In this case it calls turn on service on the light entity. `StateChanges`checks if the `New.State != Old.State`. To get all changes including the attribute changes, please use `StateAllChanges` instead of `StateChanges`.
 
 If the `from` state is important then use it like:
 
 ```csharp
 Entity("binary_sensor.my_motion_sensor")
     .StateChanges
-    .Where(e.New?.State == "on" && e.Old?.State=="off")
+    .Where(e.New?.State == "on" && e.Old?.State == "off")
     .Subscribe(s => Entity("light.light1").TurnOn());
 ```
 
@@ -51,9 +51,9 @@ Or even more advanced example. You can use any combination of state and attribut
 Entity("sun.sun")
     .StateAllChanges
     .Where(e =>
-        e.New?.Attribute?.elevation >= 3.0 &&
-        e.New?.Attribute?.rising == true &&
-        e.Old?.Attribute?.elevation < 3.0)
+        e.New?.Attribute?.elevation <= 3.0 &&
+        e.New?.Attribute?.rising == false &&
+        e.Old?.Attribute?.elevation > 3.0)
     .Subscribe(s =>
     {
         // Do some logic and stuff here.
@@ -67,8 +67,8 @@ The `Entity/Entities` notation is just a shortcut for the observable stream of s
 
 ```csharp
     StateChanges // or StateAllChanges
-        .Where(e=> e.New.?State == "on")
-        .Subscribe(s=>...);
+        .Where(e => e.New?.State == "on")
+        .Subscribe(s =>...);
 
 ```
 
@@ -84,7 +84,7 @@ if (res is null)
 }
 else
 {
-    // use res.New?State... or what ever
+    // use res.New?.State... or whatever
 }
 ```
 
