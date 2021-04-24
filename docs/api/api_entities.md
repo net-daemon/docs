@@ -48,7 +48,7 @@ Entities(n => n.EntityId.StartsWith("light.kitchen_")).TurnOn();
 or select on attributes
 
 ```csharp
-Entities(n => n.EntityId.StartsWith("light.kitchen_")).TurnOn();
+Entities(n => n.Attributes.brightness > 100).TurnOff();
 ```
 ## Using Areas
 
