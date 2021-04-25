@@ -45,10 +45,10 @@ You can also use lambda expressions to select entities like select all lights th
 ```csharp
 Entities(n => n.EntityId.StartsWith("light.kitchen_")).TurnOn();
 ```
-or select on attributes
+or select on attributes like example below.
 
 ```csharp
-Entities(n => n.EntityId.StartsWith("light.kitchen_")).TurnOn();
+Entities(n => n.Attributes.brightness > 100).TurnOff();
 ```
 ## Using Areas
 
