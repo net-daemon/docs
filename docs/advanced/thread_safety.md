@@ -50,10 +50,9 @@ In this case the thread saftey can not be guaranteed. In practice it is very unl
 
 It is basically the same as sharing state within an application. See chapter above. In this case I would consider implmenting thread safety if sharing data between apps but i most cases it is not nescessary. If you have one app updating a shared state and several reading it, it would be perfektly ok not to do thread safety.
 
-## Future feature of NetDaemon
-
-It is in the works of exposing a "Global" property that will expose a thread safe way to share global data between apps. These docs will update when that is implemented.
-
+## Use the global built-in thread safe globals
+All apps has a `Global` property that is a thread safe dictionary built-in.
+ 
 ## Final words
 
 NetDaemon is built on async programming paradigm. Only guaranteed being thread safe out of the box is the NetDaemon APIs. In most cases you do not have to worry about it but you should always make up your own mind when sharing some kind of state inside or outside the app.

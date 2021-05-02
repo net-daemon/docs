@@ -22,7 +22,7 @@ Two versions are provided, release and dev. If you feel you always want the late
 
     ![](/img/docs/started/daemon.png)
 
-4. Deploy your apps and run the add-on. Check the add-on logs for errors. See [deploy your apps](#deploy-your-apps) for details.
+4. Deploy your apps in the `/config/netdaemon/apps` folder.
 
 ### Advanced add-on configurations
 The standard way running your apps in add-on is just to copy the `.cs` and `.yaml` files to `/config/netdaemon/apps` and it will dynamically compile and run them. If you want to use own project with custom dependecies you will have to use the advanced deployment options. Specify the `AppSource`setting in add-on config. If you set a `app_source: folder`, the it will dynamically compile and run apps in `/config/netdaemon/folder`. If `app_source: daemonapp.csproj` it will compile and run the project in `/config/netdaemon/daemonapp.csproj` with all it's dependencies. Set the `app_source: daemonapp.dll` it will run the published project in `/config/netdaemon/daemonapp.dll`.
