@@ -51,6 +51,28 @@ docker run -d \
 ```
 _`-p 1337:1337` is only needed if you want the [admin panel](https://github.com/net-daemon/admin)_
 
+### Example using docker-compose.yaml 
+```yaml
+version: '3.7'
+services:
+  netdaemon:
+    image: netdaemon/netdaemon                  # use netdaemon/netdaemon:ver 
+                                                # for specific version
+    container_name: netdaemon
+    restart: always
+    environment:
+      - HOMEASSISTANT__HOST=your_ip_or_hostname
+      - HOMEASSISTANT__TOKEN=your_token
+      - NETDAEMON__GENERATEENTITIES=False       # True if generate enitites
+      - LOGGING__MINIMUMLEVEL=info              # use trace/debug/info
+      - TZ='Etc/UTC'                            # Set your current timezone
+    ports:
+      - 1337:1337                               # This is required only if 
+                                                # you are running the GUI
+    volumes:
+      - /config/netdaemon:/data                 # replace /config/netdaemon 
+                                                # to your local folder
+```
 ### Evironment variables
 The docker container needs 3 enviroment variables to run properly.
 
