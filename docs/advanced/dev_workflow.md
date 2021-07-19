@@ -1,5 +1,5 @@
 ---
-id: DevWorkflow
+id: dev_workflow
 title: Development workflow
 ---
 
