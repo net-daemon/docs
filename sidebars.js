@@ -32,7 +32,8 @@ module.exports = {
 
     ],
     Advanced: [
-      'advanced/thread_safety'
+      'advanced/thread_safety',
+      'advanced/dev_workflow'
       // {
       //   type: 'category',
       //   label: 'Advanced topics',
