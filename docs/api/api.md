@@ -5,13 +5,12 @@ title: The NetDaemon API
 
 # NetDaemon API
 
-The netdaemon API is used to access Home Assistant features. The version 2 (current) is based on System.Reactive API. V1 of the API will be eventually deprecated and async features will be moved into V2. New users should always use V2. The internals of the V2 API is using async/await but for the user the async implementation is event based to fit the System.Reactive modell better. For users of the V1, remove all async code when migrating!
+The netdaemon API is used to access Home Assistant features. The version 2 is based on System.Reactive API. 
 
 ## Schedulers
 
 System.Reactive contains scheduling. We strongly suggesst using the built-in to make sure errors are logged and your automations works as expected.
 
-### Migrating to V2 from V1
 
 #### Add new reference to your dev project file
 
@@ -38,7 +37,3 @@ public class HouseStateManager : NetDaemonRxApp
 }
 
 ```
-
-
-
-
