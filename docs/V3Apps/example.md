@@ -23,13 +23,11 @@ public class ExampleAppHaContext
         
         entities.BinarySensor.AtticMotionsensor
             .StateChanges
-            .Where(e => !e.Old.IsOff() && e.New.IsOff())
+            .Where(e => e.New.IsOff())
             .Throttle(TimeSpan.FromMinutes(10))
             .Subscribe(_ => entities.Light.Attic.TurnOff());
     }
 }
-
-
 ```
 
 ## The NetDaemonAppAttribute
@@ -38,10 +36,9 @@ public class ExampleAppHaContext
 [NetDaemonApp]
 ```
 
-By decorating a class with the `NetDaemonAppAttribute` it is registerd as an application to be laoded by NetDaemon.
+By decorating a class with the `NetDaemonAppAttribute` it is registerd as an application to be loaded by NetDaemon.
 
 ## The constructor
-
 ```cs
 public ExampleAppHaContext(IHaContext ha)
 ```
@@ -65,19 +62,9 @@ The constuctor can be used to do initialization of your application. **Never blo
 | Function        | Description                                                              |
 | --------------- | -------------------------------------------------------------------------|
 | new Entities(ha)     | Creates an Instance of the generated Entities class that provides strong typed access to all your HA entities
-| entities.BinarySensor.Motionsensor01          | Selects an entity from HomeAssitant where actions are applied            |
-| StateChanges    | If state changes on previously defined entity do action                  |
+| entities.BinarySensor.Motionsensor01          | Selects an entity from HomeAssitant |
+| StateChanges    | Respond to state changes of Motionsensor01                  |
 | Where           | Lamda expression of when to do action, in this case when the sensor' state becomes 'off'
 | Throttle        | Do action only if state has not change for a period of time (10 minutes) |
 | Subscribe       | Calls any code/action when criteras met                                  |
-| TurnOff()     | Calls a generated service method using an ENtity as the target|
-
-<!-- ## Real-world example apps
-
-Please check out the apps being developed for netdaemon. Since documentation is still lacking behind it will be best looking at real code 😊
-
-| User                                                                                                    | Description                                           |
-| ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [@helto4real](https://github.com/helto4real/hassio/tree/master/netdaemon/apps)                          | My own netdaemon apps running in production (Use V2 veriosn of API)          |
-| [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's netdaemon apps, check them out, nice stuff |
-| [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's netdaemon apps, good example extending netdaemon  functionality | -->
+| TurnOff()       | Calls a generated service method using an ENtity as the target|
