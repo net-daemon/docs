@@ -1,5 +1,5 @@
 ---
-id: working_with_entities
+id: hass_model_working_with_entities
 title: Working with entities
 ---
 
@@ -81,7 +81,7 @@ double latitude = zone.Attributes.latitude;
 double longitude = zone.Attributes.longitude;
 ```
 
-When using the code generator, a class derived from Entity<TAttributes> will be generated for each domain in Home Assitant. And along with it, a generated class with all the unique Attributes of the Entities of that domain.
+When using the code generator, a class derived from `Entity<TAttributes>` will be generated for each domain in Home Assitant. And along with it, a generated class with all the unique Attributes of the Entities of that domain.
 
 ## State Changes
 The API let you manage state very easy. This is based on the System.Reactive. I will only do basic things here but please read up on [System.Reactive](http://introtorx.com/) to learn the true power of this way of handling events.

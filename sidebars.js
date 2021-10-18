@@ -27,9 +27,15 @@ module.exports = {
       'api/api_configuration',
       'api/api_callback',
       'api/api_app',
-
-
-
+      {
+        'HassModel API': [
+          'api/hass_model/hass_model',
+          'api/hass_model/hass_model_example',
+          'api/hass_model/hass_model_generated_service',
+          'api/hass_model/hass_model_migration',
+          'api/hass_model/hass_model_working_with_entities'
+        ]
+      },
     ],
     Advanced: [
       'advanced/thread_safety',

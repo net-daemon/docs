@@ -1,5 +1,5 @@
 ---
-id: example
+id: hass_model_example
 title: Example app
 ---
 This application shows basic capabilities of the fluent API of NetDaemon. It has a single file  `ExampleApp.cs` that contains the app logic.
