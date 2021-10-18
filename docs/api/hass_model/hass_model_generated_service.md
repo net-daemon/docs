@@ -1,5 +1,5 @@
 ---
-id: generated_service
+id: hass_model_generated_service
 title: Using generated service
 ---
 
