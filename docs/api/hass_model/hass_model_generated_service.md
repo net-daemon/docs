@@ -3,13 +3,13 @@ id: hass_model_generated_service
 title: Using generated service
 ---
 
-The Model3 Code Generator can be used to generate strongtyped code to access all services available in Home Assistant.
+The HassModel Code Generator can be used to generate strongtyped code to access all services available in Home Assistant.
 
 Example:
 ```c#
 using NetDaemon.Common;
-using NetDaemon.Model3.Common;
-using NetDaemon.Model3.Entities;
+using NetDaemon.HassModel.Common;
+using NetDaemon.HassModel.Entities;
 using UserApp.GeneratedCode;
 
 namespace NetDaemon.DevelopmentApps.apps.Examples

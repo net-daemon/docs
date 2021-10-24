@@ -26,6 +26,6 @@ For backwards compatibility all these new features are optional. It is also poss
 
 For instance: 
 
-- An existing app that derives from `NetDaemonRxApp` can also add a constructor parameter of type IHaContext and it will be provided by the NetDaemon runtime when the app is loaded. All exisiting application logic that interacts with the base class will still, but you can now also use the Model3 API that is based on this IHaContext interface.
+- An existing app that derives from `NetDaemonRxApp` can also add a constructor parameter of type IHaContext and it will be provided by the NetDaemon runtime when the app is loaded. All exisiting application logic that interacts with the base class will still, but you can now also use the HassModel API that is based on this IHaContext interface.
 
 - For an exisiting app that does not need any yaml config you can just delete the yaml file and add the `[NetDeamonApp]` attribute to the class.
