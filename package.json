@@ -10,7 +10,7 @@
     "cleanup": "npm prune; rm -R node_modules || echo ''; rm -R .docusaurus || echo ''; rm -R build || echo ''"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-beta.9",
