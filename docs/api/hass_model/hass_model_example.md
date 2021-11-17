@@ -22,7 +22,7 @@ public class ExampleAppHaContext
         var entities = new Entities(ha);
         
         entities.BinarySensor.AtticMotionsensor
-            .StateChanges
+            .StateChanges()
             .Where(e => e.New.IsOff())
             .Throttle(TimeSpan.FromMinutes(10))
             .Subscribe(_ => entities.Light.Attic.TurnOff());
