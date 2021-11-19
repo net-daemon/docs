@@ -90,7 +90,7 @@ Let´s start with a very basic example. If the motion sensors state turns to "on
 
 ```csharp
 myEntities.binary_sensor.my_motion_sensor
-    .StateChanges
+    .StateChanges()
     .Where(e.New?.State == "on")
     .Subscribe(s => myEntities.light.Attic.TurnOn());
 ```
@@ -101,7 +101,7 @@ If the `from` state is important then use it like:
 
 ```csharp
 myEntities.BinarySensor.MyMotionSensor
-    .StateChanges
+    .StateChanges()
     .Where(e.New?.State == "on" && e.Old?.State == "off")
     .Subscribe(s => myEntities.Light.Attic.TurnOn());
 ```
@@ -110,7 +110,7 @@ Or even more advanced example. You can use any combination of state and attribut
 
 ```csharp
 myEntities.Sun.Sun
-    .StateAllChanges
+    .StateAllChanges()
     .Where(e =>
         e.New?.Attributes.Elevation <= 3.0 &&
         e.New?.Attributes.Rising == false &&
