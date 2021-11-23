@@ -11,7 +11,7 @@ The code generator is installed as a global dotNet tool via the following comman
 dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen --version 21.46.0-beta
 ```
 
-*While in preview, it is required to include the -version of the most recent version explcitily*
+*While in preview, it is required to include the -version of the most recent version explcitily.*
 
 After it is installed as a global tool it can be run with the command:
 
@@ -23,7 +23,7 @@ When the tool it is run from the folder of your NetDaemon project that contains 
 
 The generated code contains the followig
 
-* A class `Entities` that provides properties to navigate to all existig entities in Home Assistant
+* A class `Entities` that provides properties to navigate to all existig entities in Home Assistant via intellisense
 * A record derived from `Entity` for each domain that has entities in Home assistant
 * A record with all the attributes of all entities in a specific domain, so they can be accessed via typed properties
 
@@ -34,7 +34,7 @@ The generated code contains the followig
 
 The settings for the code generator can also be set from the command line, this will override the settings from a configuration file if it is present.
 
-|        | |
+| switch | |
 |---     |--|
 | -host  | Host of the netdaemon instance
 | -port  | Port of the NetDaemon instance

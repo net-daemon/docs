@@ -12,7 +12,7 @@ using System.Reactive.Linq;
 using NetDaemon.Common;
 using NetDaemon.HassModel.Common;
 using NetDaemon.HassModel.Entities;
-using UserApp;
+using HomeAssistantGenerated;
 
 [NetDaemonApp]
 public class ExampleAppHaContext
