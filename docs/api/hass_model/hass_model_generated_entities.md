@@ -21,6 +21,10 @@ The LightEntity class provides strong typed access to the state and attributes o
 if (livingRoomLight.State == "on" && livingRoomLight.Attributes.Brightness > 100) // ...
 ```
 
+:::info
+You can also check for "on" or "off" states using the Extension Methods `IsOn()` and `IsOff()`
+:::
+
 It also allows you to respond to state change events of the entity via the StateAllChanges and StateChanges methods.
 
 ```csharp

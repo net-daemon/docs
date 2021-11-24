@@ -11,7 +11,8 @@ The code generator is installed as a global dotNet tool via the following comman
 dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen --version 21.46.0-beta
 ```
 
-*While in preview, it is required to include the -version of the most recent version explcitily.*
+*While in preview, it is required to include the -version of the most recent version explcitily. Please check
+https://www.nuget.org/packages/JoySoftware.NetDaemon.HassModel.CodeGen/ for the latest version*
 
 After it is installed as a global tool it can be run with the command:
 
