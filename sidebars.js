@@ -31,9 +31,11 @@ module.exports = {
         'HassModel API': [
           'api/hass_model/hass_model',
           'api/hass_model/hass_model_example',
+          'api/hass_model/hass_model_codegen',
+          'api/hass_model/hass_model_generated_entities',
           'api/hass_model/hass_model_generated_service',
-          'api/hass_model/hass_model_migration',
-          'api/hass_model/hass_model_working_with_entities'
+          'api/hass_model/hass_model_working_with_entities',
+          'api/hass_model/hass_model_migration'
         ]
       },
     ],

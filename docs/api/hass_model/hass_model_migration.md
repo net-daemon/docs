@@ -17,14 +17,16 @@ The new NetDaemon release has some awesome new features that fall in the followi
 
     Previously the `NetDaemonRxApp` was used by apps to interact with Home Assistant and the NetDaemon runtime services. Apps can now use constructor injection to receive service objects like `IHaContext` to interact with Home Assistant.
 
-- Strong typed Model 3 API for interacting with Entities and sercices
+- Strong typed HassModel API for interacting with Entities and services
 
-    The new model 3 API provides a more type safe way to interact with Home Assitant. It is still uses Reactive Extensions for handling events and state changes. All dynamic properties however have been replaced with generic interfaces so you will get strong typing and intellisense on objects like service methods and entity attributes.
+    The new Hass Model API provides a more type safe way to interact with Home Assitant. It still uses Reactive Extensions for handling events and state changes. All dynamic properties however have been replaced with generic interfaces so you will get strong typing and intellisense on objects like service method arguments and entity attributes.
 
 
-For backwards compatibility all these new features are optional. It is also possible to use the independently while still using the old model, even in the same app.
+For backwards compatibility all these new features are optional. It is also possible to use them independently while still using the old model, even in the same app.
 
 For instance: 
+
+- Some apps still derive from `NetDaemonRxApp` while other apps use the `[NetDaemonApp]` Attribute.
 
 - An existing app that derives from `NetDaemonRxApp` can also add a constructor parameter of type IHaContext and it will be provided by the NetDaemon runtime when the app is loaded. All exisiting application logic that interacts with the base class will still, but you can now also use the HassModel API that is based on this IHaContext interface.
 

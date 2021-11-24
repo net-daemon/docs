@@ -29,10 +29,10 @@ When using the code generator all discoverd Entities in your Home Assistant will
 var myEntities = new Entities(haContext);
 /// ...
 
-var atticLight = myEntities.light.attic;
+var atticLight = myEntities.Light.Attic;
 ```
 
-## Accessing State
+## State
 The current state value can be retrieved as a string value like this
 
 ```csharp
@@ -47,7 +47,8 @@ var temperatureSensor = new NumericEntity(haContext, "sensor.bathroom_temperatur
 if (temperatureSensor.State > 20.5) // ...
 ```
 
-The Entity class also provides access to the Entities attributes. Each Entity, of set of Entites ca have its own set of attributes with their datatypes. The generic `Entity<TAttributes>` class provides a convenient way to acces them in a type safe manner.
+## Attributes
+The Entity class also provides access to the Entities attributes. Each Entity, or set of Entites can have its own set of attributes with their datatypes. The generic `Entity<TAttributes>` class provides a convenient way to acces them in a type safe manner.
 
 For instance a Zone Entity has the folowing attributes
 ```yaml
@@ -84,7 +85,7 @@ double longitude = zone.Attributes.longitude;
 When using the code generator, a class derived from `Entity<TAttributes>` will be generated for each domain in Home Assitant. And along with it, a generated class with all the unique Attributes of the Entities of that domain.
 
 ## State Changes
-The API let you manage state very easy. This is based on the System.Reactive. I will only do basic things here but please read up on [System.Reactive](http://introtorx.com/) to learn the true power of this way of handling events.
+The API lets you manage state very easy. This is based on System.Reactive. I will only do basic things here but please read up on [System.Reactive](http://introtorx.com/) to learn the true power of this way of handling events.
 
 Let´s start with a very basic example. If the motion sensors state turns to "on", turn on the `light.attic` light.
 
@@ -97,7 +98,7 @@ myEntities.binary_sensor.my_motion_sensor
 
 So what is going on here? First statement, `myEntities.binary_sensor.my_motion_sensor` selects the entity you want track changes from. The `Where(e.New?.State == "on")` tracks state changes for new events that are getting the state `on`. And finally, `.Subscribe(s => myEntities.light.Attic.TurnOn());` subscribes to the changes and calls the code if the where clause is met. In this case it calls turn on service on the light entity. `StateChanges`checks if the `New.State != Old.State`. To get all changes including the attribute changes, please use `StateAllChanges` instead of `StateChanges`.
 
-If the `from` state is important then use it like:
+If the previous state is important then use it like:
 
 ```csharp
 myEntities.BinarySensor.MyMotionSensor
@@ -129,7 +130,7 @@ Many services in Home Assitant take an Entity Id's as their target. When you hav
 light1.CallService("turn_on", new { brightness = 100 } );
 ```
 
-The second argument is the data that is passed with the service call. This can be an object that will be Json-serialized as the service data. You can use an anonymous type for this or any other type.
+The second argument is the data that is passed with the service call. This can be an object that will be Json-serialized as the service data. You can use an anonymous type for this or any other type that has properties that match the arguments of the service.
 
 The code genrator also provides extension methods for all services that take a specific type of Entity as their target.
 

@@ -10,9 +10,9 @@ This application shows basic capabilities of the fluent API of NetDaemon. It has
 using System;
 using System.Reactive.Linq;
 using NetDaemon.Common;
-using NetDaemon.Model3.Common;
-using NetDaemon.Model3.Entities;
-using UserApp;
+using NetDaemon.HassModel.Common;
+using NetDaemon.HassModel.Entities;
+using HomeAssistantGenerated;
 
 [NetDaemonApp]
 public class ExampleAppHaContext
@@ -65,6 +65,6 @@ The constuctor can be used to do initialization of your application. **Never blo
 | entities.BinarySensor.Motionsensor01          | Selects an entity from HomeAssitant |
 | StateChanges    | Respond to state changes of Motionsensor01                  |
 | Where           | Lamda expression of when to do action, in this case when the sensor' state becomes 'off'
-| Throttle        | Do action only if state has not change for a period of time (10 minutes) |
+| Throttle        | Do action only if state has not changed for a period of time (10 minutes) |
 | Subscribe       | Calls any code/action when criteras met                                  |
 | TurnOff()       | Calls a generated service method using an ENtity as the target|
