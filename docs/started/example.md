@@ -68,3 +68,14 @@ The constuctor can be used to do initialization of your application. **Never blo
 | Throttle        | Do action only if state has not changed for a period of time (10 minutes) |
 | Subscribe       | Calls any code/action when criteras met                                  |
 | TurnOff()       | Calls a generated service method using an ENtity as the target|
+
+## Real-world example apps
+
+Please check out the apps being developed for netdaemon. Since documentation is still lacking behind it will be best looking at real code 😊
+
+| User                                                                                                    | Description                                           |
+| ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)                                    | HassModel examples by the Frank who created the HassModel |
+| [@helto4real](https://github.com/helto4real/hassio/tree/master/netdaemon/apps)                          | My own netdaemon apps running in production (Use V2 verison of API)          |
+| [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's netdaemon apps, check them out, nice stuff |
+| [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's netdaemon apps, good example extending netdaemon  functionality |
