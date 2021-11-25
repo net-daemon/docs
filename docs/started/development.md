@@ -41,7 +41,7 @@ Example appsettings file
     },
     "NetDaemon": {
         "AppSource": "./apps",     // path to apps directory
-        "GenerateEntities": false // generates entity helpers on start
+        "GenerateEntities": false // generates entity helpers for V2 API on start
     }
 }
 ```

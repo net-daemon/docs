@@ -15,7 +15,18 @@ module.exports = {
           'started/hacs']
       },
     ],
-    'API': [
+
+      'HassModel API': [
+        'hass_model/hass_model',
+        'hass_model/hass_model_codegen',
+        'hass_model/hass_model_generated_entities',
+        'hass_model/hass_model_generated_service',
+        'hass_model/hass_model_working_with_entities',
+        'hass_model/hass_model_migration'
+      ],
+
+
+    'V2 API': [
       'api/api',
       'api/api_entities',
       'api/api_state',
@@ -26,18 +37,7 @@ module.exports = {
       'api/api_storage',
       'api/api_configuration',
       'api/api_callback',
-      'api/api_app',
-      {
-        'HassModel API': [
-          'api/hass_model/hass_model',
-          'api/hass_model/hass_model_example',
-          'api/hass_model/hass_model_codegen',
-          'api/hass_model/hass_model_generated_entities',
-          'api/hass_model/hass_model_generated_service',
-          'api/hass_model/hass_model_working_with_entities',
-          'api/hass_model/hass_model_migration'
-        ]
-      },
+      'api/api_app'
     ],
     Advanced: [
       'advanced/thread_safety',

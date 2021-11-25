@@ -3,9 +3,9 @@ id: index
 title: NetDaemon
 ---
 
-This is the application daemon project for Home Assistant. This project makes it possible to make automatons using the .NET 5. The API uses the new nullable types and C# 9.0. Please make your self familiar with these concepts.
+This is the application daemon project for Home Assistant. This project makes it possible to make automatons using the .NET 6. The API uses the new nullable types and C# 10.0. Please make your self familiar with these concepts.
 
-NetDaemon is a great alternative to appdaemon for people who wants to build their automation logic using .NET 5 ecosystem and C#. The daemon will be supported by all supported platforms of .NET 5.
+NetDaemon is a great alternative to appdaemon for people who wants to build their automation logic using .NET 6 ecosystem and C#. The daemon will be supported by all supported platforms of .NET 6.
 
 ## Stage of project
 
