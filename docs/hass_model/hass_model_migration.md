@@ -1,6 +1,6 @@
 ---
 id: hass_model_migration
-title: Migrating from current API
+title: Migrating from V2 API
 ---
 
 The new NetDaemon release has some awesome new features that fall in the following categories
