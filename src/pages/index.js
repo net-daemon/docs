@@ -12,7 +12,7 @@ const features = [
     imageUrl: 'img/C_Sharp_logo.svg',
     description: (
       <>
-        NetDaemon is mainly targeting the C# developer that wants to utlilize the .Net ecosystem to write automations for Home Assistant.
+        With NetDaemon you can write your home automations in C# for Home Assistant using modern .NET design.
       </>
     ),
   },
@@ -21,7 +21,7 @@ const features = [
     imageUrl: 'img/hass.png',
     description: (
       <>
-        Integrated with Home Assistant using websockets for maximum performance. Has advanced scheduling and a easy to use fluent API.
+        Integrated with Home Assistant using websockets for maximum performance. Has advanced scheduling and a easy to use API.
       </>
     ),
   },
@@ -58,7 +58,7 @@ function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Application daemon for Home Assistant written in C#">
+      description="Home automations in c# for Home Assistant">
       <header className={classnames('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
