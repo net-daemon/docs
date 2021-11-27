@@ -2,7 +2,7 @@
 id: example
 title: Example app
 ---
-This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file  `ExampleApp.cs` that contains the app logic.
+This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file  `ExampleApp.cs` that contains the app logic. This example uses the code generation capability of HassModel [explained here](/docs/hass_model/hass_model_codegen).
 
 ## ExampleApp.cs
 
@@ -75,7 +75,7 @@ Please check out the apps being developed for netdaemon. Since documentation is 
 
 | User                                                                                                    | Description                                           |
 | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)                                    | HassModel examples by the Frank who created the HassModel |
-| [@helto4real](https://github.com/helto4real/hassio/tree/master/netdaemon/apps)                          | My own netdaemon apps running in production (Use V2 verison of API)          |
+| [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)                                    | HassModel examples by the Frank the author of HassModel API |
+| [@helto4real](https://github.com/helto4real/HassModelAutomations)                          | Tomas netdaemon apps running in production (The HassModel version)          |
 | [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's netdaemon apps, check them out, nice stuff |
 | [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's netdaemon apps, good example extending netdaemon  functionality |
