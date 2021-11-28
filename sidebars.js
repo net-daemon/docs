@@ -19,6 +19,7 @@ module.exports = {
         'app_model/app_model',
         'app_model/app_model_instancing',
         'app_model/app_model_advanced_config',
+        'app_model/app_model_context',
       ],
       'HassModel API': [
         'hass_model/hass_model',
