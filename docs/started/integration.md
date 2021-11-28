@@ -19,7 +19,7 @@ Other domains [SetState](/docs/api/api_state#set-state-of-custom-entities) will 
 
 ## Installation
 
-We recommend to install it through HACS to allways have an updated version of the component. You can download it manually if you want.
+We recommend to install it through HACS to always have an updated version of the component. You can download it manually if you want.
 
 1. Add `https://github.com/net-daemon/integration` with the category "integration" as a custom repository in [HACS](https://hacs.xyz/docs/faq/custom_repositories)
 2. Install it in HACS

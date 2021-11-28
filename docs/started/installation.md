@@ -25,12 +25,12 @@ Two versions are provided, release and dev. If you feel you always want the late
 4. Deploy your apps in the `/config/netdaemon/apps` folder.
 
 ### Advanced add-on configurations
-The standard way running your apps in add-on is just to copy the `.cs` and `.yaml` files to `/config/netdaemon/apps` and it will dynamically compile and run them. If you want to use own project with custom dependecies you will have to use the advanced deployment options. Specify the `AppSource`setting in add-on config. If you set a `app_source: folder`, the it will dynamically compile and run apps in `/config/netdaemon/folder`. If `app_source: daemonapp.csproj` it will compile and run the project in `/config/netdaemon/daemonapp.csproj` with all it's dependencies. Set the `app_source: daemonapp.dll` it will run the published project in `/config/netdaemon/daemonapp.dll`.
+The standard way running your apps in add-on is just to copy the `.cs` and `.yaml` files to `/config/netdaemon/apps` and it will dynamically compile and run them. If you want to use your own project with custom dependencies you will have to use the advanced deployment options. Specify the `AppSource`setting in add-on config. If you set a `app_source: folder`, then it will dynamically compile and run apps in `/config/netdaemon/folder`. If `app_source: daemonapp.csproj` it will compile and run the project in `/config/netdaemon/daemonapp.csproj` with all it's dependencies. Set the `app_source: daemonapp.dll` it will run the published project in `/config/netdaemon/daemonapp.dll`.
 
-**There is not way to include other dependecies in standard dynamically compiled option** You will have to run the two other advanced option to include for example a external nuget package.
+**There is no way to include other dependencies in the standard dynamically compiled option** You will have to run the two other advanced option to include for example a external nuget package.
 
 ## Install as a docker container
-If you are using Home Assistant Core and not have the possiblity to run add-ons using the docker container is a convenient way to run NetDaemon apps. 
+If you are using Home Assistant Core and do not have the possibility to run add-ons, using the docker container is a convenient way to run NetDaemon apps. 
 
 **Always use specific versioning tags of docker containers (not latest or dev) cause these are constantly getting new versions and things could break** [You can always find the latest stable version here](https://github.com/net-daemon/netdaemon/releases)
 
@@ -74,7 +74,7 @@ services:
                                                 # to your local folder
 ```
 ### Evironment variables
-The docker container needs 3 enviroment variables to run properly.
+The docker container needs 3 environment variables to run properly.
 
 ENV | Description
 -- | --
