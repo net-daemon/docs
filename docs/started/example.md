@@ -36,16 +36,16 @@ public class ExampleAppHaContext
 [NetDaemonApp]
 ```
 
-By decorating a class with the `NetDaemonAppAttribute` it is registerd as an application to be loaded by NetDaemon.
+By decorating a class with the `NetDaemonAppAttribute` it is registered as an application to be loaded by NetDaemon.
 
 ## The constructor
 ```cs
 public ExampleAppHaContext(IHaContext ha)
 ```
 
-When the application is (re-)started a new instance of the class is created by calling its constructor. This constructor will receive constructor arguments by using the standard .Net dependency injecton mechanism. In this example the constructor receives a IHaContext interface which provides basic methods for interacting with Home Assistant.
+When the application is (re-)started a new instance of the class is created by calling its constructor. This constructor will receive constructor arguments by using the standard .Net dependency injection mechanism. In this example the constructor receives an IHaContext interface which provides basic methods for interacting with Home Assistant.
 
-The constuctor can be used to do initialization of your application. **Never block the constructor!** Typically here you configure what should happen when a state changes or run a function every minute for example. It you need to do asyncronous initialization of your application this can be done by implementing `IAsyncInitializable`
+The constructor can be used to do initialization of your application. **Never block the constructor!** Typically here you configure what should happen when a state changes or run a function every minute for example. If you need to do asynchronous initialization of your application this can be done by implementing `IAsyncInitializable`
 
 **Example:**
 
@@ -61,10 +61,10 @@ The constuctor can be used to do initialization of your application. **Never blo
 
 | Function        | Description                                                              |
 | --------------- | -------------------------------------------------------------------------|
-| new Entities(ha)     | Creates an Instance of the generated Entities class that provides strong typed access to all your HA entities
+| new Entities(ha)     | Creates an Instance of the generated Entities class that provides strong typed access to all your HA entities |
 | entities.BinarySensor.Motionsensor01          | Selects an entity from HomeAssitant |
 | StateChanges    | Respond to state changes of Motionsensor01                  |
-| Where           | Lamda expression of when to do action, in this case when the sensor' state becomes 'off'
+| Where           | Lamda expression of when to do action, in this case when the sensor' state becomes 'off' |
 | Throttle        | Do action only if state has not changed for a period of time (10 minutes) |
 | Subscribe       | Calls any code/action when criteras met                                  |
 | TurnOff()       | Calls a generated service method using an ENtity as the target|

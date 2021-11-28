@@ -3,13 +3,13 @@ id: index
 title: NetDaemon
 ---
 
-NetDaemon provides capability to write home automations for Home Assistant in C#. We are currently building a new API called the HassModel that are using dependency injection technology of .NET to expose different functionality. The old V2 API will co-exist as long as needed but we highly recommend using the HassModel in your automation projects. We are working hard to make new APIs feature complete to be able to completely replace V2 in the future. 
+NetDaemon provides the capability to write home automations for Home Assistant in C#. We are currently building a new API called the HassModel that is using dependency injection technology of .NET to expose different functionality. The old V2 API will co-exist as long as needed but we highly recommend using the HassModel in your automation projects. We are working hard to make new APIs feature complete to be able to completely replace V2 in the future. 
 
 ## Stage of project
 
 :::caution Warning
 
-We are still adding alot of features so expect things to change.  
+We are still adding a lot of features so expect things to change.  
 
 :::
 

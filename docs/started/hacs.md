@@ -4,7 +4,7 @@ title: HACS support
 ---
 It is also possible to get applications through [HACS](https://hacs.xyz/). This is still early so you will have to get the latest version of HACS and uninstall and install it again if you have already configured through GUI.
 
-Here is [detailed instructions](https://hacs.xyz/docs/categories/netdaemon_apps) how to enable getting NetDaemon apps through HACS
+Here are [detailed instructions](https://hacs.xyz/docs/categories/netdaemon_apps) on how to enable getting NetDaemon apps through HACS
 
 ## Contribute own apps through HACS
 
@@ -12,7 +12,7 @@ There are still not many apps available yet but please if you can contribute app
 
 [Instructions for developing apps for HACS here](https://hacs.xyz/docs/publish/netdaemon)
 
-To deploy HAC apps the default runtime is supported. Custom projects or published binaries is currently not supported.
+To deploy HAC apps the default runtime is supported. Custom projects or published binaries are currently not supported.
 
 ## Attribution
 

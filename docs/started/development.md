@@ -13,9 +13,9 @@ mv netdaemon-app-template netdaemon_apps
 cd netdaemon_apps
 ```
 ## 2. Enable remote development in devcontainers
-If you are using Visual Studio Code, devcontainers are the preferred way to develop your apps. If you are running Visual Studio, skip this step. This also requres docker to be installed.
+If you are using Visual Studio Code, devcontainers are the preferred way to develop your apps. If you are running Visual Studio, skip this step. This also requires docker to be installed.
 
-1. Install [remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in VSCode if you have not allready.
+1. Install [remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in VSCode if you have not already.
 2. Open folder, the newly cloned template
 3. Run task: `Remote-Containers: Open Folder in Container`. Wait until it fully opened 
 
