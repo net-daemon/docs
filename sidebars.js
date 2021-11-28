@@ -15,7 +15,12 @@ module.exports = {
           'started/hacs']
       },
     ],
-
+      'AppModel API': [
+        'app_model/app_model',
+        'app_model/app_model_instancing',
+        'app_model/app_model_advanced_config',
+        'app_model/app_model_context',
+      ],
       'HassModel API': [
         'hass_model/hass_model',
         'hass_model/hass_model_codegen',
@@ -24,9 +29,14 @@ module.exports = {
         'hass_model/hass_model_working_with_entities',
         'hass_model/hass_model_migration'
       ],
-
-
-    'V2 API': [
+      'Extensions API': [
+        {
+          'Scheduling': [
+            'extensions/scheduling/extensions_scheduling',
+          ]
+        },
+      ],
+    'V2 API (deprecated)': [
       'api/api',
       'api/api_entities',
       'api/api_state',
