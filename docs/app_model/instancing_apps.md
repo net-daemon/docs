@@ -13,7 +13,8 @@ public class MyApp
 
 }
 ```
-If you need to some initialization to be called after all apps are instanced use the `IInitializable` interface.
+If you need to some initialization to be called after the properties are initiaized from the yaml configuration use the `IInitializable` interface.
+
 
 ```csharp
 [NetDaemonApp]
