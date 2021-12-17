@@ -12,37 +12,57 @@ git clone https://github.com/net-daemon/netdaemon-app-template.git
 mv netdaemon-app-template netdaemon_apps
 cd netdaemon_apps
 ```
-## 2. Enable remote development in devcontainers
-If you are using Visual Studio Code, devcontainers are the preferred way to develop your apps. If you are running Visual Studio, skip this step. This also requires docker to be installed.
+## 2. Configure your development tool
+
+### 2.1 Visual Studio
+You should be all set, so skip to step 3
+
+### 2.2 Visual Studio Code
+If you are using Visual Studio Code, devcontainers are the preferred way to develop your apps. This also requires docker to be installed.
 
 1. Install [remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in VSCode if you have not already.
 2. Open folder, the newly cloned template
-3. Run task: `Remote-Containers: Open Folder in Container`. Wait until it fully opened 
+3. Run task: `Remote-Containers: Open Folder in Container`. Wait until it fully opened
+
+### 2.3 JetBrains Rider
+Rider has supported debugging of ASP.Net Core apps from version 2018.2.
+
+Open the netdaemon_app folder in Rider and it should be able to build the projects immediately.
+A default execute and debug profile will be created however these will be executed as local processes.
+The preferred way to develop your app is to use devcontainers, which requires docker to be installed.
+To configure devcontainers, perform the following steps:
+
+1. Locate `Dockerfile` in the Solution Explorer window
+2. Right click and select `Debug Dockerfile`
+3. This will create a new profile called "DOCKERFILE"
+
+
+Ensure that the "DOCKERFILE" profile is selected in the toolbar and then `Run` and `Debug` will execute within the container.
 
 ## 3. Make configurations
-NetDaemon development environment needs to be configured to connect to Home Assistant.  Minimal config is: hostname/ip, port and access token. 
+NetDaemon development environment needs to be configured to connect to Home Assistant.  Minimal config is: hostname/ip, port and access token.
 
-1. Rename `_appsettings.json` to `appsettings.json`. 
+1. Rename `_appsettings.json` to `appsettings.json`.
 2. Edit the values in the appsetting `appsettings.json`. Following settings are mandatory:
-    - `Host`, the ip or hostname, (port defaults to 8123)
-    - `Token`, the long lived access token
+   - `Host`, the ip or hostname, (port defaults to 8123)
+   - `Token`, the long lived access token
 
 Example appsettings file
 ```json
 {
-    "Logging": {
-        "MinimumLevel": "info"    // debug, trace etc. can be set
-    },
-    "HomeAssistant": {
-        "Host": "your ip",        // ip or hostname to home assistant 
-        "Port": 8123,             // port of home assistant (default 8123)
-        "Ssl": false,             // true if use SSL to connect to Home Assistant
-        "Token": "Your token"     // Home Assistant security token
-    },
-    "NetDaemon": {
-        "AppSource": "./apps",     // path to apps directory
-        "GenerateEntities": false // generates entity helpers for V2 API on start
-    }
+   "Logging": {
+      "MinimumLevel": "info"    // debug, trace etc. can be set
+   },
+   "HomeAssistant": {
+      "Host": "your ip",        // ip or hostname to home assistant 
+      "Port": 8123,             // port of home assistant (default 8123)
+      "Ssl": false,             // true if use SSL to connect to Home Assistant
+      "Token": "Your token"     // Home Assistant security token
+   },
+   "NetDaemon": {
+      "AppSource": "./apps",     // path to apps directory
+      "GenerateEntities": false // generates entity helpers for V2 API on start
+   }
 }
 ```
 
@@ -56,3 +76,4 @@ Debug and run your apps and view log output for errors.
 After you have developed and tested your apps it is time to deploy and run the apps in the production environment. That's what we will look at next...
 
 
+~~~~
