@@ -27,6 +27,8 @@ module.exports = {
         'hass_model/hass_model_generated_entities',
         'hass_model/hass_model_generated_service',
         'hass_model/hass_model_working_with_entities',
+        'hass_model/hass_model_events',
+        'hass_model/hass_model_integration_servicecallback',
         'hass_model/hass_model_migration'
       ],
       'Extensions API': [
