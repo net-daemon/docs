@@ -25,7 +25,7 @@ If you are using Visual Studio Code, devcontainers are the preferred way to deve
 3. Run task: `Remote-Containers: Open Folder in Container`. Wait until it fully opened
 
 ### 2.3 JetBrains Rider
-Rider has supported debugging of ASP.Net Core apps from version 2018.2.
+Rider supports debugging of containerized ASP.Net Core apps from version 2018.2.
 
 Open the netdaemon_app folder in Rider and it should be able to build the projects immediately.
 A default execute and debug profile will be created however these will be executed as local processes.
@@ -35,7 +35,8 @@ To configure devcontainers, perform the following steps:
 1. Locate `Dockerfile` in the Solution Explorer window
 2. Right click and select `Debug Dockerfile`
 3. This will create a new profile called "DOCKERFILE"
-
+4. To view progress, located "Docker" in the "Services" tab and double-click it
+5. Like all container apps, the first build may take a few minutes - watch the progress in the "Services / Docker" tab
 
 Ensure that the "DOCKERFILE" profile is selected in the toolbar and then `Run` and `Debug` will execute within the container.
 
