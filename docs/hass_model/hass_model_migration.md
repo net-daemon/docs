@@ -7,11 +7,11 @@ The new NetDaemon release has some awesome new features that fall in the followi
 
 - Application loading
 
-    Previously all apps were required to implement `INetDaemonAppBase` (usually by deriving from `NetDaemonRxApp`). This is no longer required. A class only needs to be decorated by a `[NetDeamonApp]` attribute to be loaded as a NetDaemon app. 
+    Previously all apps were required to implement `INetDaemonAppBase` (usually by deriving from `NetDaemonRxApp`). This is no longer required. A class only needs to be decorated by a `[NetDaemonApp]` attribute to be loaded as a NetDaemon app. 
 
 - Optional yaml config
 
-    Previously all apps needed to have a yaml configuration file in order to be loaded. This is no longer required. Just decorating a class with the `[NetDeamonApp]` attribute is enough to geta single instance of the class loaded as an app. The yaml configuration is still supported for apps that do need configuration or to allow multiple instances of a class to be loaded with different configuration.
+    Previously all apps needed to have a yaml configuration file in order to be loaded. This is no longer required. Just decorating a class with the `[NetDaemonApp]` attribute is enough to geta single instance of the class loaded as an app. The yaml configuration is still supported for apps that do need configuration or to allow multiple instances of a class to be loaded with different configuration.
 
 - Acces to functions via injected services
 
@@ -30,4 +30,4 @@ For instance:
 
 - An existing app that derives from `NetDaemonRxApp` can also add a constructor parameter of type IHaContext and it will be provided by the NetDaemon runtime when the app is loaded. All exisiting application logic that interacts with the base class will still, but you can now also use the HassModel API that is based on this IHaContext interface.
 
-- For an exisiting app that does not need any yaml config you can just delete the yaml file and add the `[NetDeamonApp]` attribute to the class.
+- For an exisiting app that does not need any yaml config you can just delete the yaml file and add the `[NetDaemonApp]` attribute to the class.
