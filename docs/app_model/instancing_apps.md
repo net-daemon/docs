@@ -2,7 +2,7 @@
 id: app_model_instancing
 title: Instance applications
 ---
-Instancing applications can be done in several ways. Here is the supported ones by NetDaemon.
+Instancing applications can be done in several ways. Here are the supported ones by NetDaemon.
 
 ### Instancing an application using attribute
 Instance any class with the simple attribute like below.
@@ -69,3 +69,57 @@ public class LightManager
         TheLight?.TurnOn();
     }
 } 
+```
+
+### Logging
+NetDaemon can inject a logger into your application instance when you specify a _scoped_ `ILogger` parameter in your application's constructor.
+
+For example, if your application is called `FrontDoorLocker` then specifying a parameter of type `ILogger<FrontDoorLocker>` into the app's constructor  will ensure that an appropriate logger is injected. 
+In this example, the `FrontDoorLocker` constructor stores the logger into a class field so that it can be used by subsequent methods:
+```csharp
+
+private readonly ILogger<FrontDoorLocker> _logger;
+
+public FrontDoorLocker(IHaContext ha, ILogger<FrontDoorLocker> logger)
+{
+    _ha = ha;
+    _logger = logger;
+
+    _logger.LogInformation($"{nameof(FrontDoorLocker)} started");
+    // ... //
+}
+```
+
+From here, you can access the logger's functionality as defined in the [.Net core logging documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0)
+
+In short, you can access the logger's `LogInformation`, `LogWarning`, `LogDebug`, `LogError` and `LogCritical` methods to log messages in ascending order of criticality.
+
+#### Logging configuration
+Logging levels are configured within `appsettings.json`, where you set a minimum logging level and can then set custom levels per class (or more accurately, per namespace).
+In the following excerpt from `appsettings.json` we can see that all modules, classes and methods will only log messages where the criticality is "Information" or higher.
+This is except for messages from `MyHass.Automations` (or any classes/methods that start with that namespace), which will report all messages of state Debug or higher.
+
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "MyHass.Automations": "Debug"
+    }
+  }
+}
+```
+
+#### Viewing log messages
+Within the development environment you can view log messages inside the console view (or the container console view if you're debugging in containers).
+
+When your application is deployed to your Home Assistant production environment then you can view the logs by clicking on:
+
+ * Configuration
+ * Add-ons, Backups and Supervisor
+ * NetDaemon
+ * Log
+
+Note that the logs are cleared each time you restart the NetDaemon add-on (or the Home Assistant server).
+
