@@ -76,5 +76,3 @@ Debug and run your apps and view log output for errors.
 
 After you have developed and tested your apps it is time to deploy and run the apps in the production environment. That's what we will look at next...
 
-
-~~~~
