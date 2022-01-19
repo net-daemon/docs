@@ -15,15 +15,13 @@ This will only apply to `development` environment, in all other environments thi
 
 ```c#
 [Focus]
-public class HelloWorldApp : NetDaemonRxApp
+public class HelloWorldApp 
 {
-    public override void Initialize()
+    public HelloWorldApp(IHaContext ha)
     {
-        Log("Hello World!");
+        // I am the only app started
     }
-
 }
-
 ```
 ### Additional information on development environment settings
 This [Microsoft article](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-6.0) 

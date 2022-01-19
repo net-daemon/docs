@@ -4,14 +4,17 @@ title: Get started with NetDaemon app development
 ---
 
 ## 1. Clone the app-template
-The easiest way to get started with app development for NetDaemon is to use or clone the [app template repo](https://github.com/net-daemon/netdaemon-app-template). That will give you everything you need to get started developing your first automation.
+The easiest way to get started with app development for NetDaemon 3 is to use or clone the [app template repo](https://github.com/net-daemon/netdaemon-app-template) and use the branch `v3`. That will give you everything you need to get started developing your first automation.
 
-Example, cloning the template project directly and rename it
+
+Example, cloning the template project, check out v3 branch and rename it
 ```bash
 git clone https://github.com/net-daemon/netdaemon-app-template.git
 mv netdaemon-app-template netdaemon_apps
 cd netdaemon_apps
+git checkout v3
 ```
+
 ## 2. Configure your development tool
 
 ### 2.1 Visual Studio
@@ -52,7 +55,11 @@ Example appsettings file
 ```json
 {
    "Logging": {
-      "MinimumLevel": "info"    // debug, trace etc. can be set
+      "LogLevel": {
+         "Default": "Debug",  // Set the loglevel
+         "Microsoft": "Warning"
+      },
+      "ConsoleThemeType": "Ansi" // The theme, Ansi or System
    },
    "HomeAssistant": {
       "Host": "your ip",        // ip or hostname to home assistant 
@@ -61,8 +68,7 @@ Example appsettings file
       "Token": "Your token"     // Home Assistant security token
    },
    "NetDaemon": {
-      "AppSource": "./apps",     // path to apps directory
-      "GenerateEntities": false // generates entity helpers for V2 API on start
+         "ApplicationConfigurationFolder": "./apps" //Only change if you change app folder
    }
 }
 ```

@@ -89,7 +89,7 @@ else
 ```
 
 ## Set state of custom entities
-It is possible to set state of entities that are not in Home Assistant. If the entity does not exist, Home Assistant will create it. You can create any non existing entity this way but if you want the entity to behave like a normal entity and be persisted you should use the [NetDaemon integration](/docs/started/integration).
+It is possible to set state of entities that are not in Home Assistant. If the entity does not exist, Home Assistant will create it. You can create any non existing entity this way but if you want the entity to behave like a normal entity and be persisted you should use the [NetDaemon integration](v2/started/integration.md).
 ```csharp
    SetState("sensor.custom", "on", new { attr = "myattr" });
 ```

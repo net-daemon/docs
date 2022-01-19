@@ -1,8 +1,9 @@
 ---
 id: get_started
-title: Getting started
+title: Getting started NetDaemon V3
 ---
 
+## What do I need to get started?
 Here is what you will need to start developing apps to automate your home with NetDaemon:
 
 - The hostname/ip-address and port of your Home Assistant instance
@@ -14,3 +15,4 @@ Here is what you will need to start developing apps to automate your home with N
   - [Docker](https://www.docker.com/) installed if you want to use devcontainer in VSCode (recommended)
 
 Now you have all you need to develop an app, lets just do that by moving to App development.
+

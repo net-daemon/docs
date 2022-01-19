@@ -1,6 +1,6 @@
 ---
-id: V2_example
-title: V2 API Example app
+id: baseclass_example
+title: Baseclass API Example app (deprecated)
 ---
 This application shows basic capabilities of the fluent API of NetDaemon. It has two files, `ExampleApp.yaml` that contains basic configuration of the instance and `ExampleApp.cs` that contains the app logic.
 

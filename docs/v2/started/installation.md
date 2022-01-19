@@ -6,11 +6,15 @@ title: Install NetDaemon runtime
 There are several ways to deploy your apps. You could just run the development project and set it up yourself. NetDaemon provides a convenient ways to run your apps:
 - Using a Home Assistant add-on
 - In a docker container
+- Or using the template as base deploy your own.
 
 So let's set it up before we can deploy the apps to it.
 
+## NetDaemon versions
+This doc describes setting up the V2 version. For NetDaemon v3 please checkout [installing the NetDaemon V3](v2/started/installation_v3.md).
+
 ## Install NetDaemon as a Home Assistant add-on
-Two versions are provided, release and dev. If you feel you always want the latest and greatest changes you can choose the dev build but be prepare that things break!
+Two versions are provided, release and dev for both NetDaemon version 2 and version 3. If you feel you always want the latest and greatest changes you can choose the dev build for the version that you selected but be prepare that things break!
 
 
 1. Make a folder structure under your Home Assistant configuration directory to use for NetDaemon apps. `/config/netdaemon`  
@@ -22,12 +26,16 @@ Two versions are provided, release and dev. If you feel you always want the late
 
     ![](/img/docs/started/daemon.png)
 
-4. Deploy your apps in the `/config/netdaemon/apps` folder.
+4. Deploy your apps in the folder `/config/netdaemon/apps` for V2 and `/config/netdaemon3/apps` for V3 .
 
 ### Advanced add-on configurations
-The standard way running your apps in add-on is just to copy the `.cs` and `.yaml` files to `/config/netdaemon/apps` and it will dynamically compile and run them. If you want to use your own project with custom dependencies you will have to use the advanced deployment options. Specify the `AppSource`setting in add-on config. If you set a `app_source: folder`, then it will dynamically compile and run apps in `/config/netdaemon/folder`. If `app_source: daemonapp.csproj` it will compile and run the project in `/config/netdaemon/daemonapp.csproj` with all it's dependencies. Set the `app_source: daemonapp.dll` it will run the published project in `/config/netdaemon/daemonapp.dll`.
+The standard way running your apps in add-on is just to copy the `.cs` and `.yaml` files to `/config/netdaemon/apps` or (`/config/netdaemon3/apps` is you are using V3) and it will dynamically compile and run them. If you want to use your own project with custom dependencies you will have to use the advanced deployment options. 
 
-**There is no way to include other dependencies in the standard dynamically compiled option** You will have to run the two other advanced option to include for example a external nuget package.
+Specify the `AppSource`setting in add-on config. If you set a `app_source: folder`, then it will dynamically compile and run apps in `/config/netdaemon/folder`. 
+
+If setting `app_source: daemonapp.csproj` it will compile and run the project in `/config/netdaemon/daemonapp.csproj` with all it's dependencies. To deploy apps Set the `app_source: daemonapp.dll` it will run the published project in `/config/netdaemon/daemonapp.dll`.
+
+**There is no way to include other dependencies in the standard dynamically compiled option** No, for this we recommend the `Advanced add-on configurations` decribed above, to include for example a external nuget package.
 
 ## Install as a docker container
 If you are using Home Assistant Core and do not have the possibility to run add-ons, using the docker container is a convenient way to run NetDaemon apps. 
@@ -51,7 +59,7 @@ docker run -d \
 ```
 _`-p 1337:1337` is only needed if you want the [admin panel](https://github.com/net-daemon/admin)_
 
-### Example using docker-compose.yaml 
+### Example using docker-compose.yaml for
 ```yaml
 version: '3.7'
 services:
@@ -63,7 +71,6 @@ services:
     environment:
       - HOMEASSISTANT__HOST=your_ip_or_hostname
       - HOMEASSISTANT__TOKEN=your_token
-      - NETDAEMON__GENERATEENTITIES=False       # True if generate enitites
       - LOGGING__MINIMUMLEVEL=info              # use trace/debug/info
       - TZ='Etc/UTC'                            # Set your current timezone
     ports:
@@ -73,6 +80,7 @@ services:
       - /config/netdaemon:/data                 # replace /config/netdaemon 
                                                 # to your local folder
 ```
+
 ### Evironment variables
 The docker container needs 3 environment variables to run properly.
 

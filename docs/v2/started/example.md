@@ -2,7 +2,17 @@
 id: example
 title: Example app
 ---
-This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file  `ExampleApp.cs` that contains the app logic. This example uses the code generation capability of HassModel [explained here](/docs/hass_model/hass_model_codegen).
+This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file  `ExampleApp.cs` that contains the app logic. This example uses the code generation capability of HassModel [explained here](v2/hass_model/hass_model_codegen.md).
+
+:::caution Warning
+
+This example is for the current version 2. If you are using version 3 it is the same execpt that you should be using the v3 namespaces.
+```
+using System;
+using NetDaemon.AppModel;
+using NetDaemon.HassModel.Common;
+```
+:::
 
 ## ExampleApp.cs
 

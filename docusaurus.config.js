@@ -24,13 +24,19 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/index',
+          to: 'docs/v2',
           activeBasePath: 'docs',
-          label: 'Docs',
+          label: 'Docs V2',
           position: 'left',
         },
         {
-          to: 'docs/developer/developer',
+          to: '/docs/v3',
+          activeBasePath: 'docs/v3',
+          label: 'Docs V3',
+          position: 'left',
+        },
+        {
+          to: 'docs/developer',
           activeBasePath: 'docs',
           label: 'Developer',
           position: 'left',
@@ -51,7 +57,7 @@ module.exports = {
           items: [
             {
               label: 'Getting started',
-              to: 'docs/index',
+              to: 'docs/get_started_index',
             },
             // {
             //   label: 'Second Doc',
