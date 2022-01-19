@@ -90,25 +90,33 @@ public FrontDoorLocker(IHaContext ha, ILogger<FrontDoorLocker> logger)
 }
 ```
 
-From here, you can access the logger's functionality as defined in the [.Net core logging documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0)
+#### Log levels in brief
 
-In short, you can access the logger's `LogInformation`, `LogWarning`, `LogDebug`, `LogError` and `LogCritical` methods to log messages in ascending order of criticality.
+The logging subsystem ([serilog](https://serilog.net/)) defines several levels of log events. From low to high these are `Verbose`, `Debug`, `Information`, `Warning`, `Error` and `Fatal`. You can set the minimum level that you wish to log which means that only events at that level or higher will be logged.
 
-#### Logging configuration
-Logging levels are configured within `appsettings.json`, where you set a minimum logging level and can then set custom levels per class (or more accurately, per namespace).
-In the following excerpt from `appsettings.json` we can see that all modules, classes and methods will only log messages where the criticality is "Information" or higher.
-This is except for messages from `MyHass.Automations` (or any classes/methods that start with that namespace), which will report all messages of state Debug or higher.
-
+By default, NetDaemon defaults to `Debug` level and higher, but you can override this in `appSettings.json`:
 
 ```json
 {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "MyHass.Automations": "Debug"
-    }
-  }
+    "Logging": {
+        "MinimumLevel": "Debug"
+    },
+    ...
 }
+```
+
+Within your application you will use one of the `_logger` methods to write a message at the desired level. Note that `ILogger` is a Microsoft-defined interface and there is (oddly!) not an exact match of `ILogger` methods to Serilog levels.
+
+```csharp
+  // See code sample above for setting up the logger in your constructor
+
+  _logger.LogTrace("This is at Verbose level");
+  _logger.LogDebug("This is at Debug level");
+  _logger.LogInformation("This is at Information level");
+  _logger.LogWarning("This is at Warning level");
+  _logger.LogError("This is at Error level");
+  _logger.LogCritical("This is at Fatal level");
+  
 ```
 
 #### Viewing log messages
@@ -122,4 +130,11 @@ When your application is deployed to your Home Assistant production environment 
  * Log
 
 Note that the logs are cleared each time you restart the NetDaemon add-on (or the Home Assistant server).
+
+#### More advanced logging
+One of the goals of the NetDaemon template app is that it should work out of the box with minimal configuration. For that reason, the template ships with a "Default NetDaemon Logging Configurator", which supports all of the functionality described on this page, but nothing more.
+
+If you are familiar with Serilog or other .Net loggers and want to use more advanced techniques such as writing to log files or to remote log servers then please read the [Custom logging](/docs/app_model/app_model_custom_logging) page, which shows how to create and configure a custom logger.
+
+
 
