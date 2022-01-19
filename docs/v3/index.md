@@ -3,9 +3,7 @@ id: index
 title: NetDaemon Version 3
 ---
 
-NetDaemon provides the capability to write home automations for Home Assistant in C#. We recommend all users to use HassModel API that is using dependency injection technology of .NET to expose different functionality. This will also be a better road to NetDaemon 3. The old base class API will co-exist in NetDaemon version 2 but we highly recommend using the HassModel in your automation projects. 
-
-NetDaemon is released in two different versions. Please select the docs for the version you are using on the tope menu! This is the docs for version 3.
+NetDaemon provides the capability to write home automations for Home Assistant in C#. Version 3 is a rewrite of current V2 runtime. We decided to introduce some breaking changes. The reason is we wanted to make the product long-term good experience for both users and contributor. We beleive this design will accomplish this goal.
 
 ## About NetDaemon version 3
 This version is in beta state and is under development. It is stable but it could be breaking. It will be nuget version >= `22.2.x` and uses the docker image `netdaemon/netdaemon3`.
