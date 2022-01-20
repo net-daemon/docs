@@ -2,9 +2,10 @@
 id: development
 title: Get started with NetDaemon app development
 ---
-
-## 1. Clone the app-template
-The easiest way to get started with app development for NetDaemon 3 is to use or clone the [app template repo](https://github.com/net-daemon/netdaemon-app-template) and use the branch `v3`. That will give you everything you need to get started developing your first automation.
+## 1. Get the project template
+There are two ways you can get the template. If you want to use GitHub you can clone the template. If you prefer the dotnet cli there is a template for it you can install.
+### Clone the app-template
+One way get started with app development for NetDaemon 3 is to use or clone the [app template repo](https://github.com/net-daemon/netdaemon-app-template) and use the branch `v3`. That will give you everything you need to get started developing your first automation.
 
 
 Example, cloning the template project, check out v3 branch and rename it
@@ -14,7 +15,14 @@ mv netdaemon-app-template netdaemon_apps
 cd netdaemon_apps
 git checkout v3
 ```
-
+### Use dotnet cli tool
+The other way to get a template to start with is to install the dotnet cli tool.
+```bash
+dotnet new --install JoySoftware.NetDaemon.Templates.Project
+mkdir NetDaemonApps
+cd NetDaemonApps
+dotnet new nd-project
+```
 ## 2. Configure your development tool
 
 ### 2.1 Visual Studio
