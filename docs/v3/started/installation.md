@@ -44,9 +44,9 @@ If you are using Home Assistant Core and do not have the possibility to run add-
 docker run -d \
   --name netdaemon3 \
   --restart=always \
-  -e HOMEASSISTANT__HOST=192.168.1.4 \
-  -e HOMEASSISTANT__TOKEN=XXXXX \
-  -e LOGGING__LOGLEVEL__DEFAULT=Information \
+  -e HomeAssistant__Host=192.168.1.4 \
+  -e HomeAssistant__Token=XXXXX \
+  -e Logging__LogLevel__Default=Information \
   -e TZ=Europe/Stockholm \
   -v ~/netdaemon_config:/data \
   netdaemon/netdaemon3
@@ -63,9 +63,9 @@ services:
     container_name: netdaemon3
     restart: always
     environment:
-      - HOMEASSISTANT__HOST=your_ip_or_hostname
-      - HOMEASSISTANT__TOKEN=your_token
-      - LOGGING__LOGLEVEL__DEFAULT=Information  # use Information/Debug/Trace/Warning/Error
+      - HomeAssistant__Host=your_ip_or_hostname
+      - HomeAssistant.Token=your_token
+      - Logging__LogLevel__Default=Information  # use Information/Debug/Trace/Warning/Error
       - TZ='Etc/UTC'                            # Set your current timezone
     volumes:
       - /config/netdaemon:/data                 # replace /config/netdaemon 
@@ -75,21 +75,21 @@ services:
 ### Evironment variables
 The docker container needs 3 environment variables to run properly.
 
-ENV | Description
--- | --
-`HOMEASSISTANT__HOST` | The host that is running Home Assistant (defaults to `localhost`)
-`HOMEASSISTANT__PORT` | The port Home Assistant is running on (default to `8123`)
-`HOMEASSISTANT__TOKEN` | A Long Lived Acces Token(LLAT) that NetDaemon can use for the comminication with Home Assistant.
-`LOGGING__LOGLEVEL__DEFAULT` | Defaults to Information, values are (Trace, Debug, Information, Warning, Error)
-`TZ` | You will need to set container time zone to make the scheduler work properly
-`NETDAEMON__APPLICATION_ASSEMBLY` | Used to setup more advanced runtime options. Set to `{your_dll}.dll` for published project. For standard dynamically compiled projects you should not set this setting!
-`NETDAEMON__APPLICATION_CONFIGURATION_FOLDER` | If you want to select another folder for your yaml configurations. Standard is `/data`
+| ENV                                         | Description                                                                                                                                                             |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `HomeAssistant__Host`                       | The host that is running Home Assistant (defaults to `localhost`)                                                                                                       |
+| `HomeAssistant__Port`                       | The port Home Assistant is running on (default to `8123`)                                                                                                               |
+| `HomeAssistant.Token`                       | A Long Lived Acces Token(LLAT) that NetDaemon can use for the comminication with Home Assistant.                                                                        |
+| `Logging__LogLevel__Default`                | Defaults to Information, values are (Trace, Debug, Information, Warning, Error)                                                                                         |
+| `TZ`                                        | You will need to set container time zone to make the scheduler work properly                                                                                            |
+| `NetDaemon__ApplicationAssembly`            | Used to setup more advanced runtime options. Set to `{your_dll}.dll` for published project. For standard dynamically compiled projects you should not set this setting! |
+| `NetDaemon__ApplicationConfigurationFolder` | If you want to select another folder for your yaml configurations. Standard is `/data`                                                                                  |
 
 ### Volumes
 
-Vol | Description
--- | --
-/data | The volume of the netdaemon folder should be mapped to `/data` [See how to setup the correct folder here](installation.md#folder-structure-and-where-to-map-the-docker-volume)
+| Vol   | Description                                                                                                                                                                    |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| /data | The volume of the netdaemon folder should be mapped to `/data` [See how to setup the correct folder here](installation.md#folder-structure-and-where-to-map-the-docker-volume) |
 
 
 
