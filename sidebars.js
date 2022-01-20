@@ -18,6 +18,17 @@ module.exports = {
       },
       {
         type: 'category',
+        label: 'AppModel',
+        items: [
+          'v2/app_model/app_model',
+          'v2/app_model/app_model_instancing',
+          'v2/app_model/app_model_advanced_config',
+          'v2/app_model/app_model_context',
+          'v2/app_model/app_model_custom_logging'
+        ],
+      },
+      {
+        type: 'category',
         label: 'HassModelApi',
         items: [
           'v2/hass_model/hass_model',
@@ -67,7 +78,6 @@ module.exports = {
         ]
       },
     ],
-
   },
   someSidebar2: {
     Documentation: [
