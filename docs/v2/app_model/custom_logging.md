@@ -2,7 +2,7 @@
 id: app_model_custom_logging
 title: Custom logging
 ---
-This page describes how to create and configure a custom logger. If you are happy with the standard logging described in the [Instance applications](/docs/app_model/app_model_instancing) page then you don't need to read this page.
+This page describes how to create and configure a custom logger. If you are happy with the standard logging described in the [Instance applications](/v2/app_model/instancing_apps.md) page then you don't need to read this page.
 
 ### ILogger and Serilog
 The default Microsoft implementation of logging comes via the `Microsoft.Extensions.Logging.ILogger` interface that can be configured at application startup and then injected into subsequent classes.
@@ -24,7 +24,7 @@ try
 }
 ```
 
-This configuration builder creates a Console Sink logger with the minimum logging level defined in `appSettings.json`, as described in the [Instance applications](/docs/app_model/app_model_instancing) page.
+This configuration builder creates a Console Sink logger with the minimum logging level defined in `appSettings.json`, as described in the [Instance applications](v2/app_model/instancing_apps.md) page.
 
 To modify the logging behaviour we can create our own logging configuration and replace the default one within `program.cs` (note that an in-depth description of host builders is beyond the scope of this article, but you can find more information on the [Microsoft web site](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-6.0))
 
