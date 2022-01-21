@@ -1,5 +1,5 @@
 ---
-id: moving_from_v2
+id: app_model_moving_from_v2
 title: Moving from NetDaemon version 2
 ---
 

@@ -10,7 +10,7 @@ This version is in beta state and is under development. It is stable but it coul
 Only supported automation API in NetDaemon 3 is using `HassModel` i.e. injecting the `IHaContext` **not** the base class `NetDaemonRxApp`
 
 ## Migrating from version 2
-If you are a current user of version 2 of NetDaemon runtime please see [migrating from version 2 runtime](v3/moving_from_v2.md)
+If you are a current user of version 2 of NetDaemon runtime please see [migrating from version 2 runtime](v3/app_model/moving_from_v2.md)
 :::caution Warning
 
 We are still adding a lot of features so expect things to change.  

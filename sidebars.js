@@ -92,7 +92,6 @@ module.exports = {
           'v3/started/integration',
           'v3/started/example',
           'v3/started/hacs'
-
         ]
       },
       {
@@ -102,7 +101,8 @@ module.exports = {
           'v3/app_model/app_model',
           'v3/app_model/app_model_instancing',
           'v3/app_model/app_model_advanced_config',
-          'v3/app_model/app_model_custom_logging'
+          'v3/app_model/app_model_custom_logging',
+          'v3/app_model/app_model_moving_from_v2',
         ],
       },
       {
