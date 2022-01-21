@@ -1,5 +1,5 @@
 ---
-id: app_model_advanced_config3
+id: app_model_advanced_config
 title: Advanced configuration
 ---
 

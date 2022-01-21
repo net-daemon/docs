@@ -97,6 +97,16 @@ module.exports = {
       },
       {
         type: 'category',
+        label: 'AppModel',
+        items: [
+          'v3/app_model/app_model',
+          'v3/app_model/app_model_instancing',
+          'v3/app_model/app_model_advanced_config',
+          'v3/app_model/app_model_custom_logging'
+        ],
+      },
+      {
+        type: 'category',
         label: 'HassModelApi',
         items: [
           'v3/hass_model/hass_model',

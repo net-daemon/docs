@@ -1,5 +1,5 @@
 ---
-id: app_model3
+id: app_model
 title: AppModel API
 ---
 

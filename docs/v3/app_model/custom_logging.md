@@ -100,19 +100,22 @@ You now need to modify the logging configuration in `appSettings.json` - the fir
 Here is the original `appSettings.json`:
 ```json
 {
-    "Logging": {
-        "MinimumLevel": "Debug"
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "Microsoft": "Warning"
     },
-    "HomeAssistant": {
-        "Host": "localhost",
-        "Port": 8123,
-        "Ssl": false,
-        "Token": "enter_token_here"
-    },
-    "NetDaemon": {
-        "AppSource": "./apps",
-        "GenerateEntities": false
-    }
+    "ConsoleThemeType": "Ansi"
+  },
+  "HomeAssistant": {
+      "Host": "localhost",
+      "Port": 8123,
+      "Ssl": false,
+      "Token": "enter_token_here"
+  },
+  "NetDaemon": {
+      "ApplicationConfigurationFolder": "./apps"
+  }
 }
 ```
 
