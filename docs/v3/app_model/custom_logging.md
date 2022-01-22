@@ -2,7 +2,7 @@
 id: app_model_custom_logging
 title: Custom logging
 ---
-This page describes how to create and configure a custom logger. If you are happy with the standard logging described in the [Instance applications](/v2/app_model/instancing_apps.md) page then you don't need to read this page.
+This page describes how to create and configure a custom logger. If you are happy with the standard logging described in the [Instance applications](/v3/app_model/instancing_apps.md) page then you don't need to read this page.
 
 ### ILogger and Serilog
 The default Microsoft implementation of logging comes via the `Microsoft.Extensions.Logging.ILogger` interface that can be configured at application startup and then injected into subsequent classes.
