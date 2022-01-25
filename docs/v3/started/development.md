@@ -51,6 +51,37 @@ To configure devcontainers, perform the following steps:
 
 Ensure that the "DOCKERFILE" profile is selected in the toolbar and then `Run` and `Debug` will execute within the container.
 
+### 2.4 Studio Code Server Addon
+
+1. In Home Assistant go to Configurations -> Add-ons, Backups & Supervisor -> Add-on Store -> Menu -> Repositories
+2. Add the repository: https://github.com/hassio-addons/repository
+3. Install the Studio Code Server Addon (a0d7b954_vscode)
+4. In the Addon Configuration Tab add the following config:
+   ```
+   init_commands:
+     - >-
+       wget
+       https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
+       -O packages-microsoft-prod.deb
+     - dpkg -i packages-microsoft-prod.deb
+     - rm packages-microsoft-prod.deb
+     - apt-get update
+     - apt-get install -y apt-transport-https
+     - apt-get update
+     - apt-get install -y dotnet-sdk-6.0
+     - dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen
+   packages: []
+   log_level: info
+   config_path: /
+   ```
+   --> The part in the `init_commands` will install .NET SDK 6.0 only in the Studio Code Server Addon (Docker Container)
+5. Now you can start the Studio Code Server Addon by going the Addon's Info Tab and pressing `OPEN WEB UI`.
+
+HINTS:
+- It is recommanded to install the C# Extensions (ms-dotnettools.csharp) in Studio Code Server to get Semantic Highlighting and IntelliSense.
+- Open only the folder where the solution/project is located to ensure that the C# Extension works properly.
+
+
 ## 3. Make configurations
 NetDaemon development environment needs to be configured to connect to Home Assistant.  Minimal config is: hostname/ip, port and access token.
 
