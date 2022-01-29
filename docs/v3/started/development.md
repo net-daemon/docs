@@ -3,7 +3,10 @@ id: development
 title: Get started with NetDaemon app development
 ---
 ## 1. Get the project template
-There are two ways you can get the template. If you want to use GitHub you can clone the template. If you prefer the dotnet cli there is a template for it you can install.
+There are two ways you can get the template. If you want to use GitHub you can clone the template. If you prefer the dotnet cli there is a template for it you can install. Watch the small introduction video how to get the project template using the cli tool.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8FDWLy9JtJM" frameborder="0" allow="accelerometer;  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ### Clone the app-template
 One way get started with app development for NetDaemon 3 is to use or clone the [app template repo](https://github.com/net-daemon/netdaemon-app-template) and use the branch `v3`. That will give you everything you need to get started developing your first automation.
 
@@ -50,6 +53,47 @@ To configure devcontainers, perform the following steps:
 5. Like all container apps, the first build may take a few minutes - watch the progress in the "Services / Docker" tab
 
 Ensure that the "DOCKERFILE" profile is selected in the toolbar and then `Run` and `Debug` will execute within the container.
+
+### 2.4 Studio Code Server Addon 
+#### Setup 
+1. In Home Assistant go to Configurations -> Add-ons, Backups & Supervisor -> Add-on Store -> Menu -> Repositories 
+2. Add the repository: https://github.com/hassio-addons/repository 
+3. Install the `Studio Code Server Addon` (a0d7b954_vscode) 
+4. In the Addon Configuration Tab add the following config: 
+   ```
+   init_commands:
+     - >-
+       wget
+       https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
+       -O packages-microsoft-prod.deb
+     - dpkg -i packages-microsoft-prod.deb
+     - rm packages-microsoft-prod.deb
+     - apt-get update
+     - apt-get install -y apt-transport-https
+     - apt-get update
+     - apt-get install -y dotnet-sdk-6.0
+     - dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen
+   packages: []
+   log_level: info
+   config_path: /
+   ``` 
+   --> The part in the `init_commands` will install .NET SDK 6.0 only in the Studio Code Server Addon (Docker Container) 
+5. Now you can start the Studio Code Server Addon by going the Addon's Info Tab and pressing `OPEN WEB UI`. 
+
+HINTS: 
+- It is recommanded to install the C# Extensions (ms-dotnettools.csharp) in Studio Code Server to get Semantic Highlighting and IntelliSense. 
+- Open only the folder where the solution/project is located to ensure that the C# Extension works properly. 
+
+#### Usage 
+1. Clone a solution e.g. the [NetDaemon Template](https://github.com/net-daemon/netdaemon-app-template) to e.g. /root/config 
+2. Rename the file `_appsettings.json` to `appsettings.json` and modify it as described in the [Template-README](https://github.com/net-daemon/netdaemon-app-template/blob/main/README.md) 
+3. Open a Terminal in the Studio Code Server Addon 
+   - To run the Code Generator enter: 
+     `/root/.dotnet/tools/nd-codegen` 
+   - To compile the solution enter: 
+     `dotnet build netdaemon-app-template.sln` 
+   - To restore the solution enter: 
+     `dotnet restore netdaemon-app-template.sln` 
 
 ## 3. Make configurations
 NetDaemon development environment needs to be configured to connect to Home Assistant.  Minimal config is: hostname/ip, port and access token.
