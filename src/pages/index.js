@@ -12,7 +12,7 @@ const features = [
     imageUrl: 'img/C_Sharp_logo.svg',
     description: (
       <>
-        With NetDaemon you can write your home automations in C# for Home Assistant using modern .NET design.
+        With NetDaemon you can write your home automations in C# for Home Assistant using modern .NET design. NetDaemon is open source and will always be free!
       </>
     ),
   },
