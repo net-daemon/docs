@@ -121,6 +121,15 @@ module.exports = {
       },
       {
         type: 'category',
+        label: 'Advanced',
+        items: [
+          'v3/advanced/call_ha_api',
+          'v3/advanced/async_features',
+          'v3/advanced/dev_workflow3'
+        ]
+      },
+      {
+        type: 'category',
         label: 'Extensions API',
         items: [
           {
