@@ -12,7 +12,7 @@ const features = [
     imageUrl: 'img/C_Sharp_logo.svg',
     description: (
       <>
-        With NetDaemon you can write your home automations in C# for Home Assistant using modern .NET design.
+        With NetDaemon you can write your home automations in C# for Home Assistant using modern .NET design. NetDaemon is open source and will always be free!
       </>
     ),
   },
@@ -26,11 +26,14 @@ const features = [
     ),
   },
   {
-    title: <>For the end-user</>,
-    imageUrl: 'img/hacs.png',
+    title: <>Code generation</>,
+    imageUrl: 'img/codegen.png',
+    Link: 'https://www.youtube.com/watch?v=OCej2TVdKQo',    
     description: (
       <>
-        NetDaemon apps can be provided to end-users through the HACS ecosystem.
+        
+        All your entities and services can be generated for full intellisense experience. 
+        <br/><Link to="https://www.youtube.com/watch?v=OCej2TVdKQo" target="_blank" rel="noopener noreferrer">Watch our introduction video!</Link> 
       </>
     ),
   },

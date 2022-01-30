@@ -15,4 +15,3 @@ Here is what you will need to start developing apps to automate your home with N
   - [Docker](https://www.docker.com/) installed if you want to use devcontainer in VSCode (recommended)
 
 Now you have all you need to develop an app, lets just do that by moving to App development.
-
