@@ -7,14 +7,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
-const homePageCodeExample = `
-var entities = new Entities(ha);
-entities.BinarySensor.AtticMotionsensorzsc
-    .StateChanges()
-    .Where(e => e.New.IsOff())
-    .Subscribe(_ => entities.Light.Attic.TurnOff());
-`
-
 const features = [
   {
     title: <>For the C# developer</>,
