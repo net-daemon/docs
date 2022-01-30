@@ -1,4 +1,5 @@
 import React from 'react';
+import CodeBlock from '@theme/CodeBlock';
 import classnames from 'classnames';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
@@ -27,27 +28,36 @@ const features = [
   },
   {
     title: <>Code generation</>,
-    imageUrl: 'img/codegen.png',
-    Link: 'https://www.youtube.com/watch?v=OCej2TVdKQo',    
+    Link: 'https://www.youtube.com/watch?v=OCej2TVdKQo',
+    codeBlock: `var entities = new Entities(ha);
+entities.BinarySensor.AtticMotionsensorzsc
+    .StateChanges()
+    .Where(e => e.New.IsOff())
+    .Subscribe(_ => entities.Light.Attic.TurnOff());`,
     description: (
       <>
-        
-        All your entities and services can be generated for full intellisense experience. 
-        <br/><Link to="https://www.youtube.com/watch?v=OCej2TVdKQo" target="_blank" rel="noopener noreferrer">Watch our introduction video!</Link> 
+
+        All your entities and services can be generated for full intellisense experience.
+        <br /><Link to="https://www.youtube.com/watch?v=OCej2TVdKQo" target="_blank" rel="noopener noreferrer">Watch our introduction video!</Link>
       </>
     ),
   },
 
 ];
 
-function Feature({ imageUrl, title, description }) {
+function Feature({ imageUrl, title, description, codeBlock }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={classnames('col col--4', styles.feature)}>
-      {imgUrl && (
+      {imgUrl && !codeBlock &&(
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} alt={title} />
         </div>
+      )}
+      {codeBlock &&(
+        <CodeBlock language="cs">
+          {codeBlock}
+          </CodeBlock>
       )}
       <h3>{title}</h3>
       <p>{description}</p>
