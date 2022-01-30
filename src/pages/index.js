@@ -29,16 +29,11 @@ const features = [
   {
     title: <>Code generation</>,
     Link: 'https://www.youtube.com/watch?v=OCej2TVdKQo',
-    codeBlock: (
-      <CodeBlock language="cs">
-        {
-`var entities = new Entities(ha);
+    codeBlock: `var entities = new Entities(ha);
 entities.BinarySensor.AtticMotionsensorzsc
     .StateChanges()
     .Where(e => e.New.IsOff())
-    .Subscribe(_ => entities.Light.Attic.TurnOff());`
-        }
-      </CodeBlock>),
+    .Subscribe(_ => entities.Light.Attic.TurnOff());`,
     description: (
       <>
 
@@ -59,7 +54,11 @@ function Feature({ imageUrl, title, description, codeBlock }) {
           <img className={styles.featureImage} src={imgUrl} alt={title} />
         </div>
       )}
-      {codeBlock}
+      {codeBlock &&(
+        <CodeBlock language="cs">
+          {codeBlock}
+          </CodeBlock>
+      )}
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
