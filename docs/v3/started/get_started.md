@@ -1,13 +1,14 @@
 ---
 id: get_started
-title: Getting started NetDaemon V3
+title: Getting started with NetDaemon V3
 ---
 
 ## What do I need to get started?
+
 Here is what you will need to start developing apps to automate your home with NetDaemon:
 
 - The hostname/ip-address and port of your Home Assistant instance
-- Have [git](https://git-scm.com/) installed to get the development template
+- We recommend using [git](https://git-scm.com/) as a way to version control your apps.
 - Create an access token to use for authorization. The long lived access token is created under your profile in the Home Assistant GUI. Make sure the user account for this access token has Administrator privileges in Home Assistant
 - Have a .NET development environment. You can edit .cs files in any tool, but using a development environment is recommended
   - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/), [Visual Studio Code](https://code.visualstudio.com) or [JetBrains Rider](https://www.jetbrains.com/rider/)

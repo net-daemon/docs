@@ -5,7 +5,7 @@ title: Get started with NetDaemon app development
 
 ## 1. Choose deployment method
 
-Before you get started we recommend thinking about how you want to develop and deploy your NetDaemon apps. We have two different options. Select the workflow and capabilities that fits your needs best.
+Before you get started we recommend thinking about how you want to develop and deploy your NetDaemon apps. We have two different options. Select the workflow and capabilities that best fits your needs.
 
 ### Deploy compiled assemblies and configurations
 
@@ -177,8 +177,12 @@ After you have developed and tested your apps it is time to deploy and run the a
 
 ### Compiled assemblies and configurations
 
-Just do `dotnet -c Release publish -o [your output directory]` and copy all content from [your output directory] to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options.
+Just do `dotnet -c Release publish -o [your output directory]` and copy all content from `[your output directory]` to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options.
+
+See [installation docs](v3\started\installation.md) for how to configure different hosting options.
 
 ### Source files and configurations
 
 Copy the content from the `apps` folder to to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options. **Do not copy project files. Only copy contents under `apps` folder!**
+
+See [installation docs](v3\started\installation.md) for how to configure different hosting options.
