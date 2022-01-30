@@ -23,6 +23,8 @@ With this option you can deploy the actual source and NetDaemon will compile the
 - Limited DI support.
 - Does **not** support custom nuget packages.
 
+Deployment is by copy source code and config files under apps folder (.cs and .yaml ) to destination. The provided debug project should never be copied.
+
 ## 2. Get the project template
 
 We recommend using the dotnet cli tool to get the NetDaemon project template. Watch Eugene go through how to do use it in the video below.
@@ -53,7 +55,7 @@ dotnet new nd-src-project
 
 ### Clone the the project template from repo
 
-We are deprecating the use of the [app template repo](https://github.com/net-daemon/netdaemon-app-template). Please use any of the dotnet cli templates.  
+We are deprecating the use of the app template repo. Please use any of the dotnet cli templates.  
 
 ## 2. Configure your development tool
 
@@ -65,7 +67,7 @@ You should be all set, so skip to step 3
 
 ### 2.2 Visual Studio Code
 
-Dev containers are the preferred way to develop your apps. This also requires docker to be installed.
+Dev containers are the preferred way to develop your apps. This also requires docker to be installed. You can also develop and debug directly on your dev machine without docker.
 
 1. Install [remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in VSCode if you have not already.
 2. Open folder, the newly cloned template
@@ -171,4 +173,12 @@ Debug and run your apps and view log output for errors.
 
 ## Deploy your apps
 
-After you have developed and tested your apps it is time to deploy and run the apps in the production environment. That's what we will look at next...
+After you have developed and tested your apps it is time to deploy and run the apps in the production environment. The two different deployment options has different deployment methods.
+
+### Deploy compiled assemblies and configurations
+
+Just do `dotnet -c Release publish -o [your output directory]` and copy all content from [your output directory] to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options.
+
+### Deploy source and configurations
+
+Copy the content from the `apps` folder to to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options.
