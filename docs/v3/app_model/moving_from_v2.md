@@ -24,6 +24,8 @@ There are four main considerations when upgrading a new project to use v3 _(befo
 1. Change `GlobalUsings.cs` to refer to the new namespace
 1. Update `appSettings.json` to reflect a change in config
 
+After you have tested your project locally you will need to update your NetDaemon install on Home Assistant to v3.
+
 #### Update program.cs
 Refer to your project's `program.cs` and check the main application startup block. You will likely have a section that looks like this:
 
@@ -131,3 +133,12 @@ V3 variant:
   },
   // ...
 ```
+
+
+#### Update the version of NetDaemon  in Home Assistant
+
+If you still have v2 of NetDaemon installed inside Home Assistant ("HA") then that will not be able to run your v3 apps. You should remove the v2 install from HA first, then install the v3 version.
+
+After you have done so remember to check the configuration (the default config path changed from `/config/netdaemon` to `/config/netdaemon3`) and re-deploy your apps project to it, then restart NetDaemon and check the logs.
+
+You can find the [installation instructions here](v3/started/installation.md)
