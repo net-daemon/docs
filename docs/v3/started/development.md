@@ -157,7 +157,7 @@ Example appsettings file
       "Port": 8123,              // port of home assistant (default 8123)
       "Ssl": false,              // true if use SSL to connect to Home Assistant
       "Token": "Your token",     // Home Assistant security token
-      "InsecureBypassCertificateErrors": false // Set att own risk if you want to use self-signed certs
+      "InsecureBypassCertificateErrors": false // true at own risk if you want to use self-signed certs
    },
    "NetDaemon": {
          "ApplicationConfigurationFolder": "./apps" //Only change if you change app folder
@@ -175,10 +175,10 @@ Debug and run your apps and view log output for errors.
 
 After you have developed and tested your apps it is time to deploy and run the apps in the production environment. The two different deployment options has different deployment methods.
 
-### Deploy compiled assemblies and configurations
+### Compiled assemblies and configurations
 
 Just do `dotnet -c Release publish -o [your output directory]` and copy all content from [your output directory] to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options.
 
-### Deploy source and configurations
+### Source files and configurations
 
-Copy the content from the `apps` folder to to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options.
+Copy the content from the `apps` folder to to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options. **Do not copy project files. Only copy contents under `apps` folder!**
