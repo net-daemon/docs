@@ -29,11 +29,11 @@ const features = [
   {
     title: <>Code generation</>,
     Link: 'https://www.youtube.com/watch?v=OCej2TVdKQo',
-    codeBlock: `var entities = new Entities(ha);
-entities.BinarySensor.AtticMotionsensorzsc
+    codeBlock: `entities.BinarySensor.OfficeMotion
     .StateChanges()
-    .Where(e => e.New.IsOff())
-    .Subscribe(_ => entities.Light.Attic.TurnOff());`,
+    .Where(e => e.New.IsOn())
+    .Subscribe(_ =>
+      entities.Light.Office.TurnOn());`,
     description: (
       <>
 
