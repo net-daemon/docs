@@ -28,7 +28,8 @@ public class MyAsyncInitializableApp : IAsyncInitializable
 }
 ```
 
-### Instancing an application using yaml
+### Instancing an application configuration using yaml
+
 You can use yaml configuration file to provide configuration that are injected into the constructor using the `IAppConfig<>` interface.
 
 Best way to explain is to provide a yaml config with app class below:
