@@ -1,4 +1,5 @@
 import React from 'react';
+import CodeBlock from '@theme/CodeBlock';
 import classnames from 'classnames';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
@@ -12,7 +13,7 @@ const features = [
     imageUrl: 'img/C_Sharp_logo.svg',
     description: (
       <>
-        With NetDaemon you can write your home automations in C# for Home Assistant using modern .NET design.
+        With NetDaemon you can write your home automations in C# for Home Assistant using modern .NET design. NetDaemon is open source and will always be free!
       </>
     ),
   },
@@ -26,25 +27,37 @@ const features = [
     ),
   },
   {
-    title: <>For the end-user</>,
-    imageUrl: 'img/hacs.png',
+    title: <>Code generation</>,
+    Link: 'https://www.youtube.com/watch?v=OCej2TVdKQo',
+    codeBlock: `entities.BinarySensor.OfficeMotion
+    .StateChanges()
+    .Where(e => e.New.IsOn())
+    .Subscribe(_ =>
+      entities.Light.Office.TurnOn());`,
     description: (
       <>
-        NetDaemon apps can be provided to end-users through the HACS ecosystem.
+
+        All your entities and services can be generated for full intellisense experience.
+        <br /><Link to="https://www.youtube.com/watch?v=OCej2TVdKQo" target="_blank" rel="noopener noreferrer">Watch our introduction video!</Link>
       </>
     ),
   },
 
 ];
 
-function Feature({ imageUrl, title, description }) {
+function Feature({ imageUrl, title, description, codeBlock }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={classnames('col col--4', styles.feature)}>
-      {imgUrl && (
+      {imgUrl && !codeBlock &&(
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} alt={title} />
         </div>
+      )}
+      {codeBlock &&(
+        <CodeBlock language="cs">
+          {codeBlock}
+          </CodeBlock>
       )}
       <h3>{title}</h3>
       <p>{description}</p>
