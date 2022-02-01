@@ -17,16 +17,17 @@ Here is a summary of the main changes between the versions:
 
 ### Upgrading an existing apps project to v3
 
-There are four main considerations when upgrading a new project to use v3 _(before you begin taking advantage of the new functionality!_):
+There are five main considerations when upgrading a new project to use v3 _(before you begin taking advantage of the new functionality!_):
 
 1. Update `program.cs` to use the new application startup and configuration
 1. Update your nuget packages
 1. Change `GlobalUsings.cs` to refer to the new namespace
 1. Update `appSettings.json` to reflect a change in config
+1. Update your locally installed code generator
 
 After you have tested your project locally you will need to update your NetDaemon install on Home Assistant to v3.
 
-#### Update program.cs
+### 1. Update program.cs
 Refer to your project's `program.cs` and check the main application startup block. You will likely have a section that looks like this:
 
 ```csharp
@@ -84,7 +85,7 @@ try
     // etc...
 ```
 
-#### Update your nuget packages
+### 2. Update your nuget packages
 
 Remove the following packages:
   * JoySoftware.NetDaemon.App
@@ -98,9 +99,9 @@ Add the following packages:
 
 Finally, ensure that all packages are updated to the latest versions.
 
-#### Update global usings
+### 3. Update global usings
 
-In `apps/GlobalUsings.cs` replace `NetDaemon.Common` with `NetDaemon.AppModel`:
+In `apps/GlobalUsings.cs` replace `NetDaemon.Common` with `NetDaemon.AppModel`, and `NetDaemon.HassModel.Common` with `NetDaemon.HassModel`:
 
 ```csharp
 // Common usings for NetDaemon apps
@@ -108,10 +109,10 @@ global using System;
 global using System.Reactive.Linq;
 global using Microsoft.Extensions.Logging;
 global using NetDaemon.AppModel;   // <--- changed
-global using NetDaemon.HassModel.Common;
+global using NetDaemon.HassModel;  // <--- changed
 ```
 
-#### Update appSettings.json
+### 4. Update appSettings.json
 
 There is a breaking change in your `appSettings.json` file - in the `NetDaemon` section rename the `AppSource` key to `ApplicationConfigurationFolder`. Note also that the default application source folder has changed from `"."` to `"./apps"`.
 
@@ -134,11 +135,23 @@ V3 variant:
   // ...
 ```
 
+### 5. Update the code generator
 
-#### Update the version of NetDaemon  in Home Assistant
+As some of the namespaces have changed you should update your locally installed version of the [Code generator](/v3/hass_model/hass_model_codegen.md) by running the following command:
+
+```bash
+dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen
+```
+
+...and then re-run the generator to create an updated version of `HomeAssistantGenerated.cs`
+
+
+
+### Update the version of NetDaemon in Home Assistant
 
 If you still have v2 of NetDaemon installed inside Home Assistant ("HA") then that will not be able to run your v3 apps. You should remove the v2 install from HA first, then install the v3 version.
 
 After you have done so remember to check the configuration (the default config path changed from `/config/netdaemon` to `/config/netdaemon3`) and re-deploy your apps project to it, then restart NetDaemon and check the logs.
 
 You can find the [installation instructions here](v3/started/installation.md)
+
