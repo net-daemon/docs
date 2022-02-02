@@ -48,7 +48,7 @@ The `System.Reactive.Concurrency.Scheduler` namespace provides several extension
 
 Eg. to turn off the lights in my living in 2 minutes from now I can use:
 ```csharp
-scheduler.Schedule(Timespan.FromMinutes(2, () => entities.Light.Living.TurnOff());
+scheduler.Schedule(TimeSpan.FromMinutes(2), () => entities.Light.Living.TurnOff());
 ```
 
 Scheduling periodic jobs using the default scheduling methods have some limitations
@@ -59,10 +59,41 @@ Scheduling periodic jobs using the default scheduling methods have some limitati
 As a more convenient way to schedule periodic tasks, the NetDaemon Scheduling Extensions provides an extension method `ScheduleCron()`. This can be used like this:
 
 ```csharp
-scheduler.ScheduleCron("30 23 * * *",() => entities.Light.Living.TurnOff();
+public CronSchedulingApp(IHaContext ha, IScheduler scheduler)
+{
+    var entities = new Entities(ha); 
+    scheduler.ScheduleCron("45 23 * * *", () => entities.Light.Living.TurnOff());
+}
 ```
-Which will turn off the living room light at 23:30 each day. 
+Which will turn off the living room light at 23:45 each day. 
 
 The first argument of this method is a [CRON expression](https://en.wikipedia.org/wiki/Cron) that describes the pattern of the schedule. Cron supports schedules based on minute hour day month day of week. This CRON expression will be evaluated using the local timezone that is setup for your environment.
 
 The `ScheduleCron()` extension method uses [Cronos](https://github.com/HangfireIO/Cronos) to parse your CRON expression. See its docs for the exact specification.
+
+## Unit testing scheduling apps
+Timing in some apps can be pretty complicated. It can therefore be usefull to create unit tests for your schudeules. For this purpose there is a special version of the IScheduler interface implemented by `Microsoft.Reactive.Testing.TestScheduler` in the `Microsoft.Reactive.Testing` nuget package 
+
+This scheduler allows you to do time traveling in unit tests like this:
+
+```csharp
+[Fact]
+public void TestCron()
+{
+    var haContextMoq = new Mock<IHaContext>();
+
+    var testScheduler = new Microsoft.Reactive.Testing.TestScheduler();
+    testScheduler.AdvanceTo(new DateTime(2020, 2, 1, 23, 44, 0).ToUniversalTime().Ticks);
+
+    var app = new CronSchedulingApp(haContextMoq.Object, testScheduler);
+
+    haContextMoq.VerifyNoOtherCalls();
+    testScheduler.AdvanceBy(TimeSpan.FromMinutes(1).Ticks);
+    
+    haContextMoq.Verify(h => h.CallService("light", "turn_off",
+        It.Is<ServiceTarget>(s => s.EntityIds!.Single() == "light.living"),
+        It.IsAny<LightTurnOffParameters>()));
+}
+```
+
+The `TestScheduler` is initially setup to `23:44` local time, just before the lights are supposed to be turned off. The testcode then creates an instance of our `CronSchedulingApp` and passes it a mock of the `IHacontext` and the `TestScheduler`. Initially no calls should be made on the `IHaContext`. But when the `TestScheduler` advances 1 minute we expect the app to call `CallService` on the `IHaContext` to turn of the lights in the livingroom
