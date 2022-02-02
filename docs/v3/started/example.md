@@ -2,7 +2,7 @@
 id: example
 title: Example app
 ---
-This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file  `ExampleApp.cs` that contains the app logic. This example uses the code generation capability of HassModel [explained here](v3/hass_model/hass_model_codegen.md).
+This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file `ExampleApp.cs` that contains the app logic. This example uses the code generation capability of HassModel [explained here](v3/hass_model/hass_model_codegen.md).
 
 ## ExampleApp.cs
 
@@ -10,7 +10,7 @@ This application shows basic capabilities of the HassModel API of NetDaemon. It 
 using System;
 using System.Reactive.Linq;
 using NetDaemon.AppModel;
-using NetDaemon.HassModel.Common;
+using NetDaemon.HassModel;
 using HomeAssistantGenerated;
 
 [NetDaemonApp]
@@ -20,11 +20,10 @@ public class ExampleAppHaContext
     {
         var entities = new Entities(ha);
         
-        entities.BinarySensor.AtticMotionsensor
+        entities.BinarySensor.OfficeMotion
             .StateChanges()
-            .Where(e => e.New.IsOff())
-            .Throttle(TimeSpan.FromMinutes(10))
-            .Subscribe(_ => entities.Light.Attic.TurnOff());
+            .Where(e => e.New.IsOn())
+            .Subscribe(_ =>entities.Light.Office.TurnOn());
     }
 }
 ```
@@ -51,22 +50,20 @@ The constructor can be used to do initialization of your application. **Never bl
 ```cs
         var entities = new Entities(ha);
         
-        entities.BinarySensor.AtticMotionsensor
-            .StateChanges
-            .Where(e => e.New.IsOff())
-            .Throttle(TimeSpan.FromMinutes(10))
-            .Subscribe(_ => entities.Light.Attic.TurnOff());
+        entities.BinarySensor.OfficeMotion
+            .StateChanges()
+            .Where(e => e.New.IsOn())
+            .Subscribe(_ => entities.Light.Office.TurnOn());
 ```
 
 | Function        | Description                                                              |
 | --------------- | -------------------------------------------------------------------------|
 | new Entities(ha)     | Creates an Instance of the generated Entities class that provides strong typed access to all your HA entities |
-| entities.BinarySensor.Motionsensor01          | Selects an entity from HomeAssitant |
-| StateChanges    | Respond to state changes of Motionsensor01                  |
-| Where           | Lamda expression of when to do action, in this case when the sensor' state becomes 'off' |
-| Throttle        | Do action only if state has not changed for a period of time (10 minutes) |
+| entities.BinarySensor.OfficeMotion          | Selects the `binary_sensor.office_motion`  entity from HomeAssitant |
+| StateChanges()  | Respond to changes of the state of this motion sensor
+| Where           | FIlter which state changes we are interested in, this case when the sensor' state becomes 'on' |
 | Subscribe       | Calls any code/action when criteras met                                  |
-| TurnOff()       | Calls a generated service method using an ENtity as the target|
+| TurnOff()       | Turns off the lights in the office using another generated entity and a generated service method |
 
 ## Real-world example apps
 
