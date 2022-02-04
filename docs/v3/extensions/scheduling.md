@@ -1,6 +1,6 @@
 ---
 id: extensions_scheduling
-title: Scheduling extension
+title: Scheduling
 ---
 
 Many application require some sort of scheduled or periodic task to be executed. Like switching off lights at a specific time.

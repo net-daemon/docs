@@ -132,13 +132,8 @@ module.exports = {
         type: 'category',
         label: 'Extensions API',
         items: [
-          {
-            type: 'category',
-            label: 'Scheduling',
-            items: [
-              'v3/extensions/scheduling/extensions_scheduling',
-            ]
-          },
+          'v3/extensions/extensions_scheduling',
+          'v3/extensions/extensions_tts',
         ]
       },
     ],
