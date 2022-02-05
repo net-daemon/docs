@@ -134,7 +134,7 @@ module.exports = {
         items: [
           'v3/extensions/extensions_scheduling',
           'v3/extensions/extensions_tts',
-          'v3/extensions/extensions_EntityManager',
+          'v3/extensions/extensions_mqttEntityManager',
         ]
       },
     ],

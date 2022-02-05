@@ -1,5 +1,5 @@
 ---
-id: extensions_EntityManager
+id: extensions_mqttEntityManager
 title: Entity Manager
 ---
 
@@ -52,7 +52,7 @@ await Host.CreateDefaultBuilder(args)
 Optional Mqtt Parameters
 
 - Port - default `1883`
-- UserId - default `null`
+- UserName - default `null`
 - Password - default `null`
 - DiscoveryPrefix - default `homeassistant`
 
