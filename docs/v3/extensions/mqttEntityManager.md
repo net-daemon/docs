@@ -122,22 +122,16 @@ The optional `EntityCreationOptions` allows you to override the following parame
 
 ### Updating entities: state and attributes
 
-There are two methods that you can use to update an entity:
+Use the `UpdateAsync()` method to set state and/or update attributes:
 
 ```csharp
-Task UpdateAsync(string entityId, string state, string? attributes = null);
+Task UpdateAsync(string entityId, string? state, object? attributes = null);
 ```
 
-```csharp
-Task UpdateAsync(string entityId, string state, object? attributes = null);
-```
-
-Both take the same arguments:
+The arguments are:
  * `entityId` the "domain.identifier" format entity ID supplied in the `CreateAsync()` method
- * `state` the desired state of the entity
- * `attributes` an optional collection of "key=value" attributes
-
- The only difference between the two methods is that you can supply a strongly-typed object or an anonymous object to the second method, or you can supply a pre-formatted json structure to the first.
+ * `state` optional new desired state of the entity
+ * `attributes` an optional collection of "key=value" attributes - this can be a concrete or anonymous object
 
 
 ### Removing entities
