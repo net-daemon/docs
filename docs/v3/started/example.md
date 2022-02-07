@@ -65,6 +65,10 @@ The constructor can be used to do initialization of your application. **Never bl
 | Subscribe       | Calls any code/action when criteras met                                  |
 | TurnOff()       | Turns off the lights in the office using another generated entity and a generated service method |
 
+## Creating and updating HomeAssistant entities
+
+If you want to create entities from NetDaemon, set their state attributes, then check out the [MQTT Entity Manager documentation](v3/extensions/mqttEntityManager.md)
+
 ## Real-world example apps
 
 Please check out the apps being developed for netdaemon. Since documentation is still lacking behind it will be best looking at real code 😊
