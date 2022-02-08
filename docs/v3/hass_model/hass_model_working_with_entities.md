@@ -11,13 +11,15 @@ The Entity class provides access to the Entities current state and attributes, a
 
 ## Instancing Entities
 
-The basic way to instance an Entity is just by referring to it via its constructor
+The basic way to create an instance of an Entity is just by referring to it via its constructor.
 
 ```csharp
 var atticLight = new Entity(haContext, "light.attic");
 ```
 
-or alteratively by using this extension method on IHaContext
+Not that this does not create a new Entity in Home Assistant. It will just create an instance of the .Net Entitiy class to interact with an exisiting Home Assistant Entity.
+
+ An alternative way to do this is by using this extension method on IHaContext
 
 ```csharp
 var atticLight = haContext.Entity("light.attic");
@@ -27,16 +29,18 @@ When using the code generator all discoverd Entities in your Home Assistant will
 
 ```csharp
 var myEntities = new Entities(haContext);
-/// ...
 
 var atticLight = myEntities.Light.Attic;
 ```
 
 ## State
-The current state value can be retrieved as a string value like this
+
+Entities in Home Assistant have a state property and a set of attributes. NetDaemon makes these available via the `Entity.State` and `Entity.Attributes` properties. Accessing these properties does *NOT* involve calling Home Assistant to retrieve the current state. Instead NetDaemon subscribes to Home Assistants state_changed event when it starts and keeps an internal cache of the states of all entities in memory.
+
+The current state value of an Entity can be retrieved as a string value like this
 
 ```csharp
-var state = light1.State;
+var state = atticLight.State;
 ```
 
 Some entities like many Sensors, have numeric state values. To make it easier to work with them without manually pasing the state, you can use a `NumericEntity` which has a `double` `State` property.
@@ -123,12 +127,6 @@ myEntities.Sun.Sun
     });
 ```
 
-## Creating entities, setting state and updating attributes
-
-Currently, the only way to create a new entity, remove it, or set its state (outside the methods above) or set its attributes is via the [MQTT Entity Manager extension](v3/extensions/mqttEntityManager.md).
-
-
-
 ## Call services on an Entity
 Many services in Home Assitant take an Entity Id's as their target. When you hava an instance of an entity you can use it directly to call such a Service.
 
@@ -138,8 +136,35 @@ light1.CallService("turn_on", new { brightness = 100 } );
 
 The second argument is the data that is passed with the service call. This can be an object that will be Json-serialized as the service data. You can use an anonymous type for this or any other type that has properties that match the arguments of the service.
 
-The code genrator also provides extension methods for all services that take a specific type of Entity as their target.
+The same can be done with an IEnumerable of entities that have the same domain
+
+```csharp
+var downstairsLights = new [] {
+     haContext.Entity("light.living"), 
+     haContext.Entity("light.kitchen") };
+
+downstairsLights.CallService("turn_on", new { brightness = 100 } );
+```
+
+This will make a single call to Home Assistant to call the light.turn_on service on both entities.
+
+The code generator also provides extension methods for all services that take a specific type of Entity as their target:
 
 ```csharp
 myEntities.Light.Attic.TurnOn(transition: 50, brightnessPct: 50);
 ```
+
+or using an IEnumerable<LightEntity>:
+
+```csharp
+var downstairsLights = new [] {
+     myEntities.Light.Living, 
+     myEntities.Light.Kitchen };
+
+downstairsLights.TurnOn(transition: 50, brightnessPct: 50);
+```
+
+
+`CallService` as well as the generated extension methods are non-blocking fire-and-forget calls. They send a message to Home Assistant using a websocket connection. Your application code does not need to await this async call, Netdaemon does that internally and will log any Exceptions to the configured logger. 
+
+The reason for this is that it is generally not usefull for your application code to await for the message to be delivered to Home Assitant. This is because the message being deliverd to Home Assitant does not mean it has actually been procesed by the actual device.

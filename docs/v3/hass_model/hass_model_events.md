@@ -3,7 +3,7 @@ id: hass_model_events
 title: Home Assistant events 
 ---
 
-Home Assistant has a generic event mechanism. Using HassModel you can respond to events as well as trigger events in Home Assistant
+Home Assistant has a generic event mechanism. Using HassModel you can respond to events as well as trigger events in Home Assistant.
 
 ## Respond to Events
 All events in Home Assistant are made available to your apps as an `IObservable<Event>` via the `Events` property of the `IHaContext` interface.
