@@ -79,3 +79,4 @@ Please check out the apps being developed for netdaemon. Since documentation is 
 | [@helto4real](https://github.com/helto4real/HassModelAutomations)                          | Tomas netdaemon apps running in production (The HassModel version)          |
 | [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's netdaemon apps, check them out, nice stuff |
 | [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's netdaemon apps, good example extending netdaemon  functionality |
+| [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                                              | Kennetjuh's netdaemon implementation (V3) |
