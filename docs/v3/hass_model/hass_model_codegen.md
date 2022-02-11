@@ -7,18 +7,21 @@ NetDaemon has a generator that creates code based on the Entities and services i
 
 The code generator is installed as a [.NET global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) via the following command:
 
-```
+```cmd
 dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen
 ```
-
-*While in preview, it is required to include the -version of the most recent version explicitly. Please check
-https://www.nuget.org/packages/JoySoftware.NetDaemon.HassModel.CodeGen/ for the latest version*
 
 After it is installed as a global tool it can be run with the command:
 
 `
 nd-codegen
 `
+
+You can use following command to keep it up to date with the latest version:
+
+```cmd
+dotnet tool update -g JoySoftware.NetDaemon.HassModel.CodeGen
+```
 
 When the tool is run from the folder of your NetDaemon project that contains an `appsettings.json` or `appsettings.development.json` file it will automatically use the connection settings from that config file to connect to Home Assistant. It will output a single file `HomeAssistantGenerated.cs` that contains all the generated code.
 
