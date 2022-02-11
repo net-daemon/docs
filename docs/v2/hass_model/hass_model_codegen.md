@@ -7,9 +7,18 @@ NetDaemon has a generator that creates code based on the Entities and services i
 
 The code generator is installed as a [.NET global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) via the following command:
 
-```
+```cmd
 dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen --version 22.1.x
 ```
+
+You can use following command to keep it up to date with the latest version:
+
+```cmd
+dotnet tool update -g JoySoftware.NetDaemon.HassModel.CodeGen  --version 22.1.x
+```
+
+**Make sure the version of the codegen tool and your nugets `Joysoftware.NetDaemon.*` have the same version.**
+
 Please see what the [latest released version of V2](https://github.com/net-daemon/netdaemon_v2/releases/latest) for correct version.
 
 For V3 version of runtime please see the V3 docs!
