@@ -9,9 +9,9 @@ Entities are the core data structures of Home Assistant. In NetDaemon an Entity 
 
 The Entity class provides access to the Entities current state and attributes, as well as the state change events of the Entity. It also has a way to call Services that take the Entitiy as a target.
 
-## Instancing Entities
+## Accessing Entities
 
-The basic way to create an instance of an Entity is just by referring to it via its constructor.
+The basic way to create an instance of an Entity is just by calling its constructor.
 
 ```csharp
 var atticLight = new Entity(haContext, "light.attic");
@@ -154,7 +154,7 @@ The code generator also provides extension methods for all services that take a 
 myEntities.Light.Attic.TurnOn(transition: 50, brightnessPct: 50);
 ```
 
-or using an IEnumerable<LightEntity>:
+or using an `IEnumerable<LightEntity>`:
 
 ```csharp
 var downstairsLights = new [] {
