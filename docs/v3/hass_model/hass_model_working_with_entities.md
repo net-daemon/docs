@@ -127,6 +127,18 @@ myEntities.Sun.Sun
     });
 ```
 
+In some cases you will want to wait for an entity to be in a specific state for some time before taking an action. Like a motion sensor that is in the `"off"` state for 5 minutes. The `WhenStateIsFor()` extension method helps doing that.
+
+```csharp
+myEntities.BinarySensor.MyMotionSensor
+    .StateChanges()
+    .WhenStateIsFor(s => s?.State == "off", TimeSpan.FromMinutes(5))
+    .Subscribe(s => myEntities.Light.Attic.TurnOff());
+```
+
+`WhenStateIsFor` takes a predicate as its first argument. Note that this predicate will receive an `EntityState` argument and not a `StateChange` like the `Where()` we used above. This predicate will determine if the state it recieves matches what we are looking for. `WhenStateIsFor` will first wait for a state change where the old state did not match the predicate and the new state does match, so in this case when it becomes `"off"`. If after 5 minutes there was no state change where the new state did no longer match the predicate (it is still `"off"`) it will forward the event and in this case turn off the attic light.
+
+
 ## Call services on an Entity
 Many services in Home Assitant take an Entity Id's as their target. When you hava an instance of an entity you can use it directly to call such a Service.
 
