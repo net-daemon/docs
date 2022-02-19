@@ -136,7 +136,7 @@ You can use `additionalConfig` to supply additional parameters that might be req
 
 ### Setting the state of an entity
 
-Use the `SetState()` method to set an entity's state:
+Use the `SetStateAsync()` method to set an entity's state:
 
 ```csharp
 Task SetStateAsync(string entityId, string state);
@@ -149,7 +149,7 @@ The arguments are:
 
 ### Setting attributes on an entity
 
-Use the `SetAttributes()` method to set an entity's state:
+Use the `SetAttributesAsync()` method to set an entity's state:
 
 ```csharp
 Task SetAttributesAsync(string entityId, object attributes);
@@ -157,7 +157,7 @@ Task SetAttributesAsync(string entityId, object attributes);
 
 The arguments are:
  * `entityId` the "domain.identifier" format entity ID supplied in the `CreateAsync()` method
- * `attributes` a concrete or anonymouse object that can be serialized to json
+ * `attributes` a concrete or anonymous object that can be serialized to json
 
 
 
@@ -193,7 +193,7 @@ await entityManager.SetAvailabilityAsync("domain.sensor", "down").ConfigureAwait
 ```
 
 
-Please carefully consider whether you need to use availability on an entity - if you enable it then it becomes your responsibility to ensure that the availability is set correctly before attempting to read or update its state or configuration. An entity that is marked unavailable is... _unavailable_!
+Please carefully consider whether you need to use availability on an entity - if you enable it then it becomes your responsibility to ensure that the availability is set correctly before attempting to read or update its state or configuration. An entity that is marked unavailable is... _not available_!
 
 
 ### Removing entities
@@ -243,7 +243,7 @@ await _entityManager.CreateAsync("switch.kitchen_lights",
 
 **A humidity sensor with availability and custom unit-of-measurement**
 
-This example creates a sensor that uses "up" and "down" to mark its availability, and records the level of rain in terms of milimetres per hour. It takes advantage of the Availability payloads and a custom additional-config.
+This example creates a sensor that uses "up" and "down" to mark its availability, and records the level of rain in terms of milimetres per hour. It takes advantage of the Availability payloads, a specific device class ("humidity") and a custom additional-config.
 
 Finally, we set the sensor as being available and record three different measures.
 
