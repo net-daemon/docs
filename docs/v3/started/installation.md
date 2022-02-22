@@ -51,7 +51,7 @@ docker run -d \
   --restart=always \
   -e HomeAssistant__Host=192.168.1.4 \
   -e HomeAssistant__Token=XXXXX \
-  -e NetDaemon__ApplicationAssembly=NetDaemonApps.dll
+  -e NetDaemon__ApplicationAssembly=NetDaemonApps.dll \
   -e Logging__LogLevel__Default=Information \
   -e TZ=Europe/Stockholm \
   -v ~/netdaemon_config:/data \
