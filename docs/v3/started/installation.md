@@ -51,6 +51,7 @@ docker run -d \
   --restart=always \
   -e HomeAssistant__Host=192.168.1.4 \
   -e HomeAssistant__Token=XXXXX \
+  -e NetDaemon__ApplicationAssembly=NetDaemonApps.dll \
   -e Logging__LogLevel__Default=Information \
   -e TZ=Europe/Stockholm \
   -v ~/netdaemon_config:/data \
@@ -71,7 +72,8 @@ services:
     restart: always
     environment:
       - HomeAssistant__Host=your_ip_or_hostname
-      - HomeAssistant.Token=your_token
+      - HomeAssistant__Token=your_token
+      - NetDaemon__ApplicationAssembly=NetDaemonApps.dll
       - Logging__LogLevel__Default=Information  # use Information/Debug/Trace/Warning/Error
       - TZ='Etc/UTC'                            # Set your current timezone
     volumes:
@@ -81,7 +83,7 @@ services:
 
 ### Evironment variables
 
-The docker container needs 3 environment variables to run properly.
+The docker container needs these environment variables to run properly.
 
 | ENV                                         | Description                                                                                                                                                             |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -90,9 +92,9 @@ The docker container needs 3 environment variables to run properly.
 | `HomeAssistant__Ssl`                       | Set to True if SSL is used to access Home Assistant.                                                                                                               |
 | `HomeAssistant__Token`                       | A Long Lived Access Token(LLAT) that NetDaemon can use for the comminication with Home Assistant.                                                                        |
 | `HomeAssistant__InsecureBypassCertificateErrors`                       | Ignores certificate errors. Please use at own risk.                                                                        |
+| `NetDaemon__ApplicationAssembly`            | Use this for the `Deploy compiled assemblies` option. Set to `{your_assembly}.dll`. For source deployment you should not set this setting! |
 | `Logging__LogLevel__Default`                | Defaults to Information, values are (Trace, Debug, Information, Warning, Error)                                                                                         |
 | `TZ`                                        | You will need to set container time zone to make the scheduler work properly                                                                                            |
-| `NetDaemon__ApplicationAssembly`            | Used to setup more advanced runtime options. Set to `{your_assembly}.dll` for published projects. For source deployment you should not set this setting! |
 | `NetDaemon__ApplicationConfigurationFolder` | If you want to select another folder for your yaml configurations. Standard is `/data`                                                                                  |
 
 ### Volumes
