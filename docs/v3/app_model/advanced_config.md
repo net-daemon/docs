@@ -37,23 +37,32 @@ ComplexConfig: # This should have the same name as class
         - name: command2
             data: some code2";
 ```
+
 ```csharp
 // The app using the config
-public class ComplexConfig : NetDaemonApp
+[NetDaemonApp]
+public class ComplexConfigApp
+{
+
+    public ComplexConfigApp(IAppConfig<ComplexConfig> config)
+    {
+        ComplexConfig complexConfig = config.Value;
+        
+        // Use config
+        foreach(var device in complexConfig.Devices)
+        {
+            // Do something useful or fun
+        }
+    }
+}
+
+public class ComplexConfig
 {
     public string? AString { get; set; }
     public int? AnInt { get; set; }
     public bool? ABool { get; set; }
     public IEnumerable<string>? AStringList { get; set; }
     public IEnumerable<Device>? Devices { get; set; }
-    public void ComplexConfig(IAppConfig<ComplexConfig> config)
-    {
-        // Use config
-        foreach(var device in Devices)
-        {
-            // Do something useful or fun
-        }
-    }
 }
 
 public class Device
