@@ -3,17 +3,17 @@ id: app_model_advanced_config
 title: Advanced configuration
 ---
 
-You can use complex data types for config in yaml instancing.
+You can use complex data types for config in yaml instancing. Make sure you are not using immutable datatypes like strings or read-only collections without making them nullable. For collections we recommend using IList&ltT&gt that are instanced with List&ltT&gt if you do not want to be nullable.
+
+*V3 no longer support snake casing yaml config. The names needs to match case sensitive name of property or class.*
 
 ### Advanced configuration
 Examples of configuraitions below
 
 | Yaml type                                                             | .NET type                                                                                                                  |
 | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| *Scalar* <br/>a_string: hello world <br/>an_int: 10 <br/>a_bool: true | <br/>string? AString {get;set;} <br/>int? AnInt {get;set;} <br/>bool? ABool {get;set;}                                     |
-| *Sequences* <br/>simple_list:<br/>  - Hello<br/>  - World             | IEnumerable&ltstring&gt? SimpleList {get;set;} <br/>*sequences are always IEnumerable&lttype&gt, lists are not supported!* |
-| Sequence complex                                                      | Se code example                                                                                                            |
-
+| *Scalar* <br/>AString: hello world <br/>AnInt: 10 <br/>ABool: true | <br/>string? AString {get;set;} <br/>int? AnInt {get;set;} <br/>bool? ABool {get;set;}                                     |
+| *Sequences* <br/>SimpleList:<br/>  - Hello<br/>  - World             | IList&ltstring&gt SimpleList {get;set;} <br/>Sequences can also be IEnumerable&lttype&gt but needs to be nullable in that case |
 
 #### Example of complex data types support
 
@@ -61,14 +61,14 @@ public class ComplexConfig
     public string? AString { get; set; }
     public int? AnInt { get; set; }
     public bool? ABool { get; set; }
-    public IEnumerable<string>? AStringList { get; set; }
-    public IEnumerable<Device>? Devices { get; set; }
+    public IList<string> AStringList { get; set; } 
+    public IEnumerable<Device>? Devices { get; set; } 
 }
 
 public class Device
 {
     public string? name { get; set; }
-    public IEnumerable<Command>? commands { get; set; }
+    public IEnumerable<Command>? commands { get; set; } 
 }
 public class Command
 {
