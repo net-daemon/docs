@@ -4,15 +4,19 @@ title: Moving from NetDaemon version 2
 ---
 
 If you are using HassClient today and want to migrate to v3 you have two options:
-   1.  Manually copy your existing apps over to a new copy of the v3 branch of the [app template](https://github.com/net-daemon/netdaemon-app-template/tree/v3). This is recommended if you're just starting out and don't have a complex project or solution.
-   1. Manually update your project to support the new v3 packages. This is recommended if you have a more complex NetDaemon project - see the [section below](#upgrading-an-existing-apps-project-to-v3) for more details.
+
+   1. Manually copy your existing apps over to a new copy of the v3 app template. *This is the recommended approach.* [See how to get the template here](../started/development.md#use-dotnet-cli-tool)
+   2. Manually update your project to support the new v3 packages. This is recommended if you have a more complex NetDaemon project - see the [section below](#upgrading-an-existing-apps-project-to-v3) for more details.
+
+**Please do not mix the models in the same project! If you are upgrading app by app and have both V2 and V3 apps for a time please use two different deployments/add-ons and locations for your V2 and V3 apps!**
 
 ### Main changes
 
 Here is a summary of the main changes between the versions:
-- New namespaces `NetDaemon.AppModel` and `NetDaemon.Runtime`. If you are using HasClient today you should just replace any `NetDaemon.xyz` to `NetDaemon.AppModel`. We recommend check out the [v3 branch of template](https://github.com/net-daemon/netdaemon-app-template/tree/v3).
-- Configuration using Yaml is changed. Configuration is now only available as injected `IAppConfig<Class>` in constructor. To migrate, copy public properties to own config class and change the yaml using that class name instead of app name. Class property on yaml can be removed.
-- Base class based on `NetDaemonRxApp` is not supported at all. You will need to migrate your applications to HassModel before upgrad to NetDaemon 3.
+
+- New namespaces `NetDaemon.AppModel` and `NetDaemon.Runtime`. If you are using HasClient today you should just replace any `NetDaemon.xyz` to `NetDaemon.AppModel`. We recommend check out the [how to get the template here.](../started/development.md#use-dotnet-cli-tool).
+- Configuration using yaml is changed. Configuration is now only available as injected `IAppConfig<Class>` in constructor. To migrate, copy public properties to own config class and change the yaml using that class name instead of app name. Class property on yaml can be removed.
+- Base class based on `NetDaemonRxApp` is not supported at all. You will need to migrate your applications to HassModel before upgrade to NetDaemon 3.
 
 
 ### Upgrading an existing apps project to v3
