@@ -137,6 +137,13 @@ module.exports = {
           'v3/extensions/extensions_mqttEntityManager',
         ]
       },
+      {
+        type: 'category',
+        label: 'Troubleshooting',
+        items: [
+          'v3/troubleshooting/trouble_call_service',
+        ]
+      },
     ],
   },
   "developer documentation": {
