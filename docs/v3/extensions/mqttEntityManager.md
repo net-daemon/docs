@@ -25,7 +25,7 @@ To set up the Entity Manager manually you should:
 - Include the JoySoftware.NetDaemon.Extensions.MqttEntityManager NuGet package 
 
 ```ps
-Install-Package JoySoftware.NetDaemon.Extensions.Mqtt
+dotnet add package JoySoftware.NetDaemon.Extensions.Mqtt
 ```
 
 
