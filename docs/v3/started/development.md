@@ -177,7 +177,7 @@ After you have developed and tested your apps it is time to deploy and run the a
 
 ### Compiled assemblies and configurations
 
-Just do `dotnet -c Release publish -o [your output directory]` and copy all content from `[your output directory]` to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options.
+Just do `dotnet publish -c Release -o [your output directory]` and copy all content from `[your output directory]` to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options.
 
 See [installation docs](v3\started\installation.md) for how to configure different hosting options.
 
