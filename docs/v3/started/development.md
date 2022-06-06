@@ -186,3 +186,7 @@ See [installation docs](v3\started\installation.md) for how to configure differe
 Copy the content from the `apps` folder to to `/config/netdaemon3` if you are using add-on or the destination folder you chose for the other host options. **Do not copy project files. Only copy contents under `apps` folder!**
 
 See [installation docs](v3\started\installation.md) for how to configure different hosting options.
+
+### Keep your dependencies and tools up-to-date
+
+In the template projects we provided a convenience powershell script that will update the codegen and nugets to latest versions `update_all_dependencies.ps1`.
