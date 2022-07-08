@@ -102,6 +102,7 @@ module.exports = {
           'v3/app_model/app_model_instancing',
           'v3/app_model/app_model_advanced_config',
           'v3/app_model/app_model_custom_logging',
+          'v3/app_model/app_model_custom_config',
           'v3/app_model/app_model_moving_from_v2',
         ],
       },
