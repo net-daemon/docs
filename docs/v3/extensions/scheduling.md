@@ -43,6 +43,8 @@ class MyApp(IScheduler scheduler)
 
 The scheduler you will receive is based on the `System.Reactive.Concurrency.DefaultScheduler.Instance`. This scheduler is however wrapped with additional behaviour that will make sure that any tasks you schedule on this scheduler will be cancelled when the application is stopped. It will also log exceptions from scheduled tasks to the configured ILogger.
 
+__The IScheduler.Now always returns UTC. Use `Now.LocalDateTime` to get the current time in local time.__
+
 ### Using the Scheduler
 The `System.Reactive.Concurrency.Scheduler` namespace provides several extension methods for `IScheduler` that allow you to schedule tasks at a specific time, after a specific time span or periodic. You can use these framework provided methods directly on the scheduler you got via the constructor and they wil be scheduled using the cancellation and logging behaviour.
 
