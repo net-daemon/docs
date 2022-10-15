@@ -48,11 +48,11 @@ try
     // etc...
 ```
 
-Update this to reflect the makeup of the new v3 app template's [program.cs](https://github.com/net-daemon/netdaemon-app-template/blob/v3/program.cs) - before you do this, check whether you are using a custom logger or any other custom configuration, and copy this out of the way. You can copy it back again after you have updated to the v3 startup.
+Update this to reflect the makeup of the new v3 app template's [program.cs](https://github.com/net-daemon/netdaemon-app-template/blob/v3/DefaultDeploy/program.cs) - before you do this, check whether you are using a custom logger or any other custom configuration, and copy this out of the way. You can copy it back again after you have updated to the v3 startup.
 
 :::caution Warning
 
-Please check the up-to-date [version here](https://github.com/net-daemon/netdaemon-app-template/blob/v3/program.cs) rather than copy/pasting from this page. The example below is just to give you an idea of what the new code looks like but the app template may have been updated since this documentation was written.
+Please check the up-to-date [version here](https://github.com/net-daemon/netdaemon-app-template/blob/v3/DefaultDeploy/program.cs) rather than copy/pasting from this page. The example below is just to give you an idea of what the new code looks like but the app template may have been updated since this documentation was written.
 
 :::
 
