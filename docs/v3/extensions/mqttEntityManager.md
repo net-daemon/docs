@@ -320,3 +320,63 @@ await _entityManager.SetStateAsync(rainNexthour4Id, "1").ConfigureAwait(false);
 ```csharp
 await _entityManager.RemoveAsync("sensor.my_id").ConfigureAwait(false);
 ```
+
+
+## Troubleshooting
+
+
+### Is the broker running
+The first thing you should do is verify that an MQTT broker (like Mosquitto) is up and running in Home Assistant.
+
+To do this, go to your "Add-ons" menu in Home Assistant's Settings menu and verify that the broker is installed. Check its configuration tab and verify that the "Network" configuration matches your settings as described in the [Setup section](#setup) above.
+
+You can also check the logs for the broker add-on in the same area.
+
+If you continue to have configuration problems with the broker please refer to the official [Home Assistant MQTT Broker](https://www.home-assistant.io/docs/mqtt/broker/) documentation.
+
+
+### Check the Home Assistant logs
+
+The next step is to check the HA logs to see whether any errors are being logged by the MQTT Entity Manager. To do this, within Home Assistant, go to Settings and System and click on the Logs option.
+
+By default, HA will only show logs for items that *it* thinks are important, so be sure to click the button to "Show full logs".
+
+Once you have the full logs open search for "mqtt" and check for any errors.
+
+
+
+### Configuring detailed logging
+
+If you are continuing to have issues, especially if they are intermittent, then the next best step is to enable detailed logging for the underlying MQTT Entity Manager.
+
+Unfortunately there is no way to do this with the standard logging that ships with NetDaemon however it is very straightforward to configure a custom logger that will allow you to show detailed logging. The good news is that once you have configured that custom logger you'll probably not want to go back to the original!
+
+This change of logger only needs to be done once and after that you can tweak the logging config within your `appSettings.json`.
+
+
+There is a whole page dedicated to [custom logging](/v3/app_model/custom_logging.md) so just pop [over there](/v3/app_model/custom_logging.md), get that up and running and then return to this page...
+
+
+
+You're back! Ok - the next thing we need to do is enable verbose logging for the MQTT Entity Manager, which you can do within your `appSettings.json` file - find the `Override` section and add a new entry for `NetDaemon.Extensions.MqttEntityManager` and set it to `Verbose`:
+
+
+```json
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Warning",
+      "Override": {
+        "System": "Information",
+        "Microsoft": "Information",
+        "System.Net.Http.HttpClient": "Warning",
+        "NetDaemon.Extensions.MqttEntityManager": "Verbose"
+      }
+    },
+```
+
+Now redeploy / restart your app and you should start to see logging from the `NetDaemon.Extensions.MqttEntityManager` namespace.
+
+
+If you are seeing a lot of logging and you want to turn it down to a part of the entity manager code then tweak that namespace to be one of the classes within the code - you can browse the code (and contribute!) [over on GitHub](https://github.com/net-daemon/netdaemon/tree/dev/src/Extensions/NetDaemon.Extensions.MqttEntityManager).
+
