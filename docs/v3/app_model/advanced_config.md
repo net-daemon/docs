@@ -92,4 +92,4 @@ Ensure the following is in your .csproj file to do this automatically for all YA
     </None>
 </ItemGroup>
 ```
-Alternatively, set Copy to Output Directory to Copy Always [!image1](https://user-images.githubusercontent.com/6813309/201211464-c4288fac-a58b-47d1-a7e9-2b061db0abf5.png)
+Alternatively, set Copy to Output Directory to Copy Always ![image](https://user-images.githubusercontent.com/6813309/201219449-495d0015-a08a-4651-9db0-e445ea4e6e53.png)
