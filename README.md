@@ -63,5 +63,5 @@ If you are having problems with cached files etc. within the container you can f
 
 ## Submitting a pull request
 
-Finally, once you've verified that the docs code builds correctly locally you can submit a pull request. The PR on GitHub will have a series of checks, including one for "build" - clicking the "view details" link on that check should point you to a GitHub-hosted version of your docs so you (and reviewers) can do a check of the generated documentation.
+Finally, once you've verified that the docs code builds correctly locally you can submit a pull request. The PR on GitHub will have a series of checks, including one for "deploy-preview" - clicking the "details" link on that check should point you to a GitHub-hosted version of your docs so you (and reviewers) can do a check of the generated documentation.
 
