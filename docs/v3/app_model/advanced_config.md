@@ -99,7 +99,7 @@ public class Command
             &lt;/None&gt;
         &lt;/ItemGroup&gt;
        </pre>
-        <br>Alternatively<br>Set Copy to Output Directory to Copy Always <img src="https://user-images.githubusercontent.com/6813309/201211464-c4288fac-a58b-47d1-a7e9-2b061db0abf5.png" /></td>
+        </br>Alternatively</br>Set Copy to Output Directory to Copy Always <img src="https://user-images.githubusercontent.com/6813309/201211464-c4288fac-a58b-47d1-a7e9-2b061db0abf5.png" /></td>
   </tr>
 </tbody>
 </table>
