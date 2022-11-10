@@ -77,3 +77,21 @@ public class Command
 }
 
 ```
+### Troubleshooting
+#### Issue
+My config properties are all null
+#### Check
+Ensure your YAML file is being copied to the output folder
+#### Fix
+Ensure the following is in your .csproj file to do this automatically for all YAML files
+```xml
+<ItemGroup>
+    <None Include="apps\**\*.yaml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </None>
+</ItemGroup>
+```
+Alternatively, set Copy to Output Directory to Copy Always 
+
+![image](https://user-images.githubusercontent.com/6813309/201219449-495d0015-a08a-4651-9db0-e445ea4e6e53.png)
