@@ -90,7 +90,7 @@ public class Command
   <tr>
     <td>My config properties are all null</td>
     <td>Ensure your YAML file is being copied to the output folder</td>
-    <td>Ensure the following is in your .csproj file to do this automatically for all YAML files<br><br>
+    <td>Ensure the following is in your .csproj file to do this automatically for all YAML files<br/><br/>
        <pre lang="xml">
        &lt;ItemGroup&gt;
             &lt;None Include=&quot;apps\**\*.yaml&quot;&gt;
@@ -99,7 +99,7 @@ public class Command
             &lt;/None&gt;
         &lt;/ItemGroup&gt;
        </pre>
-        </br>Alternatively</br>Set Copy to Output Directory to Copy Always <img src="https://user-images.githubusercontent.com/6813309/201211464-c4288fac-a58b-47d1-a7e9-2b061db0abf5.png" /></td>
+        <br/>Alternatively<br/>Set Copy to Output Directory to Copy Always <img src="https://user-images.githubusercontent.com/6813309/201211464-c4288fac-a58b-47d1-a7e9-2b061db0abf5.png" /></td>
   </tr>
 </tbody>
 </table>
