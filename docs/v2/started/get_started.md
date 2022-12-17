@@ -20,7 +20,7 @@ Now you have all you need to develop an app, lets just do that by moving to App 
 All new users should use version 3 of the runtime! Version 2 will be deprecated and removed.
 
 ## NetDaemon 2
-Version 2 is the current released and supports the two API:s HassModel (dependency injected) and baseclass. Apps using the baseclass is deprecated and we strongly recommend users to use HassModel as base.
+Version 2 is the old version and has both API:s of HassModel (dependency injected) and baseclass. 
 
 ## NetDaemon 3
 Version 3 is a new runtime developed from the start with an  architecture built on top of dependency injection. This model only supports HassModel API for automations. This is still en beta and are more likely to have API changes. The NetDaemon V3 has breaking changes fro V2. It uses different namespaces and the configuration using yaml is redesigned using dependecy injection. 
