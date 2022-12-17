@@ -3,11 +3,10 @@ id: index
 title: NetDaemon Version 3
 ---
 
-NetDaemon provides the capability to write home automations for Home Assistant in C#. Version 3 is a rewrite of current V2 runtime. We decided to introduce some breaking changes. The reason is we wanted to make the product long-term good experience for both users and contributor. We beleive this design will accomplish this goal.
+NetDaemon provides the capability to write home automations for Home Assistant in C#. Version 3. Current version of the NetDaemon runtime is 3.1 and use .NET 7 and C# 11.
 
 ## About NetDaemon version 3
-This version is in beta state and is under development. It is stable but it could be breaking. It will be nuget version >= `22.2.x` and uses the docker image `netdaemon/netdaemon3`.
-Only supported automation API in NetDaemon 3 is using `HassModel` i.e. injecting the `IHaContext` **not** the base class `NetDaemonRxApp`
+Runtime version 3.1 has NuGet version >= `22.44.0` and uses the docker image `netdaemon/netdaemon3_1`.
 
 ## Migrating from version 2
 If you are a current user of version 2 of NetDaemon runtime please see [migrating from version 2 runtime](v3/app_model/moving_from_v2.md)

@@ -55,7 +55,7 @@ docker run -d \
   -e Logging__LogLevel__Default=Information \
   -e TZ=Europe/Stockholm \
   -v ~/netdaemon_config:/data \
-  netdaemon/netdaemon3
+  netdaemon/netdaemon3_1
 ```
 
 _Admin gui is currently not supported for V3 yet._
@@ -66,7 +66,7 @@ _Admin gui is currently not supported for V3 yet._
 version: '3.7'
 services:
   netdaemon:
-    image: netdaemon/netdaemon3                 # use netdaemon/netdaemon3:ver 
+    image: netdaemon/netdaemon3_1                 # use netdaemon/netdaemon3_1:ver 
                                                 # for specific version
     container_name: netdaemon3
     restart: always
