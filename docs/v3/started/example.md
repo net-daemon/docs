@@ -36,6 +36,25 @@ public class ExampleAppHaContext
 
 By decorating a class with the `NetDaemonAppAttribute` it is registered as an application to be loaded by NetDaemon.
 
+NetDeamon will create an helper in Home Assistant. By default, the helper is named: 
+
+| Environment | Name |
+| --------------- | -------------------------------------------------------------------------|
+| Development |  `dev_netdaemon_{namespace}_appname` |
+| Production  | `netdaemon_{namespace}_appname` |
+
+    
+    
+The app name will be converted to snake casing, i.e: HelloWorld -> hello_world
+
+when you want to choose your own name you can make use of the Id parameter like:
+
+```cs
+[NetDaemonApp(Id = "appname")]
+```
+
+Netdaemon will replace {namespace}_appname with youre given Id
+
 ## The constructor
 ```cs
 public ExampleAppHaContext(IHaContext ha)
