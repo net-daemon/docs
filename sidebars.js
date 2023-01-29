@@ -150,6 +150,7 @@ module.exports = {
   "developer documentation": {
     "NetDaemon development": [
       "developer/developer",
+      "developer/architecture",
       "developer/vscode",
       "developer/vs",
       "developer/unit_test"
