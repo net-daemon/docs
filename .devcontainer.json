@@ -1,22 +1,21 @@
 {
-  "name": "NetDaemon Documentation",
-  "image": "ghcr.io/ludeeus/devcontainer/frontend:latest",
-	"settings": { 
+	"name": "NetDaemon Documentation",
+	"image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:16-bullseye",
+	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": false,
 		"[javascript]": {
-		  "editor.defaultFormatter": "esbenp.prettier-vscode",
-		  "editor.formatOnSave": false
-		  
-	  }
+			"editor.defaultFormatter": "esbenp.prettier-vscode",
+			"editor.formatOnSave": false
+		}
 	},
 	"forwardPorts": [
-    3000
-  ],
+		3000
+	],
 	"postCreateCommand": "npm install",
 	"extensions": [
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode"
 	]
-	
 }
