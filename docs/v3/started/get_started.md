@@ -1,6 +1,6 @@
 ---
 id: get_started
-title: Getting started with NetDaemon V3
+title: Getting started with NetDaemon
 ---
 
 ## What do I need to get started?
