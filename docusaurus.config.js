@@ -18,15 +18,9 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/v2',
-          activeBasePath: 'docs',
-          label: 'Docs V2',
-          position: 'left',
-        },
-        {
           to: '/docs/v3',
           activeBasePath: 'docs/v3',
-          label: 'Docs V3',
+          label: 'Docs',
           position: 'left',
         },
         {
@@ -135,9 +129,9 @@ module.exports = {
       {
         hashed: true,
         indexDocs: true,
-        indexBlog: true,
+        indexBlog: false,
         highlightSearchTermsOnTargetPage: true,
-        ignoreFiles:  [".*v2.*"],
+        ignoreFiles:  [/^.*docs\/v2\/.*$/],
       },
     ],
   ],
