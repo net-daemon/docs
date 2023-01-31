@@ -1,6 +1,6 @@
 {
 	"name": "NetDaemon Documentation",
-	"image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:16-bullseye",
+	"image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18-bullseye",
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
