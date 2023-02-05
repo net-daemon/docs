@@ -167,7 +167,7 @@ Example appsettings file
 
 ## Develop and debug your apps
 
-Now properly configured you can develop your application. The template shows example of both develop and test your apps. A sample app has been provided for you: `src/apps/HelloWorld/HelloWorld.cs`.
+Now properly configured you can develop your application. The template shows example of both develop and test your apps. A sample app has been provided for you: `src/apps/HassModel/HelloWorld/HelloWorld.cs`.
 
 Debug and run your apps and view log output for errors.
 
