@@ -5,27 +5,31 @@ title: Working with entities
 
 # Working with Entities
 
-Entities are the core data structures of Home Assistant. In NetDaemon an Entity is represented by the `Entity` class. 
+Entities are the core data structures of Home Assistant. In NetDaemon an entity is represented by the `Entity` class.
 
-The Entity class provides access to the Entities current state and attributes, as well as the state change events of the Entity. It also has a way to call Services that take the Entitiy as a target.
+The `Entity` class provides access to the entity's current state, attributes, and state change events. It also provides a way to call services that take the entity as a target.
 
 ## Accessing Entities
 
-The basic way to create an instance of an Entity is just by calling its constructor.
+The basic way to create an instance of an `Entity` is by calling its constructor:
 
 ```csharp
 var atticLight = new Entity(haContext, "light.attic");
 ```
 
-Not that this does not create a new Entity in Home Assistant. It will just create an instance of the .Net Entitiy class to interact with an exisiting Home Assistant Entity.
+:::note
 
- An alternative way to do this is by using this extension method on IHaContext
+This does not create a new entity in Home Assistant. It creates an instance of the NetDaemon `Entity` class to interact with an existing Home Assistant entity.
+
+:::
+
+ An alternative way to do this is by using the `Entity` extension method on your `IHaContext`:
 
 ```csharp
 var atticLight = haContext.Entity("light.attic");
 ```
 
-When using the code generator all discoverd Entities in your Home Assistant will be generated as strong typed properties that can be accessed like this.
+When using the code generator all discovered entities in your Home Assistant will be generated as strongly typed properties that can be accessed like this:
 
 ```csharp
 var myEntities = new Entities(haContext);
@@ -35,15 +39,21 @@ var atticLight = myEntities.Light.Attic;
 
 ## State
 
-Entities in Home Assistant have a state property and a set of attributes. NetDaemon makes these available via the `Entity.State` and `Entity.Attributes` properties. Accessing these properties does *NOT* involve calling Home Assistant to retrieve the current state. Instead NetDaemon subscribes to Home Assistants state_changed event when it starts and keeps an internal cache of the states of all entities in memory.
+Entities in Home Assistant have a state property and a set of attributes. NetDaemon makes these available via the `Entity.State` and `Entity.Attributes` properties.
 
-The current state value of an Entity can be retrieved as a string value like this
+:::note
+
+Accessing these properties does *NOT* involve calling Home Assistant to retrieve the current state. Instead NetDaemon subscribes to Home Assistant's state_changed event when it starts and keeps an internal cache of the states of all entities in memory.
+
+:::
+
+The current state value of an entity can be retrieved as a string like this:
 
 ```csharp
 var state = atticLight.State;
 ```
 
-Some entities like many Sensors, have numeric state values. To make it easier to work with them without manually pasing the state, you can use a `NumericEntity` which has a `double` `State` property.
+Some entities, like many sensors, have numeric state values. You can create a `NumericEntity` and use its `State` property of type `double` to avoid manual parsing:
 
 ```csharp
 var temperatureSensor = new NumericEntity(haContext, "sensor.bathroom_temperature");
@@ -52,9 +62,11 @@ if (temperatureSensor.State > 20.5) // ...
 ```
 
 ## Attributes
-The Entity class also provides access to the Entities attributes. Each Entity, or set of Entites can have its own set of attributes with their datatypes. The generic `Entity<TAttributes>` class provides a convenient way to acces them in a type safe manner.
 
-For instance a Zone Entity has the folowing attributes
+The `Entity` class also provides access to the entity's attributes. Each entity or set of entities can have its own set of attributes with their own data types. The generic `Entity<TAttributes>` class provides a convenient way to access them in a type safe manner.
+
+For instance a zone entity has the following attributes:
+
 ```yaml
 latitude: 40.657722371758105
 longitude: -74.10552978515626
@@ -65,7 +77,7 @@ friendly_name: New York
 icon: mdi:map-marker
 ```
 
-In order to use these atributes type safely, you can provide a class that can Json-deserialize these attributes into properties. eg:
+To use these attributes with type safety you can provide a class that can JSON-deserialize the attributes into properties:
 
 ```csharp
 record ZoneAttributes
@@ -77,7 +89,8 @@ record ZoneAttributes
     public string? icon { get; init; }
 }
 ```
-and then use it like this:
+
+It can then be used like this:
 
 ```csharp
 var zone = new Entity<ZoneAttributes>(haContext, "zone.new_york");
@@ -86,12 +99,28 @@ double latitude = zone.Attributes.latitude;
 double longitude = zone.Attributes.longitude;
 ```
 
-When using the code generator, a class derived from `Entity<TAttributes>` will be generated for each domain in Home Assitant. And along with it, a generated class with all the unique Attributes of the Entities of that domain.
+:::note
+
+When using the code generator, a class derived from `Entity<TAttributes>` will be generated for each domain in Home Assistant. Each generated class contains all of the unique entity attributes for that domain.
+
+:::
 
 ## State Changes
-The API lets you manage state very easy. This is based on System.Reactive. I will only do basic things here but please read up on [System.Reactive](http://introtorx.com/) to learn the true power of this way of handling events.
 
-Let´s start with a very basic example. If the motion sensors state turns to "on", turn on the `light.attic` light.
+The API uses a fluent syntax to handle state changes. This is based on .Net's Reactive Extensions.
+
+:::note
+
+If you are unfamiliar with reactive programming it is strongly recommended to read about the basics using one of these resources:
+
+- [Lee Campbell - Introduction to Rx](http://introtorx.com/)
+- [ReactiveX - Introduction](https://reactivex.io/intro.html)
+- [Microsoft Learn - Reactive Extensions](https://learn.microsoft.com/en-us/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103))
+- [Reactive Extensions on GitHub - A Brief Intro](https://github.com/dotnet/reactive#a-brief-intro)
+
+:::
+
+Let´s start with a basic example. If a motion sensor's state turns to `"on"`, turn on a light.
 
 ```csharp
 myEntities.binary_sensor.my_motion_sensor
@@ -100,9 +129,20 @@ myEntities.binary_sensor.my_motion_sensor
     .Subscribe(s => myEntities.light.Attic.TurnOn());
 ```
 
-So what is going on here? First statement, `myEntities.binary_sensor.my_motion_sensor` selects the entity you want track changes from. The `Where(e.New?.State == "on")` tracks state changes for new events that are getting the state `on`. And finally, `.Subscribe(s => myEntities.light.Attic.TurnOn());` subscribes to the changes and calls the code if the where clause is met. In this case it calls turn on service on the light entity. `StateChanges`checks if the `New.State != Old.State`. To get all changes including the attribute changes, please use `StateAllChanges` instead of `StateChanges`.
+So what is going on here? Let's step through the lines:
 
-If the previous state is important then use it like:
+1. `myEntities.binary_sensor.my_motion_sensor` selects the entity you want track changes from.
+2. `.StateChanges()` creates a `IObservable<T>` from `System.Reactive`, where `T` is a NetDaemon `StateChange`.
+3. `.Where(e.New?.State == "on")` uses a predicate to filter state changes to only react those where the `Entity`'s new `State` equals `"on"`.
+4. `.Subscribe(s => myEntities.light.Attic.TurnOn());` subscribes to the filtered `IObservable<T>` to react to state changes with the provided lambda. In this case it calls the generated service to turn on a light using Home Assistant.
+
+:::note
+
+To get all changes including attributes, use `StateAllChanges` instead of `StateChanges`.
+
+:::
+
+If the old state is relevant then the filter could be modified like this:
 
 ```csharp
 myEntities.BinarySensor.MyMotionSensor
@@ -111,7 +151,16 @@ myEntities.BinarySensor.MyMotionSensor
     .Subscribe(s => myEntities.Light.Attic.TurnOn());
 ```
 
-Or even more advanced example. You can use any combination of state and attributes or even external methods in the lambda expressions. Here is an example: When sun elevation below 3.0 and not rising and old state elevation is above 3.0 then we should turn on light. This uses the `StateAllChanges` since we want all changes to the elevation attribute.
+You can use any combination of state and attributes, or even external methods in the lambda expressions. For example:
+
+```
+When the Sun's new elevation is below 3.0, 
+and it is not rising, 
+and the old elevation is above 3.0, 
+then we should turn on a light. 
+```
+
+This uses `StateAllChanges` so we can observe attribute changes:
 
 ```csharp
 myEntities.Sun.Sun
@@ -127,7 +176,7 @@ myEntities.Sun.Sun
     });
 ```
 
-In some cases you will want to wait for an entity to be in a specific state for some time before taking an action. Like a motion sensor that is in the `"off"` state for 5 minutes. The `WhenStateIsFor()` extension method helps doing that.
+You may want to wait for an entity to remain in a state for a specific amount of time before reacting. An example would be waiting for a motion sensor to be in the `"off"` state for 5 minutes. The `WhenStateIsFor` extension method can be used here:
 
 ```csharp
 myEntities.BinarySensor.MyMotionSensor
@@ -136,19 +185,27 @@ myEntities.BinarySensor.MyMotionSensor
     .Subscribe(s => myEntities.Light.Attic.TurnOff());
 ```
 
-`WhenStateIsFor` takes a predicate as its first argument. Note that this predicate will receive an `EntityState` argument and not a `StateChange` like the `Where()` we used above. This predicate will determine if the state it recieves matches what we are looking for. `WhenStateIsFor` will first wait for a state change where the old state did not match the predicate and the new state does match, so in this case when it becomes `"off"`. If after 5 minutes there was no state change where the new state did no longer match the predicate (it is still `"off"`) it will forward the event and in this case turn off the attic light.
+`WhenStateIsFor` takes a predicate as its first argument, and a `TimeSpan` as the second argument. The predicate declares the entity state we want to react to, and the `TimeSpan` declares how long we want the entity to be in that state before reacting.
 
+In this case we want to wait for a motion sensor's state to change to `"off"`, remain in that state for 5 minutes, and then turn off a light. Each time the state changes the wait resets.
 
-## Call services on an Entity
-Many services in Home Assitant take an Entity Id's as their target. When you hava an instance of an entity you can use it directly to call such a Service.
+:::note
+
+The predicate used by NetDaemon's `WhenStateIsFor` receives an `EntityState`, rather than a `StateChange` as used by `System.Reactive`'s `Where` used previously.
+
+:::
+
+## Call Services on an Entity
+
+Many services in Home Assistant take an entity ID as their target. When you have an instance of an entity you can use it directly to call such a service:
 
 ```csharp
 light1.CallService("turn_on", new { brightness = 100 } );
 ```
 
-The second argument is the data that is passed with the service call. This can be an object that will be Json-serialized as the service data. You can use an anonymous type for this or any other type that has properties that match the arguments of the service.
+The second argument is the data that will be JSON-serialized and passed with the service call. This can be any type as long as it has properties that match the arguments of the service. That includes strongly typed objects or anonymous ones.
 
-The same can be done with an IEnumerable of entities that have the same domain
+An `IEnumerable` of entities that have the same domain can also be the source of the service call:
 
 ```csharp
 var downstairsLights = new [] {
@@ -158,15 +215,15 @@ var downstairsLights = new [] {
 downstairsLights.CallService("turn_on", new { brightness = 100 } );
 ```
 
-This will make a single call to Home Assistant to call the light.turn_on service on both entities.
+This will make a single call to Home Assistant's `light.turn_on` service on both entities.
 
-The code generator also provides extension methods for all services that take a specific type of Entity as their target:
+The code generator also creates `Entity` extension methods for all services that take a specific type of entity as their target. `LightEntity` for example has the `TurnOn` extension method:
 
 ```csharp
 myEntities.Light.Attic.TurnOn(transition: 50, brightnessPct: 50);
 ```
 
-or using an `IEnumerable<LightEntity>`:
+Extension methods are also created for the corresponding `IEnumerable<T>`, such as for `IEnumerable<LightEntity>`:
 
 ```csharp
 var downstairsLights = new [] {
@@ -176,7 +233,12 @@ var downstairsLights = new [] {
 downstairsLights.TurnOn(transition: 50, brightnessPct: 50);
 ```
 
+`CallService` and the generated extension methods are non-blocking fire-and-forget calls. They send a message to Home Assistant using a websocket connection. Your application code does not need to await this async call, NetDaemon does that internally and will log any exceptions to the configured logger.
 
-`CallService` as well as the generated extension methods are non-blocking fire-and-forget calls. They send a message to Home Assistant using a websocket connection. Your application code does not need to await this async call, Netdaemon does that internally and will log any Exceptions to the configured logger. 
+:::note
 
-The reason for this is that it is generally not usefull for your application code to await for the message to be delivered to Home Assitant. This is because the message being deliverd to Home Assitant does not mean it has actually been procesed by the actual device.
+Home Assistant service calls do not provide return values, they only change state and throw exceptions. NetDaemon does not currently provide an asynchronous service call method to react to these errors (such as `HomeAssistantError` and `ValueError`).
+
+It is usually the job of integrations to handle errors, retry attempts, and set the `available` property of entities. This is a part of their [Integration Quality Scale](https://developers.home-assistant.io/docs/integration_quality_scale_index/) score.
+
+:::
