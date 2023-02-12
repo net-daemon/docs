@@ -147,7 +147,7 @@ If the old state is relevant then the filter could be modified like this:
 ```csharp
 myEntities.BinarySensor.MyMotionSensor
     .StateChanges()
-    .Where(e.New?.State == "on" && e.Old?.State == "off")
+    .Where(e => e.New?.State == "on" && e.Old?.State == "off")
     .Subscribe(s => myEntities.Light.Attic.TurnOn());
 ```
 
