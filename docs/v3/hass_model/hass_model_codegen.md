@@ -53,6 +53,17 @@ The generated code contains the following:
 * A class `Services` that provides access to all services in Home Assistant via their domain
 * Extension methods for each service that takes an entity as a target
 
+The code generator also generates an extension method `AddHomeAssistantGenerated()` that injects different classes to be used in dependency injection for your convenience. Please add it to the `program.cs` like this:
+
+```csharp
+    .ConfigureServices((_, services) =>
+        services
+            .AddAppsFromAssembly(Assembly.GetExecutingAssembly())
+            .AddNetDaemonStateManager()
+            .AddNetDaemonScheduler()
+            .AddHomeAssistantGenerated()
+```
+
 ## Commandline arguments
 
 The settings for the code generator can also be set from the command line, this will override the settings from a configuration file if it is present.
