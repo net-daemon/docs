@@ -35,7 +35,7 @@ In the add-on config, specify the `app_assembly` setting to point to the assembl
 The name of the assembly may be different.
 
 :::note
-** To use Visual Studio's publish feature first install & configure the [Samba share Home Assistant addon](https://github.com/home-assistant/addons/blob/52bafd68185080e9b1a1d6b6c501ab96705d73f9/samba/DOCS.md), then configure your VS publish options:
+To use Visual Studio's publish feature first install & configure the [Samba share Home Assistant addon](https://github.com/home-assistant/addons/blob/52bafd68185080e9b1a1d6b6c501ab96705d73f9/samba/DOCS.md), then configure your VS publish options:
 
 ![](/img/docs/started/vs_publish_config.jpg)
 
