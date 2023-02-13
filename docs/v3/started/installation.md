@@ -9,7 +9,6 @@ There are several ways to deploy your apps:
 - In the NetDaemon docker container
 - Or using the template as base to deploy your own setup
 
-
 ## Deploy as Home Assistant add-on
 
 Once added to Home Assistant, select one of the V3 versions. If you feel you always want the latest and greatest changes you can choose the dev build but be prepare that things can break!
@@ -23,19 +22,29 @@ Once added to Home Assistant, select one of the V3 versions. If you feel you alw
 
     ![](/img/docs/started/daemon3.png)
 
-4. Deploy your apps and evenutall yaml config files in the folder `/config/netdaemon3`.
+4. Deploy your apps and `.yaml` files in the folder `/config/netdaemon3`.
 
 ### Deploy compiled assemblies and configurations
 
 Copy your published files from `dotnet publish -c Release -o [outputdir]` to `/config/netdaemon3`. All the binaries and configuration should be copied.
 
-In the add-on config, specify the `app_assembly` setting to point to the assembly relative to your `/config/netdaemon3` folder. This assembly should be the entry assembly (dll) from your project template. You can also add a path to the configuration folder separately if you want. See example of how configuration below should look like using default template. The name of the assembly may be different:
+In the add-on config, specify the `app_assembly` setting to point to the assembly relative to your `/config/netdaemon3` folder. This assembly should be the entry assembly (dll) from your project template. You can also add a path to the configuration folder separately. This is an example of how the configuration should appear using the default template:
 
 ![](/img/docs/started/daemon_addon_config.png)
 
+The name of the assembly may be different.
+
+:::note
+To use Visual Studio's publish feature first install & configure the [Samba share Home Assistant addon](https://github.com/home-assistant/addons/blob/52bafd68185080e9b1a1d6b6c501ab96705d73f9/samba/DOCS.md), then configure your VS publish options:
+
+![](/img/docs/started/vs_publish_config.jpg)
+
+Now you can publish to quickly deploy files, and restart NetDaemon to run them.
+:::
+
 ### Deploy source files and configurations
 
-Copy the `.cs` and `.yaml` files to `/config/netdaemon3` folder from the `apps folder` using the template project and start/restart the add-on.
+Copy the `.cs` and `.yaml` files to `/config/netdaemon3` folder from the `apps folder` using the template project and start/restart the NetDaemon add-on.
 
 ## Install as a docker container
 
@@ -90,7 +99,7 @@ The docker container needs these environment variables to run properly.
 | `HomeAssistant__Host`                       | The host that is running Home Assistant (defaults to `localhost`)                                                                                                       |
 | `HomeAssistant__Port`                       | The port Home Assistant is running on (default to `8123`)                                                                                                               |
 | `HomeAssistant__Ssl`                       | Set to True if SSL is used to access Home Assistant.                                                                                                               |
-| `HomeAssistant__Token`                       | A Long Lived Access Token(LLAT) that NetDaemon can use for the comminication with Home Assistant.                                                                        |
+| `HomeAssistant__Token`                       | A Long Lived Access Token(LLAT) that NetDaemon can use for the communication with Home Assistant.                                                                        |
 | `HomeAssistant__InsecureBypassCertificateErrors`                       | Ignores certificate errors. Please use at own risk.                                                                        |
 | `NetDaemon__ApplicationAssembly`            | Use this for the `Deploy compiled assemblies` option. Set to `{your_assembly}.dll`. For source deployment you should not set this setting! |
 | `Logging__LogLevel__Default`                | Defaults to Information, values are (Trace, Debug, Information, Warning, Error)                                                                                         |
@@ -102,7 +111,6 @@ The docker container needs these environment variables to run properly.
 | Vol   | Description                                                                                                                                                                    |
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | /data | The volume of the netdaemon folder should be mapped to `/data` [See how to setup the correct folder here](installation.md#folder-structure-and-where-to-map-the-docker-volume) |
-
 
 ### Folder structure and where to map the docker volume
 
