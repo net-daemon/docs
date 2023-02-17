@@ -28,10 +28,10 @@ You can also check for "on" or "off" states using the Extension Methods `IsOn()`
 It also allows you to respond to state change events of the entity via the StateAllChanges and StateChanges methods.
 
 ```csharp
-livingRoomLight.StateAllChanges()
-    .Where(s => s.Old?.Attributes.Brightness < 128 
-             && s.New?.Attributes.Brightness >= 128)
-    .Subscribe(e => HandleBrighnessUp());
+kitchenLight.StateAllChanges()
+    .Where(s => s.Old?.Attributes?.Brightness < 128 
+             && s.New?.Attributes?.Brightness >= 128)
+    .Subscribe(e => HandleBrightnessUp());
 ```
 
 The code generator will create a class for each domain in Home assitant that has entities. eg. for the `climate` domain there is a class `ClimateEntity` and for the `sensor` domain there is a class `SensorEntity`. These classes all derive from the build in base class `Entity<TEntity, TEntityState, TAttributes>`. 
