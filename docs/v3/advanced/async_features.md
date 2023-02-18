@@ -7,7 +7,7 @@ The NetDaemon API is built to have synchronous behavior for users, but the under
 
 ## Async lifetime
 
-Apps that implements the `IAsyncInitializable` interface get a callback to execute asynchronous code after the app is instantiated:
+Apps that implement the `IAsyncInitializable` interface get a callback to execute asynchronous code after the app is instantiated:
 
 ```csharp
 [NetDaemonApp]
