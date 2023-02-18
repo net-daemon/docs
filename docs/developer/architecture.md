@@ -13,7 +13,7 @@ title: Architecture of NetDaemon
 |  HassModel | Handles an entity model and service calls. It caches all entity states for fast access. This namespace also contains the code generator. This is typically injected IHaContext or more specific entities and services in user apps to interact with Home Assistant. This namespace also have components that support service callbacks using NetDaemon integration.  |
 |  AppModel | Handles application life cycle and application configuration. Instance and disposes applications. This namespace also contains the compiler of source deployed apps. |
 |  Runtime | NetDaemon runtime that connect everything together. The runtime also handles app state by creating input_booleans per app.          |
-|  Host   |  Default host in all docker containers. This is used when users use source deployment. It has all dependencies needed for basic operations and all extensions. Users that deploy compiled projects use their own and use the `Runtime` to run NetDaemon  |
+|  Host   |  Default host in all Docker containers. This is used when users use source deployment. It has all dependencies needed for basic operations and all extensions. Users that deploy compiled projects use their own and use the `Runtime` to run NetDaemon  |
 |  Extensions   |  The extension namespace contains various extensions that is not part of core features. Logging provides default Serilog logging to ND. Scheduling provides convenient scheduling features. Tts provides a convenient interface to do text to speech and finally MqttEntityManager provides features to create entities using the MQTT features in HA.   |
 
 ## Design of NetDaemon

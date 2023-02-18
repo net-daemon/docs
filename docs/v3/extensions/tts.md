@@ -3,11 +3,11 @@ id: extensions_tts
 title: Text to speech
 ---
 
-NetDaemon provides an extension that adds more features for text to speech. If you do not need these extra features you can use the code generator to get a nice API to the text to speech.
+NetDaemon provides an extension that adds more features for text to speech. If you do not need these extra features you can use the code generator to get a nice API to use text to speech functionality.
 
-The main feature of this extension is that it is queueing all messages in order and wait for each message to be complete before sending next one to provided media player.
+The main feature of this extension is that it queues all messages in order and waits for each message to be completed before sending next one to provided media player.
 
-Following example shows how to use the TTS service in your own apps.
+The following example shows how to use the TTS service in your own apps:
 
 ```csharp
 
@@ -24,13 +24,13 @@ public class MyTtsApp
 
 ```
 
-If you use source deployment with NetDaemon add-on or docker image this is dependency is already included. If you are missing it please add:
+If you use source deployment with the NetDaemon add-on or Docker image this dependency is already included. If you are missing it add:
 
 ```cmd
 dotnet add package JoySoftware.NetDaemon.Extensions.Tts
 ```
 
-And add the tts service to host in `program.cs`
+And add the tts service to the host in `program.cs`:
 
 ```csharp
 await Host.CreateDefaultBuilder(args)

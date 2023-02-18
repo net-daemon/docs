@@ -2,6 +2,7 @@
 id: hacs
 title: HACS support
 ---
+
 :::warning
 
 HACS deployment model is not supported for V3 apps.

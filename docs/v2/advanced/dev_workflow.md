@@ -24,10 +24,10 @@ public class HelloWorldApp
 }
 ```
 ### Additional information on development environment settings
-This [Microsoft article](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-6.0) 
+This [Microsoft article](https://docs.microsoft.com/aspnet/core/fundamentals/environments) 
 gives more detail on how the application can be configured for a Development or non-Development environment.
 
-If you find that the netdaemon apps that you have deployed to your Home Assistant system are running in Development 
+If you find that the NetDaemon apps that you have deployed to your Home Assistant system are running in Development 
 mode (because, for example, the `[Focus]` attribute is being enforced in production) then check whether
 any of the environment has set either of the `DOTNET_ENVIRONMENT` or `ASPNETCORE_ENVIRONMENT` variables.
 Note that a cause of this can be if you've deployed the `Properties/launchSettings.json` file to Home Assistant: 

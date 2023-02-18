@@ -2,14 +2,16 @@
 id: app_model_custom_logging
 title: Custom logging
 ---
-This page describes how to create and configure a custom logger. If you are happy with the standard logging described in the [Instance applications](/v3/app_model/instancing_apps.md) page then you don't need to read this page.
+This page describes how to create and configure a custom logger. If you are happy with the standard logging described in the [Instance applications](/v3/app_model/instancing_apps.md) page then this information probably won't be of interest to you.
 
 ### ILogger and Serilog
+
 The default Microsoft implementation of logging comes via the `Microsoft.Extensions.Logging.ILogger` interface that can be configured at application startup and then injected into subsequent classes.
 
-If you are familiar with .Net logging then you may want to go ahead and configure the standard Microsoft logging provider into the application, or you can use [serilog](https://serilog.net/), which is what we provide in the template application.
+If you are familiar with .NET logging then you may want to go ahead and configure the standard Microsoft logging provider into the application, or you can use [Serilog](https://serilog.net/), which is what we provide in the template application.
 
 ### How the default logger is configured
+
 Within `program.cs` the `HostBuilder` startup instructs the framework to use the default NetDaemon logging configuration defined inside the core NetDaemon app:
 
 ```csharp
@@ -24,14 +26,19 @@ try
 }
 ```
 
-This configuration builder creates a Console Sink logger with the minimum logging level defined in `appSettings.json`, as described in the [Instance applications](v2/app_model/instancing_apps.md) page.
+This configuration builder creates a Console Sink logger with the minimum logging level defined in `appsettings.json`, as described in the [Instance applications](v2/app_model/instancing_apps.md) page.
 
-To modify the logging behaviour we can create our own logging configuration and replace the default one within `program.cs` (note that an in-depth description of host builders is beyond the scope of this article, but you can find more information on the [Microsoft web site](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-6.0))
+To modify the logging behavior we can create our own logging configuration and replace the default one within `program.cs`.
 
+:::note
+
+An in-depth description of host builders is beyond the scope of this article, but you can find more information on [Microsoft Learn](https://learn.microsoft.com/aspnet/core/fundamentals/host/generic-host).
+
+:::
 
 ### Step 1 - create a new logging configuration class
 
-Create a new class file and place it within your app folder (at the `daemonapp` root, alongside `program.cs` is a good place) - in this sample we're calling it `CustomLoggingProvider`:
+Create a new class file and place it within your app folder (at the `daemonapp` root, alongside `program.cs` is a good place). In this sample we're calling it `CustomLoggingProvider`:
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -43,7 +50,7 @@ namespace HomeAssistantGenerated.Logging;
 public static class CustomLoggingProvider
 {
     /// <summary>
-    ///     Adds standard serilog logging configuration, from appsettings, as per:
+    ///     Adds standard Serilog logging configuration, from appsettings, as per:
     ///     https://github.com/datalust/dotnet6-serilog-example
     /// </summary>
     /// <param name="builder"></param>
@@ -62,8 +69,7 @@ public static class CustomLoggingProvider
 }
 ```
 
-Here we're telling that its entire behaviour will be found in the `appSettings.json` file, which is described in more detail in step 3.
-
+Here we're stating that its entire behavior will be found in the `appsettings.json` file, which is described in more detail in step 3.
 
 ### Step 2 - change program.cs to call the new configuration
 
@@ -91,13 +97,12 @@ Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
 If you plan to log to files then it is strongly recommended that you ensure this line is present _before_ you configure logging. This ensures that the log files are written relative the application's launch folder.
 
+### Step 3 - Update appsettings.json
 
+You now need to modify the logging configuration in `appsettings.json`. The first step is to rename the existing `"Logging"` high-level object to `"Serilog"`. Note that we decided to retain the `Serilog` name to keep the configuration consistent with the official documentation.
 
-### Step 3 - Update appSettings.json
+Here is the original `appsettings.json`:
 
-You now need to modify the logging configuration in `appSettings.json` - the first step is to rename the existing `"Logging"` high-level object to `"Serilog"`. Note that we decided to retain the `Serilog` name to keep the configuration consistent with the official documentation.
-
-Here is the original `appSettings.json`:
 ```json
 {
   "Logging": {
@@ -153,7 +158,6 @@ You need to remove the top `"Logging"` section and replace it with a new `"Seril
   "HomeAssistant": {   // Rest of your config starts here...
 ```
 
-
 In order, this configuration performs the following:
 
 * Sets the default log level to `Warning`
@@ -169,11 +173,6 @@ You should have at least one log "sink" configured, and Serilog offers [many opt
 
 The example has a write-to-console sink and a file-sink, but feel free to remove the file-sink if you don't need it.
 
-
-
 ### Additional options / other loggers
 
 For more advanced configuration please see the [Serilog documentation](https://github.com/serilog/serilog/wiki/Getting-Started). You are also free to configure your own logger such as Microsoft's default implementation, or any system that implements the `Microsoft.Extensions.Logging.ILogger` interface.
-
-
-

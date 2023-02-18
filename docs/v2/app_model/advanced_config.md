@@ -3,12 +3,12 @@ id: app_model_advanced_config
 title: Advanced configuration
 ---
 
-You can use complex data types for config in yaml instancing.
+You can use complex data types for config in YAML instancing.
 
 ### Advanced configuration
 Examples of configuraitions below
 
-| Yaml type                                             | .NET type                                                                |
+| YAML type                                             | .NET type                                                                |
 |-------------------------------------------------------|--------------------------------------------------------------------------|
 | *Scalar* <br/>a_string: hello world <br/>an_int: 10 <br/>a_bool: true |<br/>string? AString {get;set;} <br/>int? AnInt {get;set;} <br/>bool? ABool {get;set;} |
 | *Sequences* <br/>simple_list:<br/>  - Hello<br/>  - World           |  IEnumerable&ltstring&gt? SimpleList {get;set;} <br/>*sequences are always IEnumerable&lttype&gt, lists are not supported!*                             |

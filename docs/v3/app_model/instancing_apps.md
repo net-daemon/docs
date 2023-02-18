@@ -2,10 +2,12 @@
 id: app_model_instancing
 title: Instance applications
 ---
-Instancing applications can be done in several ways. Here are the supported ones by NetDaemon.
+Instancing applications can be done in several ways. Here are the ones supported by NetDaemon.
 
-### Instancing an application using attribute
-Instance any class with the simple attribute like below.
+### Instancing an application using an attribute
+
+Instance any class with the `[NetDaemonApp]` attribute:
+
 ```csharp
 [NetDaemonApp]
 public class MyApp
@@ -13,8 +15,8 @@ public class MyApp
 
 }
 ```
-If you need to some async initialization to be called after the app is instanced you can use the interface `IAsyncInitializable`.
 
+If you need async initialization to be called after the app is instanced you can use the interface `IAsyncInitializable`.
 
 ```csharp
 [NetDaemonApp]
@@ -30,9 +32,9 @@ public class MyAsyncInitializableApp : IAsyncInitializable
 
 ### Instancing an application configuration using yaml
 
-You can use yaml configuration file to provide configuration that are injected into the constructor using the `IAppConfig<>` interface.
+You can use a YAML configuration file to provide configuration details that are injected into the constructor using the `IAppConfig<>` interface.
 
-Best way to explain is to provide a yaml config with app class below:
+This is a sample YAML config file, C# config class, and app class with config injected into the constructor:
 
 ```yaml
 LightConfig: # This is  the fully qualified name of the config class
@@ -61,10 +63,11 @@ public class LightManager
 ```
 
 ### Logging
+
 NetDaemon can inject a logger into your application instance when you specify a _scoped_ `ILogger` parameter in your application's constructor.
 
-For example, if your application is called `FrontDoorLocker` then specifying a parameter of type `ILogger<FrontDoorLocker>` into the app's constructor  will ensure that an appropriate logger is injected. 
-In this example, the `FrontDoorLocker` constructor stores the logger into a class field so that it can be used by subsequent methods:
+For example, if your application is called `FrontDoorLocker` then specifying a parameter of type `ILogger<FrontDoorLocker>` into the app's constructor  will ensure that an appropriate logger is injected. In this example the `FrontDoorLocker` constructor stores the logger into a class field so that it can be used by subsequent methods:
+
 ```csharp
 
 private readonly ILogger<FrontDoorLocker> _logger;
@@ -81,9 +84,9 @@ public FrontDoorLocker(IHaContext ha, ILogger<FrontDoorLocker> logger)
 
 #### Log levels in brief
 
-The logging subsystem ([serilog](https://serilog.net/)) defines several levels of log events. From low to high these are `Verbose`, `Debug`, `Information`, `Warning`, `Error` and `Fatal`. You can set the minimum level that you wish to log which means that only events at that level or higher will be logged.
+The logging subsystem ([Serilog](https://serilog.net/)) defines several levels of log events. From low to high these are `Verbose`, `Debug`, `Information`, `Warning`, `Error` and `Fatal`. You can set the minimum level that you wish to log which means that only events at that level or higher will be logged.
 
-By default, NetDaemon defaults to `Debug` level and higher, but you can override this in `appSettings.json`:
+NetDaemon defaults to the `Debug` level, but you can override this in your `appsettings.json` file:
 
 ```json
 {
@@ -94,7 +97,13 @@ By default, NetDaemon defaults to `Debug` level and higher, but you can override
 }
 ```
 
-Within your application you will use one of the `_logger` methods to write a message at the desired level. Note that `ILogger` is a Microsoft-defined interface and there is (oddly!) not an exact match of `ILogger` methods to Serilog levels.
+Within your application you will use one of the `_logger` methods to write a message at the desired level. 
+
+:::note
+
+`ILogger` is a Microsoft-defined interface and there is (oddly!) not an exact match of `ILogger` methods to Serilog levels.
+
+:::
 
 ```csharp
   // See code sample above for setting up the logger in your constructor
@@ -109,21 +118,19 @@ Within your application you will use one of the `_logger` methods to write a mes
 ```
 
 #### Viewing log messages
+
 Within the development environment you can view log messages inside the console view (or the container console view if you're debugging in containers).
 
-When your application is deployed to your Home Assistant production environment then you can view the logs by clicking on:
+When your application is deployed to your Home Assistant production environment then you can view the logs in Home Assistant by clicking on: **Settings -> Add-ons -> NetDaemon VX.X (.NET X) -> Log**
 
- * Configuration
- * Add-ons, Backups and Supervisor
- * NetDaemon
- * Log
+:::note
 
-Note that the logs are cleared each time you restart the NetDaemon add-on (or the Home Assistant server).
+Logs are cleared each time you restart the NetDaemon add-on (or the Home Assistant server).
+
+:::
 
 #### More advanced logging
+
 One of the goals of the NetDaemon template app is that it should work out of the box with minimal configuration. For that reason, the template ships with a "Default NetDaemon Logging Configurator", which supports all of the functionality described on this page, but nothing more.
 
-If you are familiar with Serilog or other .Net loggers and want to use more advanced techniques such as writing to log files or to remote log servers then please read the [Custom logging](v3/app_model/custom_logging.md) page, which shows how to create and configure a custom logger.
-
-
-
+If you are familiar with Serilog or other .NET loggers and want to use more advanced techniques such as writing to log files or to remote log servers then please read the [Custom logging](v3/app_model/custom_logging.md) page, which shows how to create and configure a custom logger.

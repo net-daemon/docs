@@ -2,6 +2,7 @@
 id: example
 title: Example app
 ---
+
 This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file `ExampleApp.cs` that contains the app logic. This example uses the code generation capability of HassModel [explained here](v3/hass_model/hass_model_codegen.md).
 
 ## ExampleApp.cs
@@ -36,31 +37,30 @@ public class ExampleAppHaContext
 
 By decorating a class with the `NetDaemonAppAttribute` it is registered as an application to be loaded by NetDaemon.
 
-NetDeamon will create an helper in Home Assistant. By default, the helper is named: 
+NetDaemon will create a helper in Home Assistant. By default, the helper is named:
 
 | Environment | Name |
 | --------------- | -------------------------------------------------------------------------|
 | Development |  `dev_netdaemon_{namespace}_appname` |
 | Production  | `netdaemon_{namespace}_appname` |
 
-    
-    
-The app name will be converted to snake casing, i.e: HelloWorld -> hello_world
+The app name will be converted to snake casing (i.e: HelloWorld -> hello_world)
 
-when you want to choose your own name you can make use of the Id parameter like:
+When you want to choose your own name you can make use of the Id parameter like:
 
 ```cs
 [NetDaemonApp(Id = "appname")]
 ```
 
-Netdaemon will replace {namespace}_appname with youre given Id
+Netdaemon will replace {namespace}_appname with your given Id
 
 ## The constructor
+
 ```cs
 public ExampleAppHaContext(IHaContext ha)
 ```
 
-When the application is (re-)started a new instance of the class is created by calling its constructor. This constructor will receive constructor arguments by using the standard .Net dependency injection mechanism. In this example the constructor receives an IHaContext interface which provides basic methods for interacting with Home Assistant.
+When the application is (re-)started a new instance of the class is created by calling its constructor. This constructor will receive constructor arguments by using the standard .NET dependency injection mechanism. In this example the constructor receives an IHaContext interface which provides basic methods for interacting with Home Assistant.
 
 The constructor can be used to do initialization of your application. **Never block the constructor!** Typically here you configure what should happen when a state changes or run a function every minute for example. If you need to do asynchronous initialization of your application this can be done by implementing `IAsyncInitializable`
 
@@ -77,25 +77,25 @@ The constructor can be used to do initialization of your application. **Never bl
 
 | Function        | Description                                                              |
 | --------------- | -------------------------------------------------------------------------|
-| new Entities(ha)     | Creates an Instance of the generated Entities class that provides strong typed access to all your HA entities |
-| entities.BinarySensor.OfficeMotion          | Selects the `binary_sensor.office_motion`  entity from HomeAssitant |
+| new Entities(ha)     | Creates an Instance of the generated Entities class that provides strongly typed access to all your HA entities |
+| entities.BinarySensor.OfficeMotion          | Selects the `binary_sensor.office_motion`  entity from Home Assistant |
 | StateChanges()  | Respond to changes of the state of this motion sensor
-| Where           | FIlter which state changes we are interested in, this case when the sensor' state becomes 'on' |
-| Subscribe       | Calls any code/action when criteras met                                  |
+| Where           | FIlter which state changes we are interested in, int this case when the sensor state becomes 'on' |
+| Subscribe       | Calls any code/action when the criteria is met                                  |
 | TurnOff()       | Turns off the lights in the office using another generated entity and a generated service method |
 
-## Creating and updating HomeAssistant entities
+## Creating and updating Home Assistant entities
 
 If you want to create entities from NetDaemon, set their state attributes, then check out the [MQTT Entity Manager documentation](v3/extensions/mqttEntityManager.md)
 
 ## Real-world example apps
 
-Please check out the apps being developed for netdaemon. Since documentation is still lacking behind it will be best looking at real code 😊
+Please check out the apps being developed for NetDaemon. Since documentation is still lacking behind it would be best to look at real code 😊
 
 | User                                                                                                    | Description                                           |
 | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)                                    | HassModel examples by Frank the author of HassModel API |
-| [@helto4real](https://github.com/helto4real/HassModelAutomations)                          | Tomas netdaemon apps running in production (The HassModel version)          |
-| [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's netdaemon apps, check them out, nice stuff |
-| [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's netdaemon apps, good example extending netdaemon  functionality |
-| [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                                              | Kennetjuh's netdaemon implementation (V3) |
+| [@helto4real](https://github.com/helto4real/HassModelAutomations)                          | Tomas NetDaemon apps running in production (The HassModel version)          |
+| [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's NetDaemon apps, check them out, nice stuff |
+| [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's NetDaemon apps, good example extending NetDaemon  functionality |
+| [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                                              | Kennetjuh's NetDaemon implementation (V3) |

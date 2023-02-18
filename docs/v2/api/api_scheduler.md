@@ -5,9 +5,10 @@ title: Scheduler
 
 One of the key features of NetDaemon is the scheduling features.
 
-
 :::warning
+
 Even if Observable has schedulers we recommend using the built-in ones. Then all errors is caught and logged. Also you have to take care of the scheduler life cycle your self.
+
 :::
 
 ## RunEvery
@@ -51,6 +52,7 @@ RunDaily("23:00:00", ()=>
 ```
 
 ### RunEveryMinute/Hour
+
 There are specific implementations of RunEvery... like the RunEveryMinute.
 
 ```csharp
@@ -62,7 +64,7 @@ RunEveryHour("15:00", () => Log("Log every hour quater past"));
 
 ### RunIn
 
-If you need to delay excecution a specific time this is the prefered way to do it rather than using await Task.Delay().
+If you need to delay execution a specific time this is the preferred way to do it rather than using await Task.Delay().
 
 ```csharp
 

@@ -41,7 +41,7 @@ public class ExampleApp : NetDaemonRxApp
 public class ExampleApp : NetDaemonRxApp
 ```
 
-All applications in netdaemon have to inherit the NetDaemonApp base class. This provides discoverability and functionality to the application.
+All applications in NetDaemon have to inherit the NetDaemonApp base class. This provides discoverability and functionality to the application.
 
 ## The Initialize function
 
@@ -72,10 +72,10 @@ Entity("binary_sensor.my_motion_sensor")
 
 ## Real-world example apps
 
-Please check out the apps being developed for netdaemon. Since documentation is still lacking behind it will be best looking at real code 😊
+Please check out the apps being developed for NetDaemon. Since documentation is still lacking behind it will be best looking at real code 😊
 
 | User                                                                                                    | Description                                           |
 | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [@helto4real](https://github.com/helto4real/hassio/tree/master/netdaemon/apps)                          | My own netdaemon apps running in production (Use V2 veriosn of API)          |
-| [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's netdaemon apps, check them out, nice stuff |
-| [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's netdaemon apps, good example extending netdaemon  functionality |
+| [@helto4real](https://github.com/helto4real/hassio/tree/master/netdaemon/apps)                          | My own NetDaemon apps running in production (Use V2 veriosn of API)          |
+| [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's NetDaemon apps, check them out, nice stuff |
+| [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's NetDaemon apps, good example extending NetDaemon  functionality |

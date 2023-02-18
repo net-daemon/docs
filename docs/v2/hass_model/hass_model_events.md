@@ -40,4 +40,4 @@ Sending an event is also very easy. `IHaContext` has a `SendEvent` method with j
 ha.SendEvent("custom_event", new { mode="Standby", duration = 200 });
 ```
 
-The payload wil be JsonSerialized using `System.Text.Json` it can be an anonymous type or any other type that serializes to the desired Json payload
+The payload wil be JSON serialized using `System.Text.Json` it can be an anonymous type or any other type that serializes to the desired JSON payload

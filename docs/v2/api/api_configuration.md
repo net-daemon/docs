@@ -3,7 +3,7 @@ id: api_configuration
 title: Configuration
 ---
 
-All configuration is done with the in yaml files. For clarity we recommend to have one yaml file for each app, named the same as the csharp file but you can configure as many apps and types in one to many yaml files if that is prefered. 
+All configuration is done with the in YAML files. For clarity we recommend to have one YAML file for each app, named the same as the csharp file but you can configure as many apps and types in one to many YAML files if that is prefered. 
 
 Allways use nullable types!
 
@@ -113,7 +113,7 @@ Note - Currently this cannot be used with a lists or IEnumerable of entities. Bu
 
 ### Advanced configurations options
 
-| Yaml type                                             | .NET type                                                                |
+| YAML type                                             | .NET type                                                                |
 |-------------------------------------------------------|--------------------------------------------------------------------------|
 | *Scalar* <br/>a_string: hello world <br/>an_int: 10 <br/>a_bool: true |<br/>string? AString {get;set;} <br/>int? AnInt {get;set;} <br/>bool? ABool {get;set;} |
 | *Sequences* <br/>simple_list:<br/>  - Hello<br/>  - World           |  IEnumerable&ltstring&gt? SimpleList {get;set;} <br/>*sequences are always IEnumerable&lttype&gt, lists are not supported!*                             |

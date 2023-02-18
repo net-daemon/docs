@@ -99,11 +99,7 @@ double latitude = zone.Attributes.latitude;
 double longitude = zone.Attributes.longitude;
 ```
 
-:::note
-
 When using the code generator, a class derived from `Entity<TAttributes>` will be generated for each domain in Home Assistant. Each generated class contains all of the unique entity attributes for that domain.
-
-:::
 
 ## State Changes
 
@@ -115,7 +111,7 @@ If you are unfamiliar with reactive programming it is strongly recommended to re
 
 - [Lee Campbell - Introduction to Rx](http://introtorx.com/)
 - [ReactiveX - Introduction](https://reactivex.io/intro.html)
-- [Microsoft Learn - Reactive Extensions](https://learn.microsoft.com/en-us/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103))
+- [Microsoft Learn - Reactive Extensions](https://learn.microsoft.com/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103))
 - [Reactive Extensions on GitHub - A Brief Intro](https://github.com/dotnet/reactive#a-brief-intro)
 
 :::
@@ -136,7 +132,7 @@ So what is going on here? Let's step through the lines:
 3. `.Where(e.New?.State == "on")` uses a predicate to filter state changes to only react those where the `Entity`'s new `State` equals `"on"`.
 4. `.Subscribe(s => myEntities.light.Attic.TurnOn());` subscribes to the filtered `IObservable<T>` to react to state changes with the provided lambda. In this case it calls the generated service to turn on a light using Home Assistant.
 
-:::note
+:::tip
 
 To get all changes including attributes, use `StateAllChanges` instead of `StateChanges`.
 
@@ -235,7 +231,7 @@ downstairsLights.TurnOn(transition: 50, brightnessPct: 50);
 
 `CallService` and the generated extension methods are non-blocking fire-and-forget calls. They send a message to Home Assistant using a websocket connection. Your application code does not need to await this async call, NetDaemon does that internally and will log any exceptions to the configured logger.
 
-:::note
+:::info
 
 Home Assistant service calls do not provide return values, they only change state and throw exceptions. NetDaemon does not currently provide an asynchronous service call method to react to these errors (such as `HomeAssistantError` and `ValueError`).
 

@@ -5,7 +5,7 @@ title: Using the Code generator
 
 NetDaemon has a generator that creates code based on the Entities and services in Home Assistant. This makes it possible to navigate all Entities and Services using intellisense.
 
-The code generator is installed as a [.NET global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) via the following command:
+The code generator is installed as a [.NET global tool](https://docs.microsoft.com/dotnet/core/tools/global-tools) via the following command:
 
 ```cmd
 dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen --version 22.1.x

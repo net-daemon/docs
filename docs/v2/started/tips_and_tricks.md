@@ -4,7 +4,7 @@ title: Tips & tricks
 ---
 ## The file structure
 
-All automation files are in the `netdaemon` folder directly under your configuration folder. Typically you access these files within vscode or any other editor. Your root directory in your editor should look something like this.:
+All automation files are in the `netdaemon` folder directly under your configuration folder. Typically you access these files within VS Code or any other editor. Your root directory in your editor should look something like this.:
 
 ![](/img/docs/started/rootdir.png)
 

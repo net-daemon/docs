@@ -13,7 +13,7 @@ public class MyApp
 
 }
 ```
-If you need to some initialization to be called after the properties are initiaized from the yaml configuration use the `IInitializable` interface.
+If you need to some initialization to be called after the properties are initiaized from the YAML configuration use the `IInitializable` interface.
 
 
 ```csharp
@@ -42,9 +42,9 @@ public class MyInitializableApp : IAsyncInitializable
 ```
 
 ### Instancing an application using yaml
-You can use yaml configuration file to instance apps and provide configuration.
+You can use YAML configuration file to instance apps and provide configuration.
 
-Best way to explain is to provide a yaml config with app class below:
+Best way to explain is to provide a YAML config with app class below:
 
 ```yaml
 light_manager_kitchen: # This is  the id of the app
@@ -94,7 +94,7 @@ public FrontDoorLocker(IHaContext ha, ILogger<FrontDoorLocker> logger)
 
 The logging subsystem ([serilog](https://serilog.net/)) defines several levels of log events. From low to high these are `Verbose`, `Debug`, `Information`, `Warning`, `Error` and `Fatal`. You can set the minimum level that you wish to log which means that only events at that level or higher will be logged.
 
-By default, NetDaemon defaults to `Debug` level and higher, but you can override this in `appSettings.json`:
+By default, NetDaemon defaults to `Debug` level and higher, but you can override this in `appsettings.json`:
 
 ```json
 {
@@ -134,7 +134,7 @@ Note that the logs are cleared each time you restart the NetDaemon add-on (or th
 #### More advanced logging
 One of the goals of the NetDaemon template app is that it should work out of the box with minimal configuration. For that reason, the template ships with a "Default NetDaemon Logging Configurator", which supports all of the functionality described on this page, but nothing more.
 
-If you are familiar with Serilog or other .Net loggers and want to use more advanced techniques such as writing to log files or to remote log servers then please read the [Custom logging](v2/app_model/custom_logging.md) page, which shows how to create and configure a custom logger.
+If you are familiar with Serilog or other .NET loggers and want to use more advanced techniques such as writing to log files or to remote log servers then please read the [Custom logging](v2/app_model/custom_logging.md) page, which shows how to create and configure a custom logger.
 
 
 

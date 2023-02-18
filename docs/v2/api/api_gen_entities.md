@@ -7,7 +7,7 @@ title: Generated entities
 
 This is how you use the auto generated entities in NetDaemon.
 
-1. Turn on enitity generation, You need to turn on generation of entities. If you run docker use the `HASS_GEN_ENTITIES=True` environment var or if you use Home Assistant add-on use the setting `generate_entities: true`.
+1. Turn on enitity generation, You need to turn on generation of entities. If you run Docker use the `HASS_GEN_ENTITIES=True` environment var or if you use Home Assistant add-on use the setting `generate_entities: true`.
 2. Restart NetDaemon once for the entities to be generated.
 3. Two genreated files will be created. Use the new api in the file `_EntityExtensionsRx.cs` that will be created in app folder.
 4. Inherit from `GeneratedAppBase`instead of default `NetDaemonRxApp` and add a `using Netdaemon.Generated.Reactive;`to the app file.
