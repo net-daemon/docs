@@ -82,7 +82,7 @@ double latitude = zone.Attributes.latitude;
 double longitude = zone.Attributes.longitude;
 ```
 
-When using the code generator, a class derived from `Entity<TAttributes>` will be generated for each domain in Home Assitant. And along with it, a generated class with all the unique Attributes of the Entities of that domain.
+When using the code generator, a class derived from `Entity<TAttributes>` will be generated for each domain in Home Assistant. And along with it, a generated class with all the unique Attributes of the Entities of that domain.
 
 ## State Changes
 The API lets you manage state very easy. This is based on System.Reactive. I will only do basic things here but please read up on [System.Reactive](http://introtorx.com/) to learn the true power of this way of handling events.
@@ -124,7 +124,7 @@ myEntities.Sun.Sun
 ```
 
 ## Call services on an Entity
-Many services in Home Assitant take an Entity Id's as their target. When you hava an instance of an entity you can use it directly to call such a Service.
+Many services in Home Assistant take an Entity Id's as their target. When you hava an instance of an entity you can use it directly to call such a Service.
 
 ```csharp
 light1.CallService("turn_on", new { brightness = 100 } );

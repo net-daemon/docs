@@ -3,13 +3,13 @@ id: api
 title: The NetDaemon API
 ---
 
-:::caution Warning
+:::warning
 This section describes the 'Version 2 API'. We are currently moving all our new development towards the new HassModel API and encourage you to us that API for new development. The 'Version2 API' will be around long enough for reasonable adoption.
 :::
 
 # NetDaemon API
 
-The netdaemon API is used to access Home Assistant features. The version 2 is based on System.Reactive API. 
+The NetDaemon API is used to access Home Assistant features. The version 2 is based on System.Reactive API. 
 
 ## Schedulers
 

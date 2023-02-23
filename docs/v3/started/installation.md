@@ -6,7 +6,7 @@ title: Install NetDaemon runtime
 There are several ways to deploy your apps:
 
 - Using a Home Assistant add-on
-- In the NetDaemon docker container
+- In the NetDaemon Docker container
 - Or using the template as base to deploy your own setup
 
 ## Deploy as Home Assistant add-on
@@ -35,24 +35,26 @@ In the add-on config, specify the `app_assembly` setting to point to the assembl
 The name of the assembly may be different.
 
 :::note
+
 To use Visual Studio's publish feature first install & configure the [Samba share Home Assistant addon](https://github.com/home-assistant/addons/blob/52bafd68185080e9b1a1d6b6c501ab96705d73f9/samba/DOCS.md), then configure your VS publish options:
 
 ![](/img/docs/started/vs_publish_config.jpg)
 
 Now you can publish to quickly deploy files, and restart NetDaemon to run them.
+
 :::
 
 ### Deploy source files and configurations
 
-Copy the `.cs` and `.yaml` files to `/config/netdaemon3` folder from the `apps folder` using the template project and start/restart the NetDaemon add-on.
+Copy the `.cs` and `.yaml` files to `/config/netdaemon3` folder from the `apps` folder using the template project and start/restart the NetDaemon add-on.
 
-## Install as a docker container
+## Install as a Docker container
 
-If you are using Home Assistant Core and do not have the possibility to run add-ons, using the docker container is a convenient way to run NetDaemon apps.
+If you are using Home Assistant Core and do not have the possibility to run add-ons, using the Docker container is a convenient way to run NetDaemon apps.
 
-**Always use specific versioning tags of docker containers (not latest or dev) cause these are constantly getting new versions and things could break** [You can always find the latest stable version here](https://github.com/net-daemon/netdaemon/releases)
+**Always use specific versioning tags of Docker containers (not latest or dev) cause these are constantly getting new versions and things could break** [You can always find the latest stable version here](https://github.com/net-daemon/netdaemon/releases)
 
-### Example docker run configuration
+### Example Docker run configuration
 
 ```bash
 docker run -d \
@@ -90,9 +92,9 @@ services:
                                                 # to your local folder
 ```
 
-### Evironment variables
+### Environment variables
 
-The docker container needs these environment variables to run properly.
+The Docker container needs these environment variables to run properly.
 
 | ENV                                         | Description                                                                                                                                                             |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -104,16 +106,16 @@ The docker container needs these environment variables to run properly.
 | `NetDaemon__ApplicationAssembly`            | Use this for the `Deploy compiled assemblies` option. Set to `{your_assembly}.dll`. For source deployment you should not set this setting! |
 | `Logging__LogLevel__Default`                | Defaults to Information, values are (Trace, Debug, Information, Warning, Error)                                                                                         |
 | `TZ`                                        | You will need to set container time zone to make the scheduler work properly                                                                                            |
-| `NetDaemon__ApplicationConfigurationFolder` | If you want to select another folder for your yaml configurations. Standard is `/data`                                                                                  |
+| `NetDaemon__ApplicationConfigurationFolder` | If you want to select another folder for your YAML configurations. Standard is `/data`                                                                                  |
 
 ### Volumes
 
 | Vol   | Description                                                                                                                                                                    |
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| /data | The volume of the netdaemon folder should be mapped to `/data` [See how to setup the correct folder here](installation.md#folder-structure-and-where-to-map-the-docker-volume) |
+| /data | The volume of the NetDaemon folder should be mapped to `/data` [See how to setup the correct folder here](installation.md#folder-structure-and-where-to-map-the-docker-volume) |
 
-### Folder structure and where to map the docker volume
+### Folder structure and where to map the Docker volume
 
-The `~/netdaemon_config` need to point to a local folder. See image below where the local folder is named `netdaemon3` and should be mapped as volume to the `/data`!
+The `~/netdaemon_config` needs to point to a local folder. See image below where the local folder is named `netdaemon3` and should be mapped as volume to the `/data`!
 
 ![](/img/docs/installation/folderstructure_v3.png)

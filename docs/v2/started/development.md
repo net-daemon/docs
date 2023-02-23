@@ -14,7 +14,7 @@ cd netdaemon_apps
 ```
 _if you are using the NetDaemon 3 beta you should use the template in V3 branch._
 
-Example, cloning the template project, check out v3 branch and rename it
+Example, cloning the template project, check out V3 branch and rename it
 ```bash
 git clone https://github.com/net-daemon/netdaemon-app-template.git
 mv netdaemon-app-template netdaemon_apps
@@ -28,7 +28,7 @@ git checkout v3
 You should be all set, so skip to step 3
 
 ### 2.2 Visual Studio Code
-If you are using Visual Studio Code, devcontainers are the preferred way to develop your apps. This also requires docker to be installed.
+If you are using Visual Studio Code, devcontainers are the preferred way to develop your apps. This also requires Docker to be installed.
 
 1. Install [remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in VSCode if you have not already.
 2. Open folder, the newly cloned template
@@ -39,7 +39,7 @@ Rider supports debugging of containerized ASP.Net Core apps from version 2018.2.
 
 Open the netdaemon_app folder in Rider and it should be able to build the projects immediately.
 A default execute and debug profile will be created however these will be executed as local processes.
-The preferred way to develop your app is to use devcontainers, which requires docker to be installed.
+The preferred way to develop your app is to use devcontainers, which requires Docker to be installed.
 To configure devcontainers, perform the following steps:
 
 1. Locate `Dockerfile` in the Solution Explorer window

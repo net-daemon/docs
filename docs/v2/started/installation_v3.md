@@ -6,7 +6,7 @@ This is the documentation setting up the NetDaemon runtime version3. For the cur
 
 There are several ways to deploy your apps. You could just run the development project and set it up yourself. NetDaemon provides a convenient ways to run your apps:
 - Using a Home Assistant add-on
-- In a docker container
+- In a Docker container
 - Or using the template as base deploy your own.
 
 So let's set it up before we can deploy the apps to it.
@@ -42,12 +42,12 @@ To deploy compiled packages. Set the `app_assembly: daemonapp.dll` it will run t
 
 **There is no way to include other dependencies in the standard dynamically compiled option** No, for this we recommend the `Advanced add-on configurations` decribed above, to include for example a external nuget package.
 
-## Install as a docker container
-If you are using Home Assistant Core and do not have the possibility to run add-ons, using the docker container is a convenient way to run NetDaemon apps. 
+## Install as a Docker container
+If you are using Home Assistant Core and do not have the possibility to run add-ons, using the Docker container is a convenient way to run NetDaemon apps. 
 
-**Always use specific versioning tags of docker containers (not latest or dev) cause these are constantly getting new versions and things could break** [You can always find the latest stable version here](https://github.com/net-daemon/netdaemon/releases)
+**Always use specific versioning tags of Docker containers (not latest or dev) cause these are constantly getting new versions and things could break** [You can always find the latest stable version here](https://github.com/net-daemon/netdaemon/releases)
 
-### Example docker run configuration V2
+### Example Docker run configuration V2
 
 ```bash
 docker run -d \
@@ -64,7 +64,7 @@ docker run -d \
 ```
 _`-p 1337:1337` is only needed if you want the [admin panel](https://github.com/net-daemon/admin)_
 
-### Example docker run configuration V3
+### Example Docker run configuration V3
 
 ```bash
 docker run -d \
@@ -121,7 +121,7 @@ services:
                                                 # to your local folder
 ```
 ### Evironment variables V2
-The docker container needs 3 environment variables to run properly.
+The Docker container needs 3 environment variables to run properly.
 
 ENV | Description
 -- | --
@@ -135,7 +135,7 @@ ENV | Description
 `NETDAEMON__ADMIN` | Set this to `false` to disabled the Admin UI.
 
 ### Evironment variables
-The docker container needs 3 environment variables to run properly.
+The Docker container needs 3 environment variables to run properly.
 
 ENV | Description
 -- | --
@@ -152,11 +152,11 @@ ENV | Description
 
 Vol | Description
 -- | --
-/data | The volume of the netdaemon folder should be mapped to `/data` [See how to setup the correct folder here](installation.md#folder-structure-and-where-to-map-the-docker-volume)
+/data | The volume of the NetDaemon folder should be mapped to `/data` [See how to setup the correct folder here](installation.md#folder-structure-and-where-to-map-the-docker-volume)
 
 
 
-### Folder structure and where to map the docker volume
+### Folder structure and where to map the Docker volume
 The `~/netdaemon_config` need to point to the `netdaemon` folder. See image below. The **red arrow** in the example configuration below points to the folder that should be mapped to the `/data`!
 
 ![](/img/docs/installation/folder_structure_netdaemon.png)

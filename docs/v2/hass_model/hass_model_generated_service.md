@@ -7,7 +7,7 @@ After generating code from Home Assistant with `nd-codegen` you can use a strong
 
 ## Call services via typed entity classes
 
-The code generator generates a class for each domain that has entities in Home Assistant. For each service in Home Assitant that accepts an Entity of that domain there is also a generated extension method for that Entity class. This alows services to be called like this
+The code generator generates a class for each domain that has entities in Home Assistant. For each service in Home Assistant that accepts an Entity of that domain there is also a generated extension method for that Entity class. This alows services to be called like this
 
 ```csharp
 _myEntities = new Entities(haContext);
@@ -24,7 +24,7 @@ The service methods have parameters that corresponds to the fields that are requ
 
 ## using the generated Services class
 
-The generated code also contains a class `Services`. This class provides access to all the services in Home Assitant. The `Services` class needs an IHaContext in its constructor to access Home Assistant. From there, the services are available as methods grouped by their domain.
+The generated code also contains a class `Services`. This class provides access to all the services in Home Assistant. The `Services` class needs an IHaContext in its constructor to access Home Assistant. From there, the services are available as methods grouped by their domain.
 
 Example:
 ```csharp

@@ -5,11 +5,13 @@ title: Custom logging
 This page describes how to create and configure a custom logger. If you are happy with the standard logging described in the [Instance applications](/v2/app_model/instancing_apps.md) page then you don't need to read this page.
 
 ### ILogger and Serilog
+
 The default Microsoft implementation of logging comes via the `Microsoft.Extensions.Logging.ILogger` interface that can be configured at application startup and then injected into subsequent classes.
 
-If you are familiar with .Net logging then you may want to go ahead and configure the standard Microsoft logging provider into the application, or you can use [serilog](https://serilog.net/), which is what we provide in the template application.
+If you are familiar with .NET logging then you may want to go ahead and configure the standard Microsoft logging provider into the application, or you can use [serilog](https://serilog.net/), which is what we provide in the template application.
 
 ### How the default logger is configured
+
 Within `program.cs` the `HostBuilder` startup instructs the framework to use the default NetDaemon logging configuration defined inside the core NetDaemon app:
 
 ```csharp
@@ -24,9 +26,9 @@ try
 }
 ```
 
-This configuration builder creates a Console Sink logger with the minimum logging level defined in `appSettings.json`, as described in the [Instance applications](v2/app_model/instancing_apps.md) page.
+This configuration builder creates a Console Sink logger with the minimum logging level defined in `appsettings.json`, as described in the [Instance applications](v2/app_model/instancing_apps.md) page.
 
-To modify the logging behaviour we can create our own logging configuration and replace the default one within `program.cs` (note that an in-depth description of host builders is beyond the scope of this article, but you can find more information on the [Microsoft web site](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-6.0))
+To modify the logging behaviour we can create our own logging configuration and replace the default one within `program.cs` (note that an in-depth description of host builders is beyond the scope of this article, but you can find more information on the [Microsoft web site](https://docs.microsoft.com/aspnet/core/fundamentals/host/generic-host))
 
 
 ### Step 1 - create a new logging configuration class
@@ -62,7 +64,7 @@ public static class CustomLoggingProvider
 }
 ```
 
-Here we're telling that its entire behaviour will be found in the `appSettings.json` file, which is described in more detail in step 3.
+Here we're telling that its entire behaviour will be found in the `appsettings.json` file, which is described in more detail in step 3.
 
 
 ### Step 2 - change program.cs to call the new configuration
@@ -93,11 +95,11 @@ If you plan to log to files then it is strongly recommended that you ensure this
 
 
 
-### Step 3 - Update appSettings.json
+### Step 3 - Update appsettings.json
 
-You now need to modify the logging configuration in `appSettings.json` - the first step is to rename the existing `"Logging"` high-level object to `"Serilog"`. Note that we decided to retain the `Serilog` name to keep the configuration consistent with the official documentation.
+You now need to modify the logging configuration in `appsettings.json` - the first step is to rename the existing `"Logging"` high-level object to `"Serilog"`. Note that we decided to retain the `Serilog` name to keep the configuration consistent with the official documentation.
 
-Here is the original `appSettings.json`:
+Here is the original `appsettings.json`:
 ```json
 {
     "Logging": {

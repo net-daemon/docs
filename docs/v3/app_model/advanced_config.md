@@ -3,21 +3,26 @@ id: app_model_advanced_config
 title: Advanced configuration
 ---
 
-You can use complex data types for config in yaml instancing. Make sure you are not using immutable datatypes like strings or read-only collections without making them nullable. For collections we recommend using IList&ltT&gt that are instanced with List&ltT&gt if you do not want to be nullable.
+You can use complex data types for configuration in YAML instancing. Make sure you are not using immutable data types like strings or read-only collections without making them nullable. For collections we recommend using `IList&ltT&gt` that are instanced with `List&ltT&gt` if you do not want to be nullable.
 
-*V3 no longer support snake casing yaml config. The names needs to match case sensitive name of property or class.*
+:::info
+
+NetDaemon V3 no longer supports snake casing in YAML configuration files. Property and class names need to match with case sensitivity.
+
+:::
 
 ### Advanced configuration
-Examples of configuraitions below
 
-| Yaml type                                                             | .NET type                                                                                                                  |
+Examples of configurations:
+
+| YAML type                                                             | .NET type                                                                                                                  |
 | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| *Scalar* <br/>AString: hello world <br/>AnInt: 10 <br/>ABool: true | <br/>string? AString {get;set;} <br/>int? AnInt {get;set;} <br/>bool? ABool {get;set;}                                     |
-| *Sequences* <br/>SimpleList:<br/>  - Hello<br/>  - World             | IList&ltstring&gt SimpleList {get;set;} <br/>Sequences can also be IEnumerable&lttype&gt but needs to be nullable in that case |
+| *Scalar* <br/>AString: hello world <br/>AnInt: 10 <br/>ABool: true | <br/>string? AString { get; set; } <br/>int? AnInt {get;set;} <br/>bool? ABool { get; set; }                                     |
+| *Sequences* <br/>SimpleList:<br/>  - Hello<br/>  - World             | IList&ltstring&gt SimpleList { get; set; } <br/>Sequences can also be IEnumerable&lttype&gt, but must then be nullable |
 
 #### Example of complex data types support
 
-This example shows an example of how to use complex configuration options. 
+This example shows an example of how to use complex configuration options.
 
 ```yaml
 
@@ -77,13 +82,21 @@ public class Command
 }
 
 ```
+
 ### Troubleshooting
+
 #### Issue
-My config properties are all null
+
+My config properties are all null.
+
 #### Check
-Ensure your YAML file is being copied to the output folder
+
+Ensure your YAML file is being copied to the output folder.
+
 #### Fix
-Ensure the following is in your .csproj file to do this automatically for all YAML files
+
+Ensure the following is in your .csproj file to do this automatically for all YAML files:
+
 ```xml
 <ItemGroup>
     <None Include="apps\**\*.yaml">
@@ -92,6 +105,7 @@ Ensure the following is in your .csproj file to do this automatically for all YA
     </None>
 </ItemGroup>
 ```
-Alternatively, set Copy to Output Directory to Copy Always 
+
+Alternatively, set Copy to Output Directory to Copy Always.
 
 ![image](https://user-images.githubusercontent.com/6813309/201219449-495d0015-a08a-4651-9db0-e445ea4e6e53.png)

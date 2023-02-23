@@ -13,7 +13,7 @@ _myEntities = new Entities(haContext);
 LightEntity livingRoomLight = _myEntities.Light.LivingRoomLight;
 ```
 
-`Entities` is a generated class that provides acces to all your entities in Home Assitant. The object returnd by `_myEntities.Light.LivingRoomLight` is of type `LightEntity` which is also generated. This specific instance represents the `light.living_room_light` entity in Home Assitant.
+`Entities` is a generated class that provides acces to all your entities in Home Assistant. The object returnd by `_myEntities.Light.LivingRoomLight` is of type `LightEntity` which is also generated. This specific instance represents the `light.living_room_light` entity in Home Assistant.
 
 The LightEntity class provides strong typed access to the state and attributes of this entity like 
 

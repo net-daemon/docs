@@ -3,15 +3,17 @@ id: hass_model_codegen
 title: Using the Code generator
 ---
 
-NetDaemon has a generator that creates code based on the Entities and services in Home Assistant. This makes it possible to navigate all Entities and Services using intellisense.
+NetDaemon has a generator that creates code based on the entities and services in Home Assistant. This makes it possible to navigate all entities and services using intellisense.
 
 ## Use as local tool
+
 If you are using the template project you can install the code generator as a local tool. The advantage is that you will have a update script that keeps your tool version and NetDaemon versions in sync. If you encounter an error adding the local tool, please make a fresh project template using the latest version of the cli tool and move your apps to that version. You do not have to install the tool in this case.
 
 Run the tool using:
-`
+
+```cmd
 dotnet tool run nd-codegen
-`
+```
 
 You can use following command to keep it up to date with the latest version:
 
@@ -19,11 +21,11 @@ You can use following command to keep it up to date with the latest version:
 dotnet tool update JoySoftware.NetDaemon.HassModel.CodeGen
 ```
 
-Or use the convenience script `update_all_dependencies.ps1` to update all tools and nuget packages. (Only available in later versions of the template)
+Or use the convenience script `update_all_dependencies.ps1` to update all tools and nuget packages (only available in later versions of the template).
 
 ## Use as global tool
 
-The code generator is installed as a [.NET global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) via the following command:
+The code generator is installed as a [.NET global tool](https://docs.microsoft.com/dotnet/core/tools/global-tools) via the following command:
 
 ```cmd
 dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen
@@ -31,17 +33,17 @@ dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen
 
 After it is installed as a global tool it can be run with the command:
 
-`
+```cmd
 nd-codegen
-`
+```
 
-You can use following command to keep it up to date with the latest version:
+You can use the following command to keep it up to date with the latest version:
 
 ```cmd
 dotnet tool update -g JoySoftware.NetDaemon.HassModel.CodeGen
 ```
 
-**Make sure the version of the codegen tool and your nugets `Joysoftware.NetDaemon.*` have the same version.**
+**Make sure the version of the codegen tool and your nuget packages `Joysoftware.NetDaemon.*` have the same version.**
 
 When the tool is run from the folder of your NetDaemon project that contains an `appsettings.json` or `appsettings.development.json` file it will automatically use the connection settings from that config file to connect to Home Assistant. It will output a single file `HomeAssistantGenerated.cs` that contains all the generated code.
 
@@ -53,7 +55,7 @@ The generated code contains the following:
 * A class `Services` that provides access to all services in Home Assistant via their domain
 * Extension methods for each service that takes an entity as a target
 
-The code generator also generates an extension method `AddHomeAssistantGenerated()` that injects different classes to be used in dependency injection for your convenience. Please add it to the `program.cs` like this:
+The code generator also generates an extension method `AddHomeAssistantGenerated()` that injects different classes to be used in dependency injection for your convenience. Add it to the `program.cs` like this:
 
 ```csharp
     .ConfigureServices((_, services) =>
@@ -64,9 +66,9 @@ The code generator also generates an extension method `AddHomeAssistantGenerated
             .AddHomeAssistantGenerated()
 ```
 
-## Commandline arguments
+## Command line arguments
 
-The settings for the code generator can also be set from the command line, this will override the settings from a configuration file if it is present.
+The settings for the code generator can also be set from the command line. This will override the settings from a configuration file if it is present.
 
 | switch | |
 |---     |--|

@@ -45,7 +45,7 @@ module.exports = {
           items: [
             {
               label: 'Getting started',
-              to: 'docs/get_started_index',
+              to: 'docs/get_started',
             },
             // {
             //   label: 'Second Doc',

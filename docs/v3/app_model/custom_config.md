@@ -4,12 +4,14 @@ title: Custom config
 ---
 This page describes how to create and configure a custom configuration provider. If you are happy with the standard config providers described in the [Instance applications](/v3/app_model/instancing_apps.md) page then you don't need to read this page.
 
-### IOptions and Ini Files
+### IOptions and ini Files
+
 The default Microsoft implementation of config comes via the `Microsoft.Extensions.Options.IOptions` interface that can be configured at application startup and then injected into subsequent classes.
 
-If you would perfer to use ini files for your config instead of yaml files you can use a [ini file config provider](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.ini.iniconfigurationprovider?view=dotnet-plat-ext-6.0) (or any other IConfigurationProvider).
+If you would prefer to use ini files for your config instead of YAML files you can use a [ini file config provider](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration.ini.iniconfigurationprovider) (or any other IConfigurationProvider).
 
 ### How the default config is configured
+
 Within `program.cs` the `HostBuilder` startup instructs the framework to use the default NetDaemon configuration defined inside the core NetDaemon app:
 
 ```csharp
@@ -25,13 +27,19 @@ try
 }
 ```
 
-This configuration builder uses the default [config source](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.host.createdefaultbuilder?view=dotnet-plat-ext-6.0#microsoft-extensions-hosting-host-createdefaultbuilder(system-string())) as well as a yaml file source custom to netdaemon, as described in the [Instance applications](v2/app_model/instancing_apps.md) page.
+This configuration builder uses the default [config source](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.host.createdefaultbuilder#microsoft-extensions-hosting-host-createdefaultbuilder(system-string())) as well as a YAML file source custom to NetDaemon, as described in the [Instance applications](v2/app_model/instancing_apps.md) page.
 
-To modify the config behaviour we can create our own config provider  within `program.cs` (note that an in-depth description of host builders is beyond the scope of this article, but you can find more information on the [Microsoft web site](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-6.0))
+To modify the config behavior we can create our own config provider within `program.cs`.
+
+:::note
+
+An in-depth description of host builders is beyond the scope of this article, but you can find more information on the [Microsoft Learn](https://docs.microsoft.com/aspnet/core/fundamentals/host/generic-host))
+
+:::
 
 ### Step 1 - Change program.cs to add the ini file config provider
 
-Go to `program.cs` and remove or comment out the call to `UseNetDaemonAppSettings()` and add the configuration provider and the netdaemon config objects so that it now looks like this:
+Go to `program.cs` and remove or comment out the call to `UseNetDaemonAppSettings()` and add the configuration provider and the NetDaemon config objects so that it now looks like this:
 
 ```csharp
 try
@@ -49,17 +57,19 @@ try
     /// ...
 }
 ```
-Note that there may already be a ConfigurServices call in your `program.cs`. If one exists simply add this call inside the configure services (keeping what you have as well).
 
+Note that there may already be a `ConfigureServices` call in your `program.cs`. If one exists simply add this call inside the configure services (keeping what you have as well).
 
-### Step 2 - Create a appSettings.ini file
+### Step 2 - Create a appsettings.ini file
 
-You now need to create a ini file. In the previous step we set it up as `appsettings.ini` as such we should make a new file named `appsettings.ini` next to your `program.cs`. In this file you can put any custom config you want and it will be available in the app through dependancy injection with IOptions.
+You now need to create a ini file. In the previous step we set it up as `appsettings.ini`, so we should make a new file named `appsettings.ini` next to your `program.cs`. In this file you can put any custom config you want and it will be available in the app through dependency injection with IOptions.
 
-Here is a exampe `appsettings.ini`:
+Here is an example `appsettings.ini`:
+
 ```ini
 MyConfigValue=My Super Awesome value
 ```
+
 ### Step 3 - Include appsettings.ini in build output
 
 In your `.csproj` file add the following to tell dotnet build to copy the file from the project into the output directory so that it exists at runtime.
@@ -74,7 +84,7 @@ In your `.csproj` file add the following to tell dotnet build to copy the file f
 
 ### Step 4 - Create our config class
 
-Just like with the the original yaml config we need to make a class that will be used for us to access our values. This class can be placed anywhere as long as it is accessible from your program.cs file. 
+Just like with the the original YAML config we need to make a class that will be used for us to access our values. This class can be placed anywhere as long as it is accessible from your program.cs file.
 
 ```csharp
 public class ConfigExample
@@ -85,7 +95,7 @@ public class ConfigExample
 
 ### Step 5 - Register your config class
 
-Now that we created the class we will use to access the configuration we need to tell the app to register it. Back in our `program.cs` file we will add a line in the configure services.
+Now that we created the class we will use to access the configuration we need to tell the app to register it. Back in our `program.cs` file we will add a line to `ConfigureServices`:
 
 ```csharp
 try
@@ -121,9 +131,8 @@ public class MyFancyApp
 }
 ```
 
-This Fancy App simply reads the config we set up and writes it to the configured logger(s). When run it would log "My config value is My Super Awesome Value"
+`MyFancyApp` simply reads the config we set up and writes it to the configured logger(s). When run it would log "My config value is My Super Awesome Value"
 
 ### Additional options / other config providers
 
 You are free to add your own custom ConfigProviders or any system that implements the `Microsoft.Extensions.Configuration.IConfigurationProvider` interface.
-

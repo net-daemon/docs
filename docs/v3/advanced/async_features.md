@@ -3,11 +3,11 @@ id: async_features
 title: Async features of NetDaemon
 ---
 
-NetDaemon API:s is built to have a synchronous behavior for users but the underlying implementation is asynchronous. This makes the API easer to use in most situations. Sometimes you do need to call async functions, like database calls for example. NetDaemon provides features to do this easy.
+The NetDaemon API is built to have synchronous behavior for users, but the underlying implementation is asynchronous. This makes the API easer to use in most situations. Sometimes you do need to call async functions, like when working with a database. NetDaemon provides features to do this easily.
 
 ## Async lifetime
 
-Apps that implements this interface gets a callback to allow apps to make async starting point after the app is instanced. If apps implements the 
+Apps that implement the `IAsyncInitializable` interface get a callback to execute asynchronous code after the app is instantiated:
 
 ```csharp
 [NetDaemonApp]
@@ -35,7 +35,7 @@ public class AsyncUsingApp : IAsyncInitializable, IAsyncDisposable
 
 ## Using async methods in observable
 
-NetDaemon have provided some convenient functions to call async functions in a safe way that guarantees exceptions being logged.
+NetDaemon provides some convenient ways to call async methods in a safe way that guarantees exceptions will be logged:
 
 ```csharp
 
@@ -59,9 +59,9 @@ public class UseAsyncMethodsApp
 
 ```
 
-The two provided async extensions to IObservable are:
+The two provided async extensions to `IObservable` are:
 
 | Method                                         | Description                                                                                                                                                             |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SubscribeAsync | Calling async functions in a safe way. Guaranteed to  be logged. If wait for task in that function it will as any async function block that subscription until returned |
-| SubscribeAsyncConcurrent | Calling async functions concurrently. Order of handling events are not guaranteed. Blocking waits will still be able to handle next event. |
+| SubscribeAsync | Calls async methods in a safe way. Guaranteed to be logged. If you wait on a `Task` in that method it will block that subscription until returned. |
+| SubscribeAsyncConcurrent | Calls async methods concurrently. Order of handling events are not guaranteed. Blocking waits will still be able to handle new events. |

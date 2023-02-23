@@ -3,7 +3,7 @@ id: api_storage
 title: Storage
 ---
 
-With NetDaemon you can manage state using the storage. The storage is persisted per application instance in json file in the .storage folder. If you rename the class or the instance id the old storage will not be read att startup. All persisted states will be available after startup of applications.
+With NetDaemon you can manage state using the storage. The storage is persisted per application instance in JSON file in the .storage folder. If you rename the class or the instance id the old storage will not be read att startup. All persisted states will be available after startup of applications.
 
 ## Store and get state using Storage property
 
@@ -23,14 +23,16 @@ string aString = Storage.AString ?? "defaultvalue";
 ## Store and get custom objects
 
 :::warning
+
 NOT IMPLEMENTED YET IN V2
+
 :::
 
 You can use the `SaveData<T>` and `GetData<T>` to store custom data. The data have to be serializable with the `System.Text.Json`. This will not be unique to the app storing the data so it could be shared amongs several apps.
 
 Example:
 ```csharp
-// Just any Json serializable class or struct
+// Just any JSON serializable class or struct
 public class MyData
 {
     public int SomeNumber {get;set;}
