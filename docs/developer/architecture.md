@@ -22,7 +22,7 @@ NetDaemon relies heavily on IObservables to handle events from Home Assistant. A
 
 NetDaemon utilize dependency injection through constructor injection a lot. Devs that contributes to NetDaemon need to know or learn DI.
 
-One important separation of consern is the AppModel. We totally separate the application life cycle and configuration from other parts of NetDaemon. We might see other application models in the future.
+One important separation of concerns is the AppModel. We totally separate the application life cycle and configuration from other parts of NetDaemon. We might see other application models in the future.
 
 ## Core interfaces in Client
 
@@ -34,7 +34,7 @@ This interface can be injected through DI and used to maintain a connection to H
 
 This interface can be injected through DI and contains the current connected Home Assistant API connection instance. It has functions to send low level commands and returns results. If you need to add features that is not currently supported by NetDaemon this is the interface to extend.
 
-All events from Home Assistant is available as an IObservable called `OnHomeAssistantEvent`
+All events from Home Assistant are available as an IObservable called `OnHomeAssistantEvent`
 
 ## Core interfaces in HassModel
 
@@ -66,4 +66,4 @@ Manage all currently discovered applications.
 
 ## Deployment options
 
-NetDaemon can be deployed using source code and just compile the template project and use any kind of host.
+NetDaemon can be deployed using source code or just compile the template project and use any kind of host.
