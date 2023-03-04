@@ -139,6 +139,13 @@ module.exports = {
         ]
       },
       {
+        type:'category',
+        label: 'Tutorials',
+        items: [
+          'v3/tutorials/publish_script',
+        ]
+      },
+      {
         type: 'category',
         label: 'Troubleshooting',
         items: [
