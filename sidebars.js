@@ -143,6 +143,7 @@ module.exports = {
         label: 'Tutorials',
         items: [
           'v3/tutorials/publish_script',
+          'v3/tutorials/webhost',
         ]
       },
       {
