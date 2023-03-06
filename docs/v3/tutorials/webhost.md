@@ -5,7 +5,7 @@ title: Add webserver to NetDaemon
 
 ## Goal
 
-This guide shows how to tweak to the original NetDaemon template in order to spin up a Kestrel webserver that hosts
+This guide shows how to tweak the original [NetDaemon template](v3\started\development.md#2-get-the-project-template) in order to spin up a Kestrel webserver that hosts
 - a minimal API
 - a Web API controller
 - Blazor server pages (which can even be embedded in lovelace - at least locally.)
