@@ -20,14 +20,14 @@ Using Blazor Server and visualizing the output in a lovelace iframe-card might b
 ## Steps
 
 Change the `SDK` in the `csproj` file to 
-```XML
+```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 ```
 
 In `program.cs`, change from `IHostBuilder` to the `WebApplicationBuilder`.
 The ND configuration remains the same.
 
-```C#
+```csharp
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host
@@ -47,7 +47,7 @@ builder.Host
 ```
 
 Configuring MVC and Blazor services
-```C#
+```csharp
 // adding MVC / WebAPI controllers
 builder.Services.AddControllers();
 
@@ -56,7 +56,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 ```
 Configuring Kestrel Port and certificate
-```C#
+```csharp
 // Kestrel on port 10000
 // TODO: SSL
 builder.WebHost.ConfigureKestrel(options =>
@@ -65,12 +65,12 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 ```
 Defining minimal API operations
-```C#
+```csharp
 // minimal API
 app.MapGet("/mini", () => "Hello from Minimal API!");
 ```
 Finally setting up Routing and Endpoints
-```C#
+```csharp
 // use controller routes
 app.MapControllers();
 
@@ -93,7 +93,7 @@ In case you still run into problems, close and reopen Visual Studio.
 
 In this demo, I just copied the components of the default Blazor project into the solution and modified only the `Counter.razor` file to show 
 how easy it is to inject the ND services and use the generated HA classes.
-```C#
+```csharp
 @page "/counter"
 
 <PageTitle>Counter</PageTitle>
