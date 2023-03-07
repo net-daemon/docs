@@ -8,7 +8,7 @@ module.exports = {
   projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     prism: {
-      additionalLanguages: ['csharp'],
+      additionalLanguages: ['csharp', 'powershell'],
     },
     navbar: {
       title: 'NetDaemon',
