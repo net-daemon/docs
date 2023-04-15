@@ -115,6 +115,7 @@ module.exports = {
           'v3/hass_model/hass_model_generated_entities',
           'v3/hass_model/hass_model_generated_service',
           'v3/hass_model/hass_model_working_with_entities',
+          'v3/hass_model/hass_model_subscribe_to_triggers',
           'v3/hass_model/hass_model_events',
           'v3/hass_model/hass_model_integration_servicecallback',
           'v3/hass_model/hass_model_migration'
