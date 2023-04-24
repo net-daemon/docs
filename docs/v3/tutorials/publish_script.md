@@ -1,19 +1,19 @@
 ---
 id: publish_script
-title: Publish NetDeamon apps with PowerShell
+title: Publish NetDaemon apps with PowerShell
 ---
 
 ## Audience
-- NetDeamon developers using Home Assistant OS on a system like Raspberry  Pi, ODROID, etc. 
+- NetDaemon developers using Home Assistant OS on a system like Raspberry  Pi, ODROID, etc. 
 - Development under Windows (might work also for other OS but hasn't been tested)
 
 ## Goal
 Write an PowerShell script that deploys your apps to Home Assistant with the following steps:
 
-1. Stop the NetDeamon AddOn
+1. Stop the NetDaemon AddOn
 2. Delete the old installation
 3. Publish the new installation
-4. Restart the NetDeamon AddOn
+4. Restart the NetDaemon AddOn
 
 ## Prerequirements
 - [Samba share](https://github.com/home-assistant/addons/tree/master/samba) installed
@@ -32,7 +32,7 @@ The Home Assistant PowerShell Module uses the IP address of Home Assistant to st
 - Create a subfolder "Home-Assistant" and copy the two files from the PowerShell Module into it.
 
 ```powershell
-$slug = 'c6a2317c_netdaemon3_1'        # the slug can be found in the url of the browser when navigating to the NetDeamon addon
+$slug = 'c6a2317c_netdaemon3_1'        # the slug can be found in the url of the browser when navigating to the NetDaemon addon
 $json = '{"addon": "' + $slug + '"}'   
 $ip   = "192.168.0.44"                 # adapt to your IP address
 $port = 8123                           # change if your use another port
