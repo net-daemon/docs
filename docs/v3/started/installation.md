@@ -88,7 +88,7 @@ services:
       - HomeAssistant__Token=your_token
       - NetDaemon__ApplicationAssembly=NetDaemonApps.dll
       - Logging__LogLevel__Default=Information  # use Information/Debug/Trace/Warning/Error
-      - TZ='Etc/UTC'                            # Set your current timezone
+      - TZ=Etc/UTC                              # Set your current timezone
     volumes:
       - /config/netdaemon:/data                 # replace /config/netdaemon 
                                                 # to your local folder
