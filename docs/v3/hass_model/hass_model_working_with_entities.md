@@ -172,7 +172,7 @@ myEntities.Sun.Sun
     });
 ```
 
-You may want to wait for an entity to remain in a ystate for a specific amount of time before reacting. An example would be waiting for a motion sensor to be in the `"off"` state for 5 minutes. The `WhenStateIsFor` extension method can be used here:
+You may want to wait for an entity to remain in a state for a specific amount of time before reacting. An example would be waiting for a motion sensor to be in the `"off"` state for 5 minutes. The `WhenStateIsFor` extension method can be used here:
 
 ```csharp
 myEntities.BinarySensor.MyMotionSensor
