@@ -172,16 +172,19 @@ myEntities.Sun.Sun
     });
 ```
 
-You may want to wait for an entity to remain in a state for a specific amount of time before reacting. An example would be waiting for a motion sensor to be in the `"off"` state for 5 minutes. The `WhenStateIsFor` extension method can be used here:
+You may want to wait for an entity to remain in a ystate for a specific amount of time before reacting. An example would be waiting for a motion sensor to be in the `"off"` state for 5 minutes. The `WhenStateIsFor` extension method can be used here:
 
 ```csharp
 myEntities.BinarySensor.MyMotionSensor
     .StateChanges()
-    .WhenStateIsFor(s => s?.State == "off", TimeSpan.FromMinutes(5))
+    .WhenStateIsFor(s => s?.State == "off", TimeSpan.FromMinutes(5), scheduler)
     .Subscribe(s => myEntities.Light.Attic.TurnOff());
 ```
 
 `WhenStateIsFor` takes a predicate as its first argument, and a `TimeSpan` as the second argument. The predicate declares the entity state we want to react to, and the `TimeSpan` declares how long we want the entity to be in that state before reacting.
+
+As a thrid argument we want to pass an instance that implements `IScheduler`. No need to call any methods on the instance before passing it as an argument. Passing a scheudler ensures that the events stops when the app is stopped. It's also useful to inject a TestScheduler for unit tests. 
+To learn more about Scheduler please see [scheduling](v3/extensions/scheduling.md).
 
 In this case we want to wait for a motion sensor's state to change to `"off"`, remain in that state for 5 minutes, and then turn off a light. Each time the state changes the wait resets.
 
