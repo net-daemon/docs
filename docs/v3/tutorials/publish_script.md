@@ -53,3 +53,67 @@ dotnet publish -c Release HomeAssistant.csproj -o \\homeassistant.local\config\n
 
 Invoke-HomeAssistantService -service HASSIO.ADDON_START -json $json
 ```
+
+## VS Code Task
+
+```json
+{
+  "label": "publish",
+  "command": "pwsh",
+  "args": [   
+    "./publish.ps1",
+   ],
+  "problemMatcher": []
+}
+```
+
+## Publishing from dev container
+
+Dev containers by default don't have access to samba shares, they need to be mounted first.
+
+1. First create a new file `.devcontainer/docker-compose.yml`, make sure to adjust IP and credentials to your environment.
+
+```yaml
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+      - netdaemon3:/data
+    command: sleep infinity
+volumes:
+    netdaemon3:
+      driver: local
+      driver_opts:
+        type: cifs
+        o: "username=homeassistant,password=homeassistant,file_mode=0777,dir_mode=0777"
+        device: "//192.168.0.44/config/netdaemon3"
+```
+
+2. To use this new file replace in your `.devcontainer/devcontainer.json`
+
+```diff
+- "dockerFile": "./Dockerfile",
+```
+with
+```yaml
+"dockerComposeFile": "./docker-compose.yml",
+"service": "app",
+"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+```
+
+3. Finally you can adjust publish script to work with newly mounted share
+
+Delete these two lines, they serve no purpose on Linux
+```diff
+- Unblock-File .\Home-Assistant\Home-Assistant.psd1
+- Unblock-File .\Home-Assistant\Home-Assistant.psm1
+```
+Adjust these two lines
+```powershell
+Remove-Item -Recurse -Force /data/*
+dotnet publish -c Release -o /data
+```
