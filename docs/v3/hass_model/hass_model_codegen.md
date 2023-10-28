@@ -18,7 +18,7 @@ dotnet tool run nd-codegen
 You can use following command to keep it up to date with the latest version:
 
 ```cmd
-dotnet tool update JoySoftware.NetDaemon.HassModel.CodeGen
+dotnet tool update NetDaemon.HassModel.CodeGen
 ```
 
 Or use the convenience script `update_all_dependencies.ps1` to update all tools and nuget packages (only available in later versions of the template).
@@ -28,7 +28,7 @@ Or use the convenience script `update_all_dependencies.ps1` to update all tools 
 The code generator is installed as a [.NET global tool](https://docs.microsoft.com/dotnet/core/tools/global-tools) via the following command:
 
 ```cmd
-dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen
+dotnet tool install -g NetDaemon.HassModel.CodeGen
 ```
 
 After it is installed as a global tool it can be run with the command:
@@ -40,10 +40,10 @@ nd-codegen
 You can use the following command to keep it up to date with the latest version:
 
 ```cmd
-dotnet tool update -g JoySoftware.NetDaemon.HassModel.CodeGen
+dotnet tool update -g NetDaemon.HassModel.CodeGen
 ```
 
-**Make sure the version of the codegen tool and your nuget packages `Joysoftware.NetDaemon.*` have the same version.**
+**Make sure the version of the codegen tool and your nuget packages `NetDaemon.*` have the same version.**
 
 When the tool is run from the folder of your NetDaemon project that contains an `appsettings.json` or `appsettings.development.json` file it will automatically use the connection settings from that config file to connect to Home Assistant. It will output a single file `HomeAssistantGenerated.cs` that contains all the generated code.
 

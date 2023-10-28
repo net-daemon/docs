@@ -38,7 +38,7 @@ The recommended way to get the application template is to install the dotnet cli
 #### Use the default compiled deployment template
 
 ```bash
-dotnet new --install JoySoftware.NetDaemon.Templates.Project
+dotnet new --install NetDaemon.Templates.Project
 mkdir NetDaemonApps
 cd NetDaemonApps
 dotnet new nd-project
@@ -47,7 +47,7 @@ dotnet new nd-project
 #### Use the source code deployment template
 
 ```bash
-dotnet new --install JoySoftware.NetDaemon.Templates.Project
+dotnet new --install NetDaemon.Templates.Project
 mkdir NetDaemonApps
 cd NetDaemonApps
 dotnet new nd-src-project
@@ -111,8 +111,8 @@ Ensure that the "DOCKERFILE" profile is selected in the toolbar and then `Run` a
      - apt-get update
      - apt-get install -y apt-transport-https
      - apt-get update
-     - apt-get install -y dotnet-sdk-6.0
-     - dotnet tool install -g JoySoftware.NetDaemon.HassModel.CodeGen
+     - apt-get install -y dotnet-sdk-8.0
+     - dotnet tool install -g NetDaemon.HassModel.CodeGen
    packages: []
    log_level: info
    config_path: /
@@ -127,18 +127,6 @@ HINTS:
 - Open only the folder where the solution/project is located to ensure that the C# Extension works properly.
 
 #### Usage
-
-1. Clone a solution e.g. the [NetDaemon Template](https://github.com/net-daemon/netdaemon-app-template) to e.g. /root/config
-2. Rename the file `_appsettings.json` to `appsettings.json` and modify it as described in the [Template-README](https://github.com/net-daemon/netdaemon-app-template/blob/main/README.md)
-3. Open a Terminal in the Studio Code Server Addon
-   - To run the Code Generator enter:
-     `/root/.dotnet/tools/nd-codegen`
-   - To compile the solution enter:
-     `dotnet build netdaemon-app-template.sln`
-   - To restore the solution enter:
-     `dotnet restore netdaemon-app-template.sln`
-
-## 3. Make configurations
 
 NetDaemon development environment needs to be configured to connect to Home Assistant.  Minimal config is: hostname/ip, port and access token. If you did not already provide this information when creating the new project using the cli tool you can edit the `appsettings.json` file.
 
@@ -183,13 +171,13 @@ After you have developed and tested your apps it is time to deploy and run the a
 
 ### Compiled assemblies and configurations
 
-Use `dotnet publish -c Release -o [your output directory]` and copy all content from `[your output directory]` to `/config/netdaemon3` if you are using add-on, or the destination folder you chose in the other hosting options.
+Use `dotnet publish -c Release -o [your output directory]` and copy all content from `[your output directory]` to `/config/netdaemon4` if you are using add-on, or the destination folder you chose in the other hosting options.
 
 See [installation docs](v3\started\installation.md) for how to configure different hosting options.
 
 ### Source files and configurations
 
-Copy the content from the `apps` folder to to `/config/netdaemon3` if you are using add-on, or the destination folder you chose in the other hosting options. **Do not copy project files. Only copy the contents under the `apps` folder!**
+Copy the content from the `apps` folder to to `/config/netdaemon4` if you are using add-on (note that you might have changed the destination in add-on config), or the destination folder you chose in the other hosting options. **Do not copy project files. Only copy the contents under the `apps` folder!**
 
 See [installation docs](v3\started\installation.md) for how to configure different hosting options.
 

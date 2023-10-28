@@ -8,9 +8,11 @@ The documentation site for NetDaemon is hosted on [netlify](https://www.netlify.
 
 _It is recomended that you use the provided devcontainer when making changes to the documentation._
 
-To do this, ensure that you have [docker](https://docs.docker.com/get-docker/) installed locally and that you are using a code editor that can develop within a container.
+To do this, ensure that you have [docker](https://docs.docker.com/get-docker/) installed locally and that you are using a
+code editor that can develop within a container.
 
-A great (and free!) option is to use Visual Studio Code and its [Dev Containers extension](https://code.visualstudio.com/docs/devcontainers/containers).
+A great (and free!) option is to use Visual Studio Code and its
+[Dev Containers extension](https://code.visualstudio.com/docs/devcontainers/containers).
 
 Using your code editor, open up this repo inside the container - if you are using VS Code and have the extension installed then just open up the folder and it should prompt you to open it as a container instead.
 

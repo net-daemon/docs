@@ -24,10 +24,10 @@ If you use the NetDaemon project template you will already have the entity manag
 
 To set up the entity manager manually you should:
 
-- Include the JoySoftware.NetDaemon.Extensions.MqttEntityManager NuGet package:
+- Include the NetDaemon.Extensions.MqttEntityManager NuGet package:
 
 ```ps
-dotnet add package JoySoftware.NetDaemon.Extensions.Mqtt
+dotnet add package NetDaemon.Extensions.Mqtt
 ```
 
 - Call `.UseNetDaemonMqttEntityManagement()` on the `HostBuilder` in the host's `program.cs`:

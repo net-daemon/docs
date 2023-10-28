@@ -32,7 +32,7 @@ The Home Assistant PowerShell Module uses the IP address of Home Assistant to st
 - Create a subfolder "Home-Assistant" and copy the two files from the PowerShell Module into it.
 
 ```powershell
-$slug = 'c6a2317c_netdaemon3_1'        # the slug can be found in the url of the browser when navigating to the NetDaemon addon
+$slug = 'c6a2317c_netdaemon4'        # the slug can be found in the url of the browser when navigating to the NetDaemon addon
 $json = '{"addon": "' + $slug + '"}'   
 $ip   = "192.168.0.44"                 # adapt to your IP address
 $port = 8123                           # change if your use another port
