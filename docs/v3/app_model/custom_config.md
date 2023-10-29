@@ -27,7 +27,7 @@ try
 }
 ```
 
-This configuration builder uses the default [config source](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.host.createdefaultbuilder#microsoft-extensions-hosting-host-createdefaultbuilder(system-string())) as well as a YAML file source custom to NetDaemon, as described in the [Instance applications](v2/app_model/instancing_apps.md) page.
+This configuration builder uses the default [config source](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.host.createdefaultbuilder#microsoft-extensions-hosting-host-createdefaultbuilder(system-string())) as well as a YAML file source custom to NetDaemon, as described in the [Instance applications](v3/app_model/instancing_apps.md) page.
 
 To modify the config behavior we can create our own config provider within `program.cs`.
 

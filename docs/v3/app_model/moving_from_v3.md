@@ -1,0 +1,36 @@
+---
+id: app_model_moving_from_v3
+title: Moving from NetDaemon version 3
+---
+
+This documentation how to move to current .NET 7 based NetDaemon runtime v3.x to .NET 8 based NetDaemon runtime 4. This change is pretty small and mostly should be quite compatible with your existing applications.
+
+# Development environment
+
+The following changes have to be executed in order to develop your apps for NetDaemon 4 and .NET 8.
+
+## 1. Update your nuget packages
+
+In this release we decided to change naming of NetDaemon nuget packages. The names are basically the same but without the `JoySoftware`. We have good reasons for this and hope this little inconveniece of renaming the references will be ok.
+
+1. In all .net projectfilel `*.csproj`, rename all nuget references that starts with `JoySoftware.NetDaemon` to `NetDaemon`. 
+2. Change the target framework to 8.0
+3. Update Microsoft .NET files to .NET 8 versions
+
+### 2. Update docker containers and add-ons
+
+The docker container, change the name from `netdaemon3` to `netdaemon4`. All other settings are the same.
+
+If you are using the addon write down the current settings in your current 3.x based addon and install the version 4 version and update settings as needed. In version 4 the default path had changed from `config/netdaemon3` to `config/netdaemon4`
+
+### 3. Update the code generator
+
+As some of the namespaces have changed you should update your locally installed version of the [Code generator](/v3/hass_model/hass_model_codegen.md) by running the following command:
+
+```bash
+dotnet tool install -g NetDaemon.HassModel.CodeGen
+```
+
+...and then re-run the generator to create an updated version of `HomeAssistantGenerated.cs`
+
+
