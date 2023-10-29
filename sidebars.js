@@ -2,6 +2,7 @@ module.exports = {
   someSidebar: {
     Documentation: [
       'v3/index',
+      'v3/whats_new_v4', 
       {
         type: 'category',
         label: 'Getting started',
