@@ -94,8 +94,9 @@ Please check out the apps being developed for NetDaemon. Since documentation is 
 
 | User                                                                                                    | Description                                           |
 | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)                                    | HassModel examples by Frank the author of HassModel API |
-| [@helto4real](https://github.com/helto4real/HassModelAutomations)                          | Tomas NetDaemon apps running in production (The HassModel version)          |
+| [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)                                     | HassModel examples by Frank the author of HassModel API |
+| [@helto4real](https://github.com/helto4real/HassModelAutomations)                                       | Tomas NetDaemon apps running in production (The HassModel version)          |
 | [@isabellaalstrom](https://github.com/isabellaalstrom/home-assistant-config/tree/master/netdaemon/apps) | Isabella's NetDaemon apps, check them out, nice stuff |
 | [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's NetDaemon apps, good example extending NetDaemon  functionality |
-| [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                                              | Kennetjuh's NetDaemon implementation (V3) |
+| [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                                                | Kennetjuh's NetDaemon implementation (V3) |
+| [@vinnie1234](https://github.com/vinnie1234/HomeAutomation-NetDaemon)                                   | Vincent's NetDaemon implementation (V3) |
