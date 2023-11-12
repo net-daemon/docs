@@ -100,3 +100,4 @@ Please check out the apps being developed for NetDaemon. Since documentation is 
 | [@Horizon0156](https://github.com/Horizon0156/netdaemon-apps)                                           | Stefan W's NetDaemon apps, good example extending NetDaemon  functionality |
 | [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                                                | Kennetjuh's NetDaemon implementation (V3) |
 | [@vinnie1234](https://github.com/vinnie1234/HomeAutomation-NetDaemon)                                   | Vincent's NetDaemon implementation (V3) |
+| [@leosperry](https://github.com/leosperry/NetDeamonImpl)                                                | Leonard's NetDaemon implementation (V3) |
