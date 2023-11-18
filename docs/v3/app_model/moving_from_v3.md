@@ -41,9 +41,10 @@ As some of the namespaces have changed you should update your locally installed 
 dotnet tool install -g NetDaemon.HassModel.CodeGen
 ```
 
-:::note
+:::warning
 
-You may need to uninstall the old code generator by using the `dotnet tool uninstall` command
+You may need to uninstall the old code generator by using the `dotnet tool uninstall -g JoySoftware.NetDaemon.HassModel.CodeGen` command. Since we have changed
+the namespace there will be conflicting tool command names.
 
 :::
 
