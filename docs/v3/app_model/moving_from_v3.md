@@ -50,4 +50,14 @@ the namespace there will be conflicting tool command names.
 
 ...and then re-run the generator to create an updated version of `HomeAssistantGenerated.cs`
 
+### 3. Update the CLI tool
+
+As some of the namespaces have changed you should first uninstall the cli tool by `dotnet new uninstall JoySoftware.NetDaemon.Templates.Project`
+and then install the new too by 
+
+```bash
+dotnet new --install NetDaemon.Templates.Project
+
+```
+
 
