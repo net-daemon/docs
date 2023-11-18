@@ -13,10 +13,10 @@ If you use the NetDaemon project template you will already have the scheduler av
 
 To set up the scheduler manually you should:
 
-* Include the JoySoftware.NetDaemon.Extensions.Scheduling nuget package
+* Include the NetDaemon.Extensions.Scheduling nuget package
 
 ```ps
-Install-Package JoySoftware.NetDaemon.Extensions.Scheduling 
+Install-Package NetDaemon.Extensions.Scheduling 
 ```
 
 * Make sure to call `.AddNetDaemonScheduler()` on the `ServiceCollection` in the hosts Program.cs

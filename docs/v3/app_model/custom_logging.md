@@ -26,7 +26,7 @@ try
 }
 ```
 
-This configuration builder creates a Console Sink logger with the minimum logging level defined in `appsettings.json`, as described in the [Instance applications](v2/app_model/instancing_apps.md) page.
+This configuration builder creates a Console Sink logger with the minimum logging level defined in `appsettings.json`, as described in the [Instance applications](v3/app_model/instancing_apps.md) page.
 
 To modify the logging behavior we can create our own logging configuration and replace the default one within `program.cs`.
 

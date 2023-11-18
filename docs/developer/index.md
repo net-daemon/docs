@@ -11,7 +11,7 @@ Thank you for considering contributing to this projects. This is most welcome!
 
 ## Get things going
 
-1. Fork and clone your copy of the `net-daemon/netdaemon_v2` (for V2) or `net-daemon/netdaemon` (for V3) project
+1. Fork and clone your copy of the `net-daemon/netdaemon` project
 2. Get it up and running and debugging in your prefered development environment. VSCode, Visual Studio and JetBrains Rider are supported for now. Please see specific docs for each of the development tools
 3. Make sure you write tests. If you want to do a big design change, make Issue and describe your suggestion and ping the [discord group](https://discord.gg/K3xwfcX) to get the discussions going.
 4. Write tests that covers your added featureset or change the existing tests as needed. Do not exclude failing tests!

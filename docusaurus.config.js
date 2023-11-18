@@ -131,7 +131,7 @@ module.exports = {
         indexDocs: true,
         indexBlog: false,
         highlightSearchTermsOnTargetPage: true,
-        ignoreFiles:  [/^.*docs\/v2\/.*$/],
+        //ignoreFiles:  [/^.*docs\/v2\/.*$/],
       },
     ],
   ],

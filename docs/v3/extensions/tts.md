@@ -27,7 +27,7 @@ public class MyTtsApp
 If you use source deployment with the NetDaemon add-on or Docker image this dependency is already included. If you are missing it add:
 
 ```cmd
-dotnet add package JoySoftware.NetDaemon.Extensions.Tts
+dotnet add package NetDaemon.Extensions.Tts
 ```
 
 And add the tts service to the host in `program.cs`:

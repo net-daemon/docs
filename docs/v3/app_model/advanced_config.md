@@ -3,13 +3,7 @@ id: app_model_advanced_config
 title: Advanced configuration
 ---
 
-You can use complex data types for configuration in YAML instancing. Make sure you are not using immutable data types like strings or read-only collections without making them nullable. For collections we recommend using `IList&ltT&gt` that are instanced with `List&ltT&gt` if you do not want to be nullable.
-
-:::info
-
-NetDaemon V3 no longer supports snake casing in YAML configuration files. Property and class names need to match with case sensitivity.
-
-:::
+You can use complex data types for configuration in YAML instancing. Make sure you are not using immutable data types like strings or read-only collections without making them nullable. For collections we recommend using `IList<T>` that are instanced with `List<T>` if you do not want to be nullable.
 
 ### Advanced configuration
 

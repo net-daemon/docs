@@ -13,24 +13,25 @@ There are several ways to deploy your apps:
 
 Once added to Home Assistant, select one of the V3 versions. If you feel you always want the latest and greatest changes you can choose the dev build but be prepare that things can break!
 
-1. Make a folder structure under your Home Assistant configuration directory to use for NetDaemon apps. `/config/netdaemon3`  
+1. Make a folder structure under your Home Assistant configuration directory to use for NetDaemon apps. `/config/netdaemon4`  
 2. Add the `https://github.com/net-daemon/homeassistant-addon` in `Add new repository URL` to the add-on store.
 
     ![](/img/docs/started/newrepo.png)
 
 3. Add the NetDaemon add-on.
 
+_todo: add new image_
     ![](/img/docs/started/daemon3.png)
 
-4. Deploy your apps and `.yaml` files in the folder `/config/netdaemon3`.
+4. Deploy your apps and `.yaml` files in the folder `/config/netdaemon4`.
 
 ### Deploy compiled assemblies and configurations
 
-Copy your published files from `dotnet publish -c Release -o [outputdir]` to `/config/netdaemon3`. All the binaries and configuration should be copied.
+Copy your published files from `dotnet publish -c Release -o [outputdir]` to `/config/netdaemon4`. All the binaries and configuration should be copied.
 
 See also tutorial [Publish NetDeamon apps with Powershell](v3/tutorials/publish_script.md).
 
-In the add-on config, specify the `app_assembly` setting to point to the assembly relative to your `/config/netdaemon3` folder. This assembly should be the entry assembly (dll) from your project template. You can also add a path to the configuration folder separately. This is an example of how the configuration should appear using the default template:
+In the add-on config, specify the `app_assembly` setting to point to the assembly relative to your `/config/netdaemon4` folder. This assembly should be the entry assembly (dll) from your project template. You can also add a path to the configuration folder separately. This is an example of how the configuration should appear using the default template:
 
 ![](/img/docs/started/daemon_addon_config.png)
 
@@ -48,7 +49,7 @@ Now you can publish to quickly deploy files, and restart NetDaemon to run them.
 
 ### Deploy source files and configurations
 
-Copy the `.cs` and `.yaml` files to `/config/netdaemon3` folder from the `apps` folder using the template project and start/restart the NetDaemon add-on.
+Copy the `.cs` and `.yaml` files to `/config/netdaemon4` folder from the `apps` folder using the template project and start/restart the NetDaemon add-on.
 
 ## Install as a Docker container
 
@@ -60,7 +61,7 @@ If you are using Home Assistant Core and do not have the possibility to run add-
 
 ```bash
 docker run -d \
-  --name netdaemon3 \
+  --name netdaemon4 \
   --restart=always \
   -e HomeAssistant__Host=192.168.1.4 \
   -e HomeAssistant__Token=XXXXX \
@@ -68,10 +69,8 @@ docker run -d \
   -e Logging__LogLevel__Default=Information \
   -e TZ=Europe/Stockholm \
   -v ~/netdaemon_config:/data \
-  netdaemon/netdaemon3_1
+  netdaemon/netdaemon4
 ```
-
-_Admin gui is currently not supported for V3 yet._
 
 ### Example using docker-compose.yaml for
 
@@ -79,9 +78,9 @@ _Admin gui is currently not supported for V3 yet._
 version: '3.7'
 services:
   netdaemon:
-    image: netdaemon/netdaemon3_1                 # use netdaemon/netdaemon3_1:ver 
+    image: netdaemon/netdaemon4                 # use netdaemon/netdaemon4:ver 
                                                 # for specific version
-    container_name: netdaemon3
+    container_name: netdaemon4
     restart: always
     environment:
       - HomeAssistant__Host=your_ip_or_hostname
@@ -118,6 +117,7 @@ The Docker container needs these environment variables to run properly.
 
 ### Folder structure and where to map the Docker volume
 
-The `~/netdaemon_config` needs to point to a local folder. See image below where the local folder is named `netdaemon3` and should be mapped as volume to the `/data`!
+The `~/netdaemon_config` needs to point to a local folder. See image below where the local folder is named `netdaemon4` and should be mapped as volume to the `/data`!
+You can use any folder name you like to use.
 
 ![](/img/docs/installation/folderstructure_v3.png)
