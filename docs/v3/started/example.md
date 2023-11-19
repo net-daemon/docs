@@ -97,5 +97,5 @@ Please check out the apps being developed for NetDaemon. Since documentation is 
 | [@helto4real](https://github.com/helto4real/NetDaemon3Automations)                                      | Tomas NetDaemon apps running in production (V4)          |
 | [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)                                     | HassModel examples by Frank the author of HassModel API |
 | [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                                                | Kennetjuh's NetDaemon implementation (V3) |
-| [@vinnie1234](https://github.com/vinnie1234/HomeAutomation-NetDaemon)                                   | Vincent's NetDaemon implementation (V3) |
+| [@vinnie1234](https://github.com/vinnie1234/HomeAutomation-NetDaemon)                                   | Vincent's NetDaemon implementation (V4) |
 | [@leosperry](https://github.com/leosperry/NetDeamonImpl)                                                | Leonard's NetDaemon implementation (V3) |
