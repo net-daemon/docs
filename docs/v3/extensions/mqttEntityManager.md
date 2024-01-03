@@ -247,6 +247,19 @@ Below are some additional examples:
 await _entityManager.CreateAsync("sensor.basic_sensor").ConfigureAwait(false);
 ```
 
+**Creating a simple binary sensor**
+
+```csharp
+await _entityManager.CreateAsync("binary_sensor.basic_sensor",
+  new EntityCreationOptions(DeviceClass: "connectivity"))
+  .ConfigureAwait(false);
+```
+:::tip
+
+See here for examples of [Binary Sensor Device Classes](https://www.home-assistant.io/integrations/binary_sensor/#device-class)
+
+:::
+
 **Overriding the default unique ID and name**
 
 ```csharp
