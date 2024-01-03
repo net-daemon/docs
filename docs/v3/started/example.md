@@ -52,7 +52,7 @@ When you want to choose your own name you can make use of the Id parameter like:
 [NetDaemonApp(Id = "appname")]
 ```
 
-Netdaemon will replace {namespace}_appname with your given Id
+Netdaemon will replace \{namespace\}_appname with your given Id
 
 ## The constructor
 
