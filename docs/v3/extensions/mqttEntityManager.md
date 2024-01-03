@@ -98,7 +98,7 @@ The extension currently offers the following methods:
 
 In addition, the extension has a single property `QualityOfServiceLevel` which allows you to set the QoS level of the MQTT message that will be transmitted. See [this article](https://www.hivemq.com/blog/mqtt-essentials-part-6-mqtt-quality-of-service-levels/) for more information.
 
-Each of the methods operates on an `entityId`, which is a standard Home Assistant identifier of the format "{domain}.{identifier}", for example "sensor.kitchen_temperature". When you create an entity you should strive to use a unique identifier for each domain.
+Each of the methods operates on an `entityId`, which is a standard Home Assistant identifier of the format "\{domain\}.\{identifier\}", for example "sensor.kitchen_temperature". When you create an entity you should strive to use a unique identifier for each domain.
 
 Please do bear in mind that the extension is using MQTT to create entities and so you must be aware of both the Home Assistant and the MQTT requirements with regards to creating and updating entities. You can find more information of the domains and device classes supported by MQTT and this extension in the [official MQTT documentation](https://www.home-assistant.io/docs/mqtt/discovery), however, this is noted just for reference. The complexities around topic subscription are handled for you within the extension.
 

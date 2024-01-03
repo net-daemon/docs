@@ -96,7 +96,7 @@ Ensure that the "DOCKERFILE" profile is selected in the toolbar and then `Run` a
 #### Setup
 
 1. In Home Assistant go to Configurations -> Add-ons, Backups & Supervisor -> Add-on Store -> Menu -> Repositories
-2. Add the repository: <https://github.com/hassio-addons/repository>
+2. Add the repository: [https://github.com/hassio-addons/repository](https://github.com/hassio-addons/repository)
 3. Install the `Studio Code Server Addon` (a0d7b954_vscode)
 4. In the Addon Configuration Tab add the following config:
 

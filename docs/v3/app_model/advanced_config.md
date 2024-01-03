@@ -11,8 +11,8 @@ Examples of configurations:
 
 | YAML type                                                             | .NET type                                                                                                                  |
 | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| *Scalar* <br/>AString: hello world <br/>AnInt: 10 <br/>ABool: true | <br/>string? AString { get; set; } <br/>int? AnInt {get;set;} <br/>bool? ABool { get; set; }                                     |
-| *Sequences* <br/>SimpleList:<br/>  - Hello<br/>  - World             | IList&ltstring&gt SimpleList { get; set; } <br/>Sequences can also be IEnumerable&lttype&gt, but must then be nullable |
+| *Scalar* <br/>AString: hello world <br/>AnInt: 10 <br/>ABool: true | <br/>string? AString \{ get; set; \} <br/>int? AnInt \{get;set;\} <br/>bool? ABool \{ get; set; \}                                     |
+| *Sequences* <br/>SimpleList:<br/>  - Hello<br/>  - World             | IList&ltstring&gt SimpleList \{ get; set; \} <br/>Sequences can also be IEnumerable&lttype&gt, but must then be nullable |
 
 #### Example of complex data types support
 
