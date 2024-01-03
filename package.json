@@ -11,7 +11,7 @@
     "cleanup": "npm prune; rm -R node_modules || echo ''; rm -R .docusaurus || echo ''; rm -R build || echo ''"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "@docusaurus/core": "^3.0.1",
