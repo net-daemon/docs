@@ -4,9 +4,38 @@ module.exports = {
   url: 'https://netdaemon.xyz',
   baseUrl: '/',
   favicon: 'img/favicon.png',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'net-daemon', // Usually your GitHub org/user name.
+  projectName: 'netdaemon', // Usually your repo name.
   themeConfig: {
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'R7R11YZ1OU',
+
+      // Public API key: it is safe to commit it
+      apiKey: 'a68a1e966bf0fa56c6d41baec05a8f2d',
+
+      indexName: 'NetDaemon',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      //externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      //replaceSearchResultPathname: {
+      //  from: '/docs/', // or as RegExp: /\/docs\//
+      //  to: '/',
+      //},
+
+      // Optional: Algolia search parameters
+      //searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+
+      //... other Algolia params
+    }, 
     prism: {
       additionalLanguages: ['csharp', 'powershell'],
     },
@@ -124,15 +153,6 @@ module.exports = {
     ],
   ],
   plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexDocs: true,
-        indexBlog: false,
-        highlightSearchTermsOnTargetPage: true,
-        //ignoreFiles:  [/^.*docs\/v2\/.*$/],
-      },
-    ],
+
   ],
 };
