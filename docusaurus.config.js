@@ -47,8 +47,8 @@ module.exports = {
     },
     items: [
       {
-        to: '/docs/v3',
-        activeBasePath: 'docs/v3',
+        to: '/docs/user',
+        activeBasePath: 'docs/user',
         label: 'Docs',
         position: 'left',
       },
@@ -112,10 +112,6 @@ module.exports = {
           //   to: 'blog',
           // },
           {
-            label: 'Logo - chris 論',
-            href: 'https://commons.wikimedia.org/wiki/User:Chrkl',
-          },
-          {
             label: 'HACS - ludeeus',
             href: 'https://github.com/ludeeus',
           },
@@ -123,10 +119,6 @@ module.exports = {
             label: 'Home Assistant devs',
             href: 'https://www.home-assistant.io/developers/credits/#contributors',
           },
-          // {
-          //   label: 'Twitter',
-          //   href: 'https://twitter.com/docusaurus',
-          // },
         ],
       },
     ],

@@ -4,7 +4,7 @@ title: What's new in V4
 ---
 ## Version 4 of NetDaemon
 
-We are exited to introduce you to version 4 of NetDaemon! There should be a pretty easy [upgrade path for version 3 users](v3/app_model/moving_from_v3.md)
+We are exited to introduce you to version 4 of NetDaemon! There should be a pretty easy [upgrade path for version 3 users](user/app_model/moving_from_v3.md)
 
 ### .NET 8 and C# 12
 

@@ -173,13 +173,13 @@ After you have developed and tested your apps it is time to deploy and run the a
 
 Use `dotnet publish -c Release -o [your output directory]` and copy all content from `[your output directory]` to `/config/netdaemon4` if you are using add-on, or the destination folder you chose in the other hosting options.
 
-See [installation docs](v3\started\installation.md) for how to configure different hosting options.
+See [installation docs](user\started\installation.md) for how to configure different hosting options.
 
 ### Source files and configurations
 
 Copy the content from the `apps` folder to to `/config/netdaemon4` if you are using add-on (note that you might have changed the destination in add-on config), or the destination folder you chose in the other hosting options. **Do not copy project files. Only copy the contents under the `apps` folder!**
 
-See [installation docs](v3\started\installation.md) for how to configure different hosting options.
+See [installation docs](user\started\installation.md) for how to configure different hosting options.
 
 ### Keep your dependencies and tools up-to-date
 
