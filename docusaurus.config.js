@@ -2,7 +2,7 @@ module.exports = {
   title: 'NetDaemon',
   tagline: 'Application platform written in c# for Home Assistant',
   url: 'https://netdaemon.xyz',
-  baseUrl: '/',
+  baseUrl: '',
   favicon: 'img/favicon.png',
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
