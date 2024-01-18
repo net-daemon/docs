@@ -55,7 +55,7 @@ module.exports = {
         items: [
           'user/extensions/extensions_scheduling',
           'user/extensions/extensions_tts',
-          'user/extensions/extensions_mqttEntityManager',
+          'user/extensions/extensions_mqttentitymanager',
         ]
       },
       {

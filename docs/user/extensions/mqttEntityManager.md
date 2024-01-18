@@ -1,5 +1,5 @@
 ---
-id: extensions_mqttEntityManager
+id: extensions_mqttentitymanager
 title: Entity Manager
 ---
 
