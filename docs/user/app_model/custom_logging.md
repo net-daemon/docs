@@ -2,7 +2,7 @@
 id: app_model_custom_logging
 title: Custom logging
 ---
-This page describes how to create and configure a custom logger. If you are happy with the standard logging described in the [Instance applications](/v3/app_model/instancing_apps.md) page then this information probably won't be of interest to you.
+This page describes how to create and configure a custom logger. If you are happy with the standard logging described in the [Instance applications](/user/app_model/instancing_apps.md) page then this information probably won't be of interest to you.
 
 ### ILogger and Serilog
 
@@ -26,7 +26,7 @@ try
 }
 ```
 
-This configuration builder creates a Console Sink logger with the minimum logging level defined in `appsettings.json`, as described in the [Instance applications](v3/app_model/instancing_apps.md) page.
+This configuration builder creates a Console Sink logger with the minimum logging level defined in `appsettings.json`, as described in the [Instance applications](user/app_model/instancing_apps.md) page.
 
 To modify the logging behavior we can create our own logging configuration and replace the default one within `program.cs`.
 

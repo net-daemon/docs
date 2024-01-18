@@ -184,7 +184,7 @@ myEntities.BinarySensor.MyMotionSensor
 `WhenStateIsFor` takes a predicate as its first argument, and a `TimeSpan` as the second argument. The predicate declares the entity state we want to react to, and the `TimeSpan` declares how long we want the entity to be in that state before reacting.
 
 As a thrid argument we want to pass an instance that implements `IScheduler`. No need to call any methods on the instance before passing it as an argument. Passing a scheudler ensures that the events stops when the app is stopped. It's also useful to inject a TestScheduler for unit tests. 
-To learn more about Scheduler please see [scheduling](v3/extensions/scheduling.md).
+To learn more about Scheduler please see [scheduling](user/extensions/scheduling.md).
 
 In this case we want to wait for a motion sensor's state to change to `"off"`, remain in that state for 5 minutes, and then turn off a light. Each time the state changes the wait resets.
 

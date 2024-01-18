@@ -133,4 +133,4 @@ Logs are cleared each time you restart the NetDaemon add-on (or the Home Assista
 
 One of the goals of the NetDaemon template app is that it should work out of the box with minimal configuration. For that reason, the template ships with a "Default NetDaemon Logging Configurator", which supports all of the functionality described on this page, but nothing more.
 
-If you are familiar with Serilog or other .NET loggers and want to use more advanced techniques such as writing to log files or to remote log servers then please read the [Custom logging](v3/app_model/custom_logging.md) page, which shows how to create and configure a custom logger.
+If you are familiar with Serilog or other .NET loggers and want to use more advanced techniques such as writing to log files or to remote log servers then please read the [Custom logging](user/app_model/custom_logging.md) page, which shows how to create and configure a custom logger.

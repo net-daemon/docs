@@ -35,7 +35,7 @@ If you are using the addon write down the current settings in your current 3.x b
 
 ### 3. Update the code generator
 
-As some of the namespaces have changed you should update your locally installed version of the [Code generator](/v3/hass_model/hass_model_codegen.md) by running the following command:
+As some of the namespaces have changed you should update your locally installed version of the [Code generator](/user/hass_model/hass_model_codegen.md) by running the following command:
 
 ```bash
 dotnet tool install -g NetDaemon.HassModel.CodeGen
