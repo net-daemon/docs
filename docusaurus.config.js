@@ -6,6 +6,7 @@ module.exports = {
   favicon: 'img/favicon.png',
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
+  trailingSlash: true,
   themeConfig: {
     algolia: {
       // The application ID provided by Algolia
