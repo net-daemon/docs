@@ -11,9 +11,9 @@ Runtime version 4 has NuGet version >= `23.44.0` and uses the Docker image `netd
 
 ## Migrating from version 3
 
-If you are a current user of version 3.x of NetDaemon runtime please see [migrating from version 3 runtime](v3/app_model/moving_from_v3.md)
+If you are a current user of version 3.x of NetDaemon runtime please see [migrating from version 3 runtime](user/app_model/moving_from_v3.md)
 
-The daemon core runtime is distributed as a Home Assistant add-on or as Docker container. You can as an alternative deploy your own instance using the template project. Please see [the getting started](v3/started/installation.md) documentation for setup.
+The daemon core runtime is distributed as a Home Assistant add-on or as Docker container. You can as an alternative deploy your own instance using the template project. Please see [the getting started](user/started/installation.md) documentation for setup.
 
 :::note
 

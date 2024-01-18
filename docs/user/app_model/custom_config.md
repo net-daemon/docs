@@ -2,7 +2,7 @@
 id: app_model_custom_config
 title: Custom config
 ---
-This page describes how to create and configure a custom configuration provider. If you are happy with the standard config providers described in the [Instance applications](/v3/app_model/instancing_apps.md) page then you don't need to read this page.
+This page describes how to create and configure a custom configuration provider. If you are happy with the standard config providers described in the [Instance applications](/user/app_model/instancing_apps.md) page then you don't need to read this page.
 
 ### IOptions and ini Files
 
@@ -27,7 +27,7 @@ try
 }
 ```
 
-This configuration builder uses the default [config source](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.host.createdefaultbuilder#microsoft-extensions-hosting-host-createdefaultbuilder(system-string())) as well as a YAML file source custom to NetDaemon, as described in the [Instance applications](v3/app_model/instancing_apps.md) page.
+This configuration builder uses the default [config source](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.host.createdefaultbuilder#microsoft-extensions-hosting-host-createdefaultbuilder(system-string())) as well as a YAML file source custom to NetDaemon, as described in the [Instance applications](user/app_model/instancing_apps.md) page.
 
 To modify the config behavior we can create our own config provider within `program.cs`.
 

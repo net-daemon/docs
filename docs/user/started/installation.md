@@ -29,7 +29,7 @@ _todo: add new image_
 
 Copy your published files from `dotnet publish -c Release -o [outputdir]` to `/config/netdaemon4`. All the binaries and configuration should be copied.
 
-See also tutorial [Publish NetDeamon apps with Powershell](v3/tutorials/publish_script.md).
+See also tutorial [Publish NetDeamon apps with Powershell](user/tutorials/publish_script.md).
 
 In the add-on config, specify the `app_assembly` setting to point to the assembly relative to your `/config/netdaemon4` folder. This assembly should be the entry assembly (dll) from your project template. You can also add a path to the configuration folder separately. This is an example of how the configuration should appear using the default template:
 

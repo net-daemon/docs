@@ -1,76 +1,76 @@
 module.exports = {
   someSidebar: {
     Documentation: [
-      'v3/index',
-      'v3/whats_new_v4', 
+      'user/index',
+      'user/whats_new_v4', 
       {
         type: 'category',
         label: 'Getting started',
         items: [
-          'v3/started/get_started',
-          'v3/started/development',
-          'v3/started/installation',
-          'v3/started/integration',
-          'v3/started/example',
+          'user/started/get_started',
+          'user/started/development',
+          'user/started/installation',
+          'user/started/integration',
+          'user/started/example',
         ]
       },
       {
         type: 'category',
         label: 'AppModel',
         items: [
-          'v3/app_model/app_model',
-          'v3/app_model/app_model_instancing',
-          'v3/app_model/app_model_advanced_config',
-          'v3/app_model/app_model_custom_logging',
-          'v3/app_model/app_model_custom_config',
-          'v3/app_model/app_model_moving_from_v3',
+          'user/app_model/app_model',
+          'user/app_model/app_model_instancing',
+          'user/app_model/app_model_advanced_config',
+          'user/app_model/app_model_custom_logging',
+          'user/app_model/app_model_custom_config',
+          'user/app_model/app_model_moving_from_v3',
         ],
       },
       {
         type: 'category',
         label: 'HassModelApi',
         items: [
-          'v3/hass_model/hass_model',
-          'v3/hass_model/hass_model_codegen',
-          'v3/hass_model/hass_model_generated_entities',
-          'v3/hass_model/hass_model_generated_service',
-          'v3/hass_model/hass_model_working_with_entities',
-          'v3/hass_model/hass_model_subscribe_to_triggers',
-          'v3/hass_model/hass_model_events',
-          'v3/hass_model/hass_model_integration_servicecallback',
+          'user/hass_model/hass_model',
+          'user/hass_model/hass_model_codegen',
+          'user/hass_model/hass_model_generated_entities',
+          'user/hass_model/hass_model_generated_service',
+          'user/hass_model/hass_model_working_with_entities',
+          'user/hass_model/hass_model_subscribe_to_triggers',
+          'user/hass_model/hass_model_events',
+          'user/hass_model/hass_model_integration_servicecallback',
         ]
       },
       {
         type: 'category',
         label: 'Advanced',
         items: [
-          'v3/advanced/call_ha_api',
-          'v3/advanced/async_features',
-          'v3/advanced/dev_workflow3'
+          'user/advanced/call_ha_api',
+          'user/advanced/async_features',
+          'user/advanced/dev_workflow3'
         ]
       },
       {
         type: 'category',
         label: 'Extensions API',
         items: [
-          'v3/extensions/extensions_scheduling',
-          'v3/extensions/extensions_tts',
-          'v3/extensions/extensions_mqttEntityManager',
+          'user/extensions/extensions_scheduling',
+          'user/extensions/extensions_tts',
+          'user/extensions/extensions_mqttEntityManager',
         ]
       },
       {
         type:'category',
         label: 'Tutorials',
         items: [
-          'v3/tutorials/publish_script',
-          'v3/tutorials/webhost',
+          'user/tutorials/publish_script',
+          'user/tutorials/webhost',
         ]
       },
       {
         type: 'category',
         label: 'Troubleshooting',
         items: [
-          'v3/troubleshooting/trouble_call_service',
+          'user/troubleshooting/trouble_call_service',
         ]
       },
     ],

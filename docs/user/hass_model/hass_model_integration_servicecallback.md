@@ -5,7 +5,7 @@ title: Callback services
 
 From NetDaemon you can register services in Home Assistant and get a callback whenever this service is triggered. For example by an automation or script that runs inside Home Assistant
 
-This feature requires you to install the [NetDaemon integration](v3/started/integration.md) and use the NetDaemon.HassModel.Integration nuget package:
+This feature requires you to install the [NetDaemon integration](user/started/integration.md) and use the NetDaemon.HassModel.Integration nuget package:
 
 ```shell
 PM> Install-Package NetDaemon.HassModel.Integration 

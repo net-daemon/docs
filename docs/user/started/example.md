@@ -3,7 +3,7 @@ id: example
 title: Example app
 ---
 
-This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file `ExampleApp.cs` that contains the app logic. This example uses the code generation capability of HassModel [explained here](v3/hass_model/hass_model_codegen.md).
+This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file `ExampleApp.cs` that contains the app logic. This example uses the code generation capability of HassModel [explained here](user/hass_model/hass_model_codegen.md).
 
 ## ExampleApp.cs
 
@@ -86,7 +86,7 @@ The constructor can be used to do initialization of your application. **Never bl
 
 ## Creating and updating Home Assistant entities
 
-If you want to create entities from NetDaemon, set their state attributes, then check out the [MQTT Entity Manager documentation](v3/extensions/mqttEntityManager.md)
+If you want to create entities from NetDaemon, set their state attributes, then check out the [MQTT Entity Manager documentation](user/extensions/mqttEntityManager.md)
 
 ## Real-world example apps
 

@@ -217,7 +217,7 @@ The `entityId` argument has the same format as in the previous methods.
 
 ### Subscribing to command updates
 
-Note that this method allows you to subscribe to command updates and should not be confused with the far more extensive subscription capabilities defined within the [HassModel API](v3/hass_model/hass_model.md). You would typically use this method with switches to subscribe to their "on" and "off" commands - see the examples for more info.
+Note that this method allows you to subscribe to command updates and should not be confused with the far more extensive subscription capabilities defined within the [HassModel API](user/hass_model/hass_model.md). You would typically use this method with switches to subscribe to their "on" and "off" commands - see the examples for more info.
 
 The `PrepareCommandSubscriptionAsync` method creates an `Observable<string>` that you can subscribe to:
 
@@ -360,7 +360,7 @@ Unfortunately there is no way to do this with the standard logging that ships wi
 
 This change of logger only needs to be done once and after that you can tweak the logging config within your `appsettings.json`.
 
-There is a whole page dedicated to [custom logging](/v3/app_model/custom_logging.md) so just pop [over there](/v3/app_model/custom_logging.md), get that up and running and then return to this page...
+There is a whole page dedicated to [custom logging](/user/app_model/custom_logging.md) so just pop [over there](/user/app_model/custom_logging.md), get that up and running and then return to this page...
 
 You're back! Ok - the next thing we need to do is enable verbose logging for the MQTT Entity Manager, which you can do within your `appsettings.json` file. Find the `Override` section, add a new entry for `NetDaemon.Extensions.MqttEntityManager` and set it to `Verbose`:
 
