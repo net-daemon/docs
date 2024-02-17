@@ -7,12 +7,6 @@ Quite often it's necessary to store data in Home Assistant using entities. This 
 
 This extension enables you to Create, Update and Remove entities in Home Assistant leveraging MQTT Discovery.
 
-:::warning
-
-This extension is still in the beta stage and breaking changes should be expected.
-
-:::
-
 ## Pre-Requisites
 
 - You need to run an [MQTT broker](https://www.home-assistant.io/integrations/mqtt/#choose-a-mqtt-broker)
@@ -235,7 +229,7 @@ To use this with a switch we can subscribe to the command and then use that to t
     }));
 ```
 
-## Examples
+## Basic examples
 
 In the NetDaemon project template there is an example that demonstrates the functionality of the entity manager at `\dev\DebugHost\apps\Extensions\MqttEntityManagerApp.cs`
 
@@ -331,6 +325,131 @@ await _entityManager.SetStateAsync(rainNexthour4Id, "1").ConfigureAwait(false);
 ```csharp
 await _entityManager.RemoveAsync("sensor.my_id").ConfigureAwait(false);
 ```
+
+
+## Advanced example - device with sensors
+
+In each of the previous examples we showed how to set up an individual sensor.
+But what if you want to create a device with multiple sensors?
+
+
+In the following code example we define a new `Device` called "Car Charger", which
+is a fictitious brand of EV charger. Within that devices we have five sensors that
+measure:
+
+ * Temperature, in °C
+ * Progress from 0 to 100%
+ * Voltage, in volts
+ * Battery charge as a percentage
+ * Current mode, e.g. "Charging" or "Idle"
+
+
+The trick here is to create five unique sensors but have them all refer to a
+single `Device`, which will show that device on the Home Assistant UI with
+the sensors underneath.
+
+The five sensors also share a single state topic, which means that we can update all values (or a subset) with a single call.
+
+
+```csharp
+// This device will have five sensors. We tie all of the sensors together
+// by sharing the same `identifiers` list with each sensor.
+var identifiers = new[] { "car_charger" };
+
+// It is important that all sensors share the same State Topic so that
+// we can update all values in one go.
+// You will see that in each sensor, the `value_template` defines how
+// we extract the sensor value from the multiple update.
+var stateTopic = "homeassistant/sensor/car_charger/state";
+
+// First we define the device that will own all the sensors. This is passed
+// when we create the first of the sensors.
+var device = new { identifiers = identifiers, name = "Car Charger", model = "ABC X1", manufacturer = "Voltium", sw_version = 1.22 };
+
+// Create the first sensor for temperature. This requires a unique entity ID
+// and value_template, but needs to include the shared state topic and device info
+await _entityManager.CreateAsync("sensor.car_charger_temperature", new EntityCreationOptions
+{
+    Name = "Temperature",
+    DeviceClass = "temperature",
+}, new
+{
+    unit_of_measurement = "\u00b0C",
+    state_topic = stateTopic,   // Note the override of the state topic
+    value_template = "{{ value_json.temperature }}", // and value from state
+    device             // Links the sensors together
+});
+
+// The next sensor is charging progress, so again has a unique entity ID and value
+// template, and also shares the state topic and device info
+await _entityManager.CreateAsync("sensor.car_charger_progress", new EntityCreationOptions
+{
+    Name = "Progress"
+}, new
+{
+    unit_of_measurement = "%",
+    icon = "mdi:progress-clock",
+    state_topic = stateTopic,
+    value_template = "{{ value_json.progress }}",
+    device
+});
+
+// Then a voltage sensor
+await _entityManager.CreateAsync("sensor.car_charger_voltage", new EntityCreationOptions
+{
+    Name = "Voltage",
+    DeviceClass = "voltage"
+}, new
+{
+    unit_of_measurement = "V",
+    state_topic = stateTopic,
+    value_template = "{{ value_json.voltage }}",
+    device
+});
+
+// ...followed by a battery sensor. This has a special meaning in Home Assistant
+// as entities with the device class of `battery` can be used in automations to
+// identify which are running low
+await _entityManager.CreateAsync("sensor.car_charger_battery", new EntityCreationOptions
+{
+    Name = "Battery",
+    DeviceClass = "battery"
+}, new
+{
+    unit_of_measurement = "%",
+    state_topic = stateTopic,
+    value_template = "{{ value_json.battery }}",
+    device
+});
+
+// and finally, a mode sensor that can be represented as a string
+await _entityManager.CreateAsync("sensor.car_charger_mode", new EntityCreationOptions
+{
+    Name = "Mode",
+}, new
+{
+    icon = "mdi:list-status",
+    state_topic = stateTopic,
+    value_template = "{{ value_json.mode }}",
+    device
+});
+
+// Now that we have everything set up we can post an update to the shared state topic.
+// This needs to be a JSON string comprising all of the values we want to set so let's
+// start with a dynamic object and then JSON it
+var newState = new
+{
+    temperature = 47,
+    progress = 75,
+    voltage = 23,
+    battery = 19,
+    mode = "Charging"
+};
+
+await _entityManager.SetStateAsync("sensor.car_charger", JsonSerializer.Serialize(newState));
+```
+
+
 
 ## Troubleshooting
 
