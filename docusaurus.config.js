@@ -90,6 +90,10 @@ module.exports = {
             label: 'Discord',
             href: 'https://discord.gg/K3xwfcX',
           },
+          {
+            label: 'Sponsor & support NetDeamon',
+            to: 'docs/community/sponsor',
+          },
         ],
       },
       {
