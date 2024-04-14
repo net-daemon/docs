@@ -1,6 +1,6 @@
 ---
 id: hass_model_notifications
-title: Home Assistant events 
+title: Home Assistant notifications 
 ---
 
 Notifications and actionable notifications are an integral part of Home Assistant. Sending Notifications to a particular receiver can be done via the Notify service.
