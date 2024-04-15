@@ -37,6 +37,7 @@ module.exports = {
           'user/hass_model/hass_model_working_with_entities',
           'user/hass_model/hass_model_subscribe_to_triggers',
           'user/hass_model/hass_model_events',
+          'user/hass_model/hass_model_notifications',
           'user/hass_model/hass_model_integration_servicecallback',
         ]
       },
