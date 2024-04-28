@@ -32,3 +32,17 @@ public sealed class RegistryApp
     }
 }
 ```
+
+You can also use the newly added properties in the ServiceTarget class to target floor, areas, labels 
+and devices in your service calls. We will eventually make a nicer API for this but for now 
+you can use the ServiceTarget class directly.
+
+```csharp
+[NetDaemonApp]
+public sealed class TestServiceTargetApp
+{
+    public TestServiceTargetApp(IHaContext ha)
+        ha.CallService("input_boolean", "toggle", new ServiceTarget{ FloorIds = ["upstairs"] });
+    }
+}
+```
