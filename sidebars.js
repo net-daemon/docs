@@ -39,6 +39,7 @@ module.exports = {
           'user/hass_model/hass_model_events',
           'user/hass_model/hass_model_notifications',
           'user/hass_model/hass_model_integration_servicecallback',
+          'user/hass_model/hass_model_registry',          
         ]
       },
       {
