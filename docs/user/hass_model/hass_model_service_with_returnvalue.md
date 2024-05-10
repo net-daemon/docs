@@ -1,6 +1,6 @@
 ---
 id: hass_model_service_with_returnvalue
-title: Service with return values
+title: Service with return value
 ---
 
 For newer versions of Home Assistant, you can now return values some services. This is useful when you want to get a response from a service call.
