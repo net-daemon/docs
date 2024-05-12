@@ -2,6 +2,7 @@ module.exports = {
   someSidebar: {
     Documentation: [
       'user/index',
+      'user/user_support_policy',
       'user/whats_new_v4', 
       {
         type: 'category',
