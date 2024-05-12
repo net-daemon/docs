@@ -1,9 +1,9 @@
 ---
 id: user_support_policy
-title: Maintainence and support
+title: Maintenance and support
 ---
 
-## Support and maintainence policy
+## Support and maintenance policy
 
 We are a small team maintaining this project in our free time so we are happy to support and maintain the latest major version of the NetDaemon. 
 We have no means to support older versions. We can **not** guarantee anything but we will do our best to help you out as long as this project is active.
