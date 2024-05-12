@@ -8,7 +8,7 @@ title: Maintenance and support
 We are a small team maintaining this project in our free time so we are happy to support and maintain the latest major version of the NetDaemon to the extent of our time and availability. 
 We have no means to support older versions. We can **not** guarantee anything but we will do our best to help you out as long as this project is active.
 
-_These policies are a guide but no promisies and could be changed at any time without prior notice._
+_These policies are guidelines, not guarantees, and could be changed at any time without prior notice._
 
 ### What we support
 
