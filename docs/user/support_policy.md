@@ -5,14 +5,15 @@ title: Maintenance and support
 
 ## Support and maintenance policy
 
-We are a small team maintaining this project in our free time so we are happy to support and maintain the latest major version of the NetDaemon. 
+We are a small team maintaining this project in our free time so we are happy to support and maintain the latest major version of the NetDaemon to the extent of our time and availability. 
 We have no means to support older versions. We can **not** guarantee anything but we will do our best to help you out as long as this project is active.
 
-_These policies could be changed at any time without prior notice._
+_These policies are a guide but no promisies and could be changed at any time without prior notice._
 
 ### What we support
 
-We offer support through the [Discord server](https://discord.gg/QwvWpy8M) and [GitHub issues](https://github.com/net-daemon/netdaemon/issues) for the latest major version of NetDaemon. We will provide bug fixes and security patches for the latest major version. 
+We offer support through the [Discord server](https://discord.gg/QwvWpy8M) and [GitHub issues](https://github.com/net-daemon/netdaemon/issues) for the latest major version of NetDaemon. 
+We will try our best to provide bug fixes and security patches for the latest major version if we can but no guarantees. 
 We do recommend using the Discord server for faster response times.
 
 ### What happens to older versions?
@@ -36,7 +37,7 @@ recommend to start a new project from the official CLI template and migrate the 
 ### Major releases of NetDaemon runtime
 
 We aim to always be on the latest major version of .NET to allow users to take advantage of the latest features and performance improvements of .NET
-as well as the newest language features of C#. We will release new versions of NetDaemon as soon as possible after a new version of .NET is released.
+as well as the newest language features of C#. We will try to release new versions of NetDaemon as soon as possible after a new version of .NET is released.
 
 Sometimes we might introduce breaking changes if neede in order to make the project easier to maintain or introduce new features. 
 This will result in a new major version of NetDaemon. We will provide a migration guide for users to upgrade to the latest version.
