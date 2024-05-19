@@ -2,6 +2,7 @@ module.exports = {
   someSidebar: {
     Documentation: [
       'user/index',
+      'user/user_support_policy',
       'user/whats_new_v4', 
       {
         type: 'category',
@@ -40,6 +41,7 @@ module.exports = {
           'user/hass_model/hass_model_notifications',
           'user/hass_model/hass_model_integration_servicecallback',
           'user/hass_model/hass_model_registry',          
+          'user/hass_model/hass_model_service_with_returnvalue',
         ]
       },
       {
