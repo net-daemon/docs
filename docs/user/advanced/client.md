@@ -4,7 +4,6 @@ title: Client API
 ---
 While the recommended way to interact with Home Assistant is through the AppModel and HassModel API, there are scenarios where direct interaction with Home Assistant is required. The Client APIs offer a convenient method for lower-level interactions with Home Assistant.
 
-
 ## IHomeAssistantConnection
 You can access the client API through the `IHomeAssistantConnection` interface on the existing connection.
 This can be injected into a NetDaemon app's constructor. Most methods in this interface are asynchronous, so you need to implement 
@@ -37,7 +36,7 @@ If you need to implement a solution that only requires connecting to Home Assist
 app model, you can use the `IHomeAssistantRunner` interface. This interface handles connection and reconnection to Home Assistant.
 
 Add the client NuGet package to your application and use the `HomeAssistantRunner` class to connect to Home Assistant. 
-The `AddHomeAssistantClient` extension method can be used to add the client to dependency injection.
+The `AddHomeAssistantClient` extension method on the `IServiceCollection` must be used to add the client to dependency injection.
 
 Example: Implementation of a background service that uses the `IHomeAssistantRunner` to connect to Home Assistant and subscribe to all events.
 
