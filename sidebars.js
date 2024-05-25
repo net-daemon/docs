@@ -50,7 +50,8 @@ module.exports = {
         items: [
           'user/advanced/call_ha_api',
           'user/advanced/async_features',
-          'user/advanced/dev_workflow3'
+          'user/advanced/dev_workflow3',
+          'user/advanced/advanced_client',
         ]
       },
       {
