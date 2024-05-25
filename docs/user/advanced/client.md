@@ -2,25 +2,17 @@
 id: advanced_client
 title: Client API
 ---
+While the recommended way to interact with Home Assistant is through the AppModel and HassModel API, there are scenarios where direct interaction with Home Assistant is required. The Client APIs offer a convenient method for lower-level interactions with Home Assistant.
 
-The recommended way to interact with Home Assistant is to use the AppModel and HassModel API. 
-However, there are some cases where you might want to interact with Home Assistant directly. 
-The Client APIs provides a convenient way to interact with Home Assistant on a lower level.
-
-This documentation just gives a brief overview of the client API. The Client API is used exetensively internally
-in NetDaemon, please check the source code for in depth information how to use it.
 
 ## IHomeAssistantConnection
-You can access the client api on the currently existing connection by using the `IHomeAssistantConnection` interface.
-It is accessable from an NetDaemon app by injecting it in the constructor.
-Most of the methods on this interface is async so you will have to use the `IAsyncInitializable` interface to 
-be able to use it in the `InitializeAsync` method. Check out [how to use async features](user/advanced/async_features.md) for more 
-information how to use async in subcribe method. Remember to add the `using NetDaemon.Client.HomeAssistant.Extensions;` namespace
-to be able to use extended features.
-
+You can access the client API through the `IHomeAssistantConnection` interface on the existing connection.
+This can be injected into a NetDaemon app's constructor. Most methods in this interface are asynchronous, so you need to implement 
+the `IAsyncInitializable` interface to use them in the `InitializeAsync` method. 
+Refer to how to [use async features](/user/advanced/async_features.md) for more details on using 
+async in the subscribe method. Don't forget to include the `NetDaemon.Client.HomeAssistant.Extensions` namespace to access extended features.
 
 ```csharp
-
 using NetDaemon.AppModel;
 using NetDaemon.Client;
 using NetDaemon.Client.HomeAssistant.Extensions;
@@ -39,21 +31,17 @@ public sealed class HelperApp(IHomeAssistantConnection conn) : IAsyncInitializab
 }
 
 ```
-
 ## IHomeAssistantRunner
 
-If you want to make an own implementation that just needs the conveniece to connect to Home Assistant and use basic features of NetDaemon 
-without the full app model you can use the `IHomeAssistantRunner` interface. It will take care of connect and reconnect to Home Assistant.
+If you need to implement a solution that only requires connecting to Home Assistant and utilizing basic NetDaemon features without the full
+app model, you can use the `IHomeAssistantRunner` interface. This interface handles connection and reconnection to Home Assistant.
 
-Just add the client nuget package to your application and use the `HomeAssistantRunner` class to connect to Home Assistant.
-There are an extension metohd `AddHomeAssistantClient` that you can use to add the client to dependency injection.
+Add the client NuGet package to your application and use the `HomeAssistantRunner` class to connect to Home Assistant. 
+The `AddHomeAssistantClient` extension method can be used to add the client to dependency injection.
 
 Example: Implementation of a background service that uses the `IHomeAssistantRunner` to connect to Home Assistant and subscribe to all events.
 
 ```csharp
-
-using System.Reactive.Linq;
-
 internal sealed class MyOwnService : BackgroundService
 {
     private const int TimeoutInSeconds = 5;
@@ -124,5 +112,4 @@ internal sealed class MyOwnService : BackgroundService
         }
     }
 }
-
 ```
