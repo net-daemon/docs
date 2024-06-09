@@ -111,10 +111,10 @@ public record WeaterForecastItem
 }
 
 [NetDaemonApp]
-public class TestClass(
+public class UseServicesWithReturvaluesApp(
         Entities entities,
         Services services,
-        ILogger<TestClass> logger) : IAsyncInitializable
+        ILogger<UseServicesWithReturvaluesApp> logger) : IAsyncInitializable
 {
     // Camel case json options
     private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
