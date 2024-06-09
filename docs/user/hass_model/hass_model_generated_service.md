@@ -54,7 +54,7 @@ Just as with the extension methods on the `Entity` classes, these methods have p
 ## Use the generated services with return values
 
 Some Home Assistant services can return values. The generated services have a async method that returns a `JsonElement` that you can parse or serialize 
-to a class. This means that you will have to use NetDaemon's async features to call the services and wait for the result.
+to a class. This means that you will have to use NetDaemon's [async features](user/advanced/async_features.md) to call the services and wait for the result.
 
 :::info
 Tip! Use the logger to log the returned `JsonElement` to see the structure of the returned data and create a class/record that matches the structure.
