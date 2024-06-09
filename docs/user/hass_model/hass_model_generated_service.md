@@ -95,7 +95,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text.Json;
 
-// The record that matches the structure of the returned forecast
 public record WeaterForecastItem
 {
     public DateTime Datetime { get; init; }
@@ -113,12 +112,12 @@ public record WeaterForecastItem
 
 [NetDaemonApp]
 [Focus]
-public class TestClass(
+public class UseServiceWithReturnValueApp(
         Entities entities,
         Services services,
-        ILogger<TestClass> logger) : IAsyncInitializable
+        ILogger<UseServiceWithReturnValueApp> logger) : IAsyncInitializable
 {
-    // Use the json options to match the structure of the returned data, in this case snake case
+    // Camel case json options
     private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
     {
         PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
