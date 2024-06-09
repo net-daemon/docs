@@ -111,6 +111,7 @@ public record WeaterForecastItem
 }
 
 [NetDaemonApp]
+[Focus]
 public class UseServiceWithReturnValueApp(
         Entities entities,
         Services services,
@@ -125,13 +126,13 @@ public class UseServiceWithReturnValueApp(
     public async Task InitializeAsync(CancellationToken cancellationToken)
     {
         // Get the forecasts from SMHI using the code generated entities
-        var forecast = await entities.Weather.SmhiHemma.GetForecastsAsync(type: "hourly");
+        var forecastResult = await entities.Weather.SmhiHemma.GetForecastsAsync(type: "hourly");
         // Log the forecast to look for the structure of the result
         // Remove when you created the correct deserialization
-        logger.LogInformation("Forecast: {forecast}", forecast);
+        logger.LogInformation("Forecast: {forecast}", forecastResult);
 
         // Find the forecast property and deserialize it to a list of WeaterForecastItem
-        var forecasts = forecast?.GetProperty(entities.Weather.SmhiHemma.EntityId)
+        var forecasts = forecastResult?.GetProperty(entities.Weather.SmhiHemma.EntityId)
             .GetProperty("forecast");
         if (forecasts is not null)
         {
