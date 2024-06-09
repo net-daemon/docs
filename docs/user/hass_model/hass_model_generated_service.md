@@ -50,3 +50,101 @@ _services.Light.TurnOn(ServiceTarget.FromEntities("light.livingroom_light", "lig
 Just as with the extension methods on the `Entity` classes, these methods have parameters that correspond to the fields of the service in Home Assistant.
 
  If the service requires a target, the generated method will also contain a parameter of type 'ServiceTarget' that can be used to pass one or more entities, areas or devices.
+
+## Use the generated services with return values
+
+Some Home Assistant services can return values. The generated services have a async method that returns a `JsonElement` that you can parse or serialize 
+to a class. This means that you will have to use NetDaemon's async features to call the services and wait for the result.
+
+:::info
+Tip! Use the logger to log the returned `JsonElement` to see the structure of the returned data and create a class/record that matches the structure.
+:::
+
+### Process to use the generated services with return values:
+
+1. First call the service log the returned `JsonElement` to see the structure of the returned data. For example, if you call the service `weather.get_forecasts`
+in this case the it returns a structure that looks like:
+```json
+{
+    "weather.smhi_hemma": {
+        "forecast": [
+            {
+                "datetime": "2024-06-09T16:00:00",
+                "condition": "rainy",
+                "wind_bearing": 54,
+                "cloud_coverage": 100,
+                "temperature": 11.0,
+                "templow": 11.0,
+                "pressure": 989.0,
+                "wind_gust_speed": 12.96,
+                "wind_speed": 6.12,
+                "precipitation": 0.4,
+                "humidity": 87
+            }
+        ]
+   }
+}
+```
+2. Make a class that matches the structure of the returned data.
+3. Deserialize with the proper casing options to match the json structure. 
+
+A complete example of how to use the generated services with return values:
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using System.Text.Json;
+
+public record WeaterForecastItem
+{
+    public DateTime Datetime { get; init; }
+    public string Condition { get; init; }
+    public int WindBearing { get; init; }
+    public int CloudCoverage { get; init; }
+    public float Temperature { get; init; }
+    public float Templow { get; init; }
+    public float Pressure { get; init; }
+    public float WindGustSpeed { get; init; }
+    public float WindSpeed { get; init; }
+    public float Precipitation { get; init; }
+    public int humidity { get; init; }
+}
+
+[NetDaemonApp]
+[Focus]
+public class TestClass(
+        Entities entities,
+        Services services,
+        ILogger<TestClass> logger) : IAsyncInitializable
+{
+    // Camel case json options
+    private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
+    };
+
+    public async Task InitializeAsync(CancellationToken cancellationToken)
+    {
+        // Get the forecasts from SMHI using the code generated entities
+        var forecast = await entities.Weather.SmhiHemma.GetForecastsAsync(type: "hourly");
+        // Log the forecast to look for the structure of the result
+        // Remove when you created the correct deserialization
+        logger.LogInformation("Forecast: {forecast}", forecast);
+
+        // Find the forecast property and deserialize it to a list of WeaterForecastItem
+        var forecasts = forecast?.GetProperty(entities.Weather.SmhiHemma.EntityId)
+            .GetProperty("forecast");
+        if (forecasts is not null)
+        {
+            var forecastItems = forecasts.Value.Deserialize<List<WeaterForecastItem>>(_jsonOptions);
+
+            logger.LogInformation("Forecast items: {forecastItems}", forecastItems);
+        }
+        // You can return multiple values from a service call
+        var multipleReturnValues = await services.Weather
+            .GetForecastsAsync(ServiceTarget.FromEntities("weather.smhi_hemma", "weather.test"), "hourly");
+        logger.LogInformation("Muliple returns {multiple}", multipleReturnValues);
+        // Do something useful with the forecasts
+    }
+}
+```
