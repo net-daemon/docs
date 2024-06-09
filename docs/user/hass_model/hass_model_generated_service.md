@@ -107,7 +107,7 @@ public record WeaterForecastItem
     public float WindGustSpeed { get; init; }
     public float WindSpeed { get; init; }
     public float Precipitation { get; init; }
-    public int humidity { get; init; }
+    public int Humidity { get; init; }
 }
 
 [NetDaemonApp]
