@@ -85,7 +85,7 @@ in this case the it returns a structure that looks like:
    }
 }
 ```
-2. Make a class that matches the structure of the returned data.
+2. Make a class/record that matches the structure of the returned data.
 3. Deserialize with the proper casing options to match the json structure. 
 
 A complete example of how to use the generated services with return values:
@@ -116,7 +116,7 @@ public class UseServiceWithReturnValueApp(
         Services services,
         ILogger<UseServiceWithReturnValueApp> logger) : IAsyncInitializable
 {
-    // Camel case json options
+    // Snake-case json options
     private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
     {
         PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
@@ -124,10 +124,10 @@ public class UseServiceWithReturnValueApp(
 
     public async Task InitializeAsync(CancellationToken cancellationToken)
     {
-        // Get the forecasts from SMHI using the code generated entities
+        // Get the forecasts from SmhiHemma entity using the code generated entities
         var forecastResult = await entities.Weather.SmhiHemma.GetForecastsAsync(type: "hourly");
         // Log the forecast to look for the structure of the result
-        // Remove when you created the correct deserialization
+        // Remove when you created the correct class/record for deserialization
         logger.LogInformation("Forecast: {forecast}", forecastResult);
 
         // Find the forecast property and deserialize it to a list of WeaterForecastItem
