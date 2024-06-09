@@ -111,7 +111,6 @@ public record WeaterForecastItem
 }
 
 [NetDaemonApp]
-[Focus]
 public class UseServiceWithReturnValueApp(
         Entities entities,
         Services services,
