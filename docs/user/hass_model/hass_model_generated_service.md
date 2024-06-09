@@ -95,6 +95,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text.Json;
 
+// The record that matches the structure of the returned forecast
 public record WeaterForecastItem
 {
     public DateTime Datetime { get; init; }
@@ -111,12 +112,13 @@ public record WeaterForecastItem
 }
 
 [NetDaemonApp]
-public class UseServicesWithReturvaluesApp(
+[Focus]
+public class TestClass(
         Entities entities,
         Services services,
-        ILogger<UseServicesWithReturvaluesApp> logger) : IAsyncInitializable
+        ILogger<TestClass> logger) : IAsyncInitializable
 {
-    // Camel case json options
+    // Use the json options to match the structure of the returned data, in this case snake case
     private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
     {
         PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
@@ -140,10 +142,10 @@ public class UseServicesWithReturvaluesApp(
             logger.LogInformation("Forecast items: {forecastItems}", forecastItems);
         }
         // You can return multiple values from a service call
-        var multipleReturnValues = await services.Weather
+        var multipleEntitiesForecastResult = await services.Weather
             .GetForecastsAsync(ServiceTarget.FromEntities("weather.smhi_hemma", "weather.test"), "hourly");
-        logger.LogInformation("Muliple returns {multiple}", multipleReturnValues);
-        // Do something useful with the forecasts
+        logger.LogInformation("Muliple returns {multiple}", multipleEntitiesForecastResult);
+        // Do something useful with the result of multiple forecasts from multiple entities
     }
 }
 ```
