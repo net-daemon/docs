@@ -117,7 +117,6 @@ public class DisposbleApp : IAsyncDisposable
     }
 }
 ```
-
 ## Important notes on app life-cycle and subscriptions
 
 There are some situations where you need to control the behavior of the subscription to events when the app is being disposed.
