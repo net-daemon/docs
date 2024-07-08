@@ -52,6 +52,7 @@ module.exports = {
           'user/advanced/async_features',
           'user/advanced/dev_workflow3',
           'user/advanced/advanced_client',
+          'user/advanced/application_lifecycle',
         ]
       },
       {
