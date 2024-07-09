@@ -9,10 +9,13 @@ important for writing efficient and reliable apps for NetDaemon.
 ## Lifecycle of a NetDaemon app
 
 The main phases of the life-cycle of a NetDaemon app are:
-- Instantiating
-- Async initialization
-- Running
-- Dispose
+```mermaid
+graph TD 
+    A(Instantiating) --> B(Async initialization)
+    B --> C(Running)
+    C --> D(Dispose)
+    D --> E((Stopped))
+``` 
 
 ## Instantiating
 
@@ -117,6 +120,11 @@ public class DisposbleApp : IAsyncDisposable
     }
 }
 ```
+## Stopped
+
+After the application is disposed NetDaemon will clean up all resources and the app is in a stopped state. It will not be started again
+unless NetDaemon is restarted or the app is enabled again.
+
 ## Important notes on app life-cycle and subscriptions
 
 There are some situations where you need to control the behavior of the subscription to events when the app is being disposed.
