@@ -13,7 +13,7 @@ The main phases of the life-cycle of a NetDaemon app are:
 graph TD 
     A(Instantiating) --> B(Async initialization)
     B --> C(Running)
-    C --> D(Dispose)
+    C --> D(Disposing)
     D --> E((Stopped))
 ``` 
 
@@ -79,7 +79,7 @@ public class AsyncUsingApp : IAsyncInitializable
 After the instantiating and eventual initialization is done, the app is running. This is where the app is listening
 to events and performing its tasks as you configured.
 
-## Dispose
+## Disposing
 
 There are several reasons for an app to be stopped and disposed:
 - NetDaemon runtime is stopping.
