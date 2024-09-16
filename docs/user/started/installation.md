@@ -83,7 +83,7 @@ services:
     container_name: netdaemon4
     restart: always
     environment:
-      - HomeAssistant__Host=your_ip_or_hostname
+      - HomeAssistant__Host=your_ip_or_hostname # use host.docker.internal if HA in container (see section below)
       - HomeAssistant__Token=your_token
       - NetDaemon__ApplicationAssembly=NetDaemonApps.dll
       - Logging__LogLevel__Default=Information  # use Information/Debug/Trace/Warning/Error
@@ -91,6 +91,8 @@ services:
     volumes:
       - /config/netdaemon:/data                 # replace /config/netdaemon 
                                                 # to your local folder
+    # extra_hosts:                              # Enable if HA in 
+    #     - "host.docker.internal:host-gateway" # container
 ```
 
 ### Environment variables
@@ -121,3 +123,13 @@ The `~/netdaemon_config` needs to point to a local folder. See image below where
 You can use any folder name you like to use.
 
 ![](/img/docs/installation/folderstructure_v3.png)
+
+### Reaching Home Assistant container
+
+If you are trying trying to reach HA from the NodeDaemon container, `localhost` will not resolve to the actual host machines loopback ip, but rather the NodeDaemons containers internal loopback ip. 
+
+If home assistant is running either directly on the host or in a container using `network_mode: host` you will have to configure your NodeDaemon container to resolve the actual ip.
+This can be achieved by setting the `HomeAssistant__Host` environment variable to `host.docker.internal` (and if on Linux, adding the field [extra_hosts](https://docs.docker.com/reference/compose-file/build/#extra_hosts) with the value `host.docker.internal:host-gateway`)
+For more info, see this post on [Stack Overflow](https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach).
+
+If home assistant is not using host mode networking, then the previous method should work, but you can also set the `HomeAssistant__Host` variable to the name of the HA container instead, without adding the `extra_hosts` field.
