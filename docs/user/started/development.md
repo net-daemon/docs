@@ -104,7 +104,7 @@ Ensure that the "DOCKERFILE" profile is selected in the toolbar and then `Run` a
    init_commands:
      - >-
        wget
-       https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
+       https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb
        -O packages-microsoft-prod.deb
      - dpkg -i packages-microsoft-prod.deb
      - rm packages-microsoft-prod.deb
