@@ -5,11 +5,14 @@ title: Get started with NetDaemon app development
 
 ## 1. Choose deployment method
 
-Before you get started we recommend thinking about how you want to develop and deploy your NetDaemon apps. We have two different options. Select the workflow and capabilities that best fits your needs.
+Before you get started we recommend thinking about how you want to develop and deploy your NetDaemon apps. 
+We have two different options. 
+Select the workflow and capabilities that best fits your needs.
 
 ### Deploy compiled assemblies and configurations
 
-With this option you use the default NetDaemon project template as a start. This is the default and recommended option. This option offers:
+With this option you use the default NetDaemon project template as a start. This is the default and recommended option. 
+This option offers:
 
 - Ready to run NetDaemon runtime including apps, dependencies and configuration in one package that you can deploy in any available hosting option (add-on, Docker container, custom).
 - Use external nuget packages.
@@ -23,7 +26,8 @@ With this option you can deploy the actual source and NetDaemon will compile the
 - Limited DI support.
 - Does **not** support custom nuget packages.
 
-Deployment is done by copying source code and config files under your apps folder (.cs and .yaml ) to the destination. The provided debug project should never be copied.
+Deployment is done by copying source code and config files under your apps folder (.cs and .yaml ) to the destination. 
+The provided debug project should never be copied.
 
 ## 2. Get the project template
 
@@ -59,7 +63,8 @@ We are deprecating the use of the app template repo. Please use any of the dotne
 
 ## 2. Configure your development tool
 
-We support most popular options. We strongly recommend using containers to run and debug your apps but local compilation and debugging is also supported. We provide a Docker file in the project template to use as a start and a dev container for VSCode.
+We support most popular options. We strongly recommend using containers to run and debug your apps but local compilation and debugging is also supported. 
+We provide a Docker file in the project template to use as a start and a dev container for VSCode.
 
 ### 2.1 Visual Studio
 
@@ -67,11 +72,12 @@ You should be all set, so skip to step 3.
 
 ### 2.2 Visual Studio Code
 
-Dev Containers are the preferred way to develop your apps. This also requires Docker to be installed. You can also develop and debug directly on your dev machine without Docker.
+Dev Containers are the preferred way to develop your apps. This also requires Docker to be installed. 
+You can also develop and debug directly on your dev machine without Docker.
 
 1. Install [Remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in VS Code if you have not already.
 2. Open folder, the newly cloned template
-3. Run task: `Remote-Containers: Open Folder in Container`. Wait until it fully opened
+3. Run task: `Dev Containers: Open Folder in Container...`. Wait until it fully opened
 
 ### 2.3 JetBrains Rider
 
@@ -79,7 +85,8 @@ Just as with Visual Studio it is ready to go for local compile and debugging of 
 
 Rider supports debugging of containerized ASP.Net Core apps from version 2018.2.
 
-Open the netdaemon_app folder in Rider and it should be able to build the projects immediately. A default execute and debug profile will be created however these will be executed as local processes.
+Open the netdaemon_app folder in Rider and it should be able to build the projects immediately. 
+A default execute and debug profile will be created however these will be executed as local processes.
 The preferred way to develop your app is to use a container, which requires Docker to be installed.
 To configure a container, perform the following steps:
 
@@ -117,7 +124,6 @@ Ensure that the "DOCKERFILE" profile is selected in the toolbar and then `Run` a
    log_level: info
    config_path: /
    ```
-
    --> The part in the `init_commands` will install .NET SDK 6.0 only in the Studio Code Server Addon (Docker Container)
 5. Now you can start the Studio Code Server Addon by going the Addon's Info Tab and pressing `OPEN WEB UI`.
 
@@ -128,7 +134,9 @@ HINTS:
 
 #### Usage
 
-NetDaemon development environment needs to be configured to connect to Home Assistant.  Minimal config is: hostname/ip, port and access token. If you did not already provide this information when creating the new project using the cli tool you can edit the `appsettings.json` file.
+NetDaemon development environment needs to be configured to connect to Home Assistant. 
+Minimal config is: hostname/ip, port and access token. 
+If you did not already provide this information when creating the new project using the cli tool you can edit the `appsettings.json` file.
 
 Edit the values in the `appsettings.json`. The following settings are mandatory:
 
@@ -177,7 +185,8 @@ See [installation docs](user\started\installation.md) for how to configure diffe
 
 ### Source files and configurations
 
-Copy the content from the `apps` folder to to `/config/netdaemon4` if you are using add-on (note that you might have changed the destination in add-on config), or the destination folder you chose in the other hosting options. **Do not copy project files. Only copy the contents under the `apps` folder!**
+Copy the content from the `apps` folder to to `/config/netdaemon4` if you are using add-on (note that you might have changed the destination in add-on config), or the destination folder you chose in the other hosting options. 
+**Do not copy project files. Only copy the contents under the `apps` folder!**
 
 See [installation docs](user\started\installation.md) for how to configure different hosting options.
 
