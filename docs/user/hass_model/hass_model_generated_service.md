@@ -68,7 +68,7 @@ Just as with the extension methods on the `Entity` classes, these methods have p
  
 Alternatively you can create an instance of the generated `Services` class via its constructor that takes the IHaContext. 
 ```csharp
-var services = new Entities(haContext);
+var services = new Services(haContext);
 
 services.PersistentNotification.Create(
     message: "NetDaemon Application started", 
