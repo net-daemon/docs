@@ -3,8 +3,49 @@ id: hass_model_generated_entities
 title: Using generated entities
 ---
 
-After generating code from Home Assistant with `nd-codegen` you can use a strongly typed API to work with entities in Home Assistant. The entities can be accessed like this:
+After generating code from Home Assistant with `nd-codegen` you can use a strongly typed API to work with entities in Home Assistant. The Entities can be injected into your app  like this:
 
+
+```csharp
+[NetDaemonApp]
+class MyApp
+{
+    public MyApp(Entities entities)
+    {
+        LightEntity livingRoomLight = entities.Light.LivingRoomLight;
+        // ..
+    }
+}
+```
+
+
+`Entities` is a generated class that provides access to all your entities in Home Assistant. The object returned by `Entities.Light.LivingRoomLight` is of type `LightEntity` which is also generated. This specific instance represents the `light.living_room_light` entity in Home Assistant.
+
+
+It is also possible to directly inject eg the LightEntities class
+
+
+```csharp
+[NetDaemonApp]
+class MyApp
+{
+    public MyApp(LightEntities lightEntities)
+    {
+        LightEntity livingRoomLight = lightEntities.LivingRoomLight;
+        // ..    
+    }
+}
+```
+
+
+:::note
+
+To inject the generated types, make sure you call `AddHomeAssistantGenerated()` in your startup code.
+
+:::
+
+
+Alternatively you can create an instance of the generated `Entities` class via its constructor that takes the IHaContext. 
 ```csharp
 _myEntities = new Entities(haContext);
 
@@ -13,7 +54,6 @@ _myEntities = new Entities(haContext);
 LightEntity livingRoomLight = _myEntities.Light.LivingRoomLight;
 ```
 
-`Entities` is a generated class that provides access to all your entities in Home Assistant. The object returned by `_myEntities.Light.LivingRoomLight` is of type `LightEntity` which is also generated. This specific instance represents the `light.living_room_light` entity in Home Assistant.
 
 The LightEntity class provides strongly typed access to the state and attributes of the entity like:
 

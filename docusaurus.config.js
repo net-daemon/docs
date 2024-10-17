@@ -1,6 +1,6 @@
 module.exports = {
   title: 'NetDaemon',
-  tagline: 'Application platform written in c# for Home Assistant',
+  tagline: 'C# Automation platform for Home Assistant',
   url: 'https://netdaemon.xyz',
   baseUrl: '',
   favicon: 'img/favicon.png',
