@@ -11,11 +11,13 @@ The `Entity` class provides access to the entity's current state, attributes, an
 
 ## Accessing Entities
 
-The basic way to create an instance of an `Entity` is by calling its constructor:
+The basic way to create an instance of an `Entity` is by by using the `Entity()` method on `IHaContext`:
 
 ```csharp
-var atticLight = new Entity(haContext, "light.attic");
+var atticLight = haContext.Entity("light.attic");
 ```
+
+The `Entity` class also has a public constructor that takes a `IHaContext` and the entityId. Using the `Entity()` method on `IHaContext` however, will create an instance of a specific generated Entity Type based on the provided entityId if available.
 
 :::note
 
@@ -23,11 +25,6 @@ This does not create a new entity in Home Assistant. It creates an instance of t
 
 :::
 
- An alternative way to do this is by using the `Entity` extension method on your `IHaContext`:
-
-```csharp
-var atticLight = haContext.Entity("light.attic");
-```
 
 When using the code generator all discovered entities in your Home Assistant will be generated as strongly typed properties that can be accessed like this:
 
