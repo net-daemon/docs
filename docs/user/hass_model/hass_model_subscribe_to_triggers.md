@@ -16,7 +16,7 @@ We have no means to make code generation objects to use with this feature. This 
 We might add record classes to use for responses at a later time.
 :::
 
-## How to subscribe to an an trigger
+## How to subscribe to a trigger
 
 You can inject the `ITriggerManager` interface to use the trigger subscription feature. The `RegisterTrigger` returns a `IObservable<JsonElement>` that you can deserialize to a POCO. You can also use `RegisterTrigger<T>` to have the result return a `IObservable<T>` that deserialize to POCO for you.
 

@@ -64,7 +64,7 @@ docker run -d \
   --name netdaemon4 \
   --restart=always \
   -e HomeAssistant__Host=192.168.1.4 \
-  -e HomeAssistant__Token=XXXXX \
+  -e HomeAssistant__Token="eyJhbGciOiJIUz..." \
   -e NetDaemon__ApplicationAssembly=NetDaemonApps.dll \
   -e Logging__LogLevel__Default=Information \
   -e TZ=Europe/Stockholm \
@@ -75,7 +75,6 @@ docker run -d \
 ### Example using docker-compose.yaml for
 
 ```yaml
-version: '3.7'
 services:
   netdaemon:
     image: netdaemon/netdaemon4                 # use netdaemon/netdaemon4:ver 
@@ -133,3 +132,4 @@ This can be achieved by setting the `HomeAssistant__Host` environment variable t
 For more info, see this post on [Stack Overflow](https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach).
 
 If home assistant is not using host mode networking, then the previous method should work, but you can also set the `HomeAssistant__Host` variable to the name of the HA container instead, without adding the `extra_hosts` field.
+Note, that the LLAT for the user must **not** have the setting "Local access only" in Home Assistant.
