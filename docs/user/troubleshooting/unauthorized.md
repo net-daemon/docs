@@ -19,4 +19,4 @@ http:
     # If you have setup a Docker network, you can also add those to this list
 ``` 
 
-3. The user with which you generated a Long Lived Token must **not** have set the property "Local access only", which the administrator of the user can set.
+3. The user with which you generated a Long Lived Access Token must **not** have set the property "Local access only", which the administrator of the user can set.
