@@ -77,6 +77,7 @@ module.exports = {
         label: 'Troubleshooting',
         items: [
           'user/troubleshooting/trouble_call_service',
+          'user/troubleshooting/unauthorized'
         ]
       },
     ],
