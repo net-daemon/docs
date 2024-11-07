@@ -35,7 +35,7 @@ Warn: `blogDir` doesn't exist: "/workspaces/netdaemon-docs/blog".
 ✔ Client
   Compiled successfully in 23.06s
 
-client (webpack 5.74.0) compiled successfully
+client (webpack 5.96.1) compiled successfully
 ```
 
 _Note that yarn can take a long time to start, during which time it appears to be doing nothing - have patience!_
