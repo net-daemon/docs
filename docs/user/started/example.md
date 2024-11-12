@@ -100,3 +100,4 @@ Please check out the apps being developed for NetDaemon. Since documentation is 
 | [@vinnie1234](https://github.com/vinnie1234/HomeAutomation-NetDaemon)                                   | Vincent's NetDaemon implementation (V4) |
 | [@leosperry](https://github.com/leosperry/NetDeamonImpl)                                                | Leonard's NetDaemon implementation (V3) |
 | [@pockybum522](https://github.com/PockyBum522/netdaemon-home-assistant-apps)                            | David's NetDaemon apps as used Daily (V4) |
+| [@philippch](https://github.com/PhilippCh/HomeAutomations)                                              | Philipp's apartment automated by NetDaemon (V4) |
