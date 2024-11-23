@@ -185,14 +185,8 @@ See [installation docs](user\started\installation.md) for how to configure diffe
 
 ### Source files and configurations
 
-<<<<<<< Updated upstream
-Copy the content from the `apps` folder to to `/config/netdaemon4` if you are using add-on (note that you might have changed the destination in add-on config), or the destination folder you chose in the other hosting options. 
 **Do not copy project files. Only copy the contents under the `apps` folder!**
-||||||| constructed merge base
-Copy the content from the `apps` folder to to `/config/netdaemon4` if you are using add-on (note that you might have changed the destination in add-on config), or the destination folder you chose in the other hosting options. **Do not copy project files. Only copy the contents under the `apps` folder!**
-=======
 Copy the content from the `apps` folder to to `/config/netdaemon5` if you are using add-on (note that you might have changed the destination in add-on config), or the destination folder you chose in the other hosting options. **Do not copy project files. Only copy the contents under the `apps` folder!**
->>>>>>> Stashed changes
 
 See [installation docs](user\started\installation.md) for how to configure different hosting options.
 
