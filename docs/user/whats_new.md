@@ -13,7 +13,7 @@ If you are still using version 3 it is really time to upgrade, we do not longer 
 see the [upgrade path for version 3 users](user/app_model/moving_from_v3.md)
 
 
-### .NET 9 and C# l3
+### .NET 9 and C# 13
 
 NetDaemon always have been releasing new version following the Microsoft release schedule
 of .NET to let our users to use the latest innovations and speed of modern .NET.
