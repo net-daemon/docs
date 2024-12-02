@@ -1,21 +1,23 @@
 ---
-id: whats_new_v4 
-title: What's new in V4 
+id: whats_new_v5
+title: What's new in V5 
 ---
-## Version 4 of NetDaemon
+## Version 5 of NetDaemon
 
-We are exited to introduce you to version 4 of NetDaemon! There should be a pretty easy [upgrade path for version 3 users](user/app_model/moving_from_v3.md)
+We are exited to introduce you to version 5 of NetDaemon!
 
-### .NET 8 and C# 12
+For version 4 users it is a matter of using the latest version of the nuget packages and the v5/.NET 9 version of the NetDaemon
+ Docker image or add-on. 
+
+If you are still using version 3 it is really time to upgrade, we do not longer support that version, 
+see the [upgrade path for version 3 users](user/app_model/moving_from_v3.md)
+
+
+### .NET 9 and C# 13
 
 NetDaemon always have been releasing new version following the Microsoft release schedule
 of .NET to let our users to use the latest innovations and speed of modern .NET.
 
-### Nuget packages
-
-We have removed the `JoySoftware` from the nuget identity and all package now starting with `NetDaemon`. There are no company behind NetDaemon and the naming could lead to that conclusion.
-
-We also moved the source deploy features to it's own nuget package. This will make the size of app builds a lot smaller for users that uses the recommended compiled deploy option.
 
 :::info
 

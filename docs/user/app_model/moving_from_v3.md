@@ -3,7 +3,13 @@ id: app_model_moving_from_v3
 title: Moving from NetDaemon version 3
 ---
 
-This documentation how to upgrade and move to current .NET 7 based NetDaemon runtime v3.x to .NET 8 based NetDaemon runtime 4. There are some breaking issues but should be quite straight forward upgrade your applications and runtime environment.
+This documentation how to upgrade and move to current .NET 7 based NetDaemon runtime v3.x to .NET 9 based NetDaemon runtime 5. There are some breaking issues but should be quite straight forward upgrade your applications and runtime environment.
+
+### Nuget packages
+
+We have removed the `JoySoftware` from the nuget identity and all package now starting with `NetDaemon`. There are no company behind NetDaemon and the naming could lead to that conclusion.
+
+We also moved the source deploy features to it's own nuget package. This will make the size of app builds a lot smaller for users that uses the recommended compiled deploy option.
 
 # Development environment
 
@@ -13,21 +19,21 @@ We try to always keep NetDaemon up-to-date with the latest versions of .NET. Sin
 
 :::
 
-The following changes have to be executed in order to develop your apps for NetDaemon 4 and .NET 8.
+The following changes have to be executed in order to develop your apps for NetDaemon 5 and .NET 9.
 
 ## 1. Update nuget packages
 
 In this release we decided to change naming of NetDaemon nuget packages. The names are basically the same but without the `JoySoftware`. The reason is we needed to make sure we got the ownership of the NetDaemon id on our nuget packages for security reasons.
 
 1. In all .NET project files `*.csproj`, rename all nuget references that starts with `JoySoftware.NetDaemon` to `NetDaemon`. For users that uses the source deploy option you will have to add the`NetDaemon.AppModel.SourceDeployedApps` nuget package!
-2. Change the target framework to 8.0
-3. Update Microsoft .NET references in your C# files to the corresponding .NET 8 versions
+2. Change the target framework to 9.0
+3. Update Microsoft .NET references in your C# files to the corresponding .NET 9 versions
 
 ### 2. Update docker containers and add-ons
 
-The docker container, change the name from `netdaemon3` to `netdaemon4`. All other settings are the same.
+The docker container, change the name from `netdaemon3` to `netdaemon5`. All other settings are the same.
 
-If you are using the addon write down the current settings in your current 3.x based addon and install the version 4 version and update settings as needed. In version 4 the default path had changed from `config/netdaemon3` to `config/netdaemon4`.
+If you are using the addon write down the current settings in your current 3.x based addon and install the version 5 version and update settings as needed. In version 4 the default path had changed from `config/netdaemon3` to `config/netdaemon5`.
 
 ### 3. Update the code generator
 

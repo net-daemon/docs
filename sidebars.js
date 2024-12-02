@@ -3,7 +3,7 @@ module.exports = {
     Documentation: [
       'user/index',
       'user/user_support_policy',
-      'user/whats_new_v4', 
+      'user/whats_new_v5', 
       {
         type: 'category',
         label: 'Getting started',
