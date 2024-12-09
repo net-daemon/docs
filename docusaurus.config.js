@@ -4,11 +4,20 @@ module.exports = {
   url: 'https://netdaemon.xyz',
   baseUrl: '',
   favicon: 'img/favicon.png',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'net-daemon', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
   trailingSlash: true,
   markdown: {
     mermaid: true,
+  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+    localeConfigs: {
+      en: {
+        htmlLang: 'en-US',
+      },
+    },
   },
   themes: ['@docusaurus/theme-mermaid'],
   themeConfig: {
