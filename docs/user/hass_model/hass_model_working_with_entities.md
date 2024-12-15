@@ -242,7 +242,6 @@ It is usually the job of integrations to handle errors, retry attempts, and set 
 ## Subscribing safely
 
 NetDaemon is built on top of the Reactive extensions library, which is a powerful tool for handling asynchronous events. 
-However, it is important to understand that the `Subscribe` method is a terminal operation that starts the subscription. 
 
 One of the perks using Reactive extensions are that unhandled exceptions will prohibit further subscriptions. This is handled by NetDaemon
 by providing a extension method `SubscribeSafe` that will catch any exceptions and log them to the log as default behavior. You can also provide a custom handler for the exceptio
