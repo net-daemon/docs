@@ -238,3 +238,17 @@ Home Assistant service calls do not provide return values, they only change stat
 It is usually the job of integrations to handle errors, retry attempts, and set the `available` property of entities. This is a part of their [Integration Quality Scale](https://developers.home-assistant.io/docs/integration_quality_scale_index/) score.
 
 :::
+
+## Subscribing safely
+
+NetDaemon is built on top of the Reactive extensions library, which is a powerful tool for handling asynchronous events. 
+
+One of the perks using Reactive extensions are that unhandled exceptions will prohibit further subscriptions. This is handled by NetDaemon
+by providing a extension method `SubscribeSafe` that will catch any exceptions and log them to the log as default behavior. You can also provide a custom handler for the exceptio
+
+```csharp
+myEntities.BinarySensor.MyMotionSensor
+    .StateChanges()
+    .SubscribeSafe(s => myEntities.Light.Attic.TurnOn());
+```
+
