@@ -89,3 +89,44 @@ The easiest way is to inject a NetDaemon client interface to log all messages th
 Now it should log every message received. Check for the `TriggerElement` property. It has the response. It is recommended to use a single app for this or use `[Focus]` flag so you do not get flooded with messages.
 
 From the results it should be fairly easy to construct a record that allows for deserializing the result and then use the `RegisterTrigger<T>` method instead.
+
+## Example of using a MQTT trigger button
+
+If you are using Zigbee2Mqtt newer versions it will only support using triggers to get actions on buttons. Below is an example
+of a extension method that will subscribe to button events using MQTT triggers:
+
+```csharp
+public static class TriggerManagerExtensions
+{
+    public static IObservable<String?> RegisterMqttButtonhActionTrigger(this ITriggerManager triggerManager, object mqttDeviceName)
+    {
+        var triggerTopic = triggerManager.RegisterTrigger(new 
+                {
+                    platform = "mqtt",
+                    topic = $"zigbee2mqtt/{mqttDeviceName}/action"
+                });
+        return triggerTopic.Select(e => e.GetProperty("payload").GetString());
+    }
+}
+```
+:::note
+
+Add proper error handling as you see fit.
+
+:::
+
+Usage:
+```csharp
+[NetDaemonApp]
+public class TestDeviceTriggerApp
+{
+    public TestDeviceTriggerApp(ITriggerManager triggerManager, ILogger<TestDeviceTriggerApp> logger)
+    {
+        var trigger = triggerManager.RegisterMqttButtonActionTrigger("my_button_mqtt_device_name"); 
+        trigger.Subscribe(e =>
+        {
+            logger.LogInformation("Received event {event}", e);
+        });
+    }
+}
+```
