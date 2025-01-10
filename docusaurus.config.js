@@ -88,7 +88,7 @@ module.exports = {
         items: [
           {
             label: 'Getting started',
-            to: 'docs/get_started',
+            to: '/docs/user/started/get_started',
           },
           // {
           //   label: 'Second Doc',
