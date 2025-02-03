@@ -135,6 +135,12 @@ To get all changes including attributes, use `StateAllChanges` instead of `State
 
 :::
 
+:::tip
+
+To get the initial state of an entity upon subscribing, use `StateAllChangesWithCurrent` or `StateChangesWithCurrent`.
+
+:::
+
 If the old state is relevant then the filter could be modified like this:
 
 ```csharp
