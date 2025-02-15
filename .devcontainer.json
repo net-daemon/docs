@@ -1,10 +1,10 @@
 {
 	"name": "NetDaemon Documentation",
-	"image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18-bullseye",
+	"image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:20-bullseye",
 	"forwardPorts": [
 		3000
 	],
-	"postCreateCommand": "npm install",
+	"postCreateCommand": "yarn install",
 	"customizations": {
 		"vscode": {
 			"extensions": [
