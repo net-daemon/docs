@@ -1,5 +1,7 @@
 # NetDaemon documentation
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0a7cbd16-7d93-4908-b754-32cd8c66e9a5/deploy-status)](https://app.netlify.com/sites/netdaemon/deploys)
+
 This documentation site for NetDaemon is build using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
 The documentation site for NetDaemon is hosted on [netlify](https://www.netlify.com/)
