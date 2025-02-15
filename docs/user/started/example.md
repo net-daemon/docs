@@ -101,3 +101,11 @@ Please check out the apps being developed for NetDaemon. Since documentation is 
 | [@leosperry](https://github.com/leosperry/NetDeamonImpl)                                                | Leonard's NetDaemon implementation (V3) |
 | [@pockybum522](https://github.com/PockyBum522/netdaemon-home-assistant-apps)                            | David's NetDaemon apps as used Daily (V4) |
 | [@philippch](https://github.com/PhilippCh/HomeAutomations)                                              | Philipp's apartment automated by NetDaemon (V4) |
+
+## Third party libraries
+
+The following libraries work well together with NetDaemon.
+
+| GitHub and NuGet | Description | Contributor(s) |
+| --- | --- | --- |
+| [NetDaemon.Extensions.Observables](https://github.com/DevJasperNL/NetDaemon.Extensions.Observables) ([NuGet](https://www.nuget.org/packages/DevJasper.NetDaemon.Extensions.Observables/)) | Collection of extension methods meant to enhance NetDaemon entities with stateful and boolean observables allowing for a more intuitive and robust coding experience. | [@DevJasperNL](https://github.com/DevJasperNL)
