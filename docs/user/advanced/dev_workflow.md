@@ -9,10 +9,11 @@ title: Development workflow
 
 Over time a single NetDaemon solution might contain a large number of applications. While you are working on one NetDaemon app in your development environment you might not want to run all the NetDaemon applications each time you run it for testing or debugging.
 
-You can do this by applying the `[Focus]` Attribute to the app class(es) you want to test. If one or more apps have this attribute set NetDaemon will only launch these applications and ignore all others.
+You can do this by applying the `[Focus]` Attribute to the app class(es) you want to test (The `[NetDaemonApp]` is still required). If one or more apps have this attribute set NetDaemon will only launch these applications and ignore all others.
 
 ```csharp
 [Focus]
+[NetDaemonApp]
 public class HelloWorldApp 
 {
     public HelloWorldApp(IHaContext ha)
