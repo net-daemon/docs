@@ -6,11 +6,11 @@ title: Install NetDaemon runtime
 
 You can deploy your NetDaemon apps in several ways:
 
-- As a Home Assistant add-on
+- Using the NetDaemon Home Assistant add-on
 - Using the NetDaemon Docker container
-- Custom deployment using the template
+- Custom deployment (will not be covered here)
 
-## Deploying as a Home Assistant add-on
+## Deploying NetDAemon using the Home Assistant add-on
 
 Once added to Home Assistant,
 select one of the V5 versions.
@@ -34,9 +34,9 @@ import NdAddOn from "./assets/netdaemon_add_on.png";
 
 <img src={NdAddOn} style={{width: 300}} />
 
-### Publish and copy
+### Publish and copy compiled NetDaemon apps
 
-Publish your project:
+Publish the .NET project created from the CLI tool:
 
 ```bash
 dotnet publish -c Release -o [outputdir]
@@ -45,13 +45,15 @@ dotnet publish -c Release -o [outputdir]
 Copy all files and folders **within** the `[outputdir]`
 to `/config/netdaemon5` on your Home Assistant host.
 
-For more details, see the tutorial [Publish NetDeamon apps with Powershell](user/tutorials/publish_script.md).
-
-In the add-on configuration, set app_assembly to point to your project's
-entry assembly (DLL), relative to /config/netdaemon5.
-Optionally, specify a separate path for configurations.
+For more details how to make this step easier, see the tutorial
+[Publish NetDeamon apps with Powershell](user/tutorials/publish_script.md).
 
 ### Configure the NetDaemon add-on
+
+In the add-on configuration, set `Application assembly` setting
+to the path for your project's entry assembly (DLL),
+relative to `/config/netdaemon5` folder.
+Optionally, specify a separate path for configurations.
 
 This is an example of how the configuration should should look like,
  please replace the assembly name with your own assembly name:
@@ -62,7 +64,8 @@ import NdAddOnConfig from "./assets/add_on_configuration.png";
 
 The name of the assembly may be different or current dotnet version might
 be different for you. Ensure you're using the latest NetDaemon version and
-the corresponding .NET SDK.Make sure you always are using the latest NetDaemon
+the corresponding .NET SDK. Make sure to always use the latest NetDaemon
+release.
 
 ## Deploy using Docker and the official NetDaemon image
 

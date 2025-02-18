@@ -54,7 +54,7 @@ Edit the values in the `appsettings.json`. The following settings are mandatory:
 - `Port`: Defaults to 8123
 - `Token`: Your long-lived access token
 
-Example `appsettings.json` file
+Example `appsettings.json` file:
 
 ```json
 {
@@ -82,12 +82,15 @@ Example `appsettings.json` file
 }
 ```
 
+:::info
 We recommend creating a development-specific configuration file named
 `appsettings.development.json`, which is automatically excluded from Git.
 This prevents accidentally exposing your secret token if you use an
-external git repository like GitHub.
+external git repository like GitHub. Remember to remove sensitive data
+from `appsettings.json` before push to remote repository!
+:::
 
-## Develop and debug your apps
+## Development and debugging NetDaemon apps
 
 Once configured, you can begin developing your NetDaemon applications.
 The project template includes example apps to help you get started with
@@ -99,7 +102,7 @@ For a more powerful and convenient way to interact with Home Assistant
 entities and services, we recommend using the [code generator](../hass_model/hass_model_codegen.md)
 code generator to generate C# classes.
 
-## Deploy your apps
+## Deploy NetDaemon apps
 
 Use `dotnet publish -c Release -o [your output directory]`
 Then, copy all contents from `[your_output_directory]` to the appropriate
