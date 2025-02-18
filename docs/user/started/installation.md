@@ -3,59 +3,80 @@ id: installation
 title: Install NetDaemon runtime
 ---
 
-There are several ways to deploy your apps:
 
-- Using a Home Assistant add-on
-- In the NetDaemon Docker container
-- Or using the template as base to deploy your own setup
+You can deploy your NetDaemon apps in several ways:
 
-## Deploy as Home Assistant add-on
+- Using the NetDaemon Home Assistant add-on
+- Using the NetDaemon Docker container
+- Custom deployment (will not be covered here)
 
-Once added to Home Assistant, select one of the V3 versions. If you feel you always want the latest and greatest changes you can choose the dev build but be prepare that things can break!
+## Deploying NetDAemon using the Home Assistant add-on
 
-1. Make a folder structure under your Home Assistant configuration directory to use for NetDaemon apps. `/config/netdaemon5`  
-2. Add the `https://github.com/net-daemon/homeassistant-addon` in `Add new repository URL` to the add-on store.
+Once added to Home Assistant,
+select one of the V5 versions.
 
-    ![](/img/docs/started/newrepo.png)
+1. Create a folder structure under your Home Assistant host configuration
+directory to store NetDaemon apps:
 
-3. Add the NetDaemon add-on.
+```text
+/config/netdaemon5
+```
 
-_todo: add new image_
-    ![](/img/docs/started/daemon3.png)
+2. Add the NetDaemon repository to the Home Assistant add-on store:
 
-4. Deploy your apps and `.yaml` files in the folder `/config/netdaemon5`.
+```text
+https://github.com/net-daemon/homeassistant-addon
+```
 
-### Deploy compiled assemblies and configurations
+3. Install the NetDaemon add-on from Home Assistant add-on store:
 
-Copy your published files from `dotnet publish -c Release -o [outputdir]` to `/config/netdaemon5`. All the binaries and configuration should be copied.
+import NdAddOn from "./assets/netdaemon_add_on.png";
 
-See also tutorial [Publish NetDeamon apps with Powershell](user/tutorials/publish_script.md).
+<img src={NdAddOn} style={{width: 300}} />
 
-In the add-on config, specify the `app_assembly` setting to point to the assembly relative to your `/config/netdaemon5` folder. This assembly should be the entry assembly (dll) from your project template. You can also add a path to the configuration folder separately. This is an example of how the configuration should appear using the default template:
+### Publish and copy compiled NetDaemon apps
 
-![](/img/docs/started/daemon_addon_config.png)
+Publish the .NET project created from the CLI tool:
 
-The name of the assembly may be different.
+```bash
+dotnet publish -c Release -o [outputdir]
+```
 
-:::note
+Copy all files and folders **within** the `[outputdir]`
+to `/config/netdaemon5` on your Home Assistant host.
 
-To use Visual Studio's publish feature first install & configure the [Samba share Home Assistant addon](https://github.com/home-assistant/addons/blob/52bafd68185080e9b1a1d6b6c501ab96705d73f9/samba/DOCS.md), then configure your VS publish options:
+For more details how to make this step easier, see the tutorial
+[Publish NetDeamon apps with Powershell](user/tutorials/publish_script.md).
 
-![](/img/docs/started/vs_publish_config.jpg)
+### Configure the NetDaemon add-on
 
-Now you can publish to quickly deploy files, and restart NetDaemon to run them.
+In the add-on configuration, set `Application assembly` setting
+to the path for your project's entry assembly (DLL),
+relative to `/config/netdaemon5` folder.
+Optionally, specify a separate path for configurations.
 
+This is an example of how the configuration should should look like,
+ please replace the assembly name with your own assembly name:
+
+import NdAddOnConfig from "./assets/add_on_configuration.png";
+
+<img src={NdAddOnConfig} style={{width: 500}} />
+
+The name of the assembly may be different or current dotnet version might
+be different for you. Ensure you're using the latest NetDaemon version and
+the corresponding .NET SDK. Make sure to always use the latest NetDaemon
+release.
+
+## Deploy using Docker and the official NetDaemon image
+
+If you're using Home Assistant Core without add-on support,
+deploying NetDaemon in a Docker container is a convenient alternative.
+
+:::info
+Note: Always use a specific version tag instead of latest
+to avoid potential breaking changes.
+[Find the version of the latest stable version here](https://github.com/net-daemon/netdaemon/releases)
 :::
-
-### Deploy source files and configurations
-
-Copy the `.cs` and `.yaml` files to `/config/netdaemon5` folder from the `apps` folder using the template project and start/restart the NetDaemon add-on.
-
-## Install as a Docker container
-
-If you are using Home Assistant Core and do not have the possibility to run add-ons, using the Docker container is a convenient way to run NetDaemon apps.
-
-**Always use specific versioning tags of Docker containers (not latest or dev) cause these are constantly getting new versions and things could break** [You can always find the latest stable version here](https://github.com/net-daemon/netdaemon/releases)
 
 ### Example Docker run configuration
 
@@ -105,7 +126,7 @@ The Docker container needs these environment variables to run properly.
 | `HomeAssistant__Ssl`                       | Set to True if SSL is used to access Home Assistant.                                                                                                               |
 | `HomeAssistant__Token`                       | A Long Lived Access Token(LLAT) that NetDaemon can use for the communication with Home Assistant.                                                                        |
 | `HomeAssistant__InsecureBypassCertificateErrors`                       | Ignores certificate errors. Please use at own risk.                                                                        |
-| `NetDaemon__ApplicationAssembly`            | Use this for the `Deploy compiled assemblies` option. Set to `{your_assembly}.dll`. For source deployment you should not set this setting! |
+| `NetDaemon__ApplicationAssembly`            | DLL name for compiled deployments (omit for source deployments) `dllname.dll` |
 | `Logging__LogLevel__Default`                | Defaults to Information, values are (Trace, Debug, Information, Warning, Error)                                                                                         |
 | `TZ`                                        | You will need to set container time zone to make the scheduler work properly                                                                                            |
 | `NetDaemon__ApplicationConfigurationFolder` | If you want to select another folder for your YAML configurations. Standard is `/data`                                                                                  |
@@ -114,22 +135,25 @@ The Docker container needs these environment variables to run properly.
 
 | Vol   | Description                                                                                                                                                                    |
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| /data | The volume of the NetDaemon folder should be mapped to `/data` [See how to setup the correct folder here](installation.md#folder-structure-and-where-to-map-the-docker-volume) |
+| /data | The volume of the NetDaemon folder should be mapped to `/data` |
 
-### Folder structure and where to map the Docker volume
+### Connecting to the Home Assistant container
 
-The `~/netdaemon_config` needs to point to a local folder. See image below where the local folder is named `netdaemon5` and should be mapped as volume to the `/data`!
-You can use any folder name you like to use.
+If you are trying trying to connecto to Home Assistant from the
+NetDaemon container, `localhost` will not resolve to the actual host
+machines loop-back ip, but rather the NetDaemons container's internal
+loopback ip.
 
-![](/img/docs/installation/folderstructure_v3.png)
-
-### Reaching Home Assistant container
-
-If you are trying trying to reach HA from the NodeDaemon container, `localhost` will not resolve to the actual host machines loopback ip, but rather the NodeDaemons containers internal loopback ip. 
-
-If home assistant is running either directly on the host or in a container using `network_mode: host` you will have to configure your NodeDaemon container to resolve the actual ip.
-This can be achieved by setting the `HomeAssistant__Host` environment variable to `host.docker.internal` (and if on Linux, adding the field [extra_hosts](https://docs.docker.com/reference/compose-file/build/#extra_hosts) with the value `host.docker.internal:host-gateway`)
+If Home Assistant is running either directly on the host or in a container using
+`network_mode: host` you will have to configure your NetDaemon container to
+resolve the actual ip. This can be achieved by setting the `HomeAssistant__Host`
+environment variable to `host.docker.internal`
+(and if on Linux, adding the field [extra_hosts](https://docs.docker.com/reference/compose-file/build/#extra_hosts)
+with the value `host.docker.internal:host-gateway`)
 For more info, see this post on [Stack Overflow](https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach).
 
-If home assistant is not using host mode networking, then the previous method should work, but you can also set the `HomeAssistant__Host` variable to the name of the HA container instead, without adding the `extra_hosts` field.
-Note, that the LLAT for the user must **not** have the setting "Local access only" in Home Assistant.
+If Home Assistant is not using host mode networking, then the previous method should
+work, but you can also set the `HomeAssistant__Host` variable to the name of the
+HA container instead, without adding the `extra_hosts` field.
+Note, that the LLAT for the user must **not** have the setting
+"Local access only" in Home Assistant.
