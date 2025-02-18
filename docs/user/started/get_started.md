@@ -3,6 +3,11 @@ id: get_started
 title: Getting started with NetDaemon
 ---
 
+# Getting started
+
+This guide walks you through setting up your development environment for
+building NetDaemon apps.
+
 ## Prerequisites
 
 - Dotnet 9 SDK
@@ -12,8 +17,8 @@ title: Getting started with NetDaemon
 - Docker (optional)
 
 ## NetDaemon development workflow
-This guide walks you through setting up your development environment for
-building NetDaemon apps. The following workflow is the recommended approach
+
+The following workflow is the recommended approach
 for developing and deploying NetDaemon:
 
 1. Install the NetDaemon CLI tools to access the project template.
@@ -40,8 +45,14 @@ cd NetDaemonApps
 dotnet new nd-project
 ```
 
-We assume you are familiar with your development environment, but for additional guidance
-and tips, see the [development tools tips & tricks page](development_tools.md).
+*There is an deployment option where you use the source code
+to deploy NetDaemon apps, we do not recommend using it but see
+[souce deployment docs](development_source_deploy.md)
+for details*
+
+We assume you are familiar with your development environment,
+but for additional guidance and tips, see the
+[development tools tips & tricks page](development_tools.md).
 
 ### Configuring NetDaemon appsettings.json
 
@@ -113,7 +124,7 @@ location on your Home Assistant host:
 
 For more details on different deployment options, see the [Installation Documentaiton](user\started\installation.md)
 
-### Keep your dependencies and tools up-to-date
+## Keep your dependencies and tools up-to-date
 
 The template project includes a PowerShell script to update NetDaemon
 and all dependent packages to their latest versions:
