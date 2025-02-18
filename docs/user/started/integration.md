@@ -3,24 +3,18 @@ id: integration
 title: Install NetDaemon integration
 ---
 
+The NetDaemon custom integration is optional but recommended
+to get access to all NetDaemon features.
+
 Using the NetDaemon custom integration enables you to
 
-- Have service callbacks from Home Assistant to your code
-- Create and update entities that survive restarts
+- Use the service callbacks from Home Assistant to your code
 
-It is highly recommended to use this integration. The new integration requires NetDaemon 21.00.0 or higher to work.
-<!-- 
-We now support persistent entities for [SetState](/docs/api/api_state#set-state-of-custom-entities) on the following domains:
-- `binary_sensor`
-- `sensor`
-- `switch`
-- `climate` -->
-
-<!-- Other domains [SetState](/docs/api/api_state#set-state-of-custom-entities) will create but not be persisted when restarted. You can also see warnings in logs using other domains. -->
+The integration requires NetDaemon 21.00.0 or higher to work.
 
 ## Installation
 
-We recommend to install it through [HACS](https://hacs.xyz/) to always have an updated version of the component. You can download it manually if you want.
+We recommend to install the custom integration through [HACS](https://hacs.xyz/).
 
 1. Add `https://github.com/net-daemon/integration` with the category "integration" as a custom repository in [HACS](https://hacs.xyz/docs/faq/custom_repositories)
 2. Install it in HACS

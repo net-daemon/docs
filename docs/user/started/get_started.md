@@ -3,16 +3,118 @@ id: get_started
 title: Getting started with NetDaemon
 ---
 
-## What do I need to get started?
+## Prerequisites
 
-Here is what you will need to start developing apps to automate your home with NetDaemon:
+- Dotnet 9 SDK
+- Development environment
+- A Home Assistant long lived authorization token
+- Git (optional)
+- Docker (optional)
 
-- The hostname/ip-address and port of your Home Assistant instance
-- We recommend using [git](https://git-scm.com/) as a way to version control your apps.
-- Create an access token to use for authorization. The long lived access token is created under your profile in the Home Assistant GUI. Make sure the user account for this access token has Administrator privileges in Home Assistant
-- Have a .NET development environment. You can edit .cs files in any tool, but using a development environment is recommended
-  - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/), [Visual Studio Code](https://code.visualstudio.com) or [JetBrains Rider](https://www.jetbrains.com/rider/)
-  - [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) installed (if running in a VS Code Dev Container, it is pre-installed)
-  - [Docker](https://www.docker.com/) installed if you want to use a Dev Container in VS Code (recommended)
+## NetDaemon development workflow
+This guide walks you through setting up your development environment for
+building NetDaemon apps. The following workflow is the recommended approach
+for developing and deploying NetDaemon:
 
-Now you have all you need to develop an app, lets just do that by moving to app development.
+1. Install the NetDaemon CLI tools to access the project template.
+2. Develop, build, compile, and test your NetDaemon apps locally using your preferred development environment.
+3. Publish your project.
+4. Deploy your project using one of the following options:
+    - NetDaemon Home Assistant add-on
+    - NetDaemon pre-built Docker container
+    - Your own Docker container
+
+### Install the NetDaemon .NET CLI tool and creating a project
+
+First, install the NetDaemon .NET CLI tool:
+
+```bash
+dotnet new --install NetDaemon.Templates.Project
+```
+
+Once installed, create a new project using the template:
+
+```csharp
+mkdir NetDaemonApps // Your project folder name
+cd NetDaemonApps
+dotnet new nd-project
+```
+
+We assume you are familiar with your development environment, but for additional guidance
+and tips, see the [development tools tips & tricks page](development_tools.md).
+
+### Configuring NetDaemon appsettings.json
+
+NetDaemon development environment needs to be configured to
+connect to Home Assistant.
+
+Edit the values in the `appsettings.json`. The following settings are mandatory:
+
+- `Host`: the IP address or hostname of your Home Assistant instance
+- `Port`: Defaults to 8123
+- `Token`: Your long-lived access token
+
+Example `appsettings.json` file
+
+```json
+{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Debug",
+            "Microsoft": "Warning"
+        },
+        "ConsoleThemeType": "Ansi"
+    },
+    "HomeAssistant": {
+        "Host": "home_assistant_host",
+        "Port": 8123,
+        "Ssl": false,
+        "Token": "my_very_secret_token_from_homeassistant"
+    },
+    "NetDaemon": {
+        "ApplicationConfigurationFolder": "./apps"
+    },
+    "CodeGeneration": {
+        "Namespace": "HomeAssistantGenerated",
+        "OutputFile": "HomeAssistantGenerated.cs",
+        "UseAttributeBaseClasses" : "false"
+    }
+}
+```
+
+We recommend creating a development-specific configuration file named
+`appsettings.development.json`, which is automatically excluded from Git.
+This prevents accidentally exposing your secret token if you use an
+external git repository like GitHub.
+
+## Develop and debug your apps
+
+Once configured, you can begin developing your NetDaemon applications.
+The project template includes example apps to help you get started with
+development and testing.
+
+Run and debug your applications while monitoring log output for errors.
+
+For a more powerful and convenient way to interact with Home Assistant
+entities and services, we recommend using the [code generator](../hass_model/hass_model_codegen.md)
+code generator to generate C# classes.
+
+## Deploy your apps
+
+Use `dotnet publish -c Release -o [your output directory]`
+Then, copy all contents from `[your_output_directory]` to the appropriate
+location on your Home Assistant host:
+
+- If using the NetDaemon add-on: /config/netdaemon5
+- If using another hosting option: Copy to your chosen destination folder
+
+For more details on different deployment options, see the [Installation Documentaiton](user\started\installation.md)
+
+### Keep your dependencies and tools up-to-date
+
+The template project includes a PowerShell script to update NetDaemon
+and all dependent packages to their latest versions:
+
+```bash
+update_all_dependencies.ps1
+```

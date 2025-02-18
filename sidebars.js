@@ -9,7 +9,6 @@ module.exports = {
         label: 'Getting started',
         items: [
           'user/started/get_started',
-          'user/started/development',
           'user/started/installation',
           'user/started/integration',
           'user/started/example',
