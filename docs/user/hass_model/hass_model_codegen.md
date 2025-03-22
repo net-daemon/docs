@@ -48,7 +48,7 @@ dotnet tool update -g NetDaemon.HassModel.CodeGen
 You can check the installed version of the codegen tool with:
 
 ```cmd
-dotnet tool list
+dotnet tool list -g
 ```
 
 When the tool is run from the folder of your NetDaemon project that contains an `appsettings.json` or `appsettings.development.json` file it will automatically use the connection settings from that config file to connect to Home Assistant. It will output a single file `HomeAssistantGenerated.cs` that contains all the generated code.
