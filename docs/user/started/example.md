@@ -101,6 +101,10 @@ Please check out the apps being developed for NetDaemon. Since documentation is 
 | [@leosperry](https://github.com/leosperry/NetDeamonImpl)                                                | Leonard's NetDaemon implementation (V3) |
 | [@pockybum522](https://github.com/PockyBum522/netdaemon-home-assistant-apps)                            | David's NetDaemon apps as used Daily (V4) |
 | [@philippch](https://github.com/PhilippCh/HomeAutomations)                                              | Philipp's apartment automated by NetDaemon (V4) |
+| [@DevJasperNL](https://github.com/DevJasperNL)                                              | Jasper's Code Casa 🏡<br />This repository explores creative and powerful ways to use a rich programming language like C# for home automation. From custom logic to seamless integrations, you'll find practical examples and unique ideas to elevate your smart home setup including:<ul><li>Using Blazor to create a custom Home Assistant frontend</li><li>Using pipelines to seperate responsibilities</li></ul>
+ |
+
+> **Do you have a NetDaemon project you'd like to share? We'd love to see it! Feel free to contribute by adding your project. Learn how here: https://github.com/net-daemon/docs**
 
 ## Third party libraries
 
