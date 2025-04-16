@@ -92,17 +92,16 @@ If you want to create entities from NetDaemon, set their state attributes, then 
 
 Please check out the apps being developed for NetDaemon. Since documentation is still lacking behind it would be best to look at real code 😊
 
-| User                                                                                                    | Description                                           |
-| ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [@helto4real](https://github.com/helto4real/NetDaemon3Automations)                                      | Tomas NetDaemon apps running in production (V4)          |
-| [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)                                     | HassModel examples by Frank the author of HassModel API |
-| [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                                                | Kennetjuh's NetDaemon implementation (V5) |
-| [@vinnie1234](https://github.com/vinnie1234/HomeAutomation-NetDaemon)                                   | Vincent's NetDaemon implementation (V5) |
-| [@leosperry](https://github.com/leosperry/NetDeamonImpl)                                                | Leonard's NetDaemon implementation (V3) |
-| [@pockybum522](https://github.com/PockyBum522/netdaemon-home-assistant-apps)                            | David's NetDaemon apps as used Daily (V4) |
-| [@philippch](https://github.com/PhilippCh/HomeAutomations)                                              | Philipp's apartment automated by NetDaemon (V4) |
-| [@DevJasperNL](https://github.com/DevJasperNL)                                              | Jasper's Code Casa 🏡<br />This repository explores creative and powerful ways to use a rich programming language like C# for home automation. From custom logic to seamless integrations, you'll find practical examples and unique ideas to elevate your smart home setup including:<ul><li>Using Blazor to create a custom Home Assistant frontend</li><li>Using pipelines to seperate responsibilities</li></ul>
- |
+| User | Description | Version |
+| --- | --- | --- |
+| [@helto4real](https://github.com/helto4real/NetDaemon3Automations)            | Tomas NetDaemon apps running in production | 4 |
+| [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)           | HassModel examples by Frank the author of HassModel API |
+| [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                      | Kennetjuh's NetDaemon implementation | 5 |
+| [@vinnie1234](https://github.com/vinnie1234/HomeAutomation-NetDaemon)         | Vincent's NetDaemon implementation | 5 |
+| [@leosperry](https://github.com/leosperry/NetDeamonImpl)                      | Leonard's NetDaemon implementation | 3 |
+| [@pockybum522](https://github.com/PockyBum522/netdaemon-home-assistant-apps)  | David's NetDaemon apps as used Daily | 4 |
+| [@philippch](https://github.com/PhilippCh/HomeAutomations)                    | Philipp's apartment automated by NetDaemon | 4 |
+| [@DevJasperNL](https://github.com/DevJasperNL)                                | Jasper's Code Casa 🏡<br />This repository explores creative and powerful ways to use a rich programming language like C# for home automation. From custom logic to seamless integrations, you'll find practical examples and unique ideas to elevate your smart home setup including:<ul><li>Using Blazor to create a custom Home Assistant frontend</li><li>Using pipelines to seperate responsibilities</li></ul> | 5 |
 
 > **Do you have a NetDaemon project you'd like to share? We'd love to see it! Feel free to contribute by adding your project. Learn how here: https://github.com/net-daemon/docs**
 
