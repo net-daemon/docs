@@ -101,7 +101,7 @@ Please check out the apps being developed for NetDaemon. Since documentation is 
 | [@leosperry](https://github.com/leosperry/NetDeamonImpl)                      | Leonard's NetDaemon implementation | 3 |
 | [@pockybum522](https://github.com/PockyBum522/netdaemon-home-assistant-apps)  | David's NetDaemon apps as used Daily | 4 |
 | [@philippch](https://github.com/PhilippCh/HomeAutomations)                    | Philipp's apartment automated by NetDaemon | 4 |
-| [@DevJasperNL](https://github.com/DevJasperNL)                                | Jasper's Code Casa 🏡<br />This repository explores creative and powerful ways to use a rich programming language like C# for home automation. From custom logic to seamless integrations, you'll find practical examples and unique ideas to elevate your smart home setup including:<ul><li>Using Blazor to create a custom Home Assistant frontend</li><li>Using pipelines to seperate responsibilities</li></ul> | 5 |
+| [@DevJasperNL](https://github.com/DevJasperNL/CodeCasa)                       | Jasper's Code Casa 🏡<br />This repository explores creative and powerful ways to use a rich programming language like C# for home automation. From custom logic to seamless integrations, you'll find practical examples and unique ideas to elevate your smart home setup including:<ul><li>Using Blazor to create a custom Home Assistant frontend</li><li>Using pipelines to seperate responsibilities</li></ul> | 5 |
 
 > **Do you have a NetDaemon project you'd like to share? We'd love to see it! Feel free to contribute by adding your project. Learn how here: https://github.com/net-daemon/docs**
 
@@ -111,4 +111,5 @@ The following libraries work well together with NetDaemon.
 
 | GitHub and NuGet | Description | Contributor(s) |
 | --- | --- | --- |
-| [NetDaemon.Extensions.Observables](https://github.com/DevJasperNL/NetDaemon.Extensions.Observables) ([NuGet](https://www.nuget.org/packages/DevJasper.NetDaemon.Extensions.Observables/)) | Collection of extension methods meant to enhance NetDaemon entities with stateful and boolean observables allowing for a more intuitive and robust coding experience. | [@DevJasperNL](https://github.com/DevJasperNL)
+| [NetDaemon.Extensions.Observables](https://github.com/DevJasperNL/CodeCasa.Libraries/tree/main/src/NetDaemon.Extensions.Observables) ([NuGet](https://www.nuget.org/packages/DevJasper.NetDaemon.Extensions.Observables/)) | Collection of extension methods meant to enhance NetDaemon entities with stateful and boolean observables allowing for a more intuitive and robust coding experience. | [@DevJasperNL](https://github.com/DevJasperNL)
+| [Automation Pipelines](https://github.com/DevJasperNL/CodeCasa.Libraries/tree/main/src/AutomationPipelines) ([NuGet](https://www.nuget.org/packages/AutomationPipelines/)) | Composable, reactive, and layered logic pipelines for C# automation. | [@DevJasperNL](https://github.com/DevJasperNL)
