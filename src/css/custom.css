@@ -14,14 +14,6 @@
   --ifm-color-primary-light: #4e89e8;
   --ifm-color-primary-lighter: #5a91ea;
   --ifm-color-primary-lightest: #80aaef;
-  /* --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
-  --ifm-code-font-size: 95%; */
 
   --ifm-color-secondary: #1bd4d4;
   --ifm-color-info: #70bdd7;
@@ -31,22 +23,4 @@
   --ifm-color-success: #70d7a7;
   --ifm-alert-border-radius: 4px;
 }
-
-/* .admonition-caution h5 {
-  color: #f6ffb6;
-} */
-
-/* .admonition-caution {
-  background-color: rgb(102, 212, 189);
-  border-left: 8px solid #267e22;
-}
-
-.admonition-caution h5 {
-  color: #167e22;
-}
-
-.admonition-caution .admonition-icon svg {
-  stroke: #0202e2;
-  fill: #36e622;
-} */
 
