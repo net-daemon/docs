@@ -2,35 +2,8 @@
 id: app_model_instancing
 title: Instance applications
 ---
-Instancing applications can be done in several ways. Here are the ones supported by NetDaemon.
 
-### Instancing an application using an attribute
-
-Instance any class with the `[NetDaemonApp]` attribute:
-
-```csharp
-[NetDaemonApp]
-public class MyApp
-{
-
-}
-```
-
-If you need async initialization to be called after the app is instanced you can use the interface `IAsyncInitializable`.
-
-```csharp
-[NetDaemonApp]
-public class MyAsyncInitializableApp : IAsyncInitializable
-{
-    // async 
-    public Task InitializeAsync()
-    {
-        // do some async initialization here
-    }
-}
-```
-
-### Instancing an application configuration using yaml
+### Application configuration using yaml
 
 You can use a YAML configuration file to provide configuration details that are injected into the constructor using the `IAppConfig<>` interface.
 

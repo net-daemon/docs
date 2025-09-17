@@ -24,7 +24,7 @@ Connect to the console within the container. If you are using VS Code then just 
 
 If you're not using VS Code then find the container within Docker and start a command shell within it.
 
-In either case, make sure you are sitting in the `/workspaces/netdaemon-docs` folder and then run `yarn start` - it should look like this:
+In either case, make sure you are sitting in the `/workspaces/docs` folder and then run `yarn start` - it should look like this:
 
 ```bash
 root ➜ /workspaces/netdaemon-docs (readme-containers ✗) $ yarn start
