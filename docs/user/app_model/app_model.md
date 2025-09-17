@@ -58,7 +58,7 @@ Services
     });
 ```
 
-Both Class and Delegate apps can receive arguments that will be resolved from the dependency injection. For a class this will be done as usual in .Net DI via constructor parameters. Minimal based apps can decalare parameters which will be resolved also from the DI container. Many apps will inject IHaContext, which is the main NetDaemon interface that allows interaction with Home Assitant. For more information see see the [HassModel documentation](./hassmodel). 2
+Both Class and Delegate apps can receive arguments that will be resolved from the dependency injection. For a class this will be done as usual in .Net DI via constructor parameters. Minimal based apps can decalare parameters which will be resolved also from the DI container. Many apps will inject IHaContext, which is the main NetDaemon interface that allows interaction with Home Assitant. For more information see see the [HassModel documentation](../hass_model/hass_model.md).
 
 ## Setting up the runtime
 A typical NetDeamon application has a program.cs file that utilizes the .Net HostApplicationBuilder like this:
