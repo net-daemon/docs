@@ -14,17 +14,17 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.6.0",
-    "@docusaurus/preset-classic": "^3.6.0",
-    "@docusaurus/theme-mermaid": "^3.6.0",
-    "@easyops-cn/docusaurus-search-local": "^0.52.0",
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
+    "@docusaurus/theme-mermaid": "^3.8.1",
+    "@easyops-cn/docusaurus-search-local": "^0.52.1",
     "classnames": "^2.5.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "yarn": "^1.22.22",
-    "yarn-upgrade-all": "^0.7.4"
+    "yarn-upgrade-all": "^0.7.5"
   },
   "browserslist": {
     "production": [

@@ -119,10 +119,10 @@ Use `dotnet publish -c Release -o [your output directory]`
 Then, copy all contents from `[your_output_directory]` to the appropriate
 location on your Home Assistant host:
 
-- If using the NetDaemon add-on: /config/netdaemon5
+- If using the NetDaemon add-on: `/config/netdaemon5`
 - If using another hosting option: Copy to your chosen destination folder
 
-For more details on different deployment options, see the [Installation Documentaiton](user\started\installation.md)
+For more details on different deployment options, see the [Installation Documentation](user/started/installation.md)
 
 ## Keep your dependencies and tools up-to-date
 
