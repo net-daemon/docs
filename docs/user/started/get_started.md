@@ -101,6 +101,10 @@ external git repository like GitHub. Remember to remove sensitive data
 from `appsettings.json` before push to remote repository!
 :::
 
+:::tip
+When running your app from the console (e.g., `dotnet run --project "PATH_TO_YOUR_PROJECT"`), ensure an appsettings.json file is in the same directory. Without it, the NetDaemon Runtime will start but won’t connect to Home Assistant, and your apps won’t load.
+:::
+
 ## Development and debugging NetDaemon apps
 
 Once configured, you can begin developing your NetDaemon applications.
