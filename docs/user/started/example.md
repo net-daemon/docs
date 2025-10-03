@@ -3,7 +3,13 @@ id: example
 title: Example app
 ---
 
-This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file `ExampleApp.cs` that contains the app logic. This example uses the code generation capability of HassModel [explained here](user/hass_model/hass_model_codegen.md).
+This application shows basic capabilities of the HassModel API of NetDaemon. It has a single file `ExampleApp.cs` that contains the app logic. 
+
+:::tip[Getting compiler issues?]
+
+This example uses the code generation capability of HassModel [explained here](user/hass_model/hass_model_codegen.md).
+
+:::
 
 ## ExampleApp.cs
 
