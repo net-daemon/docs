@@ -71,13 +71,13 @@ Supervisor -> Add-on Store -> Menu -> Repositories
      - apt-get update
      - apt-get install -y apt-transport-https
      - apt-get update
-     - apt-get install -y dotnet-sdk-9.0
+     - apt-get install -y dotnet-sdk-10.0
      - dotnet tool install -g NetDaemon.HassModel.CodeGen
    packages: []
    log_level: info
    config_path: /
    ```
-   --> The part in the `init_commands` will install .NET SDK 9.0 only in the
+   --> The part in the `init_commands` will install .NET SDK 10.0 only in the
    Studio Code Server add-on (Docker Container)
 5. Now you can start the Studio Code Server add-on by going the
 add-on information tab and pressing `OPEN WEB UI`.

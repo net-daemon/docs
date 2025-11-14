@@ -13,13 +13,13 @@ You can deploy your NetDaemon apps in several ways:
 ## Deploying NetDAemon using the Home Assistant add-on
 
 Once added to Home Assistant,
-select one of the V5 versions.
+select one of the V6 versions.
 
 1. Create a folder structure under your Home Assistant host configuration
 directory to store NetDaemon apps:
 
 ```text
-/config/netdaemon5
+/config/netdaemon6
 ```
 
 2. Add the NetDaemon repository to the Home Assistant add-on store:
@@ -43,7 +43,7 @@ dotnet publish -c Release -o [outputdir]
 ```
 
 Copy all files and folders **within** the `[outputdir]`
-to `/config/netdaemon5` on your Home Assistant host.
+to `/config/netdaemon6` on your Home Assistant host.
 
 For more details how to make this step easier, see the tutorial
 [Publish NetDeamon apps with Powershell](user/tutorials/publish_script.md).
@@ -52,7 +52,7 @@ For more details how to make this step easier, see the tutorial
 
 In the add-on configuration, set `Application assembly` setting
 to the path for your project's entry assembly (DLL),
-relative to `/config/netdaemon5` folder.
+relative to `/config/netdaemon6` folder.
 Optionally, specify a separate path for configurations.
 
 This is an example of how the configuration should should look like,
@@ -82,7 +82,7 @@ to avoid potential breaking changes.
 
 ```bash
 docker run -d \
-  --name netdaemon5 \
+  --name netdaemon6 \
   --restart=always \
   -e HomeAssistant__Host=192.168.1.4 \
   -e HomeAssistant__Token="eyJhbGciOiJIUz..." \
@@ -90,7 +90,7 @@ docker run -d \
   -e Logging__LogLevel__Default=Information \
   -e TZ=Europe/Stockholm \
   -v ~/netdaemon_config:/data \
-  netdaemon/netdaemon5
+  netdaemon/netdaemon6
 ```
 
 ### Example using docker-compose.yaml for
@@ -98,9 +98,9 @@ docker run -d \
 ```yaml
 services:
   netdaemon:
-    image: netdaemon/netdaemon5                 # use netdaemon/netdaemon5:ver 
+    image: netdaemon/netdaemon6                 # use netdaemon/netdaemon6:ver 
                                                 # for specific version
-    container_name: netdaemon5
+    container_name: netdaemon6
     restart: always
     environment:
       - HomeAssistant__Host=your_ip_or_hostname # use host.docker.internal if HA in container (see section below)

@@ -32,7 +32,7 @@ dotnet new nd-src-project
 ### Source files and configurations
 
 **Do not copy project files. Only copy the contents under the `apps` folder!**
-Copy the content from the `apps` folder to to `/config/netdaemon5` if you are using
+Copy the content from the `apps` folder to to `/config/netdaemon6` if you are using
 add-on (note that you might have changed the destination in add-on config),
 or the destination folder you chose in the other hosting options.
 **Do not copy project files. Only copy the contents under the `apps` folder!**

@@ -136,7 +136,7 @@ how easy it is to inject the ND services and use the generated HA classes.
 ```
 
 Now let's deploy the whole thing. 
-While it is perfectly fine to copy the binaries to `/config/netdaemon5` for a _normal_ NetDaemon project, it will fail for Blazor.
+While it is perfectly fine to copy the binaries to `/config/netdaemon6` for a _normal_ NetDaemon project, it will fail for Blazor.
 We need to Publish the WebSite in order to build the web artifacts in `wwwroot`.
 
 ![](/img/docs/tutorials/webhost_2_publish.png)
