@@ -35,7 +35,7 @@ The Home Assistant PowerShell Module uses the IP address of Home Assistant to st
 $settings = (Get-Content appsettings.json | ConvertFrom-Json)
 
 #CHANGE ME
-$slug = 'c6a2317c_netdaemon5' # the slug can be found in the url of the browser when navigating to the NetDaemon addon
+$slug = 'c6a2317c_netdaemon6' # the slug can be found in the url of the browser when navigating to the NetDaemon addon
 
 $version = $slug.Split('_')[-1] # adapt if you are not using the default foldername for the addon
 $json = '{"addon": "' + $slug + '"}'   

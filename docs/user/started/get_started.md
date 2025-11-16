@@ -10,7 +10,7 @@ building NetDaemon apps.
 
 ## Prerequisites
 
-- Dotnet 9 SDK
+- Dotnet 10 SDK
 - Development environment
 - A Home Assistant long lived authorization token
 - Git (optional)
@@ -123,7 +123,7 @@ Use `dotnet publish -c Release -o [your output directory]`
 Then, copy all contents from `[your_output_directory]` to the appropriate
 location on your Home Assistant host:
 
-- If using the NetDaemon add-on: `/config/netdaemon5`
+- If using the NetDaemon add-on: `/config/netdaemon6`
 - If using another hosting option: Copy to your chosen destination folder
 
 For more details on different deployment options, see the [Installation Documentation](user/started/installation.md)

@@ -7,7 +7,7 @@ title: Visual Studio
 
 ## Visual studio on Windows host os
 
-Visual Studio 2019 community or newer is recommended. You need to have dotnet 5 installed.  [Download .NET 5 here](https://dotnet.microsoft.com/download/dotnet/5.0) or check the minimal version of Visual Studio supported. 
+Visual Studio 2019 community or newer is recommended. You need to have dotnet 10 installed.  [Download .NET 10 here](https://dotnet.microsoft.com/download/dotnet/10.0) or check the minimal version of Visual Studio supported. 
 
 Fork and clone your net-daemon/netdaemon.
 
