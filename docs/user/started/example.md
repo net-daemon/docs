@@ -103,7 +103,7 @@ Please check out the apps being developed for NetDaemon. Since documentation is 
 | [@helto4real](https://github.com/helto4real/NetDaemon3Automations)            | Tomas NetDaemon apps running in production | 4 |
 | [@FrankBakkerNl](https://github.com/FrankBakkerNl/NetDaemonExample)           | HassModel examples by Frank the author of HassModel API |
 | [@Kennetjuh](https://github.com/kennetjuh/NetDeamonImpl)                      | Kennetjuh's NetDaemon implementation | 5 |
-| [@vinnie1234](https://github.com/vinnie1234/HomeAutomation-NetDaemon)         | Vincent's NetDaemon implementation | 5 |
+| [@vinnie1234](https://github.com/vinnie1234/HomeAutomation-NetDaemon)         | Vincent's NetDaemon implementation | 6 |
 | [@leosperry](https://github.com/leosperry/NetDeamonImpl)                      | Leonard's NetDaemon implementation | 3 |
 | [@pockybum522](https://github.com/PockyBum522/netdaemon-home-assistant-apps)  | David's NetDaemon apps as used Daily | 4 |
 | [@philippch](https://github.com/PhilippCh/HomeAutomations)                    | Philipp's apartment automated by NetDaemon | 4 |
