@@ -17,7 +17,7 @@
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
     "@docusaurus/theme-mermaid": "^3.8.1",
-    "@easyops-cn/docusaurus-search-local": "^0.52.1",
+    "@easyops-cn/docusaurus-search-local": "^0.54.0",
     "classnames": "^2.5.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
