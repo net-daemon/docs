@@ -29,9 +29,20 @@ Install-Package NetDaemon.Extensions.Scheduling
         .AddNetDaemonScheduler()
 ```
 
+* If you want to schedule based on Sun Events (e.g. trigger at sunrise/sunset), then also register the SunEventsScheduler:
+
+```csharp
+.ConfigureServices((_, services) =>
+    services
+        .AddAppsFromAssembly(Assembly.GetExecutingAssembly())
+        .AddNetDaemonStateManager()
+        .AddNetDaemonScheduler()
+        .AddSunEventScheduler(latitude, longitude)
+```
+
 ### Injecting the scheduler
 
-You can get an instance of the `IScheduler` interface bye simply injecting it into your apps constructor:
+You can get an instance of the `IScheduler` interface by simply injecting it into your apps constructor:
 
 ```csharp
 using System.Reactive.Concurrency.Scheduler; 
@@ -48,6 +59,16 @@ The scheduler you will receive is based on the `System.Reactive.Concurrency.Defa
 __IScheduler.Now always returns UTC. Use `Now.LocalDateTime` to get the current local time.__
 
 :::
+
+For Sun Events, inject the `ISunEventScheduler` instance into your app.
+
+```csharp
+using System.Reactive.Concurrency.Scheduler; 
+
+[NetDaemonApp]
+class MyApp(ISunEventScheduler sunEventScheduler)
+{ }
+```
 
 ### Using the Scheduler
 
@@ -80,6 +101,19 @@ Which will turn off the living room light at 23:45 each day.
 The first argument of this method is a [Cron expression](https://en.wikipedia.org/wiki/Cron) that describes the pattern of the schedule. These expressions can meet a large variety of scheduling demands. This Cron expression will be evaluated using the local timezone that is setup for your environment.
 
 The `ScheduleCron()` extension method uses [Cronos](https://github.com/HangfireIO/Cronos) to parse your Cron expression. See its docs for the exact specification.
+
+### Sun Events
+
+The `ISunEventScheduler` enables triggering an event at Dawn, Sunrise, Sunset and Dusk. The specific times are calculated everyday based on the coordinates you provide when registering the service.
+
+```csharp
+public SunriseSchedulingApp(IHaContext ha, IScheduler scheduler)
+{
+    var entities = new Entities(ha); 
+    scheduler.RunAtSunrise(() => entities.Light.Patio.TurnOff());
+}
+```
+
 
 ## Unit testing scheduling apps
 
