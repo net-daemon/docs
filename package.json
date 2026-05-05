@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "yarn": "^1.22.22",
-    "yarn-upgrade-all": "^0.7.5"
+    "yarn-upgrade-all": "^0.8.1"
   },
   "browserslist": {
     "production": [
