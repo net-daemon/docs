@@ -340,7 +340,53 @@ div[class*='codeBlockTitle'] {
 }
 
 .footer {
-  border-top: 1px solid var(--nd-border);
+  color: var(--nd-text-muted);
+  background:
+    radial-gradient(circle at 26% 0%, rgba(42, 167, 255, 0.11), transparent 24rem),
+    radial-gradient(circle at 72% 0%, rgba(128, 92, 255, 0.13), transparent 25rem),
+    linear-gradient(180deg, rgba(7, 18, 36, 0.98), #030813 78%);
+  border-top: 1px solid rgba(70, 170, 255, 0.22);
+  box-shadow: inset 0 1px 0 rgba(128, 92, 255, 0.18);
+}
+
+.footer.footer--dark {
+  --ifm-footer-background-color: transparent;
+  --ifm-footer-color: var(--nd-text-muted);
+  --ifm-footer-link-color: #8f7dff;
+  --ifm-footer-title-color: var(--nd-text);
+}
+
+.footer .container {
+  max-width: 1280px;
+}
+
+.footer__title {
+  color: var(--nd-text);
+  font-size: 0.95rem;
+}
+
+.footer__link-item {
+  color: #8f7dff;
+  transition: color 160ms ease;
+}
+
+.footer__link-item:hover {
+  color: #45c0ff;
+  text-decoration: none;
+}
+
+.footer__bottom {
+  color: var(--nd-text-soft);
+}
+
+.footer__copyright a {
+  color: #45c0ff;
+  font-weight: 650;
+}
+
+.footer__copyright a:hover {
+  color: #8f7dff;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 997px) {
