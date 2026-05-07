@@ -107,6 +107,12 @@
   transform: translateY(-1px);
 }
 
+.buttonIcon {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+}
+
 .primaryButton {
   background: linear-gradient(135deg, #1687ff 0%, #7648ff 100%);
   box-shadow: 0 14px 34px rgba(56, 103, 255, 0.38);
@@ -261,6 +267,11 @@
   width: 3.2rem;
   height: 3.2rem;
   object-fit: contain;
+}
+
+.featureSvgIcon {
+  width: 3rem;
+  height: 3rem;
 }
 
 .featureCard h3,

@@ -119,7 +119,7 @@ const features = [
       'Use real-time events, entities, services, and state through fast websocket integration.',
   },
   {
-    icon: '=>',
+    icon: 'rocket',
     title: 'Developer experience first',
     description:
       'Strong typing, IntelliSense, templates, and rapid local iteration help keep automations easy to maintain.',
@@ -184,13 +184,59 @@ async function fetchGithubStats(signal) {
   ];
 }
 
+function RocketIcon() {
+  return (
+    <svg className={styles.featureSvgIcon} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 15 9 12a22.4 22.4 0 0 1 2.1-4A12.7 12.7 0 0 1 22 2c0 2.8-0.9 7.5-6 10.9A22.4 22.4 0 0 1 12 15Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M9 12H4s0.6-3 2-4c1.6-1.1 5 0 5 0"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M12 15v5s3-0.6 4-2c1.1-1.6 0-5 0-5"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-0.5 5-2c0.7-0.8 0.7-2.1-0.1-2.9-0.8-0.8-2.1-0.8-2.9-0.1Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M15 9h0.1"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2.4"
+      />
+    </svg>
+  );
+}
+
 function FeatureCard({ icon, image, title, description }) {
   const imageUrl = image ? useBaseUrl(image) : null;
 
   return (
     <article className={styles.featureCard}>
       <div className={styles.featureIcon}>
-        {imageUrl ? <img src={imageUrl} alt="" /> : <span>{icon}</span>}
+        {imageUrl ? <img src={imageUrl} alt="" /> : icon === 'rocket' ? <RocketIcon /> : <span>{icon}</span>}
       </div>
       <div>
         <h3>{title}</h3>
@@ -287,7 +333,25 @@ export default function Home() {
                   Get Started <span aria-hidden="true">-&gt;</span>
                 </Link>
                 <Link className={classnames(styles.button, styles.secondaryButton)} to="/docs/user/">
-                  View Documentation <span aria-hidden="true">[]</span>
+                  View Documentation
+                  <svg className={styles.buttonIcon} viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M4 5.4c0-.8.6-1.4 1.4-1.4H10c1.1 0 2 .4 2 1.2V20c0-.8-.9-1.2-2-1.2H5.4C4.6 18.8 4 18.2 4 17.4v-12Z"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.8"
+                    />
+                    <path
+                      d="M20 5.4c0-.8-.6-1.4-1.4-1.4H14c-1.1 0-2 .4-2 1.2V20c0-.8.9-1.2 2-1.2h4.6c.8 0 1.4-.6 1.4-1.4v-12Z"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.8"
+                    />
+                  </svg>
                 </Link>
               </div>
             </div>
