@@ -322,6 +322,11 @@
   border-radius: 999px;
 }
 
+.githubMark svg {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
 .githubButton {
   display: inline-flex;
   align-items: center;

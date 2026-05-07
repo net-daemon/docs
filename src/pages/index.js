@@ -306,7 +306,14 @@ export default function Home() {
 
         <section className={styles.githubPanel} aria-label="GitHub community">
           <div className={styles.githubIntro}>
-            <div className={styles.githubMark}>GH</div>
+            <div className={styles.githubMark}>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 0.3C5.4 0.3 0 5.7 0 12.4c0 5.3 3.4 9.8 8.2 11.4 0.6 0.1 0.8-0.3 0.8-0.6v-2.1c-3.3 0.7-4-1.4-4-1.4-0.5-1.4-1.3-1.8-1.3-1.8-1.1-0.7 0.1-0.7 0.1-0.7 1.2 0.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 0.1-0.8 0.4-1.3 0.7-1.6-2.7-0.3-5.5-1.3-5.5-5.9 0-1.3 0.5-2.4 1.2-3.2-0.1-0.3-0.5-1.6 0.1-3.2 0 0 1-0.3 3.3 1.2 1-0.3 2-0.4 3.1-0.4s2.1 0.1 3.1 0.4c2.3-1.6 3.3-1.2 3.3-1.2 0.6 1.6 0.2 2.9 0.1 3.2 0.8 0.9 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9 0.4 0.4 0.8 1.1 0.8 2.3v3.4c0 0.3 0.2 0.7 0.8 0.6 4.8-1.6 8.2-6.1 8.2-11.4C24 5.7 18.6 0.3 12 0.3Z"
+                />
+              </svg>
+            </div>
             <div>
               <h2>Open source on GitHub</h2>
               <p>Join the community, contribute, and help make NetDaemon even better.</p>
