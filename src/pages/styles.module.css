@@ -338,12 +338,18 @@
   background: rgba(146, 164, 197, 0.13);
   border: 1px solid rgba(146, 164, 197, 0.12);
   border-radius: 6px;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .githubButton:hover {
   color: #fff;
   text-decoration: none;
+  transform: translateY(-1px);
   border-color: rgba(62, 171, 255, 0.45);
+  box-shadow: 0 12px 30px rgba(42, 125, 255, 0.2);
 }
 
 .statsGrid {
