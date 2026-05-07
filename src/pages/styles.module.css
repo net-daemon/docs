@@ -437,33 +437,6 @@
   box-shadow: 0 18px 36px rgba(69, 117, 255, 0.34);
 }
 
-.useCases {
-  max-width: 1280px;
-  margin: 1.4rem auto 0;
-  text-align: center;
-}
-
-.useCases p {
-  color: var(--nd-text-muted);
-  font-size: 1.05rem;
-}
-
-.useCases div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
-}
-
-.useCases span {
-  min-width: 9.25rem;
-  padding: 0.65rem 1.2rem;
-  color: #d8e2f6;
-  background: rgba(37, 81, 150, 0.24);
-  border: 1px solid rgba(73, 120, 205, 0.16);
-  border-radius: 6px;
-}
-
 @media screen and (max-width: 996px) {
   .heroGrid,
   .features,

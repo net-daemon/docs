@@ -135,8 +135,6 @@ const fallbackStats = [
 const githubRepositoryUrl = 'https://api.github.com/repos/net-daemon/netdaemon';
 const githubContributorsUrl = `${githubRepositoryUrl}/contributors?per_page=1&anon=true`;
 
-const uses = ['Home Automation', 'Smart Buildings', 'Integrations', 'Prototyping', 'Open Source'];
-
 function formatStatValue(value) {
   if (!Number.isFinite(value)) {
     return value;
@@ -344,15 +342,6 @@ export default function Home() {
           <Link className={styles.discordButton} to="https://discord.gg/K3xwfcX">
             Join Discord <span aria-hidden="true">-&gt;</span>
           </Link>
-        </section>
-
-        <section className={styles.useCases} aria-label="Common use cases">
-          <p>Trusted by Home Assistant enthusiasts and professionals</p>
-          <div>
-            {uses.map((use) => (
-              <span key={use}>{use}</span>
-            ))}
-          </div>
         </section>
       </main>
     </Layout>
