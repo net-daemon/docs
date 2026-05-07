@@ -1,26 +1,378 @@
 /* stylelint-disable docusaurus/copyright-header */
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #3578e5;
-  --ifm-color-primary-dark: #1d68e1;
-  --ifm-color-primary-darker: #1b62d4;
-  --ifm-color-primary-darkest: #1751af;
-  --ifm-color-primary-light: #4e89e8;
-  --ifm-color-primary-lighter: #5a91ea;
-  --ifm-color-primary-lightest: #80aaef;
-
-  --ifm-color-secondary: #1bd4d4;
-  --ifm-color-info: #70bdd7;
-  --ifm-color-warning: #c18802;
-  --ifm-color-danger: #d78a70;
-  --ifm-color-gray-900: #292929;
-  --ifm-color-success: #70d7a7;
-  --ifm-alert-border-radius: 4px;
+  --ifm-color-primary: #258bff;
+  --ifm-color-primary-dark: #0d7cff;
+  --ifm-color-primary-darker: #0070f2;
+  --ifm-color-primary-darkest: #005ac2;
+  --ifm-color-primary-light: #43a2ff;
+  --ifm-color-primary-lighter: #5eb0ff;
+  --ifm-color-primary-lightest: #94cbff;
+  --ifm-color-secondary: #7d5cff;
+  --ifm-color-info: #46c7ff;
+  --ifm-color-warning: #f0b858;
+  --ifm-color-danger: #ff7b85;
+  --ifm-color-success: #56e39f;
+  --ifm-alert-border-radius: 8px;
+  --ifm-background-color: #f7f9fd;
+  --ifm-font-family-base:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --ifm-heading-font-weight: 800;
+  --ifm-navbar-height: 4.8rem;
+  --ifm-global-radius: 8px;
+  --ifm-code-border-radius: 6px;
+  --nd-bg: #f7f9fd;
+  --nd-surface: #ffffff;
+  --nd-surface-strong: #eef3fb;
+  --nd-border: rgba(40, 58, 94, 0.14);
+  --nd-text: #0e1728;
+  --nd-text-muted: #4f5d75;
+  --nd-text-soft: #6d7890;
+  --nd-accent: #258bff;
+  --nd-accent-strong: #7d5cff;
+  --nd-code-bg: #0b1423;
 }
 
+[data-theme='dark'] {
+  --ifm-background-color: #030813;
+  --ifm-background-surface-color: #071224;
+  --ifm-navbar-background-color: rgba(2, 7, 18, 0.9);
+  --ifm-footer-background-color: #030813;
+  --ifm-color-content: #d9e3f7;
+  --ifm-color-content-secondary: #aeb9cd;
+  --ifm-menu-color: #b5bfd2;
+  --ifm-toc-link-color: #aeb9cd;
+  --ifm-code-background: rgba(117, 80, 255, 0.14);
+  --ifm-pre-background: #07101e;
+  --ifm-table-border-color: rgba(145, 166, 207, 0.18);
+  --nd-bg: #030813;
+  --nd-surface: rgba(8, 17, 35, 0.88);
+  --nd-surface-strong: rgba(18, 32, 57, 0.92);
+  --nd-border: rgba(145, 166, 207, 0.18);
+  --nd-text: #f5f8ff;
+  --nd-text-muted: #c2cade;
+  --nd-text-soft: #96a2bb;
+  --nd-accent: #2aa7ff;
+  --nd-accent-strong: #805cff;
+  --nd-code-bg: #07101e;
+}
+
+html,
+body {
+  background: var(--nd-bg);
+}
+
+body {
+  letter-spacing: 0;
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--nd-border);
+  box-shadow: none;
+  backdrop-filter: blur(18px);
+}
+
+.navbar__inner {
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.navbar__brand {
+  gap: 0.75rem;
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+
+.navbar__logo {
+  height: 2.8rem;
+}
+
+.navbar__item {
+  font-weight: 650;
+}
+
+.navbar__link {
+  border-radius: 8px;
+}
+
+.navbar__link--active {
+  color: var(--nd-accent);
+}
+
+.navbar__link--active::after {
+  display: block;
+  height: 2px;
+  margin: 0.25rem auto -0.45rem;
+  content: '';
+  background: linear-gradient(90deg, var(--nd-accent), var(--nd-accent-strong));
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgba(42, 167, 255, 0.72);
+}
+
+.navbar-get-started {
+  padding: 0.65rem 1.1rem;
+  margin-left: 0.5rem;
+  color: #fff !important;
+  background: linear-gradient(135deg, #1687ff, #7648ff);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(76, 88, 255, 0.36);
+}
+
+.navbar-get-started::after {
+  display: none;
+}
+
+body.homepage-dark-navbar .navbar {
+  background: rgba(2, 7, 18, 0.92);
+}
+
+body.homepage-dark-navbar .navbar__title,
+body.homepage-dark-navbar .navbar__link {
+  color: #f5f8ff;
+}
+
+body.homepage-dark-navbar .navbar__link:hover,
+body.homepage-dark-navbar .navbar__link--active {
+  color: #2aa7ff;
+}
+
+body.homepage-dark-navbar [class*='colorModeToggle'] button {
+  color: #f5f8ff;
+}
+
+body.homepage-dark-navbar [class*='colorModeToggle'] {
+  display: none;
+}
+
+body.homepage-dark-navbar .DocSearch-Button {
+  color: #96a2bb !important;
+  background: rgba(8, 17, 35, 0.88) !important;
+  border-color: rgba(145, 166, 207, 0.18) !important;
+}
+
+body.homepage-dark-navbar .DocSearch-Button:hover {
+  color: #f5f8ff !important;
+}
+
+.theme-doc-sidebar-container {
+  background:
+    radial-gradient(circle at 0 100%, rgba(111, 72, 255, 0.13), transparent 18rem),
+    var(--nd-bg);
+  border-right: 1px solid var(--nd-border) !important;
+}
+
+.theme-doc-sidebar-menu {
+  padding: 1rem 0.65rem 1.5rem !important;
+}
+
+.menu__list-item {
+  margin: 0.12rem 0;
+}
+
+.menu__link {
+  min-height: 2.4rem;
+  padding: 0.55rem 0.8rem;
+  color: var(--ifm-menu-color);
+  border-radius: 7px;
+}
+
+.menu__link:hover {
+  color: var(--nd-text);
+  background: rgba(41, 121, 255, 0.12);
+}
+
+.menu__link--active {
+  color: #10203a;
+  background:
+    linear-gradient(90deg, rgba(128, 92, 255, 0.28), rgba(33, 132, 255, 0.18)),
+    rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(33, 132, 255, 0.35);
+  box-shadow: inset 3px 0 0 #8b5cff, 0 10px 22px rgba(41, 121, 255, 0.1);
+}
+
+[data-theme='dark'] .menu__link--active {
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(128, 92, 255, 0.55), rgba(33, 132, 255, 0.28)),
+    rgba(35, 80, 154, 0.28);
+  border-color: rgba(70, 170, 255, 0.45);
+  box-shadow: inset 3px 0 0 #8b5cff, 0 0 22px rgba(41, 121, 255, 0.15);
+}
+
+.theme-doc-toc-desktop {
+  border-left: 1px solid var(--nd-border);
+}
+
+.table-of-contents {
+  padding: 1.2rem 0 1.2rem 1.35rem;
+  font-size: 0.9rem;
+}
+
+.table-of-contents__link {
+  color: var(--nd-text-soft);
+}
+
+.table-of-contents__link--active,
+.table-of-contents__link:hover {
+  color: var(--nd-accent);
+}
+
+.main-wrapper {
+  background:
+    radial-gradient(circle at 78% 12%, rgba(107, 75, 255, 0.08), transparent 26rem),
+    radial-gradient(circle at 22% 8%, rgba(42, 167, 255, 0.08), transparent 22rem),
+    var(--nd-bg);
+}
+
+.theme-doc-markdown {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.theme-doc-markdown h1 {
+  margin-top: 0.85rem;
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.theme-doc-markdown h2 {
+  padding-top: 0.8rem;
+  margin-top: 2.1rem;
+  font-size: 1.75rem;
+  border-top: 1px solid var(--nd-border);
+}
+
+.theme-doc-markdown h3 {
+  margin-top: 1.6rem;
+}
+
+.breadcrumbs {
+  color: var(--nd-text-soft);
+  font-size: 0.88rem;
+}
+
+.breadcrumbs__link {
+  border-radius: 6px;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--nd-accent);
+}
+
+.theme-doc-markdown img {
+  border: 1px solid var(--nd-border);
+  border-radius: 8px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
+}
+
+.theme-code-block,
+div[class*='codeBlockContainer'] {
+  background: var(--nd-code-bg) !important;
+  border: 1px solid var(--nd-border);
+  border-radius: 8px;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.18);
+}
+
+.theme-code-block pre,
+div[class*='codeBlockContent'] pre {
+  font-size: 0.94rem;
+}
+
+.theme-code-block button,
+div[class*='codeBlockTitle'] {
+  border-color: var(--nd-border) !important;
+}
+
+.alert {
+  background:
+    linear-gradient(135deg, rgba(128, 92, 255, 0.14), rgba(42, 167, 255, 0.08)),
+    var(--nd-surface);
+  border: 1px solid var(--nd-border);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+.alert--success {
+  --ifm-alert-border-color: rgba(86, 227, 159, 0.48);
+}
+
+.alert--info {
+  --ifm-alert-border-color: rgba(70, 199, 255, 0.5);
+}
+
+.alert--warning {
+  --ifm-alert-border-color: rgba(240, 184, 88, 0.55);
+}
+
+.pagination-nav__link {
+  background: var(--nd-surface);
+  border-color: var(--nd-border);
+  border-radius: 8px;
+}
+
+.pagination-nav__link:hover {
+  border-color: rgba(42, 167, 255, 0.55);
+  box-shadow: 0 16px 36px rgba(33, 132, 255, 0.14);
+}
+
+.DocSearch-Button {
+  height: 2.45rem !important;
+  color: var(--nd-text-soft) !important;
+  background: var(--nd-surface) !important;
+  border: 1px solid var(--nd-border) !important;
+  border-radius: 8px !important;
+}
+
+.DocSearch-Button:hover {
+  color: var(--nd-text) !important;
+  border-color: rgba(42, 167, 255, 0.45) !important;
+  box-shadow: none !important;
+}
+
+.DocSearch-Button-Key {
+  background: rgba(140, 157, 190, 0.16) !important;
+  box-shadow: none !important;
+}
+
+.footer {
+  border-top: 1px solid var(--nd-border);
+}
+
+@media screen and (min-width: 997px) {
+  .theme-doc-markdown {
+    max-width: 760px;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .navbar__items--right .navbar-get-started {
+    display: none;
+  }
+
+  .theme-doc-sidebar-container {
+    background: var(--nd-bg);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  :root {
+    --ifm-navbar-height: 4.2rem;
+  }
+
+  .navbar__brand {
+    font-size: 1.15rem;
+  }
+
+  .navbar__logo {
+    height: 2.35rem;
+  }
+
+  .theme-doc-markdown h1 {
+    font-size: 2.35rem;
+  }
+}

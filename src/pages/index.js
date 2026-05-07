@@ -1,108 +1,169 @@
-import React from 'react';
-import CodeBlock from '@theme/CodeBlock';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
+const codePreview = `using NetDaemon.HassModel;
+
+public class OfficeMotion : EntityBase
+{
+    [Entity]
+    private BinarySensor OfficeMotion { get; set; }
+
+    [Entity]
+    private Light Office { get; set; }
+
+    protected override void Init()
+    {
+        OfficeMotion.StateChanged()
+            .Where(state => state.New?.IsOn() == true)
+            .Throttle(TimeSpan.FromSeconds(1))
+            .Subscribe(_ => Office.TurnOn());
+    }
+}`;
+
 const features = [
   {
-    title: <>For the C# developer</>,
-    imageUrl: 'img/C_Sharp_logo.svg',
-    description: (
-      <>
-        With NetDaemon you can write your home automations in C# for Home Assistant using modern .NET design. NetDaemon is open source and will always be free!
-      </>
-    ),
+    icon: '</>',
+    title: 'Built for C# developers',
+    description:
+      'Write automations in C# with a rich API, modern .NET patterns, and tooling that feels familiar from the first project.',
   },
   {
-    title: <>Integrated with Home Assistant</>,
-    imageUrl: 'img/hass.png',
-    description: (
-      <>
-        Integrated with Home Assistant using websockets for maximum performance. Has advanced scheduling and a easy to use API.
-      </>
-    ),
+    image: 'img/hass.png',
+    title: 'Deep Home Assistant integration',
+    description:
+      'Use real-time events, entities, services, and state through fast websocket integration.',
   },
   {
-    title: <>Code generation</>,
-    Link: 'https://www.youtube.com/watch?v=OCej2TVdKQo',
-    codeBlock: `entities.BinarySensor.OfficeMotion
-    .StateChanges()
-    .Where(e => e.New.IsOn())
-    .Subscribe(_ =>
-      entities.Light.Office.TurnOn());`,
-    description: (
-      <>
-
-        All your entities and services can be generated for full intellisense experience.
-        <br /><Link to="https://www.youtube.com/watch?v=OCej2TVdKQo" target="_blank" rel="noopener noreferrer">Watch our introduction video!</Link>
-      </>
-    ),
+    icon: '=>',
+    title: 'Developer experience first',
+    description:
+      'Strong typing, IntelliSense, templates, and rapid local iteration help keep automations easy to maintain.',
   },
-
 ];
 
-function Feature({ imageUrl, title, description, codeBlock }) {
-  const imgUrl = useBaseUrl(imageUrl);
+const stats = [
+  { value: '2.1k', label: 'Stars' },
+  { value: '240', label: 'Forks' },
+  { value: '320+', label: 'Contributors' },
+];
+
+const uses = ['Home Automation', 'Smart Buildings', 'Integrations', 'Prototyping', 'Open Source'];
+
+function FeatureCard({ icon, image, title, description }) {
+  const imageUrl = image ? useBaseUrl(image) : null;
+
   return (
-    <div className={classnames('col col--4', styles.feature)}>
-      {imgUrl && !codeBlock &&(
-        <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
-        </div>
-      )}
-      {codeBlock &&(
-        <CodeBlock language="cs">
-          {codeBlock}
-          </CodeBlock>
-      )}
-      <h3>{title}</h3>
-      <p>{description}</p>
+    <article className={styles.featureCard}>
+      <div className={styles.featureIcon}>
+        {imageUrl ? <img src={imageUrl} alt="" /> : <span>{icon}</span>}
+      </div>
+      <div>
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </div>
+    </article>
+  );
+}
+
+function CodePanel() {
+  return (
+    <div className={styles.codeWrap} aria-label="NetDaemon C# automation example">
+      <div className={styles.languagePill}>C#</div>
+      <pre className={styles.codePanel}>
+        <code>{codePreview}</code>
+      </pre>
+      <div className={styles.homeAssistantBadge}>
+        <img src={useBaseUrl('img/hass.png')} alt="Home Assistant" />
+      </div>
     </div>
   );
 }
 
-function Home() {
-  const context = useDocusaurusContext();
-  const { siteConfig = {} } = context;
+export default function Home() {
+  const logoUrl = useBaseUrl('img/favicon.png');
+
+  useEffect(() => {
+    document.body.classList.add('homepage-dark-navbar');
+
+    return () => {
+      document.body.classList.remove('homepage-dark-navbar');
+    };
+  }, []);
+
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="Home automations in c# for Home Assistant">
-      <header className={classnames('hero hero--primary', styles.heroBanner)}>
-        <div className="container">
-          <h1 className="hero__title">{siteConfig.title}</h1>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
-            <Link
-              className={classnames(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted,
-              )}
-              to={useBaseUrl('docs/user/started/get_started')}>
-              Get Started
-            </Link>
+      title="NetDaemon"
+      description="C# automation platform for Home Assistant">
+      <main className={styles.pageShell}>
+        <section className={styles.hero}>
+          <div className={styles.heroGlow} aria-hidden="true" />
+          <div className={styles.heroNavBrand}>
+            <img src={logoUrl} alt="" />
+            <span>NetDaemon</span>
           </div>
-        </div>
-      </header>
-      <main>
-        {features && features.length && (
-          <section className={styles.features}>
-            <div className="container">
-              <div className="row">
-                {features.map((props, idx) => (
-                  <Feature key={idx} {...props} />
-                ))}
+          <div className={styles.heroGrid}>
+            <div className={styles.heroContent}>
+              <span className={styles.badge}>Open source</span>
+              <h1>
+                Automate Home Assistant with <span>C#</span>
+              </h1>
+              <p className={styles.lede}>
+                NetDaemon is a modern C# automation platform for Home Assistant.
+                Powerful. Developer-friendly. Open source.
+              </p>
+              <div className={styles.heroActions}>
+                <Link className={classnames(styles.button, styles.primaryButton)} to="/docs/user/started/get_started/">
+                  Get Started <span aria-hidden="true">-&gt;</span>
+                </Link>
+                <Link className={classnames(styles.button, styles.secondaryButton)} to="/docs/user/">
+                  View Documentation <span aria-hidden="true">[]</span>
+                </Link>
               </div>
             </div>
-          </section>
-        )}
+            <CodePanel />
+          </div>
+        </section>
+
+        <section className={styles.features} aria-label="NetDaemon benefits">
+          {features.map((feature) => (
+            <FeatureCard key={feature.title} {...feature} />
+          ))}
+        </section>
+
+        <section className={styles.githubPanel} aria-label="GitHub community">
+          <div className={styles.githubIntro}>
+            <div className={styles.githubMark}>GH</div>
+            <div>
+              <h2>Open source on GitHub</h2>
+              <p>Join the community, contribute, and help make NetDaemon even better.</p>
+              <Link className={styles.githubButton} to="https://github.com/net-daemon/netdaemon">
+                View on GitHub
+              </Link>
+            </div>
+          </div>
+          <div className={styles.statsGrid}>
+            {stats.map((stat) => (
+              <div className={styles.stat} key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.useCases} aria-label="Common use cases">
+          <p>Trusted by Home Assistant enthusiasts and professionals</p>
+          <div>
+            {uses.map((use) => (
+              <span key={use}>{use}</span>
+            ))}
+          </div>
+        </section>
       </main>
     </Layout>
   );
 }
-
-export default Home;
