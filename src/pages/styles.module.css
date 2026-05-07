@@ -254,7 +254,8 @@
 }
 
 .featureCard,
-.githubPanel {
+.githubPanel,
+.discordPanel {
   background:
     linear-gradient(145deg, rgba(32, 48, 82, 0.58), rgba(8, 17, 35, 0.82)),
     rgba(8, 17, 35, 0.78);
@@ -292,7 +293,8 @@
 }
 
 .featureCard h3,
-.githubPanel h2 {
+.githubPanel h2,
+.discordPanel h2 {
   margin: 0 0 0.7rem;
   color: var(--nd-text);
   font-size: 1.35rem;
@@ -300,7 +302,8 @@
 }
 
 .featureCard p,
-.githubPanel p {
+.githubPanel p,
+.discordPanel p {
   margin: 0;
   color: var(--nd-text-muted);
   line-height: 1.55;
@@ -380,6 +383,84 @@
   color: var(--nd-text-soft);
 }
 
+.discordPanel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1280px;
+  margin: 1.5rem auto 0;
+  padding: 1.6rem 2rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 50%, rgba(42, 167, 255, 0.18), transparent 18rem),
+    radial-gradient(circle at 78% 44%, rgba(128, 92, 255, 0.2), transparent 20rem),
+    linear-gradient(135deg, rgba(11, 28, 54, 0.9), rgba(8, 17, 35, 0.82));
+  border-color: rgba(70, 170, 255, 0.3);
+}
+
+.discordPanel::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  background: linear-gradient(90deg, rgba(69, 192, 255, 0.13), transparent 32%, rgba(143, 125, 255, 0.16));
+}
+
+.discordIntro {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.discordMark {
+  display: grid;
+  width: 4.5rem;
+  height: 4.5rem;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, #5865f2, #45c0ff);
+  border-radius: 8px;
+  box-shadow: 0 18px 38px rgba(73, 133, 255, 0.28);
+}
+
+.discordMark svg {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.discordButton {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.45rem;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  background: linear-gradient(135deg, #258bff, #7d5cff);
+  border: 1px solid rgba(130, 98, 255, 0.55);
+  border-radius: 8px;
+  box-shadow: 0 14px 30px rgba(69, 117, 255, 0.28);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.discordButton:hover {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px rgba(69, 117, 255, 0.34);
+}
+
 .useCases {
   max-width: 1280px;
   margin: 1.4rem auto 0;
@@ -414,8 +495,13 @@
 
   .heroGrid,
   .features,
-  .githubPanel {
+  .githubPanel,
+  .discordPanel {
     grid-template-columns: 1fr;
+  }
+
+  .discordButton {
+    justify-self: start;
   }
 
   .codePanel {
@@ -461,8 +547,13 @@
   }
 
   .featureCard,
-  .githubIntro {
+  .githubIntro,
+  .discordIntro {
     grid-template-columns: 1fr;
+  }
+
+  .discordButton {
+    width: 100%;
   }
 
   .statsGrid {
