@@ -30,7 +30,7 @@ All docker/GitHub images will remain in the registries as long as we are allowed
 Below you have links to the migration guides for upgrading to the latest version of NetDaemon. If you are on a really old version we
 recommend to start a new project from the official CLI template and migrate the old apps one by one. 
 
-[From V3->V4](user/app_model/moving_from_v3.md) (current version)
+[From V3->V6](user/app_model/moving_from_v3.md) (current version)
 
 ## Release policy
 
