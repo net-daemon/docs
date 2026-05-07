@@ -5,24 +5,105 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
-const codePreview = `using NetDaemon.HassModel;
-
-public class OfficeMotion : EntityBase
-{
-    [Entity]
-    private BinarySensor OfficeMotion { get; set; }
-
-    [Entity]
-    private Light Office { get; set; }
-
-    protected override void Init()
-    {
-        OfficeMotion.StateChanged()
-            .Where(state => state.New?.IsOn() == true)
-            .Throttle(TimeSpan.FromSeconds(1))
-            .Subscribe(_ => Office.TurnOn());
-    }
-}`;
+const codePreview = [
+  [
+    { token: 'keyword', text: 'using' },
+    { text: ' ' },
+    { token: 'namespace', text: 'System' },
+    { text: ';' },
+  ],
+  [
+    { token: 'keyword', text: 'using' },
+    { text: ' ' },
+    { token: 'namespace', text: 'System.Reactive.Linq' },
+    { text: ';' },
+  ],
+  [
+    { token: 'keyword', text: 'using' },
+    { text: ' ' },
+    { token: 'namespace', text: 'NetDaemon.AppModel' },
+    { text: ';' },
+  ],
+  [
+    { token: 'keyword', text: 'using' },
+    { text: ' ' },
+    { token: 'namespace', text: 'NetDaemon.HassModel' },
+    { text: ';' },
+  ],
+  [
+    { token: 'keyword', text: 'using' },
+    { text: ' ' },
+    { token: 'namespace', text: 'HomeAssistantGenerated' },
+    { text: ';' },
+  ],
+  [],
+  [
+    { text: '[' },
+    { token: 'attribute', text: 'NetDaemonApp' },
+    { text: ']' },
+  ],
+  [
+    { token: 'keyword', text: 'public' },
+    { text: ' ' },
+    { token: 'keyword', text: 'class' },
+    { text: ' ' },
+    { token: 'type', text: 'ExampleAppHaContext' },
+  ],
+  [{ text: '{' }],
+  [
+    { text: '    ' },
+    { token: 'keyword', text: 'public' },
+    { text: ' ' },
+    { token: 'type', text: 'ExampleAppHaContext' },
+    { text: '(' },
+    { token: 'type', text: 'IHaContext' },
+    { text: ' ha)' },
+  ],
+  [{ text: '    {' }],
+  [
+    { text: '        ' },
+    { token: 'keyword', text: 'var' },
+    { text: ' entities = ' },
+    { token: 'keyword', text: 'new' },
+    { text: ' ' },
+    { token: 'type', text: 'Entities' },
+    { text: '(ha);' },
+  ],
+  [],
+  [
+    { text: '        entities.' },
+    { token: 'property', text: 'BinarySensor' },
+    { text: '.' },
+    { token: 'property', text: 'OfficeMotion' },
+  ],
+  [
+    { text: '            .' },
+    { token: 'method', text: 'StateChanges' },
+    { text: '()' },
+  ],
+  [
+    { text: '            .' },
+    { token: 'method', text: 'Where' },
+    { text: '(e => e.' },
+    { token: 'property', text: 'New' },
+    { text: '.' },
+    { token: 'method', text: 'IsOn' },
+    { text: '())' },
+  ],
+  [
+    { text: '            .' },
+    { token: 'method', text: 'Subscribe' },
+    { text: '(_ => entities.' },
+    { token: 'property', text: 'Light' },
+    { text: '.' },
+    { token: 'property', text: 'Office' },
+    { text: '.' },
+    { token: 'method', text: 'TurnOn' },
+    { text: '());' },
+  ],
+  [{ text: '    }' }],
+  [{ text: '}' }],
+];
 
 const features = [
   {
@@ -126,7 +207,17 @@ function CodePanel() {
     <div className={styles.codeWrap} aria-label="NetDaemon C# automation example">
       <div className={styles.languagePill}>C#</div>
       <pre className={styles.codePanel}>
-        <code>{codePreview}</code>
+        <code>
+          {codePreview.map((line, lineIndex) => (
+            <span className={styles.codeLine} key={lineIndex}>
+              {line.map((part, partIndex) => (
+                <span className={part.token ? styles[part.token] : undefined} key={partIndex}>
+                  {part.text}
+                </span>
+              ))}
+            </span>
+          ))}
+        </code>
       </pre>
       <div className={styles.homeAssistantBadge}>
         <img src={useBaseUrl('img/hass.png')} alt="Home Assistant" />

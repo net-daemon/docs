@@ -184,8 +184,8 @@
   margin: 0;
   overflow: auto;
   color: #e9f2ff;
-  font-size: 0.92rem;
-  line-height: 1.75;
+  font-size: 0.78rem;
+  line-height: 1.65;
   background:
     linear-gradient(180deg, rgba(11, 24, 45, 0.94), rgba(3, 10, 22, 0.96)),
     #07101e;
@@ -194,6 +194,36 @@
   box-shadow:
     0 0 0 1px rgba(115, 84, 255, 0.18),
     0 28px 70px rgba(0, 0, 0, 0.38);
+}
+
+.codePanel code {
+  display: block;
+}
+
+.codeLine {
+  display: block;
+  min-height: 1.65em;
+}
+
+.keyword {
+  color: #8f7dff;
+}
+
+.namespace,
+.type {
+  color: #45c0ff;
+}
+
+.attribute {
+  color: #56e39f;
+}
+
+.property {
+  color: #f5d76e;
+}
+
+.method {
+  color: #7de5ff;
 }
 
 .homeAssistantBadge {
