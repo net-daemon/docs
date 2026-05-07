@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
@@ -45,13 +45,65 @@ const features = [
   },
 ];
 
-const stats = [
-  { value: '2.1k', label: 'Stars' },
-  { value: '240', label: 'Forks' },
-  { value: '320+', label: 'Contributors' },
+const fallbackStats = [
+  { key: 'stars', value: 299, label: 'Stars' },
+  { key: 'forks', value: 80, label: 'Forks' },
+  { key: 'contributors', value: 48, label: 'Contributors' },
 ];
 
+const githubRepositoryUrl = 'https://api.github.com/repos/net-daemon/netdaemon';
+const githubContributorsUrl = `${githubRepositoryUrl}/contributors?per_page=1&anon=true`;
+
 const uses = ['Home Automation', 'Smart Buildings', 'Integrations', 'Prototyping', 'Open Source'];
+
+function formatStatValue(value) {
+  if (!Number.isFinite(value)) {
+    return value;
+  }
+
+  return new Intl.NumberFormat('en-US', {
+    notation: value >= 10000 ? 'compact' : 'standard',
+    maximumFractionDigits: 1,
+  }).format(value);
+}
+
+function getContributorCount(linkHeader) {
+  const lastPageMatch = linkHeader?.match(/[?&]page=(\d+)>;\s*rel="last"/);
+
+  if (!lastPageMatch) {
+    return null;
+  }
+
+  return Number.parseInt(lastPageMatch[1], 10);
+}
+
+async function fetchGithubStats(signal) {
+  const [repositoryResponse, contributorsResponse] = await Promise.all([
+    fetch(githubRepositoryUrl, { signal }),
+    fetch(githubContributorsUrl, { signal }),
+  ]);
+
+  if (!repositoryResponse.ok || !contributorsResponse.ok) {
+    throw new Error('Unable to load GitHub stats');
+  }
+
+  const repository = await repositoryResponse.json();
+  const contributorCount = getContributorCount(contributorsResponse.headers.get('Link'));
+
+  if (
+    !Number.isFinite(repository.stargazers_count) ||
+    !Number.isFinite(repository.forks_count) ||
+    !Number.isFinite(contributorCount)
+  ) {
+    throw new Error('GitHub stats response was incomplete');
+  }
+
+  return [
+    { key: 'stars', value: repository.stargazers_count, label: 'Stars' },
+    { key: 'forks', value: repository.forks_count, label: 'Forks' },
+    { key: 'contributors', value: contributorCount, label: 'Contributors' },
+  ];
+}
 
 function FeatureCard({ icon, image, title, description }) {
   const imageUrl = image ? useBaseUrl(image) : null;
@@ -85,12 +137,29 @@ function CodePanel() {
 
 export default function Home() {
   const logoUrl = useBaseUrl('img/favicon.png');
+  const [stats, setStats] = useState(fallbackStats);
 
   useEffect(() => {
     document.body.classList.add('homepage-dark-navbar');
 
     return () => {
       document.body.classList.remove('homepage-dark-navbar');
+    };
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchGithubStats(controller.signal)
+      .then(setStats)
+      .catch((error) => {
+        if (error.name !== 'AbortError') {
+          setStats(fallbackStats);
+        }
+      });
+
+    return () => {
+      controller.abort();
     };
   }, []);
 
@@ -148,7 +217,7 @@ export default function Home() {
           <div className={styles.statsGrid}>
             {stats.map((stat) => (
               <div className={styles.stat} key={stat.label}>
-                <strong>{stat.value}</strong>
+                <strong>{formatStatValue(stat.value)}</strong>
                 <span>{stat.label}</span>
               </div>
             ))}
