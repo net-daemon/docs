@@ -277,7 +277,6 @@ export default function Home() {
           <div className={styles.heroGlow} aria-hidden="true" />
           <div className={styles.heroGrid}>
             <div className={styles.heroContent}>
-              <span className={styles.badge}>Open source</span>
               <h1>
                 Automate Home Assistant with <span>C#</span>
               </h1>

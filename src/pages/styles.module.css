@@ -57,20 +57,6 @@
   max-width: 42rem;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.85rem;
-  padding: 0.25rem 0.85rem;
-  margin-bottom: 1.7rem;
-  color: #45c0ff;
-  text-transform: uppercase;
-  letter-spacing: 0;
-  background: rgba(23, 126, 255, 0.18);
-  border: 1px solid rgba(62, 171, 255, 0.22);
-  border-radius: 999px;
-}
-
 .heroContent h1 {
   max-width: 48rem;
   margin: 0;
