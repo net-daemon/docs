@@ -60,7 +60,7 @@
 .heroContent h1 {
   max-width: 48rem;
   margin: 0;
-  font-size: clamp(3.25rem, 6vw, 5.75rem);
+  font-size: clamp(3.15rem, 5.4vw, 5.2rem);
   line-height: 1.08;
   letter-spacing: 0;
 }

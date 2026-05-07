@@ -322,7 +322,7 @@ export default function Home() {
           <div className={styles.heroGrid}>
             <div className={styles.heroContent}>
               <h1>
-                Automate Home Assistant with <span>C#</span>
+                Automate Home&nbsp;Assistant with <span>C#</span>
               </h1>
               <p className={styles.lede}>
                 NetDaemon is a modern C# automation platform for Home Assistant.
