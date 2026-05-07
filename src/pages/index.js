@@ -242,7 +242,6 @@ function DiscordLogo() {
 }
 
 export default function Home() {
-  const logoUrl = useBaseUrl('img/favicon.png');
   const [stats, setStats] = useState(fallbackStats);
 
   useEffect(() => {
@@ -276,10 +275,6 @@ export default function Home() {
       <main className={styles.pageShell}>
         <section className={styles.hero}>
           <div className={styles.heroGlow} aria-hidden="true" />
-          <div className={styles.heroNavBrand}>
-            <img src={logoUrl} alt="" />
-            <span>NetDaemon</span>
-          </div>
           <div className={styles.heroGrid}>
             <div className={styles.heroContent}>
               <span className={styles.badge}>Open source</span>
