@@ -21,6 +21,11 @@ module.exports = {
   },
   themes: ['@docusaurus/theme-mermaid'],
   themeConfig: {
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: false,
+    },
     algolia: {
       // The application ID provided by Algolia
       appId: 'BD12ZZ1ACW',
@@ -67,16 +72,22 @@ module.exports = {
         position: 'left',
       },
       {
-        to: 'docs/developer',
-        activeBasePath: 'docs',
+        to: '/docs/developer',
+        activeBasePath: 'docs/developer',
         label: 'Developer',
         position: 'left',
       },
       // { to: 'blog', label: 'Blog', position: 'left' },
       {
-        href: 'https://github.com/net-daemon/docs',
+        href: 'https://github.com/net-daemon/netdaemon',
         label: 'GitHub',
         position: 'right',
+      },
+      {
+        to: '/docs/user/started/get_started/',
+        label: 'Get Started',
+        position: 'right',
+        className: 'navbar-get-started',
       },
     ],
   },

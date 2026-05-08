@@ -1,36 +1,533 @@
-/* stylelint-disable docusaurus/copyright-header */
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+.pageShell {
+  --nd-text: #f5f8ff;
+  --nd-text-muted: #c2cade;
+  --nd-text-soft: #96a2bb;
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  padding: 1.75rem clamp(1rem, 4vw, 4.5rem) 3rem;
+  color: var(--nd-text);
+  background:
+    radial-gradient(circle at 82% 26%, rgba(125, 69, 255, 0.24), transparent 28rem),
+    radial-gradient(circle at 58% 16%, rgba(28, 170, 255, 0.17), transparent 24rem),
+    linear-gradient(180deg, #020712 0%, #071224 48%, #030813 100%);
   overflow: hidden;
 }
 
-@media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.hero {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 0 2rem;
 }
 
-.buttons {
+.hero::before {
+  position: absolute;
+  inset: 6rem -8rem auto 30%;
+  height: 26rem;
+  pointer-events: none;
+  content: '';
+  background-image:
+    linear-gradient(rgba(73, 154, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(73, 154, 255, 0.12) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle, #000 0%, transparent 72%);
+}
+
+.heroGlow {
+  position: absolute;
+  right: 0;
+  bottom: -4rem;
+  width: 28rem;
+  height: 18rem;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(120, 72, 255, 0.36), transparent 68%);
+  filter: blur(10px);
+}
+
+.heroGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(24rem, 0.82fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 42rem;
+}
+
+.heroContent h1 {
+  max-width: 48rem;
+  margin: 0;
+  font-size: clamp(3.15rem, 5.4vw, 5.2rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.heroContent h1 span {
+  color: #7c61ff;
+  text-shadow: 0 0 28px rgba(103, 91, 255, 0.72);
+}
+
+.lede {
+  max-width: 42rem;
+  margin: 1.6rem 0 2.35rem;
+  color: var(--nd-text-muted);
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+.heroActions {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+}
+
+.button {
+  display: inline-flex;
+  gap: 0.75rem;
   align-items: center;
   justify-content: center;
+  min-height: 3.75rem;
+  padding: 0.95rem 1.9rem;
+  color: var(--nd-text);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.button:hover {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.buttonIcon {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #1687ff 0%, #7648ff 100%);
+  box-shadow: 0 14px 34px rgba(56, 103, 255, 0.38);
+}
+
+.secondaryButton {
+  color: #41c0ff;
+  background: rgba(7, 19, 39, 0.74);
+  border: 1px solid rgba(55, 169, 255, 0.48);
+}
+
+.secondaryButton:hover {
+  border-color: rgba(130, 98, 255, 0.8);
+  box-shadow: 0 12px 30px rgba(42, 125, 255, 0.2);
+}
+
+.codeWrap {
+  position: relative;
+  min-width: 0;
+}
+
+.codeWrap::before {
+  position: absolute;
+  inset: 12% -9% -12% 22%;
+  z-index: -1;
+  content: '';
+  background: linear-gradient(110deg, rgba(29, 160, 255, 0.18), rgba(126, 49, 255, 0.38));
+  filter: blur(34px);
+}
+
+.languagePill {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  z-index: 2;
+  padding: 0.2rem 0.45rem;
+  color: #b7c1d9;
+  font-size: 0.8rem;
+  background: rgba(134, 151, 184, 0.12);
+  border-radius: 999px;
+}
+
+.codePanel {
+  min-height: 24rem;
+  padding: 2rem;
+  margin: 0;
+  overflow: auto;
+  color: #e9f2ff;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  background:
+    linear-gradient(180deg, rgba(11, 24, 45, 0.94), rgba(3, 10, 22, 0.96)),
+    #07101e;
+  border: 1px solid rgba(60, 177, 255, 0.62);
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 1px rgba(115, 84, 255, 0.18),
+    0 28px 70px rgba(0, 0, 0, 0.38);
+}
+
+.codePanel code {
+  display: block;
+}
+
+.codeLine {
+  display: block;
+  min-height: 1.65em;
+}
+
+.keyword {
+  color: #8f7dff;
+}
+
+.namespace,
+.type {
+  color: #45c0ff;
+}
+
+.attribute {
+  color: #56e39f;
+}
+
+.property {
+  color: #f5d76e;
+}
+
+.method {
+  color: #7de5ff;
+}
+
+.homeAssistantBadge {
+  position: absolute;
+  right: -3.4rem;
+  bottom: -2.2rem;
+  display: grid;
+  width: 8.3rem;
+  height: 8.3rem;
+  place-items: center;
+  background: linear-gradient(135deg, #28b9ff, #2274e8);
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(39, 139, 255, 0.42);
+}
+
+.homeAssistantBadge img {
+  width: 5.2rem;
+  height: 5.2rem;
+  object-fit: contain;
 }
 
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 1280px;
+  margin: 1.5rem auto 0;
 }
 
-.featureImage {
-  height: 150px;
-  width: 150px;
+.featureCard,
+.githubPanel,
+.discordPanel {
+  background:
+    linear-gradient(145deg, rgba(32, 48, 82, 0.58), rgba(8, 17, 35, 0.82)),
+    rgba(8, 17, 35, 0.78);
+  border: 1px solid rgba(141, 162, 201, 0.22);
+  border-radius: 8px;
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.23);
+}
+
+.featureCard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.35rem;
+  min-height: 10.8rem;
+  padding: 1.8rem;
+}
+
+.featureIcon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 4.75rem;
+  height: 4.75rem;
+  place-items: center;
+  color: #f199ff;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(122, 62, 225, 0.8), rgba(52, 36, 95, 0.9));
+  border-radius: 8px;
+}
+
+.featureIcon img {
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: contain;
+}
+
+.featureSvgIcon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.featureCard h3,
+.githubPanel h2,
+.discordPanel h2 {
+  margin: 0 0 0.7rem;
+  color: var(--nd-text);
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.featureCard p,
+.githubPanel p,
+.discordPanel p {
+  margin: 0;
+  color: var(--nd-text-muted);
+  line-height: 1.55;
+}
+
+.githubPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.45fr);
+  gap: 2rem;
+  align-items: center;
+  max-width: 1280px;
+  margin: 1.5rem auto 0;
+  padding: 1.8rem 2rem;
+}
+
+.githubIntro {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.35rem;
+  align-items: center;
+}
+
+.githubMark {
+  display: grid;
+  width: 4.5rem;
+  height: 4.5rem;
+  place-items: center;
+  color: #030813;
+  font-weight: 900;
+  background: #fff;
+  border-radius: 999px;
+}
+
+.githubMark svg {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.githubButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.4rem;
+  padding: 0.45rem 1rem;
+  margin-top: 0.9rem;
+  color: var(--nd-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: rgba(146, 164, 197, 0.13);
+  border: 1px solid rgba(146, 164, 197, 0.12);
+  border-radius: 6px;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.githubButton:hover {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  border-color: rgba(62, 171, 255, 0.45);
+  box-shadow: 0 12px 30px rgba(42, 125, 255, 0.2);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stat {
+  display: grid;
+  gap: 0.45rem;
+  justify-items: center;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-left: 1px solid rgba(141, 162, 201, 0.18);
+}
+
+.stat strong {
+  color: var(--nd-text);
+  font-size: 1.65rem;
+  font-weight: 600;
+}
+
+.stat span {
+  color: var(--nd-text-soft);
+}
+
+.discordPanel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1280px;
+  margin: 1.5rem auto 0;
+  padding: 1.6rem 2rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 50%, rgba(42, 167, 255, 0.18), transparent 18rem),
+    radial-gradient(circle at 78% 44%, rgba(128, 92, 255, 0.2), transparent 20rem),
+    linear-gradient(135deg, rgba(11, 28, 54, 0.9), rgba(8, 17, 35, 0.82));
+  border-color: rgba(70, 170, 255, 0.3);
+}
+
+.discordPanel::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  background: linear-gradient(90deg, rgba(69, 192, 255, 0.13), transparent 32%, rgba(143, 125, 255, 0.16));
+}
+
+.discordIntro {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.discordMark {
+  display: grid;
+  width: 4.5rem;
+  height: 4.5rem;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, #5865f2, #45c0ff);
+  border-radius: 8px;
+  box-shadow: 0 18px 38px rgba(73, 133, 255, 0.28);
+}
+
+.discordMark svg {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.discordButton {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.45rem;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  background: linear-gradient(135deg, #258bff, #7d5cff);
+  border: 1px solid rgba(130, 98, 255, 0.55);
+  border-radius: 8px;
+  box-shadow: 0 14px 30px rgba(69, 117, 255, 0.28);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.discordButton:hover {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px rgba(69, 117, 255, 0.34);
+}
+
+@media screen and (max-width: 996px) {
+  .heroGrid,
+  .features,
+  .githubPanel,
+  .discordPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .discordButton {
+    justify-self: start;
+  }
+
+  .codePanel {
+    min-height: 20rem;
+  }
+
+  .homeAssistantBadge {
+    right: 1rem;
+    bottom: -2.7rem;
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .homeAssistantBadge img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .features {
+    margin-top: 3.5rem;
+  }
+
+  .stat:first-child {
+    border-left: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .pageShell {
+    padding: 1rem 1rem 2.5rem;
+  }
+
+  .heroContent h1 {
+    font-size: 3rem;
+  }
+
+  .lede {
+    font-size: 1.05rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .featureCard,
+  .githubIntro,
+  .discordIntro {
+    grid-template-columns: 1fr;
+  }
+
+  .discordButton {
+    width: 100%;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat {
+    border-top: 1px solid rgba(141, 162, 201, 0.18);
+    border-left: 0;
+  }
+
+  .stat:first-child {
+    border-top: 0;
+  }
 }
