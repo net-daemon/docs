@@ -203,25 +203,6 @@
   color: #7de5ff;
 }
 
-.homeAssistantBadge {
-  position: absolute;
-  right: -3.4rem;
-  bottom: -2.2rem;
-  display: grid;
-  width: 8.3rem;
-  height: 8.3rem;
-  place-items: center;
-  background: linear-gradient(135deg, #28b9ff, #2274e8);
-  border-radius: 8px;
-  box-shadow: 0 18px 44px rgba(39, 139, 255, 0.42);
-}
-
-.homeAssistantBadge img {
-  width: 5.2rem;
-  height: 5.2rem;
-  object-fit: contain;
-}
-
 .features {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -470,18 +451,6 @@
     min-height: 20rem;
   }
 
-  .homeAssistantBadge {
-    right: 1rem;
-    bottom: -2.7rem;
-    width: 6.5rem;
-    height: 6.5rem;
-  }
-
-  .homeAssistantBadge img {
-    width: 4rem;
-    height: 4rem;
-  }
-
   .features {
     margin-top: 3.5rem;
   }
@@ -493,19 +462,56 @@
 
 @media screen and (max-width: 640px) {
   .pageShell {
-    padding: 1rem 1rem 2.5rem;
+    padding: 0.85rem 1rem 2.5rem;
+  }
+
+  .hero {
+    padding: 0.5rem 0 1.35rem;
+  }
+
+  .heroGrid {
+    gap: 1.55rem;
   }
 
   .heroContent h1 {
-    font-size: 3rem;
+    font-size: 2.65rem;
   }
 
   .lede {
-    font-size: 1.05rem;
+    margin: 1.15rem 0 1.55rem;
+    font-size: 1.1rem;
+    line-height: 1.55;
+  }
+
+  .heroActions {
+    gap: 0.85rem;
   }
 
   .button {
+    min-height: 4.45rem;
+    padding: 1.15rem 1.25rem;
     width: 100%;
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+
+  .buttonIcon {
+    width: 1.45rem;
+    height: 1.45rem;
+  }
+
+  .languagePill {
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.82rem;
+  }
+
+  .codePanel {
+    max-height: min(62vh, 30rem);
+    min-height: 22rem;
+    padding: 1.55rem 1.15rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
   }
 
   .featureCard,

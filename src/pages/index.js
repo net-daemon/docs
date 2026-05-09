@@ -263,9 +263,6 @@ function CodePanel() {
           ))}
         </code>
       </pre>
-      <div className={styles.homeAssistantBadge}>
-        <img src={useBaseUrl('img/hass.png')} alt="Home Assistant" />
-      </div>
     </div>
   );
 }
