@@ -134,6 +134,28 @@ public sealed class LifeTimeApp : IAsyncInitializable, IAsyncDisposable
 }
 ```
 
+### Knowing which app you are
+
+Inject `ICurrentApp` to find out the id of the app that owns the current
+dependency injection scope. This is useful when a service is shared between apps
+and needs to pick up per-app configuration or logging.
+
+```csharp
+[NetDaemonApp]
+public class MyApp
+{
+    public MyApp(ICurrentApp currentApp, ILogger<MyApp> logger)
+    {
+        logger.LogInformation("Running as app {AppId}", currentApp.Id);
+    }
+}
+```
+
+`ICurrentApp.Id` is the same id NetDaemon uses everywhere else: the `Id` set on
+the `[NetDaemonApp]` attribute when present, otherwise the full name of the app
+type. It can also be resolved from any other service that is registered in the
+app's scope.
+
 ### Minimal app lifecycle events
 A minimal app consists of just a single delegate. When the app is started, its parameters are resolved from the DI container and the delegate is invoked. A minimal app can implement async initialisation by providing an async delegate (that returns a Task, ValueTask, or other awaitable object) the runtime will the await its return value during initialisation. 
 
