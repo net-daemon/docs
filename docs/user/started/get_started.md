@@ -8,6 +8,10 @@ title: Getting started with NetDaemon
 This guide walks you through setting up your development environment for
 building NetDaemon apps.
 
+This guide targets stable V6 on .NET 10. To test V7 on .NET 11, follow the
+[V7-alpha guide](v7_alpha.md), including its package and SDK changes after
+creating a project from the template.
+
 ## Prerequisites
 
 - .NET 10 SDK

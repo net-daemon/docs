@@ -10,6 +10,9 @@ You can deploy your NetDaemon apps in several ways:
 - Using the NetDaemon Docker container
 - Custom deployment (will not be covered here)
 
+The examples below use stable V6 on .NET 10. For the separate V7-alpha add-on
+and .NET 11 Docker images, follow the [V7-alpha guide](v7_alpha.md).
+
 ## Deploying NetDAemon using the Home Assistant add-on
 
 Once added to Home Assistant,

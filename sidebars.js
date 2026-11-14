@@ -20,6 +20,7 @@ module.exports = {
           items: [
             'user/started/get_started',
             'user/started/installation',
+            'user/started/v7_alpha',
             'user/started/integration',
             'user/started/example',
           ],
