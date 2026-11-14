@@ -8,9 +8,12 @@ title: Getting started with NetDaemon
 This guide walks you through setting up your development environment for
 building NetDaemon apps.
 
+This guide targets NetDaemon V7 on .NET 11. If you have an existing project,
+follow the [V7 migration guide](upgrade_to_v7.md).
+
 ## Prerequisites
 
-- .NET 10 SDK
+- [.NET 11 SDK](https://dotnet.microsoft.com/download/dotnet/11.0)
 - A development environment such as Visual Studio, Visual Studio Code, or Rider
 - A Home Assistant instance
 - A Home Assistant long-lived access token
@@ -34,6 +37,10 @@ mkdir NetDaemonApps
 cd NetDaemonApps
 dotnet new nd-project
 ```
+
+Ensure your project targets `net11.0` and uses matching stable V7 NetDaemon
+packages and code generator. If the template uses an older framework, apply the
+[V7 migration steps](upgrade_to_v7.md#prepare-your-apps) before running it.
 
 :::tip
 Run `dotnet new list netdaemon` to see the available NetDaemon templates.
@@ -120,7 +127,7 @@ Use `dotnet publish -c Release -o [your output directory]`.
 Then, copy all contents from `[your_output_directory]` to the appropriate
 location on your Home Assistant host:
 
-- If using the NetDaemon add-on: `/config/netdaemon6`
+- If using the NetDaemon add-on: `/config/netdaemon7`
 - If using another hosting option: Copy to your chosen destination folder
 
 For more details on different deployment options, see the
