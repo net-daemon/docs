@@ -3,8 +3,9 @@ id: upgrade_to_v7
 title: Upgrade to V7 (.NET 11)
 ---
 
-NetDaemon V7 runs on .NET 11. This guide covers upgrading from V6 on .NET 10
-and preparing your apps for the V7 runtime.
+NetDaemon V7 upgrades the runtime to .NET 11. To migrate from V6 on .NET 10,
+update your development environment and dependencies, then rebuild your apps
+for the V7 runtime.
 
 V7 is the runtime generation; NuGet packages keep their calendar-based version
 numbers. Choose a stable V7 version from the
@@ -97,7 +98,7 @@ as well. Keep the package references and code generator on the same stable versi
 1. Add `https://github.com/net-daemon/homeassistant-addon` to the add-on store's
    repositories, or refresh the store if you already added it.
 2. Install **NetDaemon V7 (.NET 11)**. Its slug is `netdaemon7`, so
-   it is a separate installation from V6 and alpha add-ons.
+   it is a separate installation from the V6 add-on.
 3. Copy all files and folders **inside** your publish output to
    `/config/netdaemon7`, the default application folder. Use a separate folder
    from your V6 installation.

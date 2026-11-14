@@ -5,8 +5,8 @@ title: What's new in V7
 
 ## Version 7 of NetDaemon
 
-NetDaemon V7 runs on .NET 11, with updated NuGet dependencies. C# 14 remains
-supported; you do not need to adopt new language features to upgrade your apps.
+NetDaemon V7 upgrades the runtime from .NET 10 to .NET 11 and updates its NuGet
+dependencies. Applications target `net11.0` and use C# 14.
 
 V7 uses dedicated Docker images (`netdaemon/netdaemon7`) and a separate
 **NetDaemon V7 (.NET 11)** Home Assistant add-on. The default add-on application

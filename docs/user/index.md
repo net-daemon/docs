@@ -4,7 +4,7 @@ title: NetDaemon
 ---
 
 NetDaemon provides the capability to write home automations for Home Assistant in C#.
-The current stable version is V7 and uses .NET 11. C# 14 remains supported.
+The current version is V7 and uses .NET 11 and C# 14.
 
 ## About NetDaemon
 
