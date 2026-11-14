@@ -1,18 +1,19 @@
 ---
-id: v7_alpha
-title: Try V7-alpha (.NET 11)
+id: upgrade_to_v7
+title: Upgrade to V7 (.NET 11)
 ---
 
-NetDaemon V7-alpha runs on .NET 11. V6 on .NET 10 remains the stable version;
-the V7 stable release will be announced separately.
+NetDaemon V7 runs on .NET 11. This guide covers upgrading from V6 on .NET 10
+and preparing your apps for the V7 runtime.
 
-The instructions below use the published NuGet version `26.45.0-alpha-4`
-and the `alpha` container tag. V7 is the runtime generation; NuGet packages
-keep their calendar-based version numbers.
+V7 is the runtime generation; NuGet packages keep their calendar-based version
+numbers. Choose a stable V7 version from the
+[release notes](https://github.com/net-daemon/netdaemon/releases) and use that
+same version for your NetDaemon packages, code generator, and runtime image.
 
 :::warning
-Alpha releases are intended for testing. Back up your apps and configuration
-before migrating. When testing alongside V6, enable only one copy of each
+Back up your apps and configuration before migrating. When running alongside
+V6, enable only one copy of each
 automation to avoid duplicate actions in Home Assistant.
 :::
 
@@ -46,30 +47,34 @@ Start from a copy of your existing project, or create one using the
    }
    ```
 
-4. Set **all** `NetDaemon.*` package references to `26.45.0-alpha-4`, including
+4. Update **all** `NetDaemon.*` package references to the same stable V7 release, including
    references in test projects or `Directory.Packages.props` if you use central
    package management. For example:
 
    ```bash
-   dotnet add package NetDaemon.Runtime --version 26.45.0-alpha-4
-   dotnet add package NetDaemon.HassModel --version 26.45.0-alpha-4
+   dotnet add package NetDaemon.Runtime
+   dotnet add package NetDaemon.HassModel
    ```
 
-   Update the other NetDaemon packages your project already uses to the same
-   version. Check third-party extensions for .NET 11/V7 compatibility and update
+   These commands select the latest stable packages. To select a specific V7
+   release, append `--version YOUR_V7_RELEASE_VERSION`, replacing the placeholder
+   with the version from the release notes. Update the other NetDaemon packages
+   your project already uses to the same version.
+   Check third-party extensions for .NET 11/V7 compatibility and update
    direct Microsoft.Extensions package references to compatible 11.x versions.
 
 5. Update the code generator to the matching version. For a project with an
    existing local tool manifest:
 
    ```bash
-   dotnet tool update NetDaemon.HassModel.CodeGen --local --version 26.45.0-alpha-4
+   dotnet tool update NetDaemon.HassModel.CodeGen --local
    dotnet tool run nd-codegen
    ```
 
    If the tool is not yet in your manifest, use `dotnet tool install` instead of
    `dotnet tool update`. If you use a global tool, update it with
-   `dotnet tool update --global NetDaemon.HassModel.CodeGen --version 26.45.0-alpha-4`.
+   `dotnet tool update --global NetDaemon.HassModel.CodeGen`.
+   Append `--version YOUR_V7_RELEASE_VERSION` when selecting a specific release.
    See the [code generator guide](../hass_model/hass_model_codegen.md) for
    Home Assistant connection settings.
 
@@ -84,16 +89,15 @@ Start from a copy of your existing project, or create one using the
    ```
 
 If your project has Dockerfiles or development container configuration, update
-their SDK/runtime images to .NET 11 and their NetDaemon runtime image to V7-alpha
-as well. Keep the package references and code generator on the same explicit
-alpha version; an update command without a version normally selects stable packages.
+their SDK/runtime images to .NET 11 and their NetDaemon runtime image to V7
+as well. Keep the package references and code generator on the same stable version.
 
 ## Home Assistant add-on
 
 1. Add `https://github.com/net-daemon/homeassistant-addon` to the add-on store's
    repositories, or refresh the store if you already added it.
-2. Install **NetDaemon V7-alpha (.NET 11)**. Its slug is `netdaemon7-alpha`, so
-   it is a separate installation from older alpha and stable add-ons.
+2. Install **NetDaemon V7 (.NET 11)**. Its slug is `netdaemon7`, so
+   it is a separate installation from V6 and alpha add-ons.
 3. Copy all files and folders **inside** your publish output to
    `/config/netdaemon7`, the default application folder. Use a separate folder
    from your V6 installation.
@@ -102,8 +106,9 @@ alpha version; an update command without a version normally selects stable packa
    Copy any custom add-on settings from your previous installation as needed.
 5. Start the add-on and check its logs and your automations in Home Assistant.
 
-The add-on uses `ghcr.io/net-daemon/netdaemon_addon7:alpha` and supports
-`aarch64` and `amd64`. A 32-bit `armhf` installation is not supported by V7-alpha.
+The add-on uses `ghcr.io/net-daemon/netdaemon_addon7` with the version selected
+by the add-on release and supports `aarch64` and `amd64`. A 32-bit `armhf`
+installation is not supported by V7.
 
 ### Source deployment
 
@@ -114,19 +119,25 @@ Source deployment does not support custom NuGet packages.
 
 ## Docker
 
-Use either of these equivalent V7-alpha images on `linux/amd64` or `linux/arm64`:
+Use either of these equivalent V7 images on `linux/amd64` or `linux/arm64`,
+with the stable release version as the tag:
 
-- `netdaemon/netdaemon7:alpha` (Docker Hub)
-- `ghcr.io/net-daemon/netdaemon7:alpha` (GitHub Container Registry)
+- `netdaemon/netdaemon7` (Docker Hub)
+- `ghcr.io/net-daemon/netdaemon7` (GitHub Container Registry)
 
 For example, adapt the following Compose configuration to your Home Assistant
-connection and publish folder:
+connection and publish folder. Create a `.env` file next to it and replace the
+placeholder with the same stable V7 version as your NetDaemon packages:
+
+```text title=".env"
+NETDAEMON_VERSION=YOUR_V7_RELEASE_VERSION
+```
 
 ```yaml title="compose.yaml"
 services:
   netdaemon:
-    image: netdaemon/netdaemon7:alpha
-    container_name: netdaemon7-alpha
+    image: netdaemon/netdaemon7:${NETDAEMON_VERSION}
+    container_name: netdaemon7
     restart: unless-stopped
     environment:
       HomeAssistant__Host: your_ip_or_hostname
@@ -145,9 +156,9 @@ variables and Home Assistant networking options.
 
 ## Updating or returning to V6
 
-Alpha images use a moving `alpha` tag and are published manually. When a new
-alpha is announced, update your NetDaemon packages and code generator to its
-matching version, rebuild, and update the image. With Compose:
+When updating to a new stable V7 release, update your NetDaemon packages and code
+generator to its matching version, rebuild, and update `NETDAEMON_VERSION` in your
+`.env` file before pulling the image. With Compose:
 
 ```bash
 docker compose pull

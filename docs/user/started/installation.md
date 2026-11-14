@@ -10,19 +10,19 @@ You can deploy your NetDaemon apps in several ways:
 - Using the NetDaemon Docker container
 - Custom deployment (will not be covered here)
 
-The examples below use stable V6 on .NET 10. For the separate V7-alpha add-on
-and .NET 11 Docker images, follow the [V7-alpha guide](v7_alpha.md).
+The examples below use NetDaemon V7 on .NET 11. For existing projects, follow
+the [V7 migration guide](upgrade_to_v7.md) before deploying.
 
 ## Deploying NetDAemon using the Home Assistant add-on
 
 Once added to Home Assistant,
-select one of the V6 versions.
+select **NetDaemon V7 (.NET 11)**. The add-on supports `aarch64` and `amd64`.
 
 1. Create a folder structure under your Home Assistant host configuration
 directory to store NetDaemon apps:
 
 ```text
-/config/netdaemon6
+/config/netdaemon7
 ```
 
 2. Add the NetDaemon repository to the Home Assistant add-on store:
@@ -46,7 +46,7 @@ dotnet publish -c Release -o [outputdir]
 ```
 
 Copy all files and folders **within** the `[outputdir]`
-to `/config/netdaemon6` on your Home Assistant host.
+to `/config/netdaemon7` on your Home Assistant host.
 
 For more details how to make this step easier, see the tutorial
 [Publish NetDeamon apps with Powershell](user/tutorials/publish_script.md).
@@ -55,7 +55,7 @@ For more details how to make this step easier, see the tutorial
 
 In the add-on configuration, set `Application assembly` setting
 to the path for your project's entry assembly (DLL),
-relative to `/config/netdaemon6` folder.
+relative to `/config/netdaemon7` folder.
 Optionally, specify a separate path for configurations.
 
 This is an example of how the configuration should should look like,
@@ -83,9 +83,13 @@ to avoid potential breaking changes.
 
 ### Example Docker run configuration
 
+Replace `YOUR_V7_RELEASE_VERSION` with the stable V7 release version that matches
+your NetDaemon NuGet packages.
+
 ```bash
+NETDAEMON_VERSION=YOUR_V7_RELEASE_VERSION
 docker run -d \
-  --name netdaemon6 \
+  --name netdaemon7 \
   --restart=always \
   -e HomeAssistant__Host=192.168.1.4 \
   -e HomeAssistant__Token="eyJhbGciOiJIUz..." \
@@ -93,17 +97,23 @@ docker run -d \
   -e Logging__LogLevel__Default=Information \
   -e TZ=Europe/Stockholm \
   -v ~/netdaemon_config:/data \
-  netdaemon/netdaemon6
+  netdaemon/netdaemon7:"$NETDAEMON_VERSION"
 ```
 
-### Example using docker-compose.yaml for
+### Example using docker-compose.yaml
+
+Create a `.env` file next to your Compose file, replacing the placeholder with
+the stable V7 release version:
+
+```text title=".env"
+NETDAEMON_VERSION=YOUR_V7_RELEASE_VERSION
+```
 
 ```yaml
 services:
   netdaemon:
-    image: netdaemon/netdaemon6                 # use netdaemon/netdaemon6:ver 
-                                                # for specific version
-    container_name: netdaemon6
+    image: netdaemon/netdaemon7:${NETDAEMON_VERSION}
+    container_name: netdaemon7
     restart: always
     environment:
       - HomeAssistant__Host=your_ip_or_hostname # use host.docker.internal if HA in container (see section below)
@@ -117,6 +127,9 @@ services:
     # extra_hosts:                              # Enable if HA in 
     #     - "host.docker.internal:host-gateway" # container
 ```
+
+The same images are also available as `ghcr.io/net-daemon/netdaemon7` with
+matching version tags. V7 supports `linux/amd64` and `linux/arm64`.
 
 ### Environment variables
 

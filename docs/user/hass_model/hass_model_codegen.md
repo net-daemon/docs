@@ -5,9 +5,9 @@ title: Using the Code generator
 
 NetDaemon has a generator that creates code based on the entities and services in Home Assistant. This makes it possible to navigate all entities and services using intellisense.
 
-For V7-alpha on .NET 11, use the explicit code generator version matching your
-alpha packages. See the [V7-alpha guide](../started/v7_alpha.md#prepare-your-apps)
-for the commands; the unversioned commands below select stable packages.
+V7 requires .NET 11. Use the code generator version matching your NetDaemon
+NuGet packages. See the [V7 migration guide](../started/upgrade_to_v7.md#prepare-your-apps)
+when upgrading an existing project.
 
 ## Use as local tool
 

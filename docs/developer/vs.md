@@ -7,7 +7,9 @@ title: Visual Studio
 
 ## Visual studio on Windows host os
 
-Visual Studio 2019 community or newer is recommended. You need to have dotnet 10 installed.  [Download .NET 10 here](https://dotnet.microsoft.com/download/dotnet/10.0) or check the minimal version of Visual Studio supported. 
+Use a Visual Studio version that supports the .NET 11 SDK.
+[Install .NET 11](https://dotnet.microsoft.com/download/dotnet/11.0) and check
+Visual Studio compatibility before opening the solution.
 
 Fork and clone your net-daemon/netdaemon.
 
